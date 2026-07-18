@@ -6,11 +6,13 @@
 <section class="tt-section questions">
 	<div class="tt-container questions__inner">
 		<div class="questions__aside">
-			<p class="questions__kicker label">Ask a better question</p>
+			<p class="questions__kicker label" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
+				Ask a better question
+			</p>
 			<h2 class="questions__title" data-split {@attach splitReveal({ stagger: 0.045 })}>
 				You’re asking the <span class="questions__accent">wrong</span> question.
 			</h2>
-			<p class="questions__closing">
+			<p class="questions__closing" data-anim {@attach reveal({ y: 20, duration: 0.8, delay: 0.1 })}>
 				Money isn’t a strong enough motivator to get you through what’s holding you back. Any job
 				earns money — <strong>not the freedom to be the author of your life.</strong>
 			</p>
@@ -18,7 +20,7 @@
 
 		<ol class="questions__list">
 			{#each questions as item, i (item.q)}
-				<li class="questions__item" data-anim {@attach reveal({ y: 40, duration: 0.9 })}>
+				<li class="questions__item" data-anim {@attach reveal({ y: 34, x: 22, duration: 0.85 + i * 0.06 })}>
 					<span class="questions__idx num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
 					<h3 class="questions__q">{item.q}</h3>
 					<p class="questions__body">{item.body}</p>

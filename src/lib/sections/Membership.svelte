@@ -25,15 +25,17 @@
 	<div class="tt-container mem__inner">
 		<header class="mem__head">
 			<div class="mem__headline">
-				<p class="label mem__kicker">
+				<p class="label mem__kicker" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
 					<span class="mem__idxlead">01 / 06</span>The membership
 				</p>
 				<h2 id="mem-title" class="mem__title" data-split {@attach splitReveal({ stagger: 0.026 })}>
 					Guidance &amp; mentorship that gets <span class="text-red">results.</span>
 				</h2>
-				<p class="mem__strike">(not a chaotic free-for-all Discord room)</p>
+				<p class="mem__strike" data-anim {@attach reveal({ y: 18, duration: 0.75, delay: 0.1 })}>
+					(not a chaotic free-for-all Discord room)
+				</p>
 			</div>
-			<div class="mem__aside">
+			<div class="mem__aside" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 22, duration: 0.8 })}>
 				<p class="mem__note">
 					No alerts. No noise. A trained room that answers — and a coach who teaches live, on mic,
 					every session.

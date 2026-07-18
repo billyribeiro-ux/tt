@@ -21,7 +21,7 @@
 			</h2>
 		</header>
 
-		<ol class="struggle__list" data-anim-stagger {@attach reveal({ stagger: 0.14, y: 44 })}>
+		<ol class="struggle__list" data-anim-stagger {@attach reveal({ stagger: 0.13, y: 42, duration: 0.95 })}>
 			{#each painPoints as point (point.n)}
 				<li class="struggle__item">
 					<span class="struggle__index num" aria-hidden="true">{point.n}</span>
@@ -131,7 +131,7 @@
 		max-width: 58ch;
 	}
 	.struggle__item-title {
-		font-size: clamp(1.4rem, 1.1rem + 1vw, 1.95rem);
+		font-size: var(--fs-h3);
 		font-weight: 700;
 		color: var(--tt-white);
 	}

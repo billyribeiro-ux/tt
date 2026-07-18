@@ -15,8 +15,17 @@
 	<div class="tt-container tt-container--wide proof__inner">
 		<header class="proof__head">
 			<div class="proof__intro">
-				<p class="eyebrow">The proof</p>
-				<h2 id="proof-title" class="proof__title" data-anim {@attach reveal({ y: 30 })}>
+				<div class="section-head proof__bar" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
+					<span class="idx">09 / 13</span>
+					<span class="label">The proof</span>
+					<span class="rule" aria-hidden="true"></span>
+				</div>
+				<h2
+					id="proof-title"
+					class="proof__title"
+					data-anim
+					{@attach reveal({ y: 30, duration: 0.9, delay: 0.08 })}
+				>
 					Join over
 					<span class="proof__count text-gradient num" {@attach counter(site.studentsTrained)}
 						>{site.studentsTrained.toLocaleString('en-US')}</span
@@ -27,8 +36,7 @@
 
 			<dl class="proof__stats" data-anim-stagger {@attach reveal({ stagger: 0.1, y: 18 })}>
 				{#each stats as stat, i (stat.label)}
-					{#if i > 0}<span class="proof__stat-sep" aria-hidden="true"></span>{/if}
-					<div class="proof__stat">
+					<div class="proof__stat" class:proof__stat--ruled={i > 0}>
 						<dt class="num">{stat.value}</dt>
 						<dd>{stat.label}</dd>
 					</div>
@@ -36,7 +44,12 @@
 			</dl>
 		</header>
 
-		<div class="proof__featured" aria-label="As featured on">
+		<div
+			class="proof__featured"
+			aria-label="As featured on"
+			data-anim
+			{@attach reveal({ y: 20, duration: 0.8 })}
+		>
 			<span class="label proof__featured-tag">As featured on</span>
 			<ul class="proof__logos">
 				{#each featuredOn as name (name)}
@@ -96,6 +109,9 @@
 		padding-bottom: clamp(2.4rem, 5vw, 4rem);
 		border-bottom: 1px solid var(--tt-line);
 	}
+	.proof__bar {
+		margin-bottom: 1.3rem;
+	}
 	.proof__title {
 		font-size: var(--fs-h2);
 		line-height: 1;
@@ -116,10 +132,9 @@
 		gap: 1.4rem;
 		margin: 0;
 	}
-	.proof__stat-sep {
-		width: 1px;
-		height: 38px;
-		background: var(--tt-line-strong);
+	.proof__stat--ruled {
+		padding-left: 1.4rem;
+		border-left: 1px solid var(--tt-line-strong);
 	}
 	.proof__stat dt {
 		font-size: clamp(1.6rem, 1rem + 2.2vw, 2.4rem);
@@ -201,9 +216,9 @@
 		border-radius: var(--tt-radius-lg);
 		box-shadow: var(--tt-shadow-card);
 		overflow: hidden;
-		transition:
-			border-color 0.4s ease,
-			transform 0.4s ease;
+		/* No `transform` here — tilt() drives transform per-frame via GSAP; a CSS
+		   transition on the same property would fight every write. */
+		transition: border-color 0.4s ease;
 	}
 	.proof__card:hover {
 		border-color: var(--tt-line-strong);

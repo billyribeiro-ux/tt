@@ -78,7 +78,6 @@
 					</dt>
 					<dd>Traders trained</dd>
 				</div>
-				<span class="bio__statsep" aria-hidden="true"></span>
 				<div class="bio__stat">
 					<dt class="num"><span {@attach counter(10)}>10</span>+ yrs</dt>
 					<dd>Proven strategy</dd>
@@ -295,10 +294,9 @@
 		padding-top: 1.8rem;
 		border-top: 1px solid var(--tt-line);
 	}
-	.bio__statsep {
-		width: 1px;
-		height: 38px;
-		background: var(--tt-line-strong);
+	.bio__stat + .bio__stat {
+		padding-left: 1.8rem;
+		border-left: 1px solid var(--tt-line-strong);
 	}
 	.bio__stat dt {
 		font-family: var(--tt-font-mono);
@@ -313,6 +311,14 @@
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
 		color: var(--tt-mute);
+	}
+
+	/* On narrow phones the accent's negative right/bottom inset would bleed past the
+	   viewport — pull it back inside so nothing overflows below 520px. */
+	@media (max-width: 520px) {
+		.bio__accent {
+			inset: 1.1rem 0 -1.1rem 0.9rem;
+		}
 	}
 
 	@media (min-width: 900px) {

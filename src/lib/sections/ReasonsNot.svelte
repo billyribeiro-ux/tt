@@ -15,14 +15,18 @@
 
 	<div class="tt-container rn__inner">
 		<header class="rn__head">
-			<p class="eyebrow rn__kicker">
-				<WarningIcon weight="fill" size={15} />
-				Read this first
-			</p>
+			<div class="section-head rn__bar" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
+				<span class="idx">08 / 13</span>
+				<span class="label rn__kicker">
+					<WarningIcon weight="fill" size={15} />
+					Read this first
+				</span>
+				<span class="rule" aria-hidden="true"></span>
+			</div>
 			<h2 id="rn-title" class="rn__title" data-split {@attach splitReveal({ stagger: 0.026 })}>
 				Reasons you should <em>NOT</em> be here.
 			</h2>
-			<p class="rn__lede">
+			<p class="rn__lede" data-anim {@attach reveal({ y: 20, duration: 0.85, delay: 0.12 })}>
 				Trick Trades filters hard, on purpose. If any of these three describe you, this isn’t your
 				room — and we’d rather you found out now than three trades from here.
 			</p>
@@ -126,7 +130,13 @@
 	.rn__head {
 		max-width: 62ch;
 	}
+	.rn__bar {
+		margin-bottom: 0;
+	}
 	.rn__kicker {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
 		color: var(--tt-red-bright);
 	}
 	.rn__title {

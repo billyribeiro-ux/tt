@@ -20,7 +20,7 @@
 
 	<div class="tt-container">
 		<header class="mastery__head">
-			<p class="mastery__kicker label">
+			<p class="mastery__kicker label" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
 				<span class="mastery__tick" aria-hidden="true"></span>Top performers share a trait
 			</p>
 			<h2 id="mastery-title" class="mastery__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
@@ -187,10 +187,9 @@
 
 	.term__title {
 		margin-top: 0.9rem;
-		font-size: clamp(1.35rem, 1rem + 1.5vw, 1.95rem);
+		font-size: var(--fs-h3);
 		font-weight: 800;
 		letter-spacing: -0.02em;
-		color: #fff;
 	}
 	.term__body {
 		margin-top: 0.7rem;
@@ -223,7 +222,7 @@
 		color: var(--tt-fog);
 	}
 	.payoff__text strong {
-		color: #fff;
+		color: var(--tt-white);
 		font-weight: 700;
 	}
 	.op-inline {

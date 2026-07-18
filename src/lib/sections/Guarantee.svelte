@@ -19,7 +19,9 @@
 
 			<div class="gua__grid">
 				<div class="gua__body">
-					<p class="label gua__kicker">Our promise to you</p>
+					<p class="label gua__kicker" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
+						Our promise to you
+					</p>
 
 					<h2
 						id="gua-title"
@@ -36,7 +38,7 @@
 						{/each}
 					</div>
 
-					<p class="gua__sign">
+					<p class="gua__sign" data-anim {@attach reveal({ y: 20, duration: 0.85, delay: 0.1 })}>
 						<span class="gua__sign-rule" aria-hidden="true"></span>
 						<span class="script gua__sign-mark">No trader left behind.</span>
 					</p>

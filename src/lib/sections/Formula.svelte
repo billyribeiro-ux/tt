@@ -39,11 +39,17 @@
 
 	<div class="tt-container">
 		<header class="fx__head">
-			<p class="label fx__kicker"><span class="fx__tick" aria-hidden="true"></span>The system</p>
+			<p
+				class="label fx__kicker"
+				data-anim
+				{@attach reveal({ y: 16, duration: 0.65 })}
+			>
+				<span class="fx__tick" aria-hidden="true"></span>The system
+			</p>
 			<h2 id="fx-title" class="fx__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
 				The Massive <span class="text-red">Results</span> Formula
 			</h2>
-			<p class="fx__intro prose">
+			<p class="fx__intro prose" data-anim {@attach reveal({ y: 20, duration: 0.85, delay: 0.1 })}>
 				A strategy isn’t another setup — it’s knowing what <em>not</em> to do. Five disciplines,
 				five demons removed. This is how consistency is built.
 			</p>
@@ -142,13 +148,12 @@
 		font-size: var(--fs-h2);
 		font-weight: 800;
 		letter-spacing: -0.02em;
-		color: #fff;
 	}
 	.fx__intro {
 		margin-top: 1.3rem;
 	}
 	.fx__intro em {
-		color: #fff;
+		color: var(--tt-white);
 		font-style: italic;
 	}
 
@@ -210,8 +215,8 @@
 			border-color 0.4s ease;
 	}
 	.fx__step.is-active .fx__step-icon {
-		color: #fff;
-		border-color: rgba(178, 39, 37, 0.6);
+		color: var(--tt-white);
+		border-color: rgb(var(--tt-red-rgb) / 0.6);
 	}
 	.fx__step-fix {
 		margin-left: auto;
@@ -224,7 +229,6 @@
 	.fx__step-pillar {
 		font-size: var(--fs-h3);
 		font-weight: 700;
-		color: #fff;
 		letter-spacing: -0.01em;
 	}
 	.fx__step-lead {
@@ -287,7 +291,7 @@
 			font-family: var(--tt-font-display);
 			font-size: 1.25rem;
 			letter-spacing: 0.02em;
-			color: #fff;
+			color: var(--tt-white);
 		}
 		.fx__progress {
 			position: relative;
