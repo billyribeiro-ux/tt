@@ -25,15 +25,41 @@
 			></iframe>
 		{:else}
 			<button class="vsl__facade" type="button" onclick={() => (playing = true)}>
-				<img
-					class="vsl__poster"
-					src={poster}
-					alt="Pat “Trick” Mitchell — Trick Trades"
-					width="1200"
-					height="675"
-					loading="eager"
-					fetchpriority="high"
-				/>
+				{#if poster === site.videoPoster}
+					<!-- Self-hosted, pre-optimized variants of the real poster (same photo,
+					     18–56 KB AVIF/WebP vs the 118 KB cross-origin JPEG). -->
+					<picture>
+						<source
+							type="image/avif"
+							srcset="/pat-barn-640.avif 640w, /pat-barn-1200.avif 1200w"
+							sizes="(min-width: 900px) 46vw, 92vw"
+						/>
+						<source
+							type="image/webp"
+							srcset="/pat-barn-640.webp 640w, /pat-barn-1200.webp 1200w"
+							sizes="(min-width: 900px) 46vw, 92vw"
+						/>
+						<img
+							class="vsl__poster"
+							src="/pat-barn-1200.jpg"
+							alt="Pat “Trick” Mitchell — Trick Trades"
+							width="1200"
+							height="800"
+							loading="eager"
+							fetchpriority="high"
+						/>
+					</picture>
+				{:else}
+					<img
+						class="vsl__poster"
+						src={poster}
+						alt="Pat “Trick” Mitchell — Trick Trades"
+						width="1200"
+						height="800"
+						loading="eager"
+						fetchpriority="high"
+					/>
+				{/if}
 				<span class="vsl__scrim" aria-hidden="true"></span>
 				<span class="vsl__play">
 					<span class="vsl__pulse" aria-hidden="true"></span>
@@ -81,6 +107,10 @@
 		padding: 0;
 		display: block;
 		cursor: pointer;
+	}
+	.vsl__frame picture {
+		position: absolute;
+		inset: 0;
 	}
 	.vsl__poster {
 		width: 100%;

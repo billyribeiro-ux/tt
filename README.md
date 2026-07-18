@@ -1,42 +1,34 @@
-# sv
+# Trick Trades — marketing site
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Cinematic marketing site for [tricktrades.com](https://tricktrades.com), rebuilt with
+**SvelteKit (3.0.0-next) + Svelte 5 runes**, fully prerendered and deployed on Vercel.
 
-## Creating a project
+- **Design system:** vanilla scoped CSS on `--tt-*` tokens — see [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md)
+- **Motion:** GSAP ScrollTrigger/SplitText wrapped as Svelte attachments in `src/lib/motion.ts`
+- **Content:** all real copy/prices/testimonials live in `src/lib/data/site.ts` — never hardcode facts in components
+- **Structure:** homepage sections in `src/lib/sections/`, per-route sections in `src/lib/pages/<route>/`
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Commands
 
 ```sh
-# create a new project
-npx sv create my-app
+pnpm dev          # dev server
+pnpm build        # prerender all routes (this IS the deploy artifact)
+pnpm preview      # serve the built site
+pnpm check        # svelte-check (type + a11y)
+pnpm lint         # prettier + eslint
+pnpm test:unit    # vitest
+pnpm test:e2e     # playwright (run test:e2e:install once first)
 ```
 
-To recreate this project with the same configuration:
+Note: SvelteKit config lives inline in `vite.config.ts` (this Kit prerelease removed
+`svelte.config.js`). The `$lib` tsconfig paths are load-bearing — the generated tsconfig
+does not emit them in 3.0.0-next.
+
+<details>
+<summary>Recreate the original scaffold</summary>
 
 ```sh
-# recreate this project
 pnpm dlx sv@0.16.3 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" playwright sveltekit-adapter="adapter:vercel" mcp="ide:claude-code,vscode+setup:remote" experimental="versions:kit+features:async,remoteFunctions,explicitEnvironmentVariables,handleRenderingErrors,forkPreloads" --install pnpm trick-trades
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+</details>

@@ -4,3 +4,5 @@
 # vite, svelte-check) run away and OOM walking the shared symlink tree.
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@sveltejs/kit@3.0.0-next.10'

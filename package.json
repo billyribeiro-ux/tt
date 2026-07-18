@@ -13,14 +13,19 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright install && playwright test"
+		"test": "pnpm run test:unit --run && pnpm run test:e2e",
+		"test:e2e": "playwright test",
+		"test:e2e:install": "playwright install chromium"
+	},
+	"packageManager": "pnpm@11.15.0",
+	"engines": {
+		"node": ">=22"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@playwright/test": "^1.60.0",
 		"@sveltejs/adapter-vercel": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/kit": "3.0.0-next.10",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@types/node": "^24",
 		"@vitest/browser-playwright": "^4.1.8",

@@ -9,10 +9,10 @@
 <section class="err tt-section">
 	<div class="tt-container err__inner">
 		<p class="label">Error / {page.status}</p>
-		<h1 class="err__code num" aria-hidden="true">{page.status}</h1>
-		<h2 class="err__title">
+		<p class="err__code num" aria-hidden="true">{page.status}</p>
+		<h1 class="err__title">
 			{page.status === 404 ? 'This chart went off the screen.' : 'Something broke on our side.'}
-		</h2>
+		</h1>
 		<p class="err__body">
 			{page.status === 404
 				? 'The page you’re after doesn’t exist — it may have moved, or the link was mistyped.'

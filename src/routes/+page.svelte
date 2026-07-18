@@ -25,7 +25,7 @@
 				url: site.domain,
 				email: site.support,
 				description: site.description,
-				logo: { '@type': 'ImageObject', url: site.videoPoster },
+				logo: { '@type': 'ImageObject', url: site.domain + '/logo-300.png' },
 				founder: { '@type': 'Person', name: 'Pat “Trick” Mitchell' }
 			},
 			{

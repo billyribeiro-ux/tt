@@ -11,10 +11,11 @@
 		"sourceMap": true,
 		"strict": true,
 		"moduleResolution": "bundler",
+		// Kit 3.0.0-next's generated tsconfig does not emit $lib paths — these are
+		// load-bearing despite the cosmetic svelte-kit sync warning.
 		"paths": {
 			"$lib": ["./src/lib"],
-			"$lib/*": ["./src/lib/*"],
-			"$app/types": ["./.svelte-kit/types/index.d.ts"]
+			"$lib/*": ["./src/lib/*"]
 		}
 	}
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
