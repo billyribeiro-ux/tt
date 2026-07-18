@@ -7,13 +7,12 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 import type { Attachment } from 'svelte/attachments';
 
 let registered = false;
 export function registerGsap() {
 	if (registered || typeof window === 'undefined') return;
-	gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother);
+	gsap.registerPlugin(ScrollTrigger, SplitText);
 	gsap.defaults({ ease: 'power3.out' });
 	registered = true;
 }
@@ -245,31 +244,11 @@ export function marquee(speed = 32): Attachment {
 	};
 }
 
-/** Smooth-scroll to an in-page target, aware of ScrollSmoother when it's active. */
+/** Smooth-scroll to an in-page target using native scroll (respects the fixed header). */
 export function scrollToTarget(hash: string, offset = 84) {
-	registerGsap();
 	if (typeof document === 'undefined' || !hash.startsWith('#')) return;
 	const el = document.querySelector(hash);
 	if (!el) return;
-	const smoother = ScrollSmoother.get();
-	if (smoother) {
-		smoother.scrollTo(el as HTMLElement, true, `top ${offset}px`);
-	} else {
-		const top = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - offset;
-		window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
-	}
-}
-
-/** ScrollSmoother — buttery inertia scroll on pointer devices. Returns a disposer. */
-export function createSmoother(): () => void {
-	registerGsap();
-	if (prefersReducedMotion() || isCoarse()) return () => {};
-	const smoother = ScrollSmoother.create({
-		wrapper: '#smooth-wrapper',
-		content: '#smooth-content',
-		smooth: 1.15,
-		effects: true,
-		normalizeScroll: true
-	});
-	return () => smoother?.kill();
+	const top = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - offset;
+	window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
 }

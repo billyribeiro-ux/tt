@@ -10,39 +10,33 @@
 
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { createSmoother, enableMotionClass, refreshTriggers } from '$lib/motion';
+	import { enableMotionClass, refreshTriggers } from '$lib/motion';
 
 	let { children } = $props();
 
 	$effect(() => {
 		enableMotionClass();
-		const dispose = createSmoother();
 		const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
 		fonts?.ready.then(refreshTriggers);
-		return dispose;
+		// Re-sync ScrollTrigger positions once late assets (images) have loaded.
+		const onLoad = () => refreshTriggers();
+		window.addEventListener('load', onLoad);
+		return () => window.removeEventListener('load', onLoad);
 	});
 </script>
 
 <div class="app grain">
 	<Header />
-	<div id="smooth-wrapper">
-		<div id="smooth-content">
-			<main>
-				{@render children()}
-			</main>
-			<Footer />
-		</div>
-	</div>
+	<main>
+		{@render children()}
+	</main>
+	<Footer />
 </div>
 
 <style>
 	.app {
 		position: relative;
 		min-height: 100vh;
-	}
-	/* ScrollSmoother transforms #smooth-content; the header lives outside it so it stays pinned. */
-	#smooth-wrapper {
-		position: relative;
 	}
 	main {
 		display: block;
