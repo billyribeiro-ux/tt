@@ -25,7 +25,7 @@
 
 <Seo
 	title="Testimonials: Real Trick Trades Member Stories"
-	description="Hear from real Trick Trades members (a truck driver, an ER nurse practitioner, and an IT consultant) on the education, coaching, and mentoring inside the room."
+	description="Hear from real Trick Trades members (a truck driver, an ER nurse practitioner, and an IT consultant) on the education and mentoring inside the room."
 	path="/testimonials"
 	breadcrumbs={[{ name: 'Testimonials', path: '/testimonials' }]}
 	{jsonLd}

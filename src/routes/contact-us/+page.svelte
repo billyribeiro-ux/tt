@@ -31,7 +31,7 @@
 
 <Seo
 	title="Contact Us: Reach the Trick Trades Support Team"
-	description="Get in touch with Trick Trades: email support for account and billing, or the private Facebook group for quick community answers. A real person reads every message."
+	description="Get in touch with Trick Trades: email support for account and billing, or the private Facebook group. A real person reads every message."
 	path="/contact-us"
 	breadcrumbs={[{ name: 'Contact Us', path: '/contact-us' }]}
 	{jsonLd}
