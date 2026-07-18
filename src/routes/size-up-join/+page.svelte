@@ -27,7 +27,7 @@
 
 <Seo
 	title="Join Size UP! — Trick Trades Membership"
-	description="Trick Trades’ Size UP! membership — the app on iOS, Android & Desktop, a nightly watch list, the live 9 a.m. EST plan, 24/7 chat and a 50+ lesson Boot Camp."
+	description="Trick Trades’ Size UP! membership — the app on iOS, Android & Desktop, nightly watch list, the live 9 a.m. EST plan, 24/7 chat and 50+ Boot Camp lessons."
 	path="/size-up-join"
 	breadcrumbs={[{ name: 'Join Size UP!', path: '/size-up-join' }]}
 	{jsonLd}
