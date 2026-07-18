@@ -1,0 +1,6 @@
+# Makes THIS project its own pnpm root so the store installs locally
+# (node_modules/.pnpm) instead of being hoisted to ~/node_modules/.pnpm,
+# which was ~232 packages deep and made every file scanner (svelte-kit sync,
+# vite, svelte-check) run away and OOM walking the shared symlink tree.
+allowBuilds:
+  esbuild: true
