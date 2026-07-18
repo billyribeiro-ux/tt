@@ -81,7 +81,7 @@
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		background: radial-gradient(58% 46% at 82% 22%, rgba(178, 39, 37, 0.12), transparent 70%);
+		background: radial-gradient(58% 46% at 82% 22%, rgb(var(--tt-red-rgb) / 0.12), transparent 70%);
 	}
 
 	.gua__frame {
@@ -92,7 +92,7 @@
 		border: 1px solid var(--tt-line-strong);
 		border-radius: var(--tt-radius-lg);
 		background:
-			radial-gradient(120% 150% at 10% -10%, rgba(178, 39, 37, 0.11), transparent 46%),
+			radial-gradient(120% 150% at 10% -10%, rgb(var(--tt-red-rgb) / 0.11), transparent 46%),
 			var(--tt-ink);
 		box-shadow: var(--tt-shadow-card);
 	}
@@ -233,15 +233,15 @@
 		gap: 0.55rem;
 		border-radius: 50%;
 		text-align: center;
-		background: radial-gradient(120% 120% at 50% 22%, rgba(178, 39, 37, 0.24), rgba(16, 16, 19, 0.94) 72%);
-		border: 1px solid rgba(178, 39, 37, 0.42);
+		background: radial-gradient(120% 120% at 50% 22%, rgb(var(--tt-red-rgb) / 0.24), rgba(16, 16, 19, 0.94) 72%);
+		border: 1px solid rgb(var(--tt-red-rgb) / 0.42);
 		box-shadow:
 			inset 0 1px 0 rgba(255, 255, 255, 0.06),
-			0 12px 34px -14px rgba(178, 39, 37, 0.7);
+			0 12px 34px -14px rgb(var(--tt-red-rgb) / 0.7);
 	}
 	:global(.gua__seal-icon) {
 		color: var(--tt-red-bright);
-		filter: drop-shadow(0 0 11px rgba(255, 51, 51, 0.5));
+		filter: drop-shadow(0 0 11px rgb(var(--tt-red-bright-rgb) / 0.5));
 	}
 	.gua__core-line {
 		width: 26px;

@@ -12,14 +12,22 @@
 
 	<div class="tt-container">
 		<header class="price__head">
-			<p class="eyebrow">Membership</p>
+			<div class="section-head price__bar" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
+				<span class="idx">11 / 13</span>
+				<span class="label">Membership</span>
+				<span class="rule" aria-hidden="true"></span>
+			</div>
 
 			<div class="price__headrow">
 				<h2 id="price-title" class="price__title" data-split {@attach splitReveal({ stagger: 0.026 })}>
 					Pricing plan — unbeatable value.
 				</h2>
 
-				<span class="price__billing">
+				<span
+					class="price__billing"
+					data-anim
+					{@attach reveal({ y: 18, duration: 0.75, delay: 0.1 })}
+				>
 					<span class="price__billing-dot" aria-hidden="true"></span>
 					Monthly billing
 				</span>
@@ -76,7 +84,7 @@
 			{/each}
 		</div>
 
-		<p class="price__assure">
+		<p class="price__assure" data-anim {@attach reveal({ y: 18, duration: 0.8 })}>
 			<ShieldCheckIcon class="price__assure-ico" weight="fill" size={18} />
 			<span>Cancel anytime with one click from your dashboard. No long-term commitment.</span>
 		</p>
@@ -100,7 +108,7 @@
 		width: 46vw;
 		max-width: 620px;
 		aspect-ratio: 1;
-		background: radial-gradient(circle, rgba(178, 39, 37, 0.2), transparent 62%);
+		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.2), transparent 62%);
 		filter: blur(10px);
 		pointer-events: none;
 	}
@@ -111,6 +119,9 @@
 
 	.price__head {
 		margin-bottom: clamp(2.4rem, 5vw, 3.6rem);
+	}
+	.price__bar {
+		margin-bottom: 0;
 	}
 	.price__headrow {
 		display: flex;
@@ -164,9 +175,9 @@
 	}
 	.plan--featured {
 		z-index: 2;
-		border-color: rgba(178, 39, 37, 0.55);
+		border-color: rgb(var(--tt-red-rgb) / 0.55);
 		background:
-			linear-gradient(180deg, rgba(178, 39, 37, 0.1), transparent 40%),
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 40%),
 			var(--tt-ink-2);
 		box-shadow:
 			var(--tt-glow-red),
@@ -187,13 +198,13 @@
 		font-weight: 700;
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
-		color: #fff;
+		color: var(--tt-white);
 		white-space: nowrap;
-		background: linear-gradient(180deg, #d1332f, var(--tt-red) 60%, var(--tt-red-600));
+		background: linear-gradient(180deg, var(--tt-red-hot), var(--tt-red) 60%, var(--tt-red-600));
 		border-radius: 999px;
 		box-shadow:
 			inset 0 1px 0 rgba(255, 255, 255, 0.25),
-			0 10px 26px -10px rgba(178, 39, 37, 0.9);
+			0 10px 26px -10px rgb(var(--tt-red-rgb) / 0.9);
 	}
 
 	.plan__head {

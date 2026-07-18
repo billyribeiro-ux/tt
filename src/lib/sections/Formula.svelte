@@ -120,7 +120,7 @@
 		height: 46vw;
 		max-width: 640px;
 		max-height: 640px;
-		background: radial-gradient(circle, rgba(178, 39, 37, 0.28), transparent 64%);
+		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.28), transparent 64%);
 		filter: blur(30px);
 		pointer-events: none;
 	}
@@ -187,8 +187,8 @@
 			transform 0.5s ease;
 	}
 	.fx__step.is-active {
-		border-color: rgba(178, 39, 37, 0.5);
-		background: linear-gradient(180deg, rgba(178, 39, 37, 0.08), transparent);
+		border-color: rgb(var(--tt-red-rgb) / 0.5);
+		background: linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.08), transparent);
 	}
 	.fx__step-top {
 		display: flex;

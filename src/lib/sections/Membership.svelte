@@ -80,7 +80,7 @@
 		max-height: 640px;
 		z-index: 0;
 		pointer-events: none;
-		background: radial-gradient(circle, rgba(178, 39, 37, 0.16), transparent 62%);
+		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.16), transparent 62%);
 		filter: blur(24px);
 	}
 	.mem__inner {

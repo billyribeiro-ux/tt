@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { reveal, splitReveal } from '$lib/motion';
-	import SproutIcon from 'phosphor-svelte/lib/SproutIcon';
+	import PlantIcon from 'phosphor-svelte/lib/PlantIcon';
 	import ArrowsClockwiseIcon from 'phosphor-svelte/lib/ArrowsClockwiseIcon';
 
 	// Copy transcribed from the Trick Trades FAQ — the education is "designed for both
 	// new and experienced traders."
 	const audiences = [
 		{
-			Icon: SproutIcon,
+			Icon: PlantIcon,
 			tag: 'New traders',
 			title: 'Better if you’re a beginner',
 			body: 'It’s almost better if you don’t have a lot of experience — you don’t have to be re-wired to get rid of bad habits. This is a family-oriented community that embraces new and struggling day traders.'

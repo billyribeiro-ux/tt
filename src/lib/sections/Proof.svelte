@@ -93,7 +93,7 @@
 		max-height: 720px;
 		z-index: 0;
 		pointer-events: none;
-		background: radial-gradient(circle, rgba(178, 39, 37, 0.18), transparent 64%);
+		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.18), transparent 64%);
 		filter: blur(26px);
 	}
 	.proof__inner {

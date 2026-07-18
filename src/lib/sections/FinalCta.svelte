@@ -19,7 +19,7 @@
 	</div>
 
 	<div class="tt-container final__inner">
-		<p class="label final__kicker">
+		<p class="label final__kicker" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
 			<span class="final__kicker-rule" aria-hidden="true"></span>
 			Your move
 		</p>
@@ -104,8 +104,8 @@
 		transform: translateX(-50%);
 		background: radial-gradient(
 			ellipse 46% 60% at 50% 100%,
-			rgba(255, 51, 51, 0.32),
-			rgba(178, 39, 37, 0.42) 24%,
+			rgb(var(--tt-red-bright-rgb) / 0.32),
+			rgb(var(--tt-red-rgb) / 0.42) 24%,
 			transparent 66%
 		);
 		filter: blur(24px);

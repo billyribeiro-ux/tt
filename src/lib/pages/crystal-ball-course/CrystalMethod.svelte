@@ -3,7 +3,7 @@
 	import EyeIcon from 'phosphor-svelte/lib/EyeIcon';
 	import HourglassIcon from 'phosphor-svelte/lib/HourglassIcon';
 	import ScalesIcon from 'phosphor-svelte/lib/ScalesIcon';
-	import HorizontalRuleIcon from 'phosphor-svelte/lib/HorizontalRuleIcon';
+	import LineSegmentsIcon from 'phosphor-svelte/lib/LineSegmentsIcon';
 
 	// Each principle is drawn directly from the two volumes' own descriptions —
 	// no capability is claimed that the catalogue does not state.
@@ -24,7 +24,7 @@
 			body: 'How much to risk, and when — turning a good read into a position that actually pays.'
 		},
 		{
-			Icon: HorizontalRuleIcon,
+			Icon: LineSegmentsIcon,
 			title: 'Support & resistance',
 			body: 'Mastery of the levels where price turns — the map every Crystal Ball trade is drawn on.'
 		}

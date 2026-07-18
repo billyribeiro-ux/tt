@@ -94,7 +94,7 @@
 		height: 60vw;
 		max-width: 760px;
 		max-height: 760px;
-		background: radial-gradient(circle, rgba(178, 39, 37, 0.22), transparent 64%);
+		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.22), transparent 64%);
 		filter: blur(14px);
 	}
 
@@ -142,7 +142,7 @@
 	}
 	.op--eq {
 		color: var(--tt-red-bright);
-		text-shadow: 0 0 26px rgba(255, 51, 51, 0.45);
+		text-shadow: 0 0 26px rgb(var(--tt-red-bright-rgb) / 0.45);
 	}
 
 	.term {
@@ -158,7 +158,7 @@
 		position: absolute;
 		inset: -8% -12% auto -12%;
 		height: 130%;
-		background: radial-gradient(ellipse at 30% 0%, rgba(178, 39, 37, 0.16), transparent 70%);
+		background: radial-gradient(ellipse at 30% 0%, rgb(var(--tt-red-rgb) / 0.16), transparent 70%);
 		z-index: -1;
 		pointer-events: none;
 	}

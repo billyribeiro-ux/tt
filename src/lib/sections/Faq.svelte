@@ -16,7 +16,9 @@
 	<div class="tt-container faq__grid">
 		<div class="faq__aside">
 			<div class="faq__sticky">
-				<p class="label faq__kicker">Answers</p>
+				<p class="label faq__kicker" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
+					Answers
+				</p>
 				<h2 class="faq__headline" data-split {@attach splitReveal({ stagger: 0.03 })}>
 					Frequently asked questions.
 				</h2>
@@ -158,7 +160,7 @@
 	}
 
 	.faq__q {
-		font-size: clamp(1.05rem, 0.9rem + 0.7vw, 1.4rem);
+		font-size: var(--fs-h4);
 		font-weight: 600;
 		line-height: 1.3;
 		letter-spacing: -0.01em;

@@ -59,7 +59,7 @@
 		height: 60vw;
 		max-width: 720px;
 		max-height: 720px;
-		background: radial-gradient(circle, rgba(178, 39, 37, 0.34), transparent 64%);
+		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.34), transparent 64%);
 		filter: blur(24px);
 	}
 
@@ -82,7 +82,7 @@
 		width: 26px;
 		height: 2px;
 		background: var(--tt-red-bright);
-		box-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+		box-shadow: 0 0 10px rgb(var(--tt-red-bright-rgb) / 0.6);
 	}
 	.struggle__rule {
 		flex: 1;
@@ -123,7 +123,7 @@
 	}
 	.struggle__item:hover .struggle__index {
 		-webkit-text-stroke-color: var(--tt-red);
-		color: rgba(178, 39, 37, 0.08);
+		color: rgb(var(--tt-red-rgb) / 0.08);
 		transform: translateX(4px);
 	}
 

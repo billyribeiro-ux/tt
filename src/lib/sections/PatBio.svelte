@@ -102,7 +102,7 @@
 		pointer-events: none;
 		background:
 			radial-gradient(58% 50% at 22% 26%, rgba(230, 161, 47, 0.1), transparent 62%),
-			radial-gradient(66% 60% at 88% 88%, rgba(178, 39, 37, 0.12), transparent 66%);
+			radial-gradient(66% 60% at 88% 88%, rgb(var(--tt-red-rgb) / 0.12), transparent 66%);
 	}
 	.bio__atmos::after {
 		content: '';
@@ -139,7 +139,7 @@
 		position: absolute;
 		inset: 1.6rem -1.4rem -1.6rem 1.6rem;
 		border: 1px solid var(--tt-red);
-		background: linear-gradient(135deg, rgba(178, 39, 37, 0.14), transparent 55%);
+		background: linear-gradient(135deg, rgb(var(--tt-red-rgb) / 0.14), transparent 55%);
 		z-index: 0;
 	}
 	.bio__frame {
@@ -239,7 +239,7 @@
 		font-size: clamp(6rem, 14vw, 11rem);
 		line-height: 1;
 		font-weight: 800;
-		color: rgba(178, 39, 37, 0.24);
+		color: rgb(var(--tt-red-rgb) / 0.24);
 		pointer-events: none;
 		user-select: none;
 	}
