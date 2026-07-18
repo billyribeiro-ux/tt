@@ -2,7 +2,7 @@ import { site } from '$lib/data/site';
 
 export const prerender = true;
 
-// Every prerendered content route. lastmod is stamped at build time — the whole
+// Every prerendered content route. lastmod is stamped at build time; the whole
 // site is static, so a rebuild IS the moment content last changed.
 const routes = [
 	{ path: '/', priority: '1.0', changefreq: 'weekly' },

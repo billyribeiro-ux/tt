@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Trick Trades — Design System
+   Trick Trades Design System
    Palette + fonts reverse-engineered from the live tricktrades.com source:
    brand red rgb(178,39,37)=#B22725, bright #FF3333, inks #141414/#0C0C0C,
    fonts Poppins (UI), Allerta Stencil (display), Reenie Beanie (signature).
@@ -11,7 +11,7 @@
 	--tt-red-600: #9a1f1d;
 	--tt-red-bright: #ff3333;
 	--tt-red-hot: #d1332f; /* molten highlight between red and red-bright */
-	/* Raw channels for rgba() composition — keeps every translucent brand wash on-token */
+	/* Raw channels for rgba() composition, keeping every translucent brand wash on-token */
 	--tt-red-rgb: 178 39 37;
 	--tt-red-bright-rgb: 255 51 51;
 	--tt-amber: #e6a12f;
@@ -94,7 +94,7 @@ html {
 	html {
 		scroll-behavior: auto;
 	}
-	/* Neutralize every CSS animation/transition in one place — component keyframes
+	/* Neutralize every CSS animation/transition in one place: component keyframes
 	   (menu wipes, pulses, blinks) must not play for reduced-motion users. */
 	*,
 	*::before,
@@ -206,7 +206,7 @@ p {
 /* ---- JS-gated animation initial states (no-JS + reduced-motion stay visible) ----
    The <html> element gets `.js` from an inline head script only when JS runs AND
    motion is allowed. That keeps prerendered content fully visible for SEO + a11y.
-   Only opacity is set here — GSAP `from()` owns the transforms so the two never fight. */
+   Only opacity is set here; GSAP `from()` owns the transforms so the two never fight. */
 .js [data-anim] {
 	opacity: 0;
 }
@@ -224,7 +224,7 @@ p {
 
 /* ---- Editorial system (shared, keeps parallel-built sections cohesive) ---- */
 
-/* Mono "terminal" label — used for kickers, tags, data readouts */
+/* Mono "terminal" label, used for kickers, tags, data readouts */
 .label {
 	font-family: var(--tt-font-mono);
 	font-size: 0.7rem;
@@ -310,7 +310,7 @@ p {
 	border: 0;
 }
 
-/* Skip-to-content — visually hidden until focused, then a branded pill under the header */
+/* Skip-to-content: visually hidden until focused, then a branded pill under the header */
 .skip-link {
 	position: fixed;
 	top: 0.75rem;
@@ -329,7 +329,7 @@ p {
 	transform: translateY(0);
 }
 
-/* Sections receive programmatic focus after in-page nav — never show a ring for that */
+/* Sections receive programmatic focus after in-page nav; never show a ring for that */
 :where(section[id]):focus {
 	outline: none;
 }

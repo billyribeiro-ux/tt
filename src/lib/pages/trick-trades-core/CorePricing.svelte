@@ -76,8 +76,8 @@
 		<p class="cprice__guide">
 			<BookOpenIcon class="cprice__guide-ico" weight="fill" size={18} />
 			<span>
-				Every package includes a <strong>meditation guide</strong>: setup, a breakdown of each session,
-				what to expect, and how to use it.
+				Every package includes a <strong>meditation guide</strong>: setup, a breakdown of each
+				session, what to expect, and how to use it.
 			</span>
 		</p>
 

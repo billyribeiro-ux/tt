@@ -36,9 +36,9 @@
 			<div class="hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="hero__lede">
 					If you’re losing money trading, watch this before you do anything else today. Trick Trades
-					is a <strong>100% educational</strong> day-trading mentorship led by Pat “Trick” Mitchell.
-					No alerts, no hype. Just the skill and the emotional mastery that separate professionals from
-					the 90%.
+					is a <strong>100% educational</strong> day-trading mentorship led by Pat “Trick” Mitchell. No
+					alerts, no hype. Just the skill and the emotional mastery that separate professionals from the
+					90%.
 				</p>
 
 				<div class="hero__cta">

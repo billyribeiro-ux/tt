@@ -18,7 +18,9 @@
 				{@attach reveal({ y: 20, duration: 0.8, delay: 0.1 })}
 			>
 				Money isn’t a strong enough motivator to get you through what’s holding you back. Any job
-				earns money. <strong>Almost none earns you the freedom to be the author of your life.</strong>
+				earns money. <strong
+					>Almost none earns you the freedom to be the author of your life.</strong
+				>
 			</p>
 		</div>
 

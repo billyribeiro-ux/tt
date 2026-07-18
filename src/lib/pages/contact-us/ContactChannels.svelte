@@ -31,8 +31,8 @@
 				<h3 class="c-ch__name">Email the support team</h3>
 				<p class="c-ch__body">
 					The right place for anything to do with your account, billing, access, or a specific
-					course, and for anything you would rather not post in a group. Write to us and a member
-					of the team will read it and reply by email.
+					course, and for anything you would rather not post in a group. Write to us and a member of
+					the team will read it and reply by email.
 				</p>
 				<a class="c-ch__addr num" href="mailto:{site.support}">{site.support}</a>
 				<div class="c-ch__cta">

@@ -1,5 +1,5 @@
 /**
- * Trick Trades — cinematic motion layer.
+ * Trick Trades: cinematic motion layer.
  * GSAP + ScrollTrigger + SplitText exposed as Svelte 5 attachments.
  * Everything degrades gracefully: no-JS / reduced-motion keeps prerendered content
  * fully visible (the `.js` class that hides [data-anim] is only added when motion is allowed).
@@ -29,7 +29,7 @@ export function refreshTriggers() {
 const isCoarse = () =>
 	typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
 
-/** Marks <html> so CSS can hide [data-anim] elements — only when motion is allowed. */
+/** Marks <html> so CSS can hide [data-anim] elements, only when motion is allowed. */
 export function enableMotionClass() {
 	if (typeof document === 'undefined' || prefersReducedMotion()) return;
 	document.documentElement.classList.add('js');
@@ -68,7 +68,7 @@ export function reveal(opts: RevealOpts = {}): Attachment {
 		const targets = stagger ? (Array.from(el.children) as HTMLElement[]) : el;
 		const ctx = gsap.context(() => {
 			// Reset the CSS-gated opacity:0 on the TWEEN TARGETS (children in the stagger
-			// path) — gsap.from() reads the current computed value as its END value, so
+			// path). gsap.from() reads the current computed value as its END value, so
 			// resetting only the container would tween children 0 -> 0 (invisible forever).
 			gsap.set(el, { opacity: 1 });
 			gsap.set(targets, { opacity: 1 });
@@ -92,7 +92,7 @@ export function reveal(opts: RevealOpts = {}): Attachment {
 
 /**
  * Headline word-by-word mask reveal (SplitText).
- * The headline is made visible IMMEDIATELY (never gated on fonts.ready — that would
+ * The headline is made visible IMMEDIATELY (never gated on fonts.ready, which would
  * hide the LCP text until webfonts resolve); the split itself waits for fonts so the
  * line boxes are measured against the final typeface, and re-splits on width resize
  * so masks match real line breaks after rotation.
@@ -134,7 +134,7 @@ export function splitReveal(
 				}
 			});
 		};
-		// Split immediately — never gate the LCP headline's visibility on fonts.ready —
+		// Split immediately, never gating the LCP headline's visibility on fonts.ready,
 		// then re-split once webfonts land (if the entrance hasn't played) so line
 		// masks are measured against the final typeface.
 		run();
@@ -207,7 +207,7 @@ export function counter(
 	};
 }
 
-/** Magnetic pull toward the cursor — for primary CTAs. Skips touch / reduced motion. */
+/** Magnetic pull toward the cursor, for primary CTAs. Skips touch / reduced motion. */
 export function magnetic(strength = 0.35): Attachment {
 	return (node) => {
 		registerGsap();
@@ -215,7 +215,7 @@ export function magnetic(strength = 0.35): Attachment {
 		if (prefersReducedMotion() || isCoarse()) return;
 		const xTo = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'power3' });
 		const yTo = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'power3' });
-		// Measure once on entry, not per pointermove — a getBoundingClientRect() every
+		// Measure once on entry, not per pointermove: a getBoundingClientRect() every
 		// move forces a layout flush against GSAP's concurrent transform writes.
 		let r: DOMRect | undefined;
 		const enter = () => (r = el.getBoundingClientRect());
@@ -321,7 +321,9 @@ export function marquee(speed = 32): Attachment {
  * Attach to an <svg> element; every <path> inside is drawn via dash-offset.
  * `scrub: false` plays it once on entry instead (for hero moments).
  */
-export function drawLine(opts: { scrub?: boolean; duration?: number; start?: string } = {}): Attachment {
+export function drawLine(
+	opts: { scrub?: boolean; duration?: number; start?: string } = {}
+): Attachment {
 	return (node) => {
 		registerGsap();
 		const svg = node as unknown as SVGSVGElement;

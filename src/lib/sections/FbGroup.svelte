@@ -10,7 +10,11 @@
 <section class="fbg" aria-labelledby="fbg-title">
 	<div class="tt-container fbg__inner">
 		<div class="fbg__card" data-anim {@attach reveal({ x: -32, duration: 0.95 })}>
-			<a href={site.social.facebookGroup} class="fbg__shot" aria-label="TrickTrades Daytrader's War Room private Facebook group">
+			<a
+				href={site.social.facebookGroup}
+				class="fbg__shot"
+				aria-label="TrickTrades Daytrader's War Room private Facebook group"
+			>
 				<picture>
 					<source
 						type="image/avif"
@@ -53,9 +57,9 @@
 				Join our FREE <span class="text-red">private</span> FB group
 			</h2>
 			<p class="fbg__body">
-				This is where I post my daily recaps, share strategies, and post dedicated content
-				strictly for group members. You can engage with each other and learn how to implement the
-				TT strategy! Click the "Join" button and send in a request to join today!
+				This is where I post my daily recaps, share strategies, and post dedicated content strictly
+				for group members. You can engage with each other and learn how to implement the TT
+				strategy! Click the "Join" button and send in a request to join today!
 			</p>
 			<div class="fbg__cta">
 				<Button href={site.social.facebookGroup}>Join the private Facebook group</Button>
