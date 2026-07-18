@@ -31,7 +31,7 @@
 
 			<div class="store-hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 24 })}>
 				<p class="store-hero__sub prose">
-					Downloadable courses & masterclasses — instant access the moment you buy.
+					Downloadable courses and masterclasses. Instant access the moment you buy.
 				</p>
 
 				<div class="store-hero__cta">
@@ -214,7 +214,7 @@
 		gap: 0.4rem;
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.store-hero__inner {
 			grid-template-columns: 1.08fr 0.92fr;
 		}

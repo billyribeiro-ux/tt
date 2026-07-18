@@ -57,7 +57,7 @@
 			</h2>
 			<p class="cb-vol__intro prose">
 				Take a single volume, or take both and add the live bonus hour. Each volume runs eight
-				modules and two quizzes — self-paced, keep forever.
+				modules and two quizzes. Self-paced, yours to keep.
 			</p>
 		</div>
 
@@ -130,7 +130,7 @@
 	.cb-vol__intro {
 		max-width: 56ch;
 	}
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.cb-vol__head {
 			grid-template-columns: 1fr 1fr;
 			align-items: end;
@@ -215,7 +215,7 @@
 		letter-spacing: -0.02em;
 	}
 
-	@media (min-width: 720px) {
+	@media (min-width: 768px) {
 		.cb-vol__row {
 			grid-template-columns: auto 1fr auto;
 			align-items: center;

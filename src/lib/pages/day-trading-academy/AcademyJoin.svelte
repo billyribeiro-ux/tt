@@ -20,7 +20,7 @@
 		</h2>
 
 		<p class="join__lede" data-anim {@attach reveal({ y: 22 })}>
-			Courses give you the playbook. The Size UP membership puts you in the room every morning — a
+			Courses give you the playbook. The Size UP membership puts you in the room every morning: a
 			live pre-market plan, a nightly video watch list, and a 24/7 community that answers.
 		</p>
 

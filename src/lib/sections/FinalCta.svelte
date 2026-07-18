@@ -34,7 +34,7 @@
 		</h2>
 
 		<p class="final__lede" data-anim {@attach reveal({ y: 22 })}>
-			The next step is yours. Master the skill, master the emotion — day by day, trade by trade.
+			The next step is yours. Master the skill, master the emotion, day by day, trade by trade.
 		</p>
 
 		<div class="final__cta" data-anim {@attach reveal({ y: 22, delay: 0.05 })}>
@@ -43,7 +43,7 @@
 
 		<div class="final__news" data-anim {@attach reveal({ y: 24, delay: 0.1 })}>
 			<span class="hairline final__news-rule"></span>
-			<p class="label final__news-label">The Situation Room — get the free pre-market newsletter</p>
+			<p class="label final__news-label">The Situation Room. Get the free pre-market newsletter</p>
 
 			<form class="final__form" action="{site.domain}/the-situation-room" method="get">
 				<EnvelopeIcon class="final__form-icon" size={18} weight="regular" aria-hidden="true" />
@@ -64,7 +64,7 @@
 			</form>
 
 			<p class="final__fine">
-				Delivered before the bell — no alerts, no hype.
+				Delivered before the bell. No alerts, no hype.
 				<a class="final__fb" href={site.social.facebookGroup}>
 					<FacebookLogoIcon size={15} weight="fill" aria-hidden="true" />
 					Prefer the private Facebook group?
@@ -80,6 +80,9 @@
 		overflow: clip;
 		background: var(--tt-black);
 		text-align: center;
+		/* Faq shares this black canvas above with no divider, so pull the close up to
+		   sit against it instead of floating below a wide dead gap. */
+		padding-top: clamp(3rem, 2rem + 4vw, 5.5rem);
 	}
 
 	.final__bg {
@@ -92,7 +95,7 @@
 		inset: 0;
 		opacity: 0.35;
 	}
-	/* Red radial glow bleeding up from the bottom edge — the cinematic close. */
+	/* Red radial glow bleeding up from the bottom edge: the cinematic close. */
 	.final__glow {
 		position: absolute;
 		left: 50%;
@@ -239,7 +242,7 @@
 		border-color: var(--tt-line-strong);
 	}
 
-	@media (min-width: 720px) {
+	@media (min-width: 768px) {
 		.final__form {
 			gap: 0.9rem;
 		}

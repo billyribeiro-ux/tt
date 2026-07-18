@@ -5,13 +5,13 @@
 	import ScalesIcon from 'phosphor-svelte/lib/ScalesIcon';
 	import LineSegmentsIcon from 'phosphor-svelte/lib/LineSegmentsIcon';
 
-	// Each principle is drawn directly from the two volumes' own descriptions —
-	// no capability is claimed that the catalogue does not state.
+	// Each principle is drawn directly from the two volumes' own descriptions.
+	// No capability is claimed that the catalogue does not state.
 	const principles = [
 		{
 			Icon: EyeIcon,
 			title: 'Read the tape',
-			body: 'Dissect raw price action and see the moves before they happen — the core skill of Volume 1.'
+			body: 'Dissect raw price action and see the moves before they happen. The core skill of Volume 1.'
 		},
 		{
 			Icon: HourglassIcon,
@@ -21,12 +21,12 @@
 		{
 			Icon: ScalesIcon,
 			title: 'Sizing',
-			body: 'How much to risk, and when — turning a good read into a position that actually pays.'
+			body: 'How much to risk, and when, turning a good read into a position that actually pays.'
 		},
 		{
 			Icon: LineSegmentsIcon,
 			title: 'Support & resistance',
-			body: 'Mastery of the levels where price turns — the map every Crystal Ball trade is drawn on.'
+			body: 'Mastery of the levels where price turns. The map every Crystal Ball trade is drawn on.'
 		}
 	];
 </script>
@@ -129,7 +129,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.cb-method__inner {
 			grid-template-columns: 0.85fr 1.15fr;
 			align-items: start;

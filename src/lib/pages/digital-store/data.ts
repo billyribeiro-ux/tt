@@ -64,7 +64,7 @@ export const boxSets: Category = {
 
 export const categories: Category[] = [boss, dvds, boxSets];
 
-/** Category-count denominator for the "0N / 0M" kickers — derived, never hardcoded. */
+/** Category-count denominator for the "0N / 0M" kickers. Derived, never hardcoded. */
 export const CATEGORY_COUNT = categories.length;
 export const CATEGORY_COUNT_LABEL = String(CATEGORY_COUNT).padStart(2, '0');
 

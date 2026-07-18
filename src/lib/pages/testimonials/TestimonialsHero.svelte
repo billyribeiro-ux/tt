@@ -20,7 +20,7 @@
 
 		<div class="t-hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 			<p class="t-hero__lede">
-				Truck drivers, nurses, IT consultants — real members who worked the process and put it in
+				Truck drivers, nurses, IT consultants: real members who worked the process and put it in
 				their own words. No paid actors, no star ratings, no invented scores. Just what a few of the
 				traders alongside you had to say about the education and the mentoring.
 			</p>

@@ -33,8 +33,8 @@
 				<p class="pa-hyp__note prose">
 					The premise is narrow on purpose. We are not claiming a headband makes anyone profitable.
 					We are testing whether a trained, repeatable alpha state measurably lowers emotional
-					reactivity and tightens decision-making — each participant judged against their own Day 0
-					baseline, not against anyone else.
+					reactivity and tightens decision-making, with each participant judged against their own Day
+					0 baseline, not against anyone else.
 				</p>
 			</div>
 
@@ -103,7 +103,7 @@
 		letter-spacing: -0.01em;
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.pa-hyp__grid {
 			grid-template-columns: 1fr 1fr;
 			align-items: start;

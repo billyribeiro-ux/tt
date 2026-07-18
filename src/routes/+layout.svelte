@@ -12,6 +12,7 @@
 
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import FbGroup from '$lib/sections/FbGroup.svelte';
 	import { enableMotionClass, refreshTriggers } from '$lib/motion';
 
 	let { children } = $props();
@@ -34,6 +35,7 @@
 	<main id="main" tabindex="-1">
 		{@render children()}
 	</main>
+	<FbGroup />
 	<Footer />
 </div>
 

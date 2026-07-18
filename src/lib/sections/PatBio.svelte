@@ -45,7 +45,7 @@
 				<blockquote class="bio__quote">
 					<span class="bio__mark" aria-hidden="true">&ldquo;</span>
 					<h2 id="bio-lead" class="bio__lead" data-split {@attach splitReveal({ stagger: 0.03 })}>
-						There is a path — because I&rsquo;ve walked it.
+						There&rsquo;s a path. I&rsquo;ve walked it.
 					</h2>
 					<div class="bio__body" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 24 })}>
 						<p>
@@ -53,7 +53,7 @@
 							life calling to them.
 						</p>
 						<p>
-							I&rsquo;ve bled, I&rsquo;ve given everything to get where I am — and I can take you by
+							I&rsquo;ve bled, I&rsquo;ve given everything to get where I am. Now I can take you by
 							the hand, guide each step, and get you through the doubt, the mistakes, the blow ups.
 							I broke through every barrier, and now I&rsquo;m living the life of my dreams.
 						</p>
@@ -94,7 +94,7 @@
 		overflow: clip;
 	}
 
-	/* Warm, low vignette — a lamp on a 4am desk */
+	/* Warm, low vignette: a lamp on a 4am desk */
 	.bio__atmos {
 		position: absolute;
 		inset: 0;
@@ -314,14 +314,14 @@
 	}
 
 	/* On narrow phones the accent's negative right/bottom inset would bleed past the
-	   viewport — pull it back inside so nothing overflows below 520px. */
-	@media (max-width: 520px) {
+	   viewport, so pull it back inside so nothing overflows below 480px. */
+	@media (max-width: 480px) {
 		.bio__accent {
 			inset: 1.1rem 0 -1.1rem 0.9rem;
 		}
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.bio__inner {
 			grid-template-columns: 0.9fr 1.1fr;
 			align-items: start;

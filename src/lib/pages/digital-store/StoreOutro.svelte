@@ -13,7 +13,7 @@
 		</h2>
 		<p class="outro__body prose">
 			Every title in the store is a one-time purchase with lifetime access. Download or start
-			streaming the second you check out — no subscription, no renewals, no expiry. Buy it once and
+			streaming the second you check out. No subscription, no renewals, no expiry. Buy it once and
 			it stays in your library for good.
 		</p>
 		<dl class="outro__meta">

@@ -18,7 +18,7 @@
 		<h2 id="c-ch-title" class="c-ch__title">Pick the channel that fits the question.</h2>
 
 		<div class="c-ch__grid">
-			<!-- Email — the primary, direct channel (wide) -->
+			<!-- Email: the primary, direct channel (wide) -->
 			<article
 				class="c-ch__card c-ch__card--wide"
 				data-anim
@@ -31,7 +31,7 @@
 				<h3 class="c-ch__name">Email the support team</h3>
 				<p class="c-ch__body">
 					The right place for anything to do with your account, billing, access, or a specific
-					course — and for anything you would rather not post in a group. Write to us and a member
+					course, and for anything you would rather not post in a group. Write to us and a member
 					of the team will read it and reply by email.
 				</p>
 				<a class="c-ch__addr num" href="mailto:{site.support}">{site.support}</a>
@@ -40,7 +40,7 @@
 				</div>
 			</article>
 
-			<!-- Private Facebook group — community channel (narrow) -->
+			<!-- Private Facebook group: community channel (narrow) -->
 			<article class="c-ch__card" data-anim {@attach reveal({ y: 40, duration: 1, delay: 0.08 })}>
 				<div class="c-ch__top">
 					<span class="c-ch__icon"><FacebookLogoIcon size={24} weight="fill" /></span>
@@ -49,7 +49,7 @@
 				<h3 class="c-ch__name">Ask the private Facebook group</h3>
 				<p class="c-ch__body">
 					Our private group is where members trade notes and get quick answers day and night. For
-					general questions, it is often the fastest response of all — because you are asking the
+					general questions, it is often the fastest response of all, because you are asking the
 					whole community, not just us.
 				</p>
 				<div class="c-ch__cta">
@@ -161,7 +161,7 @@
 		margin-top: 1.8rem;
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.c-ch__grid {
 			grid-template-columns: 1.35fr 1fr;
 			align-items: stretch;

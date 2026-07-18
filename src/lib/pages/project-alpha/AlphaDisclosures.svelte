@@ -5,7 +5,7 @@
 	const disclosures = [
 		'Day trading involves substantial risk of financial loss. This study does not guarantee improved performance or profitability.',
 		'All data is de-identified before analysis; individual results are never published in an identifiable form.',
-		'Participation is entirely voluntary and may be withdrawn at any time — with no consequence to your Trick Trades membership.',
+		'Participation is entirely voluntary and may be withdrawn at any time, with no consequence to your Trick Trades membership.',
 		'Participants are asked to maintain roughly 80% protocol adherence for their data to remain in the study.'
 	];
 </script>
@@ -32,7 +32,7 @@
 
 			<p class="pa-disc__foot">
 				Project ALPHA is a genuine research study, not a marketing programme. Findings will be
-				reported as the data supports them — no more, no less.
+				reported as the data supports them, no more and no less.
 			</p>
 		</div>
 	</div>

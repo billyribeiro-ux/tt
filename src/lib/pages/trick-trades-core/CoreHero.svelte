@@ -4,7 +4,7 @@
 	import HeadphonesIcon from 'phosphor-svelte/lib/HeadphonesIcon';
 	import WaveformIcon from 'phosphor-svelte/lib/WaveformIcon';
 
-	// Program spec — every figure derived from the real session lengths
+	// Program spec: every figure derived from the real session lengths
 	// (0.25 + 1.5 + 1 + 7 = 9.75 hrs).
 	const spec = [
 		{ k: 'Format', v: 'Binaural audio' },
@@ -36,12 +36,12 @@
 				<p class="chero__lede">
 					Under real risk, a <strong>survival response</strong> takes over and overrides the
 					strategy you’ve already learned. <strong>Trick Trades Core</strong> is a binaural-beats meditation
-					program built to rewire those subconscious behaviours — session by session, night by night.
+					program built to rewire those subconscious behaviours, session by session, night by night.
 				</p>
 
 				<div class="chero__cta">
 					<Button href="#pricing" onclick={(e) => jumpTo(e, '#pricing')}
-						>Get Volume One — $97</Button
+						>Get Volume One for $97</Button
 					>
 					<Button href="#sessions" variant="ghost" onclick={(e) => jumpTo(e, '#sessions')}>
 						See the daily sessions
@@ -196,7 +196,7 @@
 		color: var(--tt-red-bright);
 	}
 
-	@media (min-width: 940px) {
+	@media (min-width: 1024px) {
 		.chero__inner {
 			grid-template-columns: 1.1fr 0.9fr;
 		}

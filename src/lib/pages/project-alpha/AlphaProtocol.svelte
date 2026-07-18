@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { reveal, splitReveal } from '$lib/motion';
+	import { reveal, splitReveal, drawLine } from '$lib/motion';
+	import type { Attachment } from 'svelte/attachments';
 
 	import FlaskIcon from 'phosphor-svelte/lib/FlaskIcon';
 	import BrainIcon from 'phosphor-svelte/lib/BrainIcon';
@@ -7,17 +8,17 @@
 	import SealCheckIcon from 'phosphor-svelte/lib/SealCheckIcon';
 	import CalendarBlankIcon from 'phosphor-svelte/lib/CalendarBlankIcon';
 
-	// The 90-day ladder — the centrepiece. Active phase lights as you scroll.
+	// The 90-day ladder, the centrepiece. Active phase lights as you scroll.
 	const phases = [
 		{
 			icon: FlaskIcon,
 			tag: 'Preloading',
 			window: 'Days −7 to −1',
 			title: 'Setup & Baseline',
-			lead: 'Before the clock starts, we capture who you are cold — an honest reference point for everything that follows.',
+			lead: 'Before the clock starts, we capture who you are cold, an honest reference point for everything that follows.',
 			items: [
 				'Fit the Muse S / Athena; install the MUSE and Mind Monitor apps',
-				'Baseline brain snapshot — resting EEG recorded before any training',
+				'Baseline brain snapshot: resting EEG recorded before any training',
 				'Intake questionnaire; funded, options-capable account confirmed',
 				'CORE ALPHA membership activated'
 			]
@@ -29,7 +30,7 @@
 			title: 'Foundation',
 			lead: 'The full daily rhythm goes live. You rehearse on paper first, then commit real capital once the protocol is habit.',
 			items: [
-				'Days 1–5: paper trading only — protocol rehearsal, no capital at risk',
+				'Days 1–5: paper trading only, protocol rehearsal with no capital at risk',
 				'Day 6 onward: live, one-contract execution',
 				'Daily MUSE biofeedback + the CORE ALPHA pre-market session',
 				'Live EEG monitored during every trading session'
@@ -45,7 +46,7 @@
 				'Add MUSE STRENGTH training to the daily block',
 				'Full pre-market → live → post-market protocol continues',
 				'Day 45: mid-study assessment and brain snapshot',
-				'Journaling deepens — separate emotion from execution'
+				'Journaling deepens: separate emotion from execution'
 			]
 		},
 		{
@@ -64,12 +65,12 @@
 	];
 
 	// Scroll-linked highlight for the phase ladder (mirrors the Formula section).
-	let phaseListEl: HTMLElement | undefined = $state();
+	// An attachment sets up the observer once the <ol> mounts, so no bind:this is needed.
 	let activePhase = $state(0);
 
-	$effect(() => {
-		if (!phaseListEl || typeof IntersectionObserver === 'undefined') return;
-		const els = Array.from(phaseListEl.querySelectorAll<HTMLElement>('[data-step]'));
+	const trackPhases: Attachment = (node) => {
+		if (typeof IntersectionObserver === 'undefined') return;
+		const els = Array.from((node as HTMLElement).querySelectorAll<HTMLElement>('[data-step]'));
 		if (!els.length) return;
 		const io = new IntersectionObserver(
 			(entries) => {
@@ -84,7 +85,7 @@
 		);
 		els.forEach((el) => io.observe(el));
 		return () => io.disconnect();
-	});
+	};
 </script>
 
 <section id="protocol" class="tt-section pa-tl" aria-labelledby="pa-tl-title">
@@ -100,12 +101,25 @@
 				Ninety days, <span class="text-red">four phases</span>
 			</h2>
 			<p class="pa-tl__intro prose">
-				The study builds in deliberate steps — a cold baseline first, then load added phase by
-				phase, so any change can be traced to the protocol rather than to chance.
+				The study builds in deliberate steps: a cold baseline first, then load added phase by phase,
+				so any change can be traced to the protocol rather than to chance.
 			</p>
 		</header>
 
 		<div class="pa-tl__grid">
+			<!-- Decorative rising equity line printed behind the ladder as you scroll. -->
+			<svg
+				class="pa-tl__spark"
+				aria-hidden="true"
+				viewBox="0 0 1000 1000"
+				preserveAspectRatio="none"
+				{@attach drawLine()}
+			>
+				<path
+					d="M0 962 C 130 930 190 852 300 802 C 430 744 470 642 560 592 C 690 520 720 408 840 352 C 928 310 970 214 1000 120"
+				/>
+			</svg>
+
 			<!-- Sticky rail: the four phases, active one lit -->
 			<aside class="pa-tl__rail" aria-hidden="true">
 				<span class="label pa-tl__rail-tag">The 4 phases</span>
@@ -126,7 +140,7 @@
 			</aside>
 
 			<!-- The four phases -->
-			<ol class="pa-tl__steps" bind:this={phaseListEl}>
+			<ol class="pa-tl__steps" {@attach trackPhases}>
 				{#each phases as p, i (p.tag)}
 					{@const Icon = p.icon}
 					<li
@@ -162,8 +176,8 @@
 			<div>
 				<p class="label pa-tl__followup-tag">Day 180 · Follow-up</p>
 				<p class="pa-tl__followup-text">
-					Three months after the protocol ends, participants return for a follow-up check —
-					measuring what held, and what faded, once the daily structure was gone.
+					Three months after the protocol ends, participants return for a follow-up check that
+					measures what held, and what faded, once the daily structure was gone.
 				</p>
 			</div>
 		</div>
@@ -229,10 +243,30 @@
 		display: grid;
 		gap: 2.5rem;
 	}
+	.pa-tl__spark {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.5;
+		pointer-events: none;
+	}
+	.pa-tl__spark path {
+		fill: none;
+		stroke: var(--tt-red-bright);
+		stroke-width: 1.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		vector-effect: non-scaling-stroke;
+		filter: drop-shadow(0 0 6px rgb(var(--tt-red-bright-rgb) / 0.4));
+	}
 	.pa-tl__rail {
 		display: none;
 	}
 	.pa-tl__steps {
+		position: relative;
+		z-index: 1;
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -371,7 +405,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 940px) {
+	@media (min-width: 1024px) {
 		.pa-tl__grid {
 			grid-template-columns: 260px 1fr;
 			gap: clamp(3rem, 5vw, 5rem);
@@ -380,6 +414,7 @@
 		.pa-tl__rail {
 			display: block;
 			position: sticky;
+			z-index: 1;
 			top: calc(var(--tt-header-h) + 3rem);
 		}
 		.pa-tl__rail-tag {

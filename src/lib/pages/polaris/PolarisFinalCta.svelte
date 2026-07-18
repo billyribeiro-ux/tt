@@ -18,7 +18,7 @@
 			The strongest traders manage the <span class="text-red">money</span> first.
 		</h2>
 		<p class="fcta__lede" data-anim {@attach reveal({ y: 22 })}>
-			It starts with one call — an honest look at your finances, your goals, and the plan to get you
+			It starts with one call: an honest look at your finances, your goals, and the plan to get you
 			there.
 		</p>
 		<div class="fcta__cta" data-anim {@attach reveal({ y: 22, delay: 0.05 })}>

@@ -145,7 +145,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 720px) {
+	@media (min-width: 768px) {
 		.struggle__item {
 			grid-template-columns: minmax(150px, 0.3fr) 1fr;
 			align-items: start;

@@ -9,12 +9,12 @@
 <section class="t-more tt-section" aria-labelledby="t-more-title">
 	<span class="t-more__glow" aria-hidden="true"></span>
 	<div class="tt-container t-more__inner">
-		<p class="t-more__kicker eyebrow">More member stories</p>
+		<p class="t-more__kicker label">More member stories</p>
 		<h2 id="t-more-title" class="t-more__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
 			These are just three of many.
 		</h2>
 		<p class="t-more__text prose" data-anim {@attach reveal({ y: 24 })}>
-			The full wall of member stories lives on the main site. Read more of them there — then, if it
+			The full wall of member stories lives on the main site. Read more of them there. Then, if it
 			sounds like the room you have been looking for, come see the education for yourself.
 		</p>
 		<div class="t-more__actions" data-anim {@attach reveal({ y: 24, delay: 0.1 })}>
@@ -32,6 +32,8 @@
 	.t-more {
 		position: relative;
 		overflow: clip;
+		/* Trim the top so the closing CTA sits closer to the press band above it. */
+		padding-top: clamp(3.5rem, 2rem + 5vw, 6rem);
 		background: var(--tt-black);
 		border-top: 1px solid var(--tt-line);
 		text-align: center;

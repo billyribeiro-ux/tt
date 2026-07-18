@@ -34,7 +34,7 @@
 			<div class="bc-hero__foot" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 24 })}>
 				<p class="bc-hero__lede prose">
 					The starting line. 50+ game-changing lessons on the skills and the emotions behind every
-					trade — the mechanics, the strategy and the mindset required to become a successful day
+					trade: the mechanics, the strategy and the mindset required to become a successful day
 					trader, taught by Pat “Trick” Mitchell.
 				</p>
 
@@ -189,7 +189,7 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.bc-hero__foot {
 			grid-template-columns: 1.1fr 0.9fr;
 			align-items: end;

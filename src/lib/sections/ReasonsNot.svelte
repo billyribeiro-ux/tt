@@ -28,7 +28,7 @@
 			</h2>
 			<p class="rn__lede" data-anim {@attach reveal({ y: 20, duration: 0.85, delay: 0.12 })}>
 				Trick Trades filters hard, on purpose. If any of these three describe you, this isn’t your
-				room — and we’d rather you found out now than three trades from here.
+				room, and we’d rather you found out now than three trades from here.
 			</p>
 		</header>
 
@@ -68,7 +68,7 @@
 				</p>
 				<p class="rn__edu">We are an <span class="text-gradient">Educational Service.</span></p>
 				<p class="rn__fine">
-					Must be 18 or older. This service is 100% education — your decisions are yours alone to
+					Must be 18 or older. This service is 100% education. Your decisions are yours alone to
 					make.
 				</p>
 			</div>
@@ -285,12 +285,12 @@
 		color: var(--tt-mute-2);
 	}
 
-	@media (min-width: 760px) {
+	@media (min-width: 768px) {
 		.rn__not {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
-	@media (min-width: 960px) {
+	@media (min-width: 1024px) {
 		.rn__panel {
 			padding: clamp(2.6rem, 4vw, 3.6rem);
 		}

@@ -24,7 +24,7 @@
 			<div class="c-hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="c-hero__lede">
 					Trick Trades is an <strong>education-first</strong> mentorship, not a call center. There
-					is no ticket bot and no phone tree here — just the team behind the room. The quickest way
+					is no ticket bot and no phone tree here, just the team behind the room. The quickest way
 					to reach us is <strong>email</strong>; for day-to-day questions, the private Facebook
 					group is often faster still.
 				</p>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 
-		<!-- Decorative "message" card — echoes the mailto, not real correspondence. -->
+		<!-- Decorative "message" card. Echoes the mailto, not real correspondence. -->
 		<div
 			class="c-hero__panel"
 			aria-hidden="true"
@@ -270,7 +270,7 @@
 		background: linear-gradient(180deg, var(--tt-red-hot), var(--tt-red) 60%, var(--tt-red-600));
 	}
 
-	@media (min-width: 940px) {
+	@media (min-width: 1024px) {
 		.c-hero__inner {
 			grid-template-columns: 1.05fr 0.95fr;
 		}

@@ -3,14 +3,14 @@
 	import PlantIcon from 'phosphor-svelte/lib/PlantIcon';
 	import ArrowsClockwiseIcon from 'phosphor-svelte/lib/ArrowsClockwiseIcon';
 
-	// Copy transcribed from the Trick Trades FAQ — the education is "designed for both
+	// Copy transcribed from the Trick Trades FAQ. The education is "designed for both
 	// new and experienced traders."
 	const audiences = [
 		{
 			Icon: PlantIcon,
 			tag: 'New traders',
 			title: 'Better if you’re a beginner',
-			body: 'It’s almost better if you don’t have a lot of experience — you don’t have to be re-wired to get rid of bad habits. This is a family-oriented community that embraces new and struggling day traders.'
+			body: 'It’s almost better if you don’t have a lot of experience. You don’t have to be re-wired to get rid of bad habits. This is a family-oriented community that embraces new and struggling day traders.'
 		},
 		{
 			Icon: ArrowsClockwiseIcon,
@@ -30,7 +30,7 @@
 		</div>
 
 		<h2 id="bc-who-title" class="bc-who__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
-			Start from zero — or <span class="text-red">start over.</span>
+			Start from zero, or <span class="text-red">start over.</span>
 		</h2>
 
 		<div class="bc-who__grid" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 36 })}>
@@ -112,7 +112,7 @@
 		font-size: var(--fs-body);
 		color: var(--tt-fog);
 	}
-	@media (min-width: 780px) {
+	@media (min-width: 768px) {
 		.bc-who__grid {
 			grid-template-columns: 1fr 1fr;
 		}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { reveal, splitReveal } from '$lib/motion';
 	import CubeIcon from 'phosphor-svelte/lib/CubeIcon';
+	import ArrowUpRightIcon from 'phosphor-svelte/lib/ArrowUpRightIcon';
 
 	const courseUrl = 'https://tricktrades.com/momentum-course';
 </script>
@@ -28,11 +29,14 @@
 					B.O.S.S. <span class="text-red">Carbon</span>, included.
 				</h2>
 				<p class="mo-boss__body">
-					Enrollment in Momentum comes with B.O.S.S. Carbon bundled in — sold separately as a $597
-					value, and yours as part of the program at no extra cost. Full details are on the course
+					Enrollment in Momentum comes with B.O.S.S. Carbon bundled in, sold separately as a $597
+					value and yours as part of the program at no extra cost. Full details are on the course
 					page.
 				</p>
-				<a class="mo-boss__link" href={courseUrl}>See what B.O.S.S. Carbon includes →</a>
+				<a class="mo-boss__link" href={courseUrl}>
+					See what B.O.S.S. Carbon includes
+					<ArrowUpRightIcon size={14} weight="bold" aria-hidden="true" />
+				</a>
 			</div>
 
 			<div class="mo-boss__value">
@@ -111,7 +115,9 @@
 		color: var(--tt-fog);
 	}
 	.mo-boss__link {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
 		margin-top: 1.4rem;
 		font-family: var(--tt-font-mono);
 		font-size: 0.72rem;
@@ -159,7 +165,7 @@
 		color: var(--tt-red-bright);
 	}
 
-	@media (min-width: 820px) {
+	@media (min-width: 768px) {
 		.mo-boss__card {
 			grid-template-columns: 1.4fr 0.6fr;
 			align-items: center;

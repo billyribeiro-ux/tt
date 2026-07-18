@@ -177,7 +177,7 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 820px) {
+	@media (min-width: 768px) {
 		.join-hero__title {
 			margin-top: 1.8rem;
 		}

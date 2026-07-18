@@ -9,9 +9,9 @@
 	const jsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'Product',
-		name: 'Trick Trades — Size UP! Membership',
+		name: 'Trick Trades Size UP! Membership',
 		description:
-			'Trick Trades’ flagship day-trading membership — the Size UP! App on iOS, Android & Desktop, a nightly video watch list, the live 9 a.m. EST Pre-Market Plan of Attack, 24/7 chat, and a 50+ lesson Boot Camp.',
+			'Trick Trades’ flagship day-trading membership: the Size UP! App on iOS, Android and Desktop, a nightly video watch list, the live 9 a.m. EST Pre-Market Plan of Attack, 24/7 chat, and a 50+ lesson Boot Camp.',
 		brand: { '@type': 'Brand', name: site.name },
 		url: site.domain + '/size-up-join',
 		offers: plans.map((p) => ({
@@ -26,8 +26,8 @@
 </script>
 
 <Seo
-	title="Join Size UP! — Trick Trades Membership"
-	description="Trick Trades’ Size UP! membership — the app on iOS, Android & Desktop, nightly watch list, the live 9 a.m. EST plan, 24/7 chat and 50+ Boot Camp lessons."
+	title="Join Size UP! Membership"
+	description="The Trick Trades Size UP! membership: the app on iOS, Android and Desktop, a nightly watch list, the live 9 a.m. EST plan, 24/7 chat and 50+ Boot Camp lessons."
 	path="/size-up-join"
 	breadcrumbs={[{ name: 'Join Size UP!', path: '/size-up-join' }]}
 	{jsonLd}

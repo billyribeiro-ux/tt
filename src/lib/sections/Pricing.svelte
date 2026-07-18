@@ -25,7 +25,7 @@
 					data-split
 					{@attach splitReveal({ stagger: 0.026 })}
 				>
-					Pricing plan — unbeatable value.
+					Two plans. Cancel anytime.
 				</h2>
 
 				<span
@@ -324,7 +324,7 @@
 		color: var(--tt-red-bright);
 	}
 
-	@media (min-width: 880px) {
+	@media (min-width: 1024px) {
 		.price__grid {
 			grid-template-columns: 1fr 1.06fr;
 			align-items: center;

@@ -12,7 +12,7 @@
 		url: site.domain + '/contact-us',
 		name: 'Contact Trick Trades',
 		description:
-			'How to reach the Trick Trades team — email support for account and billing questions, and the private Facebook group for the community.',
+			'How to reach the Trick Trades team: email support for account and billing questions, and the private Facebook group for the community.',
 		about: {
 			'@type': ['EducationalOrganization', 'Organization'],
 			name: site.name,
@@ -30,7 +30,7 @@
 </script>
 
 <Seo
-	title="Contact Us — Reach the Trick Trades Support Team"
+	title="Contact Us: Reach the Trick Trades Support Team"
 	description="Get in touch with Trick Trades: email support for account and billing, or the private Facebook group for quick community answers. A real person reads every message."
 	path="/contact-us"
 	breadcrumbs={[{ name: 'Contact Us', path: '/contact-us' }]}

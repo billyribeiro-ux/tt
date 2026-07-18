@@ -28,7 +28,7 @@
 				<aside class="join-nt__aside" data-anim {@attach reveal({ y: 30, delay: 0.1 })}>
 					<p class="join-nt__still label">Not ready to join?</p>
 					<p class="join-nt__stillcopy">
-						Start with the free training — see the strategy in action before you commit a single
+						Start with the free training and see the strategy in action before you commit a single
 						dollar.
 					</p>
 					<Button href={webinarHref} variant="light">Watch the free webinar</Button>
@@ -102,7 +102,7 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 860px) {
+	@media (min-width: 768px) {
 		.join-nt__grid {
 			grid-template-columns: 1.35fr 0.65fr;
 		}

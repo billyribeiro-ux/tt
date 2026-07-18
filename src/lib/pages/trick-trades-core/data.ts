@@ -1,5 +1,5 @@
 /**
- * Trick Trades Core — page content model.
+ * Trick Trades Core: page content model.
  * Shared by the section components and the +page.svelte JSON-LD.
  * Prices, session lengths and topics are the real program spec transcribed from
  * tricktrades.com/trick-trades-core; nothing here is fabricated.
@@ -24,7 +24,7 @@ export const packages: Package[] = [
 		name: 'Single Meditation',
 		price: 25,
 		note: 'per topic',
-		blurb: 'Pick one topic — the pattern that costs you the most — and start rewiring it tonight.',
+		blurb: 'Pick one topic, the pattern that costs you the most, and start rewiring it tonight.',
 		cta: 'Buy a single meditation',
 		featured: false,
 		feats: [
@@ -40,13 +40,13 @@ export const packages: Package[] = [
 		price: 97,
 		note: 'save $28 vs à la carte',
 		blurb:
-			'Every topic, every daily session, plus the bonus affirmation disks — the whole rewire in one download.',
+			'Every topic, every daily session, plus the bonus affirmation disks. The whole rewire in one download.',
 		cta: 'Get Volume One',
 		featured: true,
 		feats: [
 			'All five topic meditations',
 			'Focus, Market, Power & Sleep sessions',
-			'Bonus affirmations — three 1-hour disks',
+			'Bonus affirmations: three 1-hour disks',
 			'Meditation guide included',
 			'Instant digital download'
 		]

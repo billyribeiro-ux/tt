@@ -27,11 +27,11 @@
 				Take both volumes and the <span class="text-red">bonus hour.</span>
 			</h2>
 			<p class="cb-enroll__lede" data-anim {@attach reveal({ y: 22 })}>
-				The bundle pairs Volume 1 and Volume 2 with a live-trading bonus hour — the complete
+				The bundle pairs Volume 1 and Volume 2 with a live-trading bonus hour. The complete
 				price-action education in one enrollment.
 			</p>
 			<div class="cb-enroll__cta" data-anim {@attach reveal({ y: 22, delay: 0.05 })}>
-				<Button href={courseUrl}>Enroll — Bundle $649</Button>
+				<Button href={courseUrl}>Enroll · Bundle $649</Button>
 				<a class="cb-enroll__gold" href={goldUrl}>
 					<CrownIcon size={15} weight="fill" aria-hidden="true" />
 					Explore the Gold Edition

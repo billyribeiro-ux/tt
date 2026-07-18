@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { reveal, splitReveal } from '$lib/motion';
+	import { reveal, splitReveal, drawLine } from '$lib/motion';
 	import { steps } from './data';
 </script>
 
@@ -22,17 +22,30 @@
 			</p>
 		</header>
 
-		<ol class="proc__ladder" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 40 })}>
-			{#each steps as step (step.n)}
-				{@const Icon = step.Icon}
-				<li class="proc__step">
-					<span class="proc__num num" aria-hidden="true">{step.n}</span>
-					<span class="proc__ico" aria-hidden="true"><Icon size={26} weight="light" /></span>
-					<h3 class="proc__name">{step.name}</h3>
-					<p class="proc__body">{step.body}</p>
-				</li>
-			{/each}
-		</ol>
+		<div class="proc__chart">
+			<!-- Decorative rising line drawn across the three steps as you scroll. -->
+			<svg
+				class="proc__spark"
+				aria-hidden="true"
+				viewBox="0 0 1000 200"
+				preserveAspectRatio="none"
+				{@attach drawLine()}
+			>
+				<path d="M0 180 C 150 160 210 96 340 80 C 470 64 520 128 660 104 C 800 80 850 40 1000 24" />
+			</svg>
+
+			<ol class="proc__ladder" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 40 })}>
+				{#each steps as step (step.n)}
+					{@const Icon = step.Icon}
+					<li class="proc__step">
+						<span class="proc__num num" aria-hidden="true">{step.n}</span>
+						<span class="proc__ico" aria-hidden="true"><Icon size={26} weight="light" /></span>
+						<h3 class="proc__name">{step.name}</h3>
+						<p class="proc__body">{step.body}</p>
+					</li>
+				{/each}
+			</ol>
+		</div>
 	</div>
 </section>
 
@@ -70,7 +83,30 @@
 		margin-top: 1.3rem;
 	}
 
+	.proc__chart {
+		position: relative;
+	}
+	.proc__spark {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.5;
+		pointer-events: none;
+	}
+	.proc__spark path {
+		fill: none;
+		stroke: var(--tt-red-bright);
+		stroke-width: 1.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		vector-effect: non-scaling-stroke;
+		filter: drop-shadow(0 0 6px rgb(var(--tt-red-bright-rgb) / 0.4));
+	}
 	.proc__ladder {
+		position: relative;
+		z-index: 1;
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -118,7 +154,7 @@
 		font-size: 0.96rem;
 	}
 
-	@media (min-width: 820px) {
+	@media (min-width: 768px) {
 		.proc__ladder {
 			grid-template-columns: repeat(3, 1fr);
 		}

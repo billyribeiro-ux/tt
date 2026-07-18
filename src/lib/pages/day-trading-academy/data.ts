@@ -1,5 +1,5 @@
 /**
- * Day Trading Academy — course catalogue.
+ * Day Trading Academy: course catalogue.
  * Shared by the section components and the +page.svelte JSON-LD.
  *
  * Names, prices, lesson counts and course pages are the real Trick Trades
@@ -38,14 +38,14 @@ export const courses: Course[] = [
 		lessons: '15 modules · 115 lessons · +14 bonus',
 		price: null,
 		was: null,
-		note: 'Includes B.O.S.S. Carbon — a $597 value',
+		note: 'Includes B.O.S.S. Carbon, a $597 value',
 		href: '/momentum-course',
 		Icon: LightningIcon
 	},
 	{
 		name: 'Day Trading Boot Camp',
 		tag: 'Start here',
-		tagline: 'The foundation — mechanics, strategy and mindset.',
+		tagline: 'The foundation: mechanics, strategy and mindset.',
 		lessons: '50+ lessons · lifetime access',
 		price: 97,
 		was: 147,

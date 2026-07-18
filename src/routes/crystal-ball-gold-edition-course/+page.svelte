@@ -10,7 +10,7 @@
 		'@type': 'Course',
 		name: 'Crystal Ball: Gold Edition',
 		description:
-			'The most advanced tier of the Crystal Ball series — natural-movement theory taught live across nine months of live trades with Pat Mitchell.',
+			'The most advanced tier of the Crystal Ball series: natural-movement theory taught live across nine months of live trades with Pat Mitchell.',
 		url: 'https://tricktrades.com/crystal-ball-gold-edition-course',
 		provider: {
 			'@type': 'Organization',
@@ -21,7 +21,7 @@
 </script>
 
 <Seo
-	title="Crystal Ball: Gold Edition — Trick Trades"
+	title="Crystal Ball: Gold Edition | Trick Trades"
 	description="The advanced tier of the Crystal Ball series: natural-movement theory, taught live across nine months of live trades with Pat Mitchell."
 	path="/crystal-ball-gold-edition-course"
 	breadcrumbs={[

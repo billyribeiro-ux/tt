@@ -6,7 +6,7 @@
 	import MoonIcon from 'phosphor-svelte/lib/MoonIcon';
 	import SparkleIcon from 'phosphor-svelte/lib/SparkleIcon';
 
-	// The four daily sessions — durations and states are the real program spec.
+	// The four daily sessions. Durations and states are the real program spec.
 	const sessions = [
 		{
 			name: 'Focus Session',
@@ -22,7 +22,7 @@
 			slot: 'Live open',
 			state: 'Alpha state',
 			Icon: WaveformIcon,
-			body: 'Alpha-state brainwave training played during live trading — so focus holds when the money is real and the pressure is on.'
+			body: 'Alpha-state brainwave training played during live trading, so focus holds when the money is real and the pressure is on.'
 		},
 		{
 			name: 'Power Session',
@@ -57,7 +57,7 @@
 				Four sessions, from the <span class="text-red">open bell</span> to deep sleep.
 			</h2>
 			<p class="sess__intro prose">
-				The rewiring isn’t one download you listen to once. It’s a daily rhythm — a short morning
+				The rewiring isn’t one download you listen to once. It’s a daily rhythm: a short morning
 				reset, focus during the trade, reinforcement after, and the deep overnight work that changes
 				the default.
 			</p>
@@ -156,7 +156,7 @@
 	}
 	.sess__item {
 		display: grid;
-		grid-template-columns: auto auto 1fr;
+		grid-template-columns: auto 1fr;
 		gap: clamp(1rem, 3vw, 2rem);
 		padding: clamp(1.6rem, 3vw, 2.2rem) 0;
 		border-top: 1px solid var(--tt-line);
@@ -187,7 +187,7 @@
 	}
 
 	.sess__ico {
-		display: grid;
+		display: none;
 		place-items: center;
 		width: 52px;
 		height: 52px;
@@ -244,12 +244,12 @@
 		font-size: 0.98rem;
 	}
 
-	@media (max-width: 560px) {
+	@media (min-width: 480px) {
 		.sess__item {
-			grid-template-columns: auto 1fr;
+			grid-template-columns: auto auto 1fr;
 		}
 		.sess__ico {
-			display: none;
+			display: grid;
 		}
 	}
 </style>

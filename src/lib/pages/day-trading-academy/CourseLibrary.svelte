@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import { reveal, splitReveal, tilt } from '$lib/motion';
+	import { reveal, splitReveal, tilt, drawLine } from '$lib/motion';
 	import { courses } from './data';
 
 	const featured = courses[0];
@@ -24,7 +24,7 @@
 			</h2>
 			<p class="lib__intro prose">
 				From the Boot Camp foundation to the Crystal Ball price-action series and one-on-one
-				Momentum coaching — each course stands alone, and each one stacks.
+				Momentum coaching. Each course stands alone, and each one stacks.
 			</p>
 		</div>
 
@@ -32,6 +32,23 @@
 		<article class="feat" data-anim {@attach reveal({ y: 48, duration: 1.05 })}>
 			<span class="feat__reg feat__reg--tl" aria-hidden="true"></span>
 			<span class="feat__reg feat__reg--br" aria-hidden="true"></span>
+
+			<svg
+				class="feat__chart"
+				viewBox="0 0 600 160"
+				preserveAspectRatio="none"
+				fill="none"
+				aria-hidden="true"
+				{@attach drawLine({ scrub: false })}
+			>
+				<path
+					d="M0 132 L74 118 L146 130 L214 92 L292 104 L372 60 L452 74 L536 32 L600 18"
+					stroke="var(--tt-red-bright)"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
 
 			<div class="feat__main">
 				<div class="feat__top">
@@ -134,7 +151,7 @@
 	.lib__intro {
 		max-width: 58ch;
 	}
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.lib__head {
 			grid-template-columns: 1fr 1fr;
 			align-items: end;
@@ -175,6 +192,22 @@
 		bottom: 12px;
 		border-right-width: 1px;
 		border-bottom-width: 1px;
+	}
+	/* Price-line accent: the Momentum panel is the flagship, so the line prints
+	   across it like a chart on entry. Decorative, sits behind the content. */
+	.feat__chart {
+		position: absolute;
+		inset: auto 0 0 0;
+		z-index: 0;
+		width: 100%;
+		height: 44%;
+		opacity: 0.26;
+		pointer-events: none;
+	}
+	.feat__main,
+	.feat__aside {
+		position: relative;
+		z-index: 1;
 	}
 	.feat__top {
 		display: flex;
@@ -239,7 +272,7 @@
 		margin-top: auto;
 	}
 
-	@media (min-width: 860px) {
+	@media (min-width: 768px) {
 		.feat {
 			grid-template-columns: 1.35fr 0.65fr;
 			align-items: stretch;
@@ -259,12 +292,12 @@
 		display: grid;
 		gap: clamp(1.1rem, 2.5vw, 1.6rem);
 	}
-	@media (min-width: 620px) {
+	@media (min-width: 480px) {
 		.grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
-	@media (min-width: 1000px) {
+	@media (min-width: 1024px) {
 		.grid {
 			grid-template-columns: repeat(3, 1fr);
 		}

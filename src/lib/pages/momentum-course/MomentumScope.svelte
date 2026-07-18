@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import { reveal, splitReveal } from '$lib/motion';
+	import { reveal, splitReveal, drawLine } from '$lib/motion';
 
 	const courseUrl = 'https://tricktrades.com/momentum-course';
 
@@ -30,10 +30,29 @@
 				The whole game, <span class="text-red">module by module.</span>
 			</h2>
 			<p class="mo-scope__intro prose">
-				Momentum is the deepest program in the catalogue — high-level coaching built as a complete,
+				Momentum is the deepest program in the catalogue: high-level coaching built as a complete,
 				structured path rather than a loose set of clips.
 			</p>
 		</div>
+
+		<!-- The line builds as you scroll: momentum printing across the section. -->
+		<svg
+			class="mo-scope__line"
+			viewBox="0 0 1200 120"
+			preserveAspectRatio="none"
+			fill="none"
+			aria-hidden="true"
+			{@attach drawLine()}
+		>
+			<path
+				d="M0 104 L150 88 L300 96 L450 64 L600 72 L750 40 L900 48 L1050 20 L1200 8"
+				stroke="var(--tt-red-bright)"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				vector-effect="non-scaling-stroke"
+			/>
+		</svg>
 
 		<ul class="mo-scope__figs" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 40 })}>
 			{#each scope as s (s.label)}
@@ -82,12 +101,20 @@
 	.mo-scope__intro {
 		max-width: 56ch;
 	}
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.mo-scope__head {
 			grid-template-columns: 1.1fr 0.9fr;
 			align-items: end;
 			gap: clamp(2rem, 5vw, 4rem);
 		}
+	}
+
+	.mo-scope__line {
+		display: block;
+		width: 100%;
+		height: clamp(44px, 7vw, 84px);
+		margin-bottom: clamp(1.4rem, 3vw, 2.4rem);
+		opacity: 0.55;
 	}
 
 	.mo-scope__figs {

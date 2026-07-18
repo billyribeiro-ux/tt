@@ -12,7 +12,7 @@
 		'@type': 'Course',
 		name: 'Day Trading Boot Camp',
 		description:
-			'The Trick Trades foundation course — 50+ game-changing lessons on the skills and emotions of day trading: mechanics, strategy and mindset.',
+			'The Trick Trades foundation course. 50+ game-changing lessons on the skills and emotions of day trading: mechanics, strategy and mindset.',
 		url: 'https://tricktrades.com/day-trading-bootcamp',
 		provider: {
 			'@type': 'Organization',
@@ -30,8 +30,8 @@
 </script>
 
 <Seo
-	title="Day Trading Boot Camp — Trick Trades"
-	description="The foundation course: 50+ game-changing lessons on the skills and emotions of day trading — mechanics, strategy and mindset. Lifetime access, one-time $97."
+	title="Day Trading Boot Camp | Trick Trades"
+	description="The foundation course: 50+ game-changing lessons on the skills and emotions of day trading. Mechanics, strategy, mindset. Lifetime access, one-time $97."
 	path="/day-trading-bootcamp"
 	breadcrumbs={[
 		{ name: 'Academy', path: '/day-trading-academy' },

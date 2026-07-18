@@ -46,7 +46,7 @@
 				The Massive <span class="text-red">Results</span> Formula
 			</h2>
 			<p class="fx__intro prose" data-anim {@attach reveal({ y: 20, duration: 0.85, delay: 0.1 })}>
-				A strategy isn’t another setup — it’s knowing what <em>not</em> to do. Five disciplines, five
+				A strategy isn’t another setup. It’s knowing what <em>not</em> to do. Five disciplines, five
 				demons removed. This is how consistency is built.
 			</p>
 		</header>
@@ -238,7 +238,7 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 940px) {
+	@media (min-width: 1024px) {
 		.fx__grid {
 			grid-template-columns: 300px 1fr;
 			gap: clamp(3rem, 5vw, 5rem);

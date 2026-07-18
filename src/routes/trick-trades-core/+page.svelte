@@ -12,7 +12,7 @@
 		name: 'Trick Trades Core',
 		category: 'Binaural meditation program',
 		description:
-			'A binaural-beats meditation program that rewires the subconscious survival responses that sabotage traders — four daily sessions across five behavioural topics.',
+			'A binaural-beats meditation program that rewires the subconscious survival responses that sabotage traders: four daily sessions across five behavioural topics.',
 		brand: { '@type': 'Brand', name: 'Trick Trades' },
 		url: BUY_URL,
 		offers: packages.map((p) => ({
@@ -27,8 +27,8 @@
 </script>
 
 <Seo
-	title="Trick Trades Core — Binaural Meditation for Traders"
-	description="Binaural-beats meditation that rewires the survival responses sabotaging traders — 4 daily sessions, 5 patterns. From $25, Volume One $97."
+	title="Trick Trades Core: Binaural Meditation for Traders"
+	description="Binaural-beats meditation that rewires the survival responses sabotaging traders. 4 daily sessions, 5 patterns. From $25, Volume One $97."
 	path="/trick-trades-core"
 	breadcrumbs={[{ name: 'Trick Trades Core', path: '/trick-trades-core' }]}
 	{jsonLd}

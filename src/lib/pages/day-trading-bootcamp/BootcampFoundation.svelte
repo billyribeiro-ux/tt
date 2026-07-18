@@ -4,7 +4,7 @@
 
 	const enrollUrl = 'https://tricktrades.com/day-trading-bootcamp';
 
-	// Three pillars named directly from the course's own description —
+	// Three pillars named directly from the course's own description:
 	// "the foundation: mechanics, strategy and mindset." No lesson list is invented.
 	const pillars = [
 		{
@@ -15,7 +15,7 @@
 		{
 			n: '02',
 			title: 'Strategy',
-			body: 'An introduction to Pat’s proven, time-tested day-trading strategy — the same framework the community trades every single morning.'
+			body: 'An introduction to Pat’s proven, time-tested day-trading strategy. The same framework the community trades every single morning.'
 		},
 		{
 			n: '03',
@@ -44,7 +44,7 @@
 			</h2>
 			<p class="bc-found__intro prose">
 				50+ lessons, built to be caveman simple and impossible to skip. Three foundations carry a
-				complete beginner — or reset an experienced one — from the first green candle onward.
+				complete beginner, or reset an experienced one, from the first green candle onward.
 			</p>
 		</div>
 
@@ -94,7 +94,7 @@
 	.bc-found__intro {
 		max-width: 56ch;
 	}
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.bc-found__head {
 			grid-template-columns: 1.1fr 0.9fr;
 			align-items: end;
@@ -168,7 +168,7 @@
 		border-color: var(--tt-line-strong);
 	}
 
-	@media (min-width: 620px) {
+	@media (min-width: 768px) {
 		.bc-found__row {
 			grid-template-columns: auto 0.7fr 1.3fr;
 			align-items: center;

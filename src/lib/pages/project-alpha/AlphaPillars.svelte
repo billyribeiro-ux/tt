@@ -10,7 +10,7 @@
 			icon: BrainIcon,
 			cadence: '10–15 min · daily',
 			title: 'Daily MUSE Training',
-			body: 'Guided EEG biofeedback with the Muse S headband trains the brain to find, and hold, a calm alpha state on demand — the raw material of every other pillar.'
+			body: 'Guided EEG biofeedback with the Muse S headband trains the brain to find, and hold, a calm alpha state on demand, the raw material of every other pillar.'
 		},
 		{
 			icon: HeadphonesIcon,
@@ -141,7 +141,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.pa-pil__list {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1.1rem;

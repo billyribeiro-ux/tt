@@ -3,11 +3,11 @@
 	import { external } from '$lib/data/site';
 	import ArrowUpRightIcon from 'phosphor-svelte/lib/ArrowUpRightIcon';
 
-	// Honest guidance — the more of this you include, the faster we can actually help.
+	// Honest guidance. The more of this you include, the faster we can actually help.
 	const tips = [
 		{
 			title: 'The email on your account',
-			body: 'So we can find you. Write from it if you can, or tell us what it is — we can only look up an account by the address it was created with.'
+			body: 'So we can find you. Write from it if you can, or tell us what it is. We can only look up an account by the address it was created with.'
 		},
 		{
 			title: 'What it involves',
@@ -15,11 +15,11 @@
 		},
 		{
 			title: 'What you expected vs. what happened',
-			body: 'A sentence or two — and a screenshot if there is one. Concrete detail is the difference between one reply and five.'
+			body: 'A sentence or two, and a screenshot if there is one. Concrete detail is the difference between one reply and five.'
 		}
 	];
 
-	// Real self-serve destinations — homepage anchors and live-site policy pages.
+	// Real self-serve destinations: homepage anchors and live-site policy pages.
 	const pointers = [
 		{ label: 'Read the common questions', href: '/#faq' },
 		{ label: 'Compare the plans', href: '/#pricing' },
@@ -41,7 +41,7 @@
 					Three lines that earn a <span class="text-red">faster</span> answer.
 				</h2>
 				<p class="c-sup__note prose">
-					We answer messages in the order they arrive, as quickly as we responsibly can — there is
+					We answer messages in the order they arrive, as quickly as we responsibly can. There is
 					no automated queue here, just people reading email between live sessions. Give us the
 					details below and the reply that comes back can actually solve it, instead of asking for
 					more.
@@ -165,7 +165,7 @@
 		font-size: 0.96rem;
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.c-sup__grid {
 			grid-template-columns: 1fr 1fr;
 			align-items: start;

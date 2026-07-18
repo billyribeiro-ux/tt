@@ -18,7 +18,7 @@
 				{@attach reveal({ y: 20, duration: 0.8, delay: 0.1 })}
 			>
 				Money isn’t a strong enough motivator to get you through what’s holding you back. Any job
-				earns money — <strong>not the freedom to be the author of your life.</strong>
+				earns money. <strong>Almost none earns you the freedom to be the author of your life.</strong>
 			</p>
 		</div>
 
@@ -116,7 +116,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.questions__inner {
 			grid-template-columns: 0.82fr 1fr;
 			gap: clamp(3rem, 6vw, 6rem);

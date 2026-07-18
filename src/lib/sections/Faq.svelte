@@ -3,7 +3,7 @@
 	import { faqs, site } from '$lib/data/site';
 	import CaretDownIcon from 'phosphor-svelte/lib/CaretDownIcon';
 
-	// Single-open accordion — cleanest editorial behaviour. First item open on load
+	// Single-open accordion: cleanest editorial behaviour. First item open on load
 	// so the column never reads as an empty stack. Click an open row to close it.
 	let open = $state<number | null>(0);
 
@@ -17,10 +17,10 @@
 		<div class="faq__aside">
 			<div class="faq__sticky">
 				<p class="label faq__kicker" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
-					Answers
+					Before you join
 				</p>
 				<h2 class="faq__headline" data-split {@attach splitReveal({ stagger: 0.03 })}>
-					Frequently asked questions.
+					Real questions. Straight answers.
 				</h2>
 				<p class="faq__nudge" data-anim {@attach reveal({ y: 20 })}>
 					<span aria-hidden="true" class="faq__nudge-rule"></span>
@@ -69,6 +69,9 @@
 <style>
 	.faq {
 		background: var(--tt-black);
+		/* FinalCta shares this black canvas with no divider, so trim the trailing
+		   padding here to close the dead gap between the two sections. */
+		padding-bottom: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
 	}
 
 	.faq__grid {
@@ -207,7 +210,7 @@
 		font-size: var(--fs-body);
 	}
 
-	@media (min-width: 860px) {
+	@media (min-width: 1024px) {
 		.faq__grid {
 			grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
 			align-items: start;

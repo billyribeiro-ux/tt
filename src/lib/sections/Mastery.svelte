@@ -5,7 +5,7 @@
 	import BrainIcon from 'phosphor-svelte/lib/BrainIcon';
 	import ChartLineUpIcon from 'phosphor-svelte/lib/ChartLineUpIcon';
 
-	// Data-driven icon lookup — keys match the `icon` field in $lib/data/site.
+	// Data-driven icon lookup: keys match the `icon` field in $lib/data/site.
 	const iconMap = {
 		Barbell: BarbellIcon,
 		Brain: BrainIcon,
@@ -82,7 +82,7 @@
 				Master the skill to do the job <span class="op-inline" aria-hidden="true">+</span> master
 				your focus through pressure
 				<span class="op-inline op-inline--eq" aria-hidden="true">=</span>
-				<strong>Mastery of Self.</strong> All top performers share this trait — and so do
+				<strong>Mastery of Self.</strong> All top performers share this trait, and so do the
 				professional traders who pull <span class="text-red">seven figures</span>.
 			</p>
 		</div>
@@ -249,7 +249,7 @@
 	}
 
 	/* ---- Equation layout on wider screens ---- */
-	@media (min-width: 880px) {
+	@media (min-width: 1024px) {
 		.equation {
 			grid-template-columns: 1fr auto 1fr auto 1fr;
 			align-items: center;

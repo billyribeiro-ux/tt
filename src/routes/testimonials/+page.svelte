@@ -13,7 +13,7 @@
 		url: site.domain + '/testimonials',
 		name: 'Trick Trades Testimonials',
 		description:
-			'Real member testimonials for Trick Trades — day-trading education and mentorship led by Pat “Trick” Mitchell.',
+			'Real member testimonials for Trick Trades: day-trading education and mentorship led by Pat “Trick” Mitchell.',
 		about: {
 			'@type': ['EducationalOrganization', 'Organization'],
 			name: site.name,
@@ -24,8 +24,8 @@
 </script>
 
 <Seo
-	title="Testimonials — Real Trick Trades Member Stories"
-	description="Hear from real Trick Trades members — a truck driver, an ER nurse practitioner, and an IT consultant — on the education, coaching, and mentoring inside the room."
+	title="Testimonials: Real Trick Trades Member Stories"
+	description="Hear from real Trick Trades members (a truck driver, an ER nurse practitioner, and an IT consultant) on the education, coaching, and mentoring inside the room."
 	path="/testimonials"
 	breadcrumbs={[{ name: 'Testimonials', path: '/testimonials' }]}
 	{jsonLd}

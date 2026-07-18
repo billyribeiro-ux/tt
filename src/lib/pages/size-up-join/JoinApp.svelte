@@ -9,7 +9,7 @@
 	import AndroidLogoIcon from 'phosphor-svelte/lib/AndroidLogoIcon';
 	import MonitorIcon from 'phosphor-svelte/lib/MonitorIcon';
 
-	// Every fact here traces to $lib/data/site.ts — nothing invented.
+	// Every fact here traces to $lib/data/site.ts; nothing invented.
 	const appFeatures = [
 		{
 			icon: DeviceMobileIcon,
@@ -19,7 +19,7 @@
 		{
 			icon: MoonStarsIcon,
 			title: 'Nightly video watch list',
-			body: 'Recorded every night and viewable on any device — high-probability, cherry-picked setups for the next session.'
+			body: 'Recorded every night and viewable on any device: high-probability, cherry-picked setups for the next session.'
 		},
 		{
 			icon: BellIcon,
@@ -29,7 +29,7 @@
 		{
 			icon: ChatsCircleIcon,
 			title: '24/7 community chat',
-			body: 'Ask questions, get help, or make new friends any time — day, night and weekends. We never shut down.'
+			body: 'Ask questions, get help, or make new friends any time of day or night, weekends included. We never shut down.'
 		}
 	];
 </script>
@@ -53,7 +53,7 @@
 			</h2>
 
 			<p class="join-app__copy">
-				Guidance, the nightly watch list, the live plan and the room travel with you — the Size UP!
+				Guidance, the nightly watch list, the live plan and the room travel with you. The Size UP!
 				App runs on iOS, Android and Desktop, so you’re trade-ready wherever the day takes you.
 			</p>
 
@@ -140,7 +140,7 @@
 		color: var(--tt-fog);
 	}
 
-	/* Editorial "app window" — a terminal-style panel, real labels only */
+	/* Editorial "app window": a terminal-style panel, real labels only */
 	.app-win {
 		margin-top: clamp(2rem, 4vw, 2.8rem);
 		max-width: 460px;
@@ -240,7 +240,7 @@
 		color: var(--tt-gold);
 	}
 
-	/* Feature list — hairline rows, small monochrome icons, mono index */
+	/* Feature list: hairline rows, small monochrome icons, mono index */
 	.join-app__feats {
 		list-style: none;
 		margin: 0;
@@ -279,7 +279,7 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.join-app__inner {
 			grid-template-columns: 1.02fr 0.98fr;
 			gap: clamp(3rem, 6vw, 5rem);

@@ -21,7 +21,7 @@
 				Every meditation targets one behaviour you keep repeating.
 			</h2>
 			<p class="topics__note prose">
-				Each topic is its own meditation — buy the one that’s bleeding your account, or take all
+				Each topic is its own meditation. Buy the one that’s bleeding your account, or take all
 				five in Volume One.
 			</p>
 		</header>

@@ -25,7 +25,7 @@
 			<div class="phero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="phero__lede">
 					The market punishes traders who trade scared money. <strong>Polaris</strong> is a 90-day, 1:1
-					financial and budget coaching program built to fix the thing behind the blowups — so you stop
+					financial and budget coaching program built to fix the thing behind the blowups, so you stop
 					overleveraging and start managing risk like a professional.
 				</p>
 
@@ -144,7 +144,7 @@
 		border-radius: 10px;
 		color: var(--tt-gold);
 		border: 1px solid var(--tt-line);
-		background: rgba(245, 196, 81, 0.08);
+		background: rgb(var(--tt-gold-rgb) / 0.08);
 	}
 	.phero__spec-list {
 		margin: 0;
@@ -180,7 +180,7 @@
 		letter-spacing: 0.22em;
 		color: var(--tt-gold);
 	}
-	@media (min-width: 940px) {
+	@media (min-width: 1024px) {
 		.phero__inner {
 			grid-template-columns: 1.1fr 0.9fr;
 		}

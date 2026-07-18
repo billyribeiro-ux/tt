@@ -33,6 +33,8 @@
 
 <style>
 	.t-press {
+		/* Compact press band: trim the tt-section rhythm so it doesn't leave dead space. */
+		padding-block: clamp(3.5rem, 2rem + 5vw, 6rem);
 		background: var(--tt-ink);
 		border-top: 1px solid var(--tt-line);
 	}
@@ -80,7 +82,7 @@
 		transform: translateY(-50%);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.t-press__grid {
 			grid-template-columns: 0.9fr 1.1fr;
 		}

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { reveal, splitReveal } from '$lib/motion';
+	import { reveal, splitReveal, drawLine } from '$lib/motion';
 	import { guarantee } from '$lib/data/site';
 	import SealCheckIcon from 'phosphor-svelte/lib/SealCheckIcon';
 
-	// Stamp ring text is derived from the real guarantee title + brand name — nothing invented.
+	// Stamp ring text is derived from the real guarantee title + brand name. Nothing invented.
 	const ringText = 'Trick Trades · No Trader Left Behind · ';
 </script>
 
@@ -34,7 +34,15 @@
 					</div>
 
 					<p class="gua__sign" data-anim {@attach reveal({ y: 20, duration: 0.85, delay: 0.1 })}>
-						<span class="gua__sign-rule" aria-hidden="true"></span>
+						<svg
+							class="gua__sign-rule"
+							aria-hidden="true"
+							viewBox="0 0 60 18"
+							fill="none"
+							{@attach drawLine({ scrub: false })}
+						>
+							<path d="M1,15 L18,11 L34,12 L47,5 L59,2" />
+						</svg>
 						<span class="script gua__sign-mark">No trader left behind.</span>
 					</p>
 				</div>
@@ -95,7 +103,7 @@
 		box-shadow: var(--tt-shadow-card);
 	}
 
-	/* Corner registration marks — an editorial "certificate" detail */
+	/* Corner registration marks: an editorial "certificate" detail */
 	.gua__mark {
 		position: absolute;
 		width: 15px;
@@ -165,9 +173,17 @@
 		margin-top: 2.2rem;
 	}
 	.gua__sign-rule {
-		width: 52px;
-		height: 1px;
-		background: var(--tt-red);
+		flex: none;
+		width: 56px;
+		height: 18px;
+		overflow: visible;
+	}
+	.gua__sign-rule path {
+		fill: none;
+		stroke: var(--tt-red);
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 	.gua__sign-mark {
 		font-size: clamp(1.7rem, 1rem + 2.4vw, 2.4rem);
@@ -258,7 +274,7 @@
 		color: var(--tt-gold);
 	}
 
-	@media (min-width: 860px) {
+	@media (min-width: 1024px) {
 		.gua__grid {
 			grid-template-columns: 1fr auto;
 		}

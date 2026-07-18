@@ -35,7 +35,7 @@
 
 		<div class="mo-hero__foot" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 			<p class="mo-hero__lede prose">
-				The most complete program Trick Trades offers — high-level day-trading coaching with Pat
+				The most complete program Trick Trades offers: high-level day-trading coaching with Pat
 				“Trick” Mitchell. Fifteen modules and 115 video lessons that carry you from setup to
 				professional execution, plus fourteen bonus lessons.
 			</p>
@@ -175,7 +175,7 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.mo-hero__foot {
 			grid-template-columns: 1.15fr 0.85fr;
 			align-items: end;

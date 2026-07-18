@@ -136,12 +136,12 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 640px) {
+	@media (min-width: 768px) {
 		.pa-eq__grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
-	@media (min-width: 1040px) {
+	@media (min-width: 1024px) {
 		.pa-eq__grid {
 			grid-template-columns: repeat(4, 1fr);
 		}

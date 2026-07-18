@@ -29,7 +29,7 @@
 			Two halves of the same <span class="text-red">trade.</span>
 		</h2>
 		<p class="bc-dual__intro prose">
-			The Boot Camp is built on the truth every professional learns the hard way — the chart is only
+			The Boot Camp is built on the truth every professional learns the hard way. The chart is only
 			half the battle. It trains the body to execute and the mind to stay calm under fire.
 		</p>
 
@@ -175,7 +175,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 780px) {
+	@media (min-width: 768px) {
 		.bc-dual__grid {
 			grid-template-columns: 1fr 1fr;
 		}

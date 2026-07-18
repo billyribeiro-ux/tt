@@ -156,7 +156,7 @@
 	}
 	.tier--launch {
 		--accent: var(--tt-gold);
-		--accent-soft: rgba(245, 196, 81, 0.5);
+		--accent-soft: rgb(var(--tt-gold-rgb) / 0.5);
 	}
 
 	.tier__top {
@@ -284,7 +284,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 820px) {
+	@media (min-width: 768px) {
 		.tiers__grid {
 			grid-template-columns: 1fr 1fr;
 			align-items: start;

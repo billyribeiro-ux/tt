@@ -16,7 +16,7 @@
 	const jsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'ResearchProject',
-		name: 'Project ALPHA — Alpha Brainwave Training Study',
+		name: 'Project ALPHA: Alpha Brainwave Training Study',
 		url: applyUrl,
 		description:
 			'A 90-day neuroscience research study investigating whether alpha-brainwave (8–12 Hz) training improves day-trading performance, emotional regulation, and decision consistency.',
@@ -33,7 +33,7 @@
 </script>
 
 <Seo
-	title="Project ALPHA — Alpha Brainwave Training Study"
+	title="Project ALPHA: Alpha Brainwave Training Study"
 	description="A 90-day neuroscience study testing whether alpha-brainwave (8–12 Hz) training makes day traders calmer, sharper, and more consistent under pressure."
 	path="/project-alpha"
 	breadcrumbs={[{ name: 'Project ALPHA', path: '/project-alpha' }]}

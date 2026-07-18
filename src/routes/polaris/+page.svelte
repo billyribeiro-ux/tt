@@ -12,7 +12,7 @@
 		'@type': 'Service',
 		serviceType: 'Financial coaching',
 		name: 'Polaris',
-		description: `A 90-day, 1:1 financial and budget coaching program for day traders — so you stop overleveraging and trade from a position of strength. Two tiers, each $${POLARIS_PRICE} per month.`,
+		description: `A 90-day, 1:1 financial and budget coaching program for day traders, so you stop overleveraging and trade from a position of strength. Two tiers, each $${POLARIS_PRICE} per month.`,
 		provider: { '@type': 'Organization', name: 'Trick Trades' },
 		url: BUY_URL,
 		offers: tiers.map((t) => ({
@@ -27,7 +27,7 @@
 </script>
 
 <Seo
-	title="Polaris — Financial Coaching for Day Traders | Trick Trades"
+	title="Polaris: Financial Coaching for Day Traders"
 	description={`Polaris is a 90-day, 1:1 financial and budget coaching program so day traders stop overleveraging and trade from a position of strength. Two tiers, each $${POLARIS_PRICE} per month.`}
 	path="/polaris"
 	{jsonLd}

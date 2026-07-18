@@ -195,7 +195,7 @@
 		border-color: var(--tt-line-strong);
 	}
 
-	@media (min-width: 640px) {
+	@media (min-width: 768px) {
 		.bc-enroll__ticket {
 			grid-template-columns: auto 1fr auto;
 			text-align: left;

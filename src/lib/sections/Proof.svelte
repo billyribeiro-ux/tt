@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { reveal, counter, tilt } from '$lib/motion';
+	import { reveal, counter, tilt, drawLine } from '$lib/motion';
 	import { site, featuredOn, testimonials } from '$lib/data/site';
 
 	const stats = [
@@ -14,6 +14,19 @@
 
 	<div class="tt-container tt-container--wide proof__inner">
 		<header class="proof__head">
+			<!-- Decorative rising price line printing across the stat band as you scroll. -->
+			<svg
+				class="proof__spark"
+				aria-hidden="true"
+				viewBox="0 0 640 180"
+				preserveAspectRatio="none"
+				{@attach drawLine()}
+			>
+				<path
+					d="M0,150 L70,138 L120,150 L190,110 L250,124 L320,80 L380,92 L450,52 L520,64 L590,24 L640,14"
+				/>
+			</svg>
+
 			<div class="proof__intro">
 				<div class="section-head proof__bar" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
 					<span class="idx">09 / 13</span>
@@ -64,6 +77,7 @@
 					<figure class="proof__card" {@attach tilt(5)}>
 						<span class="proof__mark" aria-hidden="true">&ldquo;</span>
 						<blockquote class="proof__quote">{t.quote}</blockquote>
+						<span class="proof__spacer" aria-hidden="true"></span>
 						<hr class="hairline proof__card-rule" />
 						<figcaption class="proof__cite">
 							<span class="proof__name">{t.name}</span>
@@ -103,11 +117,34 @@
 
 	/* --- Header + stat band --- */
 	.proof__head {
+		position: relative;
 		display: grid;
 		gap: clamp(2rem, 5vw, 3.5rem);
 		align-items: end;
 		padding-bottom: clamp(2.4rem, 5vw, 4rem);
 		border-bottom: 1px solid var(--tt-line);
+	}
+	/* Rising price line drawn behind the numbers, a chart printing green. */
+	.proof__spark {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 0.38;
+	}
+	.proof__spark path {
+		fill: none;
+		stroke: var(--tt-red-bright);
+		stroke-width: 1.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+	.proof__intro,
+	.proof__stats {
+		position: relative;
+		z-index: 1;
 	}
 	.proof__bar {
 		margin-bottom: 1.3rem;
@@ -216,14 +253,22 @@
 		border-radius: var(--tt-radius-lg);
 		box-shadow: var(--tt-shadow-card);
 		overflow: hidden;
-		/* No `transform` here — tilt() drives transform per-frame via GSAP; a CSS
-		   transition on the same property would fight every write. */
-		transition: border-color 0.4s ease;
+		/* Only non-transform props transition here. tilt() drives `transform` per frame
+		   via GSAP, so transitioning it too would fight every write. */
+		transition:
+			border-color 0.4s ease,
+			box-shadow 0.4s ease,
+			background 0.4s ease;
 	}
 	.proof__card:hover {
 		border-color: var(--tt-line-strong);
+		background: var(--tt-ink);
+		box-shadow: var(--tt-shadow-lg);
 	}
+	/* Oversized quote mark anchored into the composition: the quote hugs beneath it
+	   instead of leaving it floating in dead space. */
 	.proof__mark {
+		display: block;
 		font-family: var(--tt-font-body);
 		font-weight: 800;
 		font-size: clamp(4rem, 3rem + 4vw, 7rem);
@@ -232,19 +277,27 @@
 		opacity: 0.28;
 	}
 	.proof__quote {
-		margin: 0.2rem 0 0;
+		margin: -0.1em 0 0;
 		font-size: var(--fs-lead);
 		line-height: 1.55;
 		color: var(--tt-fog);
 		text-wrap: pretty;
 	}
+	/* Grows to fill a stretched card so the attribution always anchors to the bottom
+	   edge (no dead void under short quotes), with a guaranteed minimum gap. */
+	.proof__spacer {
+		flex: 1 1 auto;
+		min-height: clamp(1.4rem, 3vw, 2rem);
+	}
 	.proof__card-rule {
-		margin: clamp(1.4rem, 3vw, 2rem) 0 1.1rem;
+		margin: 0 0 1.1rem;
 	}
 	.proof__cite {
 		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.35rem 1.2rem;
 	}
 	.proof__name {
 		font-weight: 700;
@@ -256,14 +309,15 @@
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-red-bright);
+		text-align: right;
 	}
 
-	@media (min-width: 720px) {
+	@media (min-width: 768px) {
 		.proof__head {
 			grid-template-columns: 1.5fr 1fr;
 		}
 	}
-	@media (min-width: 940px) {
+	@media (min-width: 1024px) {
 		.proof__grid {
 			grid-template-columns: 1.35fr 1fr;
 			grid-template-rows: 1fr 1fr;

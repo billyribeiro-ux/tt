@@ -11,7 +11,7 @@
 		'@type': 'Course',
 		name: 'Crystal Ball',
 		description:
-			'Pat Mitchell’s price-action series — two volumes that teach you to dissect price action and see moves before they happen. Eight modules per volume, plus a live-trading bonus hour in the bundle.',
+			'Pat Mitchell’s price-action series: two volumes that teach you to dissect price action and see moves before they happen. Eight modules per volume, plus a live-trading bonus hour in the bundle.',
 		url: 'https://tricktrades.com/crystal-ball-course',
 		provider: {
 			'@type': 'Organization',
@@ -29,8 +29,8 @@
 </script>
 
 <Seo
-	title="Crystal Ball — Price-Action Course — Trick Trades"
-	description="Pat Mitchell’s price-action series. Dissect price action and see moves before they happen — two volumes of eight modules each, plus a live-trading bonus hour."
+	title="Crystal Ball Price-Action Course | Trick Trades"
+	description="Pat Mitchell’s price-action series. Dissect price action and see moves before they happen: two volumes of eight modules each, plus a live-trading bonus hour."
 	path="/crystal-ball-course"
 	breadcrumbs={[
 		{ name: 'Academy', path: '/day-trading-academy' },

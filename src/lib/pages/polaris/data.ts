@@ -34,7 +34,7 @@ export type Tier = {
 	points: string[];
 };
 
-// Two tiers, same price — the difference is your debt situation and budget horizon.
+// Two tiers, same price; the difference is your debt situation and budget horizon.
 export const tiers: Tier[] = [
 	{
 		id: 'launch',
@@ -58,7 +58,7 @@ export const tiers: Tier[] = [
 		forWho: 'For traders with little to no debt',
 		focus: 'Long-term budget management',
 		blurb:
-			'Compound your gains with discipline — and build guardrails so you never repeat the same mistakes.',
+			'Compound your gains with discipline, and build guardrails so you never repeat the same mistakes.',
 		points: [
 			'Built for minimal or no-debt traders',
 			'Allocate profits with intention, not impulse',
@@ -75,7 +75,7 @@ export const steps: Step[] = [
 		n: '01',
 		name: 'Breakthrough Call',
 		Icon: PhoneCallIcon,
-		body: 'A one-on-one consultation on your finances and your goals — an honest look at where you are and where you want to be.'
+		body: 'A one-on-one consultation on your finances and your goals: an honest look at where you are and where you want to be.'
 	},
 	{
 		n: '02',
@@ -87,7 +87,7 @@ export const steps: Step[] = [
 		n: '03',
 		name: 'Weekly Collaboration',
 		Icon: CalendarCheckIcon,
-		body: 'Ninety days of structured, weekly coaching — adjusting the plan as your situation and the market change.'
+		body: 'Ninety days of structured, weekly coaching that adjusts the plan as your situation and the market change.'
 	}
 ];
 
@@ -97,7 +97,7 @@ export const includes: Inclusion[] = [
 	{
 		Icon: ChatsCircleIcon,
 		t: '1:1 consultation',
-		d: 'Direct, personal coaching — not a course you watch alone.'
+		d: 'Direct, personal coaching, not a course you watch alone.'
 	},
 	{
 		Icon: ChartBarIcon,
@@ -112,7 +112,7 @@ export const includes: Inclusion[] = [
 	{
 		Icon: ScalesIcon,
 		t: 'Risk-tolerance assessment',
-		d: 'How much you can actually afford to put at risk — and no more.'
+		d: 'How much you can actually afford to put at risk, and no more.'
 	},
 	{
 		Icon: PiggyBankIcon,

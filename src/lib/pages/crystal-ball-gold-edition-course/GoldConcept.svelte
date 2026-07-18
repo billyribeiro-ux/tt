@@ -6,13 +6,13 @@
 
 	const courseUrl = 'https://tricktrades.com/crystal-ball-gold-edition-course';
 
-	// The two facts the catalogue states about this tier — described, not embellished.
+	// The two facts the catalogue states about this tier, described and not embellished.
 	const pillars = [
 		{
 			n: '01',
 			Icon: WaveTriangleIcon,
 			title: 'Natural-movement theory',
-			body: 'The idea at the centre of the Gold Edition — Pat’s advanced read on how price moves and where it wants to go next.'
+			body: 'The idea at the centre of the Gold Edition. Pat’s advanced read on how price moves and where it wants to go next.'
 		},
 		{
 			n: '02',
@@ -158,7 +158,7 @@
 		font-size: 0.95rem;
 	}
 
-	@media (min-width: 780px) {
+	@media (min-width: 768px) {
 		.gd-concept__grid {
 			grid-template-columns: 1fr 1fr;
 		}

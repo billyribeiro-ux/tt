@@ -20,14 +20,14 @@
 			data-split
 			{@attach splitReveal({ stagger: 0.026 })}
 		>
-			A full library of courses — from fundamentals to
+			A full library of courses, from fundamentals to
 			<span class="text-red">price-action mastery.</span>
 		</h1>
 
 		<div class="aca-hero__foot" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 24 })}>
 			<p class="aca-hero__lede prose">
 				Built on real trading experience, not theory. Six programs that carry you from your first
-				green candle to reading price action before the move happens — self-paced, and taught by Pat
+				green candle to reading price action before the move happens. Self-paced, and taught by Pat
 				“Trick” Mitchell.
 			</p>
 
@@ -131,7 +131,7 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.aca-hero__foot {
 			grid-template-columns: 1.05fr 0.95fr;
 			align-items: end;

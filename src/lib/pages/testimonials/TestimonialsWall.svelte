@@ -27,9 +27,9 @@
 							<span class="t-wall__name">{t.name}</span>
 							<span class="t-wall__role">{t.role}</span>
 						</div>
+						<span class="t-wall__mark" aria-hidden="true">&ldquo;</span>
 					</div>
 					<figure class="t-wall__figure">
-						<span class="t-wall__mark" aria-hidden="true">&ldquo;</span>
 						<blockquote class="t-wall__quote">{t.quote}</blockquote>
 					</figure>
 				</li>
@@ -42,6 +42,8 @@
 	.t-wall {
 		position: relative;
 		overflow: clip;
+		/* Pull the wall up under the hero so there's no dead band between them. */
+		padding-top: clamp(3rem, 2rem + 4vw, 5.5rem);
 		background: var(--tt-black);
 		border-top: 1px solid var(--tt-line);
 	}
@@ -90,6 +92,17 @@
 		flex-direction: column;
 		gap: 1rem;
 	}
+	.t-wall__mark {
+		margin-top: 0.4rem;
+		font-family: var(--tt-font-body);
+		font-weight: 800;
+		font-size: clamp(3.4rem, 2.4rem + 5vw, 6.5rem);
+		line-height: 0.5;
+		color: var(--tt-red);
+		opacity: 0.24;
+		pointer-events: none;
+		user-select: none;
+	}
 	.t-wall__idx {
 		font-size: 0.78rem;
 		letter-spacing: 0.06em;
@@ -115,21 +128,7 @@
 		color: var(--tt-mute);
 	}
 	.t-wall__figure {
-		position: relative;
 		margin: 0;
-		padding-left: clamp(2.4rem, 5vw, 4.5rem);
-	}
-	.t-wall__mark {
-		position: absolute;
-		left: -0.1rem;
-		top: -0.35em;
-		font-family: var(--tt-font-body);
-		font-weight: 800;
-		font-size: clamp(4rem, 3rem + 5vw, 8rem);
-		line-height: 0.7;
-		color: var(--tt-red);
-		opacity: 0.26;
-		pointer-events: none;
 	}
 	.t-wall__quote {
 		margin: 0;
@@ -140,11 +139,17 @@
 		max-width: 62ch;
 	}
 
-	@media (min-width: 860px) {
+	@media (min-width: 768px) {
 		.t-wall__row {
-			grid-template-columns: 0.42fr 1fr;
-			gap: clamp(2rem, 4vw, 4rem);
-			align-items: start;
+			grid-template-columns: minmax(11rem, 0.32fr) 1fr;
+			gap: clamp(2rem, 4vw, 4.5rem);
+			align-items: stretch;
+		}
+		/* Attribution column stretches to the quote; the oversized mark falls to its
+		   foot, so a long quote no longer leaves a dead void beside a short citation. */
+		.t-wall__mark {
+			margin-top: auto;
+			margin-bottom: -0.1em;
 		}
 		.t-wall__row:nth-child(even) .t-wall__quote {
 			color: #fff;

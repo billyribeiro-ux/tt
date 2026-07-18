@@ -76,13 +76,13 @@
 		<p class="cprice__guide">
 			<BookOpenIcon class="cprice__guide-ico" weight="fill" size={18} />
 			<span>
-				Every package includes a <strong>meditation guide</strong> — setup, a breakdown of each session,
+				Every package includes a <strong>meditation guide</strong>: setup, a breakdown of each session,
 				what to expect, and how to use it.
 			</span>
 		</p>
 
 		<p class="cprice__fine">
-			Trick Trades Core is an educational meditation program — not medical, psychological, or
+			Trick Trades Core is an educational meditation program, not medical, psychological, or
 			financial advice. Individual results vary.
 		</p>
 	</div>
@@ -313,7 +313,7 @@
 		color: var(--tt-mute-2);
 	}
 
-	@media (min-width: 820px) {
+	@media (min-width: 768px) {
 		.cprice__grid {
 			grid-template-columns: 1fr 1.06fr;
 			align-items: center;

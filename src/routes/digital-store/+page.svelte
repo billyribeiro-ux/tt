@@ -10,7 +10,7 @@
 	const jsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'ItemList',
-		name: 'Trick Trades Digital Store — Instant Downloads',
+		name: 'Trick Trades Digital Store: Instant Downloads',
 		url: site.domain + '/digital-store',
 		numberOfItems: totalTitles,
 		itemListElement: categories
@@ -38,8 +38,8 @@
 </script>
 
 <Seo
-	title="Digital Store — Trick Trades Instant Downloads"
-	description="Own the education forever. Downloadable B.O.S.S. strategy systems, War Room DVDs, and streamed box sets from Pat “Trick” Mitchell — one-time purchase, instant access, lifetime ownership."
+	title="Digital Store: Trick Trades Instant Downloads"
+	description="Own the education forever. Downloadable B.O.S.S. systems, War Room DVDs, and streamed box sets. One-time purchase, instant access, lifetime ownership."
 	path="/digital-store"
 	{jsonLd}
 />

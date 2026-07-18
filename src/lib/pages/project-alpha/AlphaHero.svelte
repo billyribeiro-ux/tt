@@ -4,7 +4,7 @@
 
 	const applyUrl = 'https://tricktrades.com/project-alpha';
 
-	// Study meta strip — every value is a stated fact from the protocol.
+	// Study meta strip: every value is a stated fact from the protocol.
 	// No named investigator is claimed here: attribution is unsourced, so the study
 	// is framed by type rather than by a specific person.
 	const meta = [
@@ -34,7 +34,7 @@
 			<div class="pa-hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="pa-hero__lede">
 					A <strong>90-day neuroscience study</strong> testing a single question: can training the
-					brain’s alpha rhythm — the <strong>8–12 Hz</strong> band tied to calm, alert focus — make day
+					brain’s alpha rhythm (the <strong>8–12 Hz</strong> band tied to calm, alert focus) make day
 					traders steadier under pressure, sharper in execution, and more consistent from one session
 					to the next?
 				</p>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 
-		<!-- Illustrative EEG monitor — decorative, clearly labelled as not real data. -->
+		<!-- Illustrative EEG monitor: decorative, clearly labelled as not real data. -->
 		<div
 			class="pa-hero__panel"
 			aria-hidden="true"
@@ -99,7 +99,7 @@
 					<dd>Focused calm</dd>
 				</div>
 			</dl>
-			<p class="pa-panel__note label">Illustrative — not participant data</p>
+			<p class="pa-panel__note label">Illustrative · not participant data</p>
 		</div>
 	</div>
 </section>
@@ -298,7 +298,7 @@
 		font-size: 0.62rem;
 	}
 
-	@media (min-width: 940px) {
+	@media (min-width: 1024px) {
 		.pa-hero__inner {
 			grid-template-columns: 1.05fr 0.95fr;
 		}

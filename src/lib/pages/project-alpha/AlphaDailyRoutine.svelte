@@ -48,7 +48,7 @@
 			</h2>
 			<p class="pa-day__intro prose">
 				Consistency is the whole point, so the routine is fixed. It wraps around a trading day
-				you’re already having — bookending the open and the close with training and data capture.
+				you’re already having, bookending the open and the close with training and data capture.
 			</p>
 		</div>
 
@@ -137,12 +137,12 @@
 		color: var(--tt-mute);
 	}
 
-	@media (min-width: 720px) {
+	@media (min-width: 768px) {
 		.pa-day__list {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
-	@media (min-width: 1040px) {
+	@media (min-width: 1024px) {
 		.pa-day__list {
 			grid-template-columns: repeat(4, 1fr);
 		}

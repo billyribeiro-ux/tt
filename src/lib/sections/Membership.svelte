@@ -41,7 +41,7 @@
 				{@attach reveal({ stagger: 0.12, y: 22, duration: 0.8 })}
 			>
 				<p class="mem__note">
-					No alerts. No noise. A trained room that answers — and a coach who teaches live, on mic,
+					No alerts. No noise. A trained room that answers, and a coach who teaches live, on mic,
 					every session.
 				</p>
 				<Button href="#pricing">See membership plans</Button>
@@ -181,7 +181,7 @@
 		color: var(--tt-mute);
 	}
 
-	/* Featured (first) feature — wider, warmer, horizontal */
+	/* Featured (first) feature: wider, warmer, horizontal */
 	.mem__item--feat {
 		position: relative;
 		gap: 1.1rem;
@@ -208,7 +208,7 @@
 		color: var(--tt-fog);
 	}
 
-	@media (min-width: 620px) {
+	@media (min-width: 768px) {
 		.mem__grid {
 			grid-template-columns: repeat(6, 1fr);
 			column-gap: clamp(1.5rem, 3vw, 2.5rem);
@@ -219,7 +219,7 @@
 		.mem__item:last-child {
 			border-bottom: 0;
 		}
-		/* 1 wide / 2 medium / 3 narrow — a genuinely varied rhythm */
+		/* 1 wide / 2 medium / 3 narrow: a genuinely varied rhythm */
 		.mem__item:nth-child(1) {
 			grid-column: span 6;
 		}
@@ -241,7 +241,7 @@
 		}
 	}
 
-	@media (min-width: 620px) {
+	@media (min-width: 768px) {
 		.mem__item--feat {
 			display: grid;
 			grid-template-columns: minmax(140px, 220px) 1fr;
@@ -271,7 +271,7 @@
 		}
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.mem__head {
 			grid-template-columns: 1.2fr 0.8fr;
 		}

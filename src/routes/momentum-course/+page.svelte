@@ -11,7 +11,7 @@
 		'@type': 'Course',
 		name: 'Momentum',
 		description:
-			'Trick Trades’ flagship program — high-level day-trading coaching with Pat Mitchell across 15 modules and 115 video lessons, plus 14 bonus lessons and B.O.S.S. Carbon (a $597 value) included.',
+			'Trick Trades’ flagship program: high-level day-trading coaching with Pat Mitchell across 15 modules and 115 video lessons, plus 14 bonus lessons and B.O.S.S. Carbon (a $597 value) included.',
 		url: 'https://tricktrades.com/momentum-course',
 		provider: {
 			'@type': 'Organization',
@@ -22,8 +22,8 @@
 </script>
 
 <Seo
-	title="Momentum — Flagship Coaching — Trick Trades"
-	description="Trick Trades’ flagship program: high-level day-trading coaching with Pat Mitchell — 15 modules, 115 video lessons, 14 bonus lessons and B.O.S.S. Carbon included."
+	title="Momentum Flagship Coaching | Trick Trades"
+	description="Trick Trades’ flagship program: high-level day-trading coaching with Pat Mitchell. 15 modules, 115 video lessons, 14 bonus lessons and B.O.S.S. Carbon included."
 	path="/momentum-course"
 	breadcrumbs={[
 		{ name: 'Academy', path: '/day-trading-academy' },

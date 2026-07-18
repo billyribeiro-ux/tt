@@ -36,7 +36,7 @@
 	{@const from = Math.min(...c.products.map((p) => p.price))}
 	<header class="cat__head" data-anim {@attach reveal({ y: 28 })}>
 		<p class="cat__kicker label">
-			<span class="cat__idx">{c.idx}</span> / {CATEGORY_COUNT_LABEL} — {count}
+			<span class="cat__idx">{c.idx}</span> / {CATEGORY_COUNT_LABEL} · {count}
 			{count === 1 ? 'title' : 'titles'}
 		</p>
 		<div class="cat__titlerow">
@@ -81,8 +81,8 @@
 					>
 					<h3 class="pack__name">{bossPack.name}</h3>
 					<p class="pack__note">
-						Carbon, SPY Sniper and Swing in a single download —
-						<strong>save ${intPart(bossSaving)}</strong> versus buying each system on its own.
+						Carbon, SPY Sniper and Swing in a single download.
+						<strong>Save ${intPart(bossSaving)}</strong> versus buying each system on its own.
 					</p>
 				</div>
 				<div class="pack__buy">
@@ -138,7 +138,7 @@
 						>
 						<h3 class="box__name">{p.name}</h3>
 						<p class="box__note">
-							All four volumes of the series — streamed, not shipped. Lifetime access.
+							All four volumes of the series, streamed rather than shipped. Lifetime access.
 						</p>
 						<div class="box__foot">
 							<div class="box__pricing">
@@ -515,7 +515,7 @@
 	}
 
 	/* ========================= RESPONSIVE ======================== */
-	@media (min-width: 720px) {
+	@media (min-width: 768px) {
 		.row {
 			grid-template-columns: 2.6rem minmax(0, 1fr) 8.5rem 7.5rem auto;
 			grid-template-areas: 'idx name fmt price cta';
@@ -525,9 +525,6 @@
 		.row__price {
 			justify-self: end;
 		}
-	}
-
-	@media (min-width: 760px) {
 		.boss-grid {
 			grid-template-columns: repeat(3, 1fr);
 		}

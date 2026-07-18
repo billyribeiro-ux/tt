@@ -100,9 +100,9 @@
 		gap: 0.8rem;
 		margin-top: clamp(2rem, 4vw, 3rem);
 		padding: 1.2rem 1.4rem;
-		border: 1px solid rgba(245, 196, 81, 0.3);
+		border: 1px solid rgb(var(--tt-gold-rgb) / 0.3);
 		border-radius: var(--tt-radius);
-		background: rgba(245, 196, 81, 0.05);
+		background: rgb(var(--tt-gold-rgb) / 0.05);
 	}
 	:global(.inc__disclaimer-ico) {
 		flex: none;
@@ -119,12 +119,12 @@
 		font-weight: 600;
 	}
 
-	@media (min-width: 640px) {
+	@media (min-width: 768px) {
 		.inc__grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
-	@media (min-width: 960px) {
+	@media (min-width: 1024px) {
 		.inc__grid {
 			grid-template-columns: repeat(3, 1fr);
 		}

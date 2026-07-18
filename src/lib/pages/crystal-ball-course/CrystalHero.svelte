@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import { reveal, splitReveal, parallax, jumpTo } from '$lib/motion';
+	import { reveal, splitReveal, parallax, drawLine, jumpTo } from '$lib/motion';
 	import EyeIcon from 'phosphor-svelte/lib/EyeIcon';
 
 	const courseUrl = 'https://tricktrades.com/crystal-ball-course';
@@ -28,7 +28,7 @@
 
 			<div class="cb-hero__foot" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 24 })}>
 				<p class="cb-hero__lede prose">
-					Crystal Ball is Pat Mitchell’s price-action series — two volumes that teach you to dissect
+					Crystal Ball is Pat Mitchell’s price-action series: two volumes that teach you to dissect
 					raw price action, read intent behind every candle, and build the patience to wait for the
 					level that pays.
 				</p>
@@ -47,6 +47,22 @@
 				<span class="cb-hero__orb-glyph"
 					><EyeIcon size={64} weight="thin" aria-hidden="true" /></span
 				>
+				<!-- The move printing before it happens: a price line drawn once on entry. -->
+				<svg
+					class="cb-hero__orb-line"
+					viewBox="0 0 220 96"
+					fill="none"
+					aria-hidden="true"
+					{@attach drawLine({ scrub: false })}
+				>
+					<path
+						d="M6 76 L44 62 L74 82 L104 44 L134 56 L166 24 L214 8"
+						stroke="var(--tt-red-bright)"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
 				<span class="cb-hero__orb-ring cb-hero__orb-ring--a" aria-hidden="true"></span>
 				<span class="cb-hero__orb-ring cb-hero__orb-ring--b" aria-hidden="true"></span>
 			</div>
@@ -147,6 +163,17 @@
 		z-index: 2;
 		color: #fff;
 	}
+	.cb-hero__orb-line {
+		position: absolute;
+		left: 50%;
+		bottom: 19%;
+		z-index: 1;
+		width: 58%;
+		height: auto;
+		filter: drop-shadow(0 0 8px rgb(var(--tt-red-bright-rgb) / 0.45));
+		transform: translateX(-50%);
+		pointer-events: none;
+	}
 	.cb-hero__orb-ring {
 		position: absolute;
 		border-radius: 50%;
@@ -161,7 +188,7 @@
 		border-color: var(--tt-line);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.cb-hero__inner {
 			grid-template-columns: 1.1fr 0.9fr;
 		}
