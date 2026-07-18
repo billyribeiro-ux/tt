@@ -9,12 +9,12 @@
 		imageAlt?: string;
 		type?: string;
 		jsonLd?: unknown;
-		/** Breadcrumb trail for subpages: [{ name, path }] — home is prepended automatically. */
+		/** Breadcrumb trail for subpages: [{ name, path }]; home is prepended automatically. */
 		breadcrumbs?: { name: string; path: string }[];
 	};
 
 	let {
-		title = 'Trick Trades — Master the Skill. Master the Emotion. Get Your Freedom.',
+		title = 'Trick Trades: Master the Skill. Master the Emotion. Get Your Freedom.',
 		description = site.description,
 		path = '/',
 		image = site.videoPoster,
@@ -25,7 +25,7 @@
 	}: Props = $props();
 
 	const canonical = $derived(site.domain + (path === '/' ? '' : path));
-	const fullTitle = $derived(title.includes(site.name) ? title : `${title} — ${site.name}`);
+	const fullTitle = $derived(title.includes(site.name) ? title : `${title} | ${site.name}`);
 	const breadcrumbLd = $derived(
 		breadcrumbs?.length
 			? {

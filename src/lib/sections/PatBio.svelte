@@ -54,8 +54,8 @@
 						</p>
 						<p>
 							I&rsquo;ve bled, I&rsquo;ve given everything to get where I am — and I can take you by
-							the hand, guide each step, and get you through the doubt, the mistakes, the blow ups. I
-							broke through every barrier, and now I&rsquo;m living the life of my dreams.
+							the hand, guide each step, and get you through the doubt, the mistakes, the blow ups.
+							I broke through every barrier, and now I&rsquo;m living the life of my dreams.
 						</p>
 						<p class="bio__closer">
 							There&rsquo;s only one thing missing from this picture:

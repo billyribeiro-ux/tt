@@ -19,7 +19,12 @@
 			</div>
 
 			<div class="price__headrow">
-				<h2 id="price-title" class="price__title" data-split {@attach splitReveal({ stagger: 0.026 })}>
+				<h2
+					id="price-title"
+					class="price__title"
+					data-split
+					{@attach splitReveal({ stagger: 0.026 })}
+				>
 					Pricing plan — unbeatable value.
 				</h2>
 
@@ -177,11 +182,8 @@
 		z-index: 2;
 		border-color: rgb(var(--tt-red-rgb) / 0.55);
 		background:
-			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 40%),
-			var(--tt-ink-2);
-		box-shadow:
-			var(--tt-glow-red),
-			var(--tt-shadow-lg);
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 40%), var(--tt-ink-2);
+		box-shadow: var(--tt-glow-red), var(--tt-shadow-lg);
 		padding-top: clamp(2.3rem, 4vw, 3rem);
 	}
 

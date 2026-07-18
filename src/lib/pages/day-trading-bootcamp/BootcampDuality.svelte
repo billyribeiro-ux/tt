@@ -20,7 +20,12 @@
 			<span class="label bc-dual__count">Skill &amp; emotion</span>
 		</div>
 
-		<h2 id="bc-dual-title" class="bc-dual__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+		<h2
+			id="bc-dual-title"
+			class="bc-dual__title"
+			data-split
+			{@attach splitReveal({ stagger: 0.03 })}
+		>
 			Two halves of the same <span class="text-red">trade.</span>
 		</h2>
 		<p class="bc-dual__intro prose">
@@ -38,7 +43,11 @@
 				<p class="bc-dual__panel-body">{skill.body}</p>
 			</article>
 
-			<article class="bc-dual__panel bc-dual__panel--ruled" data-anim {@attach reveal({ y: 40, delay: 0.08 })}>
+			<article
+				class="bc-dual__panel bc-dual__panel--ruled"
+				data-anim
+				{@attach reveal({ y: 40, delay: 0.08 })}
+			>
 				<div class="bc-dual__panel-top">
 					<span class="bc-dual__panel-idx num">02</span>
 					<span class="bc-dual__panel-icon"><EmotionIcon size={24} weight="regular" /></span>

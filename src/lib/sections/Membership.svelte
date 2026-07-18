@@ -35,7 +35,11 @@
 					(not a chaotic free-for-all Discord room)
 				</p>
 			</div>
-			<div class="mem__aside" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 22, duration: 0.8 })}>
+			<div
+				class="mem__aside"
+				data-anim-stagger
+				{@attach reveal({ stagger: 0.12, y: 22, duration: 0.8 })}
+			>
 				<p class="mem__note">
 					No alerts. No noise. A trained room that answers — and a coach who teaches live, on mic,
 					every session.

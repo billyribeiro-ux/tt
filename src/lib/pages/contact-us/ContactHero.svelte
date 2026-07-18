@@ -23,10 +23,10 @@
 
 			<div class="c-hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="c-hero__lede">
-					Trick Trades is an <strong>education-first</strong> mentorship, not a call center. There is
-					no ticket bot and no phone tree here — just the team behind the room. The quickest way to
-					reach us is <strong>email</strong>; for day-to-day questions, the private Facebook group is
-					often faster still.
+					Trick Trades is an <strong>education-first</strong> mentorship, not a call center. There
+					is no ticket bot and no phone tree here — just the team behind the room. The quickest way
+					to reach us is <strong>email</strong>; for day-to-day questions, the private Facebook
+					group is often faster still.
 				</p>
 
 				<dl class="c-hero__meta">
@@ -67,7 +67,9 @@
 				<span></span>
 			</div>
 			<div class="c-panel__foot">
-				<span class="c-panel__chip"><ChatsCircleIcon size={16} weight="regular" />Facebook group</span>
+				<span class="c-panel__chip"
+					><ChatsCircleIcon size={16} weight="regular" />Facebook group</span
+				>
 				<span class="c-panel__send">Send</span>
 			</div>
 		</div>

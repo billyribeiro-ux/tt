@@ -46,20 +46,20 @@
 		}
 	];
 
-	// Stamped at prerender time — a static rebuild is when "now" is decided.
+	// Stamped at prerender time; a static rebuild is when "now" is decided.
 	const year = new Date().getFullYear();
 </script>
 
 <footer class="ft">
-	<!-- Risk disclosure — real, and required for a trading-education service -->
+	<!-- Risk disclosure: real, and required for a trading-education service -->
 	<div class="ft__risk">
 		<div class="tt-container ft__risk-inner">
 			<span class="label">Risk Disclosure</span>
 			<p>
-				Trading is purely and 100% education — we do not trade your money, send alerts, or give
+				Trading is purely and 100% education. We do not trade your money, send alerts, or give
 				financial advice. Day trading involves substantial risk. Most people lose or never make any
-				money day trading; results shown are not typical. You must be 18 or older. Your decisions are
-				yours alone to make.
+				money day trading; results shown are not typical. You must be 18 or older. Your decisions
+				are yours alone to make.
 			</p>
 		</div>
 	</div>

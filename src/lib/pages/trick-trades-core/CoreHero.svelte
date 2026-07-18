@@ -34,13 +34,15 @@
 
 			<div class="chero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="chero__lede">
-					Under real risk, a <strong>survival response</strong> takes over and overrides the strategy
-					you’ve already learned. <strong>Trick Trades Core</strong> is a binaural-beats meditation program
-					built to rewire those subconscious behaviours — session by session, night by night.
+					Under real risk, a <strong>survival response</strong> takes over and overrides the
+					strategy you’ve already learned. <strong>Trick Trades Core</strong> is a binaural-beats meditation
+					program built to rewire those subconscious behaviours — session by session, night by night.
 				</p>
 
 				<div class="chero__cta">
-					<Button href="#pricing" onclick={(e) => jumpTo(e, '#pricing')}>Get Volume One — $97</Button>
+					<Button href="#pricing" onclick={(e) => jumpTo(e, '#pricing')}
+						>Get Volume One — $97</Button
+					>
 					<Button href="#sessions" variant="ghost" onclick={(e) => jumpTo(e, '#sessions')}>
 						See the daily sessions
 					</Button>
@@ -140,8 +142,7 @@
 		border: 1px solid var(--tt-line);
 		border-radius: var(--tt-radius-lg);
 		background:
-			linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%),
-			var(--tt-ink-2);
+			linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 	}
 	.chero__spec-top {

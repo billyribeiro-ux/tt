@@ -127,8 +127,7 @@
 		border: 1px solid var(--tt-line);
 		border-radius: var(--tt-radius-lg);
 		background:
-			linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%),
-			var(--tt-ink-2);
+			linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 	}
 	.phero__spec-top {

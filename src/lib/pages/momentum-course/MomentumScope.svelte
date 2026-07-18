@@ -21,7 +21,12 @@
 		</div>
 
 		<div class="mo-scope__head">
-			<h2 id="mo-scope-title" class="mo-scope__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+			<h2
+				id="mo-scope-title"
+				class="mo-scope__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.03 })}
+			>
 				The whole game, <span class="text-red">module by module.</span>
 			</h2>
 			<p class="mo-scope__intro prose">

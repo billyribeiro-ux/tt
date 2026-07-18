@@ -19,7 +19,12 @@
 
 			<div class="mo-boss__main">
 				<span class="mo-boss__icon"><CubeIcon size={26} weight="regular" /></span>
-				<h2 id="mo-boss-title" class="mo-boss__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+				<h2
+					id="mo-boss-title"
+					class="mo-boss__title"
+					data-split
+					{@attach splitReveal({ stagger: 0.03 })}
+				>
 					B.O.S.S. <span class="text-red">Carbon</span>, included.
 				</h2>
 				<p class="mo-boss__body">
@@ -58,8 +63,7 @@
 		border: 1px solid rgb(var(--tt-red-rgb) / 0.42);
 		border-radius: var(--tt-radius-lg);
 		background:
-			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 42%),
-			var(--tt-ink-2);
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 42%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 	}
 	.mo-boss__reg {

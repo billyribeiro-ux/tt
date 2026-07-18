@@ -17,7 +17,12 @@
 			<span class="mo-enroll__rule" aria-hidden="true"></span>Enrollment
 		</p>
 
-		<h2 id="mo-enroll-title" class="mo-enroll__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+		<h2
+			id="mo-enroll-title"
+			class="mo-enroll__title"
+			data-split
+			{@attach splitReveal({ stagger: 0.03 })}
+		>
 			The flagship. Coached by <span class="text-red">Pat.</span>
 		</h2>
 

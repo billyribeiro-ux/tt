@@ -20,8 +20,15 @@
 
 		<div class="pa-hyp__grid">
 			<div class="pa-hyp__lead">
-				<h2 id="pa-hyp-title" class="pa-hyp__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
-					Traders who hold an alpha state should trade like <span class="text-red">different people.</span>
+				<h2
+					id="pa-hyp-title"
+					class="pa-hyp__title"
+					data-split
+					{@attach splitReveal({ stagger: 0.03 })}
+				>
+					Traders who hold an alpha state should trade like <span class="text-red"
+						>different people.</span
+					>
 				</h2>
 				<p class="pa-hyp__note prose">
 					The premise is narrow on purpose. We are not claiming a headband makes anyone profitable.

@@ -57,6 +57,14 @@
 	--tt-container-wide: 1400px;
 	--tt-header-h: 76px;
 
+	/* Breakpoint contract (CSS vars can't drive media queries, so these are the
+	   canonical values every component must use verbatim):
+	   480px  = large phones      (min-width: 480px)
+	   768px  = tablets           (min-width: 768px)
+	   1024px = laptops / desktop nav switch
+	   1280px = large desktop
+	   1536px = ultrawide */
+
 	/* Fluid type scale */
 	--fs-eyebrow: clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
 	--fs-body: clamp(1rem, 0.96rem + 0.25vw, 1.12rem);
@@ -180,7 +188,13 @@ p {
 	line-height: 0.9;
 }
 .text-gradient {
-	background: linear-gradient(100deg, #fff 0%, #fff 40%, var(--tt-red-bright) 78%, var(--tt-amber) 100%);
+	background: linear-gradient(
+		100deg,
+		#fff 0%,
+		#fff 40%,
+		var(--tt-red-bright) 78%,
+		var(--tt-amber) 100%
+	);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;

@@ -19,16 +19,20 @@
 
 		<div class="c-ch__grid">
 			<!-- Email — the primary, direct channel (wide) -->
-			<article class="c-ch__card c-ch__card--wide" data-anim {@attach reveal({ y: 40, duration: 1 })}>
+			<article
+				class="c-ch__card c-ch__card--wide"
+				data-anim
+				{@attach reveal({ y: 40, duration: 1 })}
+			>
 				<div class="c-ch__top">
 					<span class="c-ch__icon"><EnvelopeSimpleIcon size={24} weight="regular" /></span>
 					<span class="c-ch__tag label">Direct · Email</span>
 				</div>
 				<h3 class="c-ch__name">Email the support team</h3>
 				<p class="c-ch__body">
-					The right place for anything to do with your account, billing, access, or a specific course
-					— and for anything you would rather not post in a group. Write to us and a member of the
-					team will read it and reply by email.
+					The right place for anything to do with your account, billing, access, or a specific
+					course — and for anything you would rather not post in a group. Write to us and a member
+					of the team will read it and reply by email.
 				</p>
 				<a class="c-ch__addr num" href="mailto:{site.support}">{site.support}</a>
 				<div class="c-ch__cta">

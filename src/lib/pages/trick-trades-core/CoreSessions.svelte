@@ -103,8 +103,8 @@
 						<span class="sess__tag">Included in Volume One</span>
 					</div>
 					<p class="sess__text">
-						Three standalone one-hour affirmation disks to reinforce the work between sessions and on
-						the days the market keeps you away from the desk.
+						Three standalone one-hour affirmation disks to reinforce the work between sessions and
+						on the days the market keeps you away from the desk.
 					</p>
 				</div>
 			</li>

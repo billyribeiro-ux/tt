@@ -23,12 +23,7 @@
 						Our promise to you
 					</p>
 
-					<h2
-						id="gua-title"
-						class="gua__title"
-						data-split
-						{@attach splitReveal({ stagger: 0.02 })}
-					>
+					<h2 id="gua-title" class="gua__title" data-split {@attach splitReveal({ stagger: 0.02 })}>
 						{guarantee.title}
 					</h2>
 
@@ -54,7 +49,10 @@
 
 						<svg class="gua__ring" viewBox="0 0 220 220">
 							<defs>
-								<path id="gua-ring-path" d="M110,110 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0" />
+								<path
+									id="gua-ring-path"
+									d="M110,110 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"
+								/>
 							</defs>
 							<text><textPath href="#gua-ring-path" startOffset="0">{ringText}</textPath></text>
 						</svg>
@@ -233,7 +231,11 @@
 		gap: 0.55rem;
 		border-radius: 50%;
 		text-align: center;
-		background: radial-gradient(120% 120% at 50% 22%, rgb(var(--tt-red-rgb) / 0.24), rgba(16, 16, 19, 0.94) 72%);
+		background: radial-gradient(
+			120% 120% at 50% 22%,
+			rgb(var(--tt-red-rgb) / 0.24),
+			rgba(16, 16, 19, 0.94) 72%
+		);
 		border: 1px solid rgb(var(--tt-red-rgb) / 0.42);
 		box-shadow:
 			inset 0 1px 0 rgba(255, 255, 255, 0.06),

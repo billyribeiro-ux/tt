@@ -1,5 +1,5 @@
 /**
- * Trick Trades — content model.
+ * Trick Trades content model.
  * Copy is transcribed from the live tricktrades.com homepage ("Freedom") source.
  * All numbers/prices/names are real; nothing here is fabricated.
  */
@@ -12,7 +12,7 @@ export const site = {
 	description:
 		'If you are losing money trading, watch the quick video before you do anything else today. Trick Trades is a 100% educational day-trading mentorship led by Pat "Trick" Mitchell.',
 	studentsTrained: 30000,
-	// The real VSL — hosted on muse.ai (embed id from the live source)
+	// The real VSL, hosted on muse.ai (embed id from the live source)
 	videoEmbed: 'https://muse.ai/embed/Zrq42Gq?search=0&links=0&logo=0&title=0',
 	videoPoster:
 		'https://trick-trades-media-storage.storage.googleapis.com/wp-content/uploads/2024/02/06134452/pat_barn.jpg',
@@ -129,7 +129,7 @@ export const mastery = [
 	}
 ];
 
-/** The "Massive Results Formula" — each pillar pairs a fix + what we teach. */
+/** The "Massive Results Formula": each pillar pairs a fix + what we teach. */
 export const formula = [
 	{
 		pillar: 'Structured Learning & Testing',
@@ -172,7 +172,7 @@ export const membership = [
 	{
 		icon: 'UsersThree',
 		title: 'Open Connection to Trained Members',
-		body: 'Unlike other chat rooms, you have complete freedom to ask the entire community questions — and they WILL get answered. You’ll never feel intimidated or lost.'
+		body: 'Unlike other chat rooms, you have complete freedom to ask the entire community questions, and they WILL get answered. You’ll never feel intimidated or lost.'
 	},
 	{
 		icon: 'Broadcast',
@@ -182,7 +182,7 @@ export const membership = [
 	{
 		icon: 'MoonStars',
 		title: 'Prepare for Success Every Night',
-		body: 'A video watch list is recorded every night for the next day and accessible in the members area — high-probability, cherry-picked opportunities.'
+		body: 'A video watch list is recorded every night for the next day and accessible in the members area. High-probability, cherry-picked opportunities.'
 	},
 	{
 		icon: 'Alarm',
@@ -192,7 +192,7 @@ export const membership = [
 	{
 		icon: 'ChatsCircle',
 		title: 'Live Chat is 24/7',
-		body: 'Get help, ask questions, or make new friends any time. We’re an engaging community that communicates day and night — even weekends. We never shut down.'
+		body: 'Get help, ask questions, or make new friends any time. We’re an engaging community that communicates day and night, even on weekends. We never shut down.'
 	}
 ];
 
@@ -203,11 +203,11 @@ export const reasonsNot = [
 	},
 	{
 		title: 'Looking for the Easy Way',
-		body: '“Do you have a free trial?” “Do you send alerts?” “Can you trade my money?” All that says is “I don’t have the drive to work hard.” The market can give you more time and freedom — but it takes the ability to listen and follow directions through every peak and valley.'
+		body: '“Do you have a free trial?” “Do you send alerts?” “Can you trade my money?” All that says is “I don’t have the drive to work hard.” The market can give you more time and freedom, but it takes the ability to listen and follow directions through every peak and valley.'
 	},
 	{
 		title: 'Not Willing To Put in the Time',
-		body: 'Many assume they can absorb everything in a few weeks, say “I got this,” and leave. They return with their tail between their legs. This is an ongoing process. The Trick Trades methodology is based on simplicity — caveman simple — but you have to commit.'
+		body: 'Many assume they can absorb everything in a few weeks, say “I got this,” and leave. They return with their tail between their legs. This is an ongoing process. The Trick Trades methodology is based on simplicity. Caveman simple. But you have to commit.'
 	}
 ];
 
@@ -235,11 +235,19 @@ export const testimonials = [
 		name: 'Richard Becher',
 		role: 'IT Consultant',
 		quote:
-			'I’ve been part of Trick Trades for a little over 2 months. To offer a mentoring component freely available as part of the package is INSANELY generous. Kelvo is a fantastic guide — I appreciate his ability to call out BS while offering support and encouragement at the same time.'
+			'I’ve been part of Trick Trades for a little over 2 months. To offer a mentoring component freely available as part of the package is INSANELY generous. Kelvo is a fantastic guide. I appreciate his ability to call out BS while offering support and encouragement at the same time.'
 	}
 ];
 
-export const featuredOn = ['CBS', 'FOX', 'NBC', 'USA Today', 'MarketWatch', 'Benzinga', 'Google News'];
+export const featuredOn = [
+	'CBS',
+	'FOX',
+	'NBC',
+	'USA Today',
+	'MarketWatch',
+	'Benzinga',
+	'Google News'
+];
 
 export type Plan = {
 	id: string;
@@ -260,20 +268,21 @@ export const plans: Plan[] = [
 		name: 'Size UP Guidance',
 		price: 247,
 		cadence: '/month',
-		blurb: 'Introduction to Pat’s proven day-trading strategy, video lessons and daily guidance for each trading day.',
+		blurb:
+			'Introduction to Pat’s proven day-trading strategy, video lessons and daily guidance for each trading day.',
 		cta: 'Join Size UP Guidance',
 		href: external.joinGuidance,
 		features: [
 			'The Size UP! App (iOS, Android, Desktop)',
 			'Boot Camp: 50+ game-changing lessons on skills & emotions',
 			'Complete instruction & dissection of Smart Money Tactics',
-			'How to find and plot the secret levels — self-sufficiently',
+			'How to find and plot the secret levels, self-sufficiently',
 			'The selective basket of stocks Pat uses every single day',
 			'The Standard Risk strategy to avoid dirty losses',
 			'Nightly video watch list, viewable on any device',
 			'Live screenshare at 8:45 a.m. EST to guide your morning',
 			'Live Pre-Market Plan of Attack (PMPOA) every day at 9 a.m. EST',
-			'24/7 helpful & friendly chat room — your questions WILL get answered',
+			'24/7 helpful & friendly chat room where your questions WILL get answered',
 			'Trade recaps + entry/exit charts posted in our private FB group',
 			'Morning newsletter briefing sent to your inbox'
 		]
@@ -283,7 +292,8 @@ export const plans: Plan[] = [
 		name: 'Size UP Mentoring',
 		price: 347,
 		cadence: '/month',
-		blurb: 'Weekly mentoring that builds on the week’s lessons plus forward-thinking conversation on self-improvement and market analysis.',
+		blurb:
+			'Weekly mentoring that builds on the week’s lessons plus forward-thinking conversation on self-improvement and market analysis.',
 		cta: 'Join Size UP Mentorship',
 		href: external.joinMentorship,
 		featured: true,
@@ -298,7 +308,7 @@ export const plans: Plan[] = [
 			'When and where to correctly pay yourself',
 			'Advanced trading psychology to take advantage of DUMB MONEY',
 			'How to find hidden trend formations on the daily chart',
-			'The subtle nuances on the intraday chart — get inside Pat’s head',
+			'The subtle nuances on the intraday chart. Get inside Pat’s head',
 			'The only times Pat holds overnight',
 			'A review of some of your toughest trades'
 		]
@@ -320,7 +330,7 @@ export const faqs = [
 	},
 	{
 		q: 'What if I’m a beginner?',
-		a: 'It’s almost better if you don’t have a lot of experience — you don’t have to be re-wired to get rid of bad habits. This is a family-oriented community that embraces new and struggling day traders.'
+		a: 'It’s almost better if you don’t have a lot of experience. You don’t have to be re-wired to get rid of bad habits. This is a family-oriented community that embraces new and struggling day traders.'
 	},
 	{
 		q: 'Do you put out a watch list?',
@@ -332,11 +342,11 @@ export const faqs = [
 	},
 	{
 		q: 'Do you trade penny stocks?',
-		a: 'Absolutely not. Penny stocks will decimate your account. We trade what Smart Money trades — market leaders that are liquid and easy to trade. Once you see how profitable it is, you’ll never want to trade anything else.'
+		a: 'Absolutely not. Penny stocks will decimate your account. We trade what Smart Money trades: market leaders that are liquid and easy to trade. Once you see how profitable it is, you’ll never want to trade anything else.'
 	},
 	{
-		q: 'I don’t have a big account — can I still trade?',
-		a: 'Of course! Most members started with a few hundred to a few thousand dollars. With our options strategy you don’t even need to worry about the PDT rule — just open a cash options account.'
+		q: 'I don’t have a big account. Can I still trade?',
+		a: 'Of course! Most members started with a few hundred to a few thousand dollars. With our options strategy you don’t even need to worry about the PDT rule. Just open a cash options account.'
 	},
 	{
 		q: 'Is there a long-term commitment?',
@@ -348,8 +358,8 @@ export const guarantee = {
 	title: 'Trick Trades “No Trader Left Behind” Guarantee',
 	body: [
 		'Our mission is simple: provide you with the educational resources required so you can master a level of trading that delivers your freedom.',
-		'We’ve created a framework of strategies and systems that keep you safe from unnecessary loss while you gain the experience to gradually increase risk over time — steadily growing your account as you pull profits from the market.',
+		'We’ve created a framework of strategies and systems that keep you safe from unnecessary loss while you gain the experience to gradually increase risk over time, steadily growing your account as you pull profits from the market.',
 		'This framework includes training courses, daily live trading guidance, technical support, and multiple channels of communication to help you wherever you are in your learning process.',
-		'When you trust this process and allow yourself to grow, your dream of becoming a professional trader becomes real — day by day, trade by trade, lesson by lesson. There’s no going back. And no trader gets left behind. That’s our guarantee to you.'
+		'When you trust this process and allow yourself to grow, your dream of becoming a professional trader becomes real. Day by day, trade by trade, lesson by lesson. There’s no going back. And no trader gets left behind. That’s our guarantee to you.'
 	]
 };

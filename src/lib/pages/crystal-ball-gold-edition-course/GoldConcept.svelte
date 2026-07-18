@@ -31,7 +31,12 @@
 			<span class="label gd-concept__count">Gold Edition</span>
 		</div>
 
-		<h2 id="gd-concept-title" class="gd-concept__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+		<h2
+			id="gd-concept-title"
+			class="gd-concept__title"
+			data-split
+			{@attach splitReveal({ stagger: 0.03 })}
+		>
 			Where the series is taught <span class="gd-concept__accent">live.</span>
 		</h2>
 
@@ -54,7 +59,8 @@
 				The Gold Edition is enrolled directly through Trick Trades. The full curriculum, live
 				schedule and pricing are on the course page.
 			</p>
-			<Button href={courseUrl} variant="ghost" size="md">See full details on tricktrades.com</Button>
+			<Button href={courseUrl} variant="ghost" size="md">See full details on tricktrades.com</Button
+			>
 		</div>
 	</div>
 </section>

@@ -31,8 +31,8 @@
 			</dl>
 
 			<p class="pa-disc__foot">
-				Project ALPHA is a genuine research study, not a marketing programme. Findings will be reported
-				as the data supports them — no more, no less.
+				Project ALPHA is a genuine research study, not a marketing programme. Findings will be
+				reported as the data supports them — no more, no less.
 			</p>
 		</div>
 	</div>

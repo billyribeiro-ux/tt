@@ -13,8 +13,8 @@
 			Train the mind. Then measure it.
 		</h2>
 		<p class="pa-cta__text prose">
-			If you’ll commit to 90 days, the headband, and honest data, we’d like you in the study. Read the
-			full protocol and apply below.
+			If you’ll commit to 90 days, the headband, and honest data, we’d like you in the study. Read
+			the full protocol and apply below.
 		</p>
 		<div class="pa-cta__actions">
 			<Button href={applyUrl} size="lg">Apply / Learn more</Button>

@@ -18,7 +18,12 @@ export const bossSingles: Product[] = [
 	{ name: 'B.O.S.S. SPY Sniper', price: 597, format: 'Download' },
 	{ name: 'B.O.S.S. Swing', price: 597, format: 'Download' }
 ];
-export const bossPack: Product = { name: 'BossPack', price: 997, format: 'Download', premium: true };
+export const bossPack: Product = {
+	name: 'BossPack',
+	price: 997,
+	format: 'Download',
+	premium: true
+};
 
 export const boss: Category = {
 	id: 'boss',

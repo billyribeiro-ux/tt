@@ -21,7 +21,12 @@
 			<CrownIcon size={16} weight="fill" aria-hidden="true" />Gold Edition
 		</p>
 
-		<h1 id="gd-hero-title" class="gd-hero__title" data-split {@attach splitReveal({ stagger: 0.028 })}>
+		<h1
+			id="gd-hero-title"
+			class="gd-hero__title"
+			data-split
+			{@attach splitReveal({ stagger: 0.028 })}
+		>
 			Crystal Ball:
 			<span class="gd-hero__gold">Gold Edition.</span>
 		</h1>

@@ -17,13 +17,18 @@
 			<span class="gd-enroll__rule" aria-hidden="true"></span>Enrollment
 		</p>
 
-		<h2 id="gd-enroll-title" class="gd-enroll__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+		<h2
+			id="gd-enroll-title"
+			class="gd-enroll__title"
+			data-split
+			{@attach splitReveal({ stagger: 0.03 })}
+		>
 			Nine months, live, with <span class="gd-enroll__accent">Pat.</span>
 		</h2>
 
 		<p class="gd-enroll__lede" data-anim {@attach reveal({ y: 22 })}>
-			The Gold Edition runs on a live schedule and enrolls directly through Trick Trades. Head to the
-			course page for the current cohort, the full curriculum and pricing.
+			The Gold Edition runs on a live schedule and enrolls directly through Trick Trades. Head to
+			the course page for the current cohort, the full curriculum and pricing.
 		</p>
 
 		<div class="gd-enroll__cta" data-anim {@attach reveal({ y: 22, delay: 0.05 })}>

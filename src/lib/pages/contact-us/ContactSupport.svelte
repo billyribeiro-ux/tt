@@ -41,9 +41,10 @@
 					Three lines that earn a <span class="text-red">faster</span> answer.
 				</h2>
 				<p class="c-sup__note prose">
-					We answer messages in the order they arrive, as quickly as we responsibly can — there is no
-					automated queue here, just people reading email between live sessions. Give us the details
-					below and the reply that comes back can actually solve it, instead of asking for more.
+					We answer messages in the order they arrive, as quickly as we responsibly can — there is
+					no automated queue here, just people reading email between live sessions. Give us the
+					details below and the reply that comes back can actually solve it, instead of asking for
+					more.
 				</p>
 
 				<div class="c-sup__pointers">

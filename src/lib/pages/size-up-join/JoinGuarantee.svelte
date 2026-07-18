@@ -45,7 +45,8 @@
 		padding: clamp(1.9rem, 5vw, 3.6rem);
 		border: 1px solid var(--tt-line-strong);
 		border-radius: var(--tt-radius-lg);
-		background: radial-gradient(120% 150% at 12% -10%, rgb(var(--tt-red-rgb) / 0.12), transparent 46%),
+		background:
+			radial-gradient(120% 150% at 12% -10%, rgb(var(--tt-red-rgb) / 0.12), transparent 46%),
 			var(--tt-ink);
 		box-shadow: var(--tt-shadow-card);
 	}

@@ -39,19 +39,15 @@
 
 	<div class="tt-container">
 		<header class="fx__head">
-			<p
-				class="label fx__kicker"
-				data-anim
-				{@attach reveal({ y: 16, duration: 0.65 })}
-			>
+			<p class="label fx__kicker" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
 				<span class="fx__tick" aria-hidden="true"></span>The system
 			</p>
 			<h2 id="fx-title" class="fx__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
 				The Massive <span class="text-red">Results</span> Formula
 			</h2>
 			<p class="fx__intro prose" data-anim {@attach reveal({ y: 20, duration: 0.85, delay: 0.1 })}>
-				A strategy isn’t another setup — it’s knowing what <em>not</em> to do. Five disciplines,
-				five demons removed. This is how consistency is built.
+				A strategy isn’t another setup — it’s knowing what <em>not</em> to do. Five disciplines, five
+				demons removed. This is how consistency is built.
 			</p>
 		</header>
 

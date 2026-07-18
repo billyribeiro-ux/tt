@@ -23,8 +23,8 @@
 				Pick your <span class="text-red">edge.</span>
 			</h2>
 			<p class="lib__intro prose">
-				From the Boot Camp foundation to the Crystal Ball price-action series and one-on-one Momentum
-				coaching — each course stands alone, and each one stacks.
+				From the Boot Camp foundation to the Crystal Ball price-action series and one-on-one
+				Momentum coaching — each course stands alone, and each one stacks.
 			</p>
 		</div>
 
@@ -75,7 +75,8 @@
 					<div class="course__foot">
 						{#if course.price}
 							<p class="course__price">
-								<span class="course__cur">$</span><span class="num course__amt">{course.price}</span>
+								<span class="course__cur">$</span><span class="num course__amt">{course.price}</span
+								>
 								{#if course.was}<del class="course__was num">${course.was}</del>{/if}
 							</p>
 						{:else}
@@ -151,8 +152,7 @@
 		border: 1px solid rgb(var(--tt-red-rgb) / 0.42);
 		border-radius: var(--tt-radius-lg);
 		background:
-			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 42%),
-			var(--tt-ink-2);
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 42%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 	}
 	.feat__reg {

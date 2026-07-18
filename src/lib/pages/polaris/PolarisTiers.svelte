@@ -16,7 +16,12 @@
 				<span class="label">Two paths</span>
 			</div>
 			<div class="tiers__headrow">
-				<h2 id="tiers-title" class="tiers__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+				<h2
+					id="tiers-title"
+					class="tiers__title"
+					data-split
+					{@attach splitReveal({ stagger: 0.03 })}
+				>
 					Same price. Pick the path your debt decides.
 				</h2>
 				<span class="tiers__badge">

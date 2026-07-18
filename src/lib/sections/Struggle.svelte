@@ -21,7 +21,11 @@
 			</h2>
 		</header>
 
-		<ol class="struggle__list" data-anim-stagger {@attach reveal({ stagger: 0.13, y: 42, duration: 0.95 })}>
+		<ol
+			class="struggle__list"
+			data-anim-stagger
+			{@attach reveal({ stagger: 0.13, y: 42, duration: 0.95 })}
+		>
 			{#each painPoints as point (point.n)}
 				<li class="struggle__item">
 					<span class="struggle__index num" aria-hidden="true">{point.n}</span>

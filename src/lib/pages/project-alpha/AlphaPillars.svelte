@@ -43,7 +43,11 @@
 		<ol class="pa-pil__list">
 			{#each pillars as p, i (p.title)}
 				{@const Icon = p.icon}
-				<li class="pa-pil__step" data-anim {@attach reveal({ y: 44, duration: 1, delay: i * 0.08 })}>
+				<li
+					class="pa-pil__step"
+					data-anim
+					{@attach reveal({ y: 44, duration: 1, delay: i * 0.08 })}
+				>
 					<div class="pa-pil__top">
 						<span class="pa-pil__idx num">0{i + 1}</span>
 						<span class="pa-pil__icon"><Icon size={24} weight="regular" /></span>

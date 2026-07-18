@@ -34,9 +34,9 @@
 			<div class="pa-hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="pa-hero__lede">
 					A <strong>90-day neuroscience study</strong> testing a single question: can training the
-					brain’s alpha rhythm — the <strong>8–12 Hz</strong> band tied to calm, alert focus — make
-					day traders steadier under pressure, sharper in execution, and more consistent from one
-					session to the next?
+					brain’s alpha rhythm — the <strong>8–12 Hz</strong> band tied to calm, alert focus — make day
+					traders steadier under pressure, sharper in execution, and more consistent from one session
+					to the next?
 				</p>
 
 				<div class="pa-hero__cta">
@@ -68,7 +68,9 @@
 			{@attach reveal({ y: 60, scale: 0.97, duration: 1.2 })}
 		>
 			<div class="pa-panel__head">
-				<span class="label pa-panel__tag"><span class="pa-panel__dot"></span>Live EEG · Mind Monitor</span>
+				<span class="label pa-panel__tag"
+					><span class="pa-panel__dot"></span>Live EEG · Mind Monitor</span
+				>
 				<span class="label pa-panel__band">α 8–12 Hz</span>
 			</div>
 			<div class="pa-panel__wave">
@@ -84,9 +86,18 @@
 				</svg>
 			</div>
 			<dl class="pa-panel__readout">
-				<div><dt>Band</dt><dd>Alpha</dd></div>
-				<div><dt>Range</dt><dd>8–12 Hz</dd></div>
-				<div><dt>State</dt><dd>Focused calm</dd></div>
+				<div>
+					<dt>Band</dt>
+					<dd>Alpha</dd>
+				</div>
+				<div>
+					<dt>Range</dt>
+					<dd>8–12 Hz</dd>
+				</div>
+				<div>
+					<dt>State</dt>
+					<dd>Focused calm</dd>
+				</div>
 			</dl>
 			<p class="pa-panel__note label">Illustrative — not participant data</p>
 		</div>

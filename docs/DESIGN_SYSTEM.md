@@ -58,7 +58,7 @@ Dark, high-stakes, disciplined, masculine, expensive. Confident negative space. 
 ## The tokens you have (see `app.css` for all)
 
 - Color: `--tt-black #0a0a0b`, `--tt-ink`, `--tt-ink-2/3`, `--tt-red #b22725`, `--tt-red-bright
-  #ff3333`, `--tt-amber`, `--tt-gold`, text `--tt-white/--tt-fog/--tt-mute/--tt-mute-2`, borders
+#ff3333`, `--tt-amber`, `--tt-gold`, text `--tt-white/--tt-fog/--tt-mute/--tt-mute-2`, borders
   `--tt-line`/`--tt-line-strong`, light surfaces `--tt-paper`/`--tt-paper-ink`.
 - Type scale: `--fs-eyebrow --fs-body --fs-lead --fs-h4 --fs-h3 --fs-h2 --fs-h1 --fs-mega` (all fluid).
 - Fonts: `--tt-font-body --tt-font-display --tt-font-script --tt-font-mono`.

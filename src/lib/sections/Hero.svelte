@@ -22,7 +22,7 @@
 		<div class="hero__glow" {@attach parallax(120)}></div>
 	</div>
 
-	<div class="tt-container hero__inner">
+	<div class="tt-container tt-container--wide hero__inner">
 		<div class="hero__copy">
 			<p class="hero__kicker label">
 				<span class="hero__live"></span>Want to make money trading?
@@ -36,9 +36,9 @@
 			<div class="hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
 				<p class="hero__lede">
 					If you’re losing money trading, watch this before you do anything else today. Trick Trades
-					is a <strong>100% educational</strong> day-trading mentorship led by Pat “Trick” Mitchell —
-					no alerts, no hype. Just the skill and the emotional mastery that separate professionals
-					from the 90%.
+					is a <strong>100% educational</strong> day-trading mentorship led by Pat “Trick” Mitchell.
+					No alerts, no hype. Just the skill and the emotional mastery that separate professionals from
+					the 90%.
 				</p>
 
 				<div class="hero__cta">
@@ -247,9 +247,10 @@
 		font-size: 0.7rem;
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 1024px) {
 		.hero__inner {
-			grid-template-columns: 1.05fr 0.95fr;
+			/* The film is the conversion engine: give it the wider column */
+			grid-template-columns: 0.92fr 1.08fr;
 		}
 		.hero__title {
 			margin-top: 1.8rem;

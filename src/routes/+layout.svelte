@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	// Latin subset only — the full CSS files also pull devanagari + latin-ext woff2s
+	// Latin subset only; the full CSS files also pull devanagari + latin-ext woff2s
 	// (~500 KB of glyphs an English-only site never renders).
 	import '@fontsource/poppins/latin-400.css';
 	import '@fontsource/poppins/latin-500.css';

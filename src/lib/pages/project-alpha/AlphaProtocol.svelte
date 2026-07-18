@@ -93,13 +93,15 @@
 
 	<div class="tt-container">
 		<header class="pa-tl__head">
-			<p class="label pa-tl__kicker"><span class="pa-tl__tick" aria-hidden="true"></span>The protocol</p>
+			<p class="label pa-tl__kicker">
+				<span class="pa-tl__tick" aria-hidden="true"></span>The protocol
+			</p>
 			<h2 id="pa-tl-title" class="pa-tl__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
 				Ninety days, <span class="text-red">four phases</span>
 			</h2>
 			<p class="pa-tl__intro prose">
-				The study builds in deliberate steps — a cold baseline first, then load added phase by phase,
-				so any change can be traced to the protocol rather than to chance.
+				The study builds in deliberate steps — a cold baseline first, then load added phase by
+				phase, so any change can be traced to the protocol rather than to chance.
 			</p>
 		</header>
 
@@ -160,8 +162,8 @@
 			<div>
 				<p class="label pa-tl__followup-tag">Day 180 · Follow-up</p>
 				<p class="pa-tl__followup-text">
-					Three months after the protocol ends, participants return for a follow-up check — measuring
-					what held, and what faded, once the daily structure was gone.
+					Three months after the protocol ends, participants return for a follow-up check —
+					measuring what held, and what faded, once the daily structure was gone.
 				</p>
 			</div>
 		</div>

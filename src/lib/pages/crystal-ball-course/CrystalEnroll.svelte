@@ -18,7 +18,12 @@
 			<p class="label cb-enroll__kicker">
 				<span class="cb-enroll__rule" aria-hidden="true"></span>Best value
 			</p>
-			<h2 id="cb-enroll-title" class="cb-enroll__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+			<h2
+				id="cb-enroll-title"
+				class="cb-enroll__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.03 })}
+			>
 				Take both volumes and the <span class="text-red">bonus hour.</span>
 			</h2>
 			<p class="cb-enroll__lede" data-anim {@attach reveal({ y: 22 })}>

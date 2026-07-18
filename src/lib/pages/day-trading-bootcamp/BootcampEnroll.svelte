@@ -17,7 +17,12 @@
 			<span class="bc-enroll__rule" aria-hidden="true"></span>Enrollment
 		</p>
 
-		<h2 id="bc-enroll-title" class="bc-enroll__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+		<h2
+			id="bc-enroll-title"
+			class="bc-enroll__title"
+			data-split
+			{@attach splitReveal({ stagger: 0.03 })}
+		>
 			Everything starts <span class="text-red">here.</span>
 		</h2>
 
@@ -120,8 +125,7 @@
 		border: 1px solid rgb(var(--tt-red-rgb) / 0.4);
 		border-radius: var(--tt-radius-lg);
 		background:
-			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 46%),
-			var(--tt-ink-2);
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 46%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 	}
 	.bc-enroll__price {

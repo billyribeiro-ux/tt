@@ -43,9 +43,7 @@
 
 		<div class="final__news" data-anim {@attach reveal({ y: 24, delay: 0.1 })}>
 			<span class="hairline final__news-rule"></span>
-			<p class="label final__news-label">
-				The Situation Room — get the free pre-market newsletter
-			</p>
+			<p class="label final__news-label">The Situation Room — get the free pre-market newsletter</p>
 
 			<form class="final__form" action="{site.domain}/the-situation-room" method="get">
 				<EnvelopeIcon class="final__form-icon" size={18} weight="regular" aria-hidden="true" />
@@ -211,7 +209,9 @@
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-red-bright);
-		transition: color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+		transition:
+			color 0.25s ease,
+			transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.final__submit:hover {
 		color: var(--tt-white);
@@ -230,7 +230,9 @@
 		gap: 0.4rem;
 		color: var(--tt-fog);
 		border-bottom: 1px solid transparent;
-		transition: color 0.25s ease, border-color 0.25s ease;
+		transition:
+			color 0.25s ease,
+			border-color 0.25s ease;
 	}
 	.final__fb:hover {
 		color: var(--tt-white);

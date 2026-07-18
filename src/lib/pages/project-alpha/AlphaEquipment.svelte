@@ -48,8 +48,8 @@
 		<div class="pa-eq__head">
 			<h2 id="pa-eq-title" class="pa-eq__title">The kit each participant runs</h2>
 			<p class="pa-eq__intro prose">
-				Four things make the protocol work. The hardware is yours to keep; the rest is standardized so
-				every participant’s data reads the same way.
+				Four things make the protocol work. The hardware is yours to keep; the rest is standardized
+				so every participant’s data reads the same way.
 			</p>
 		</div>
 

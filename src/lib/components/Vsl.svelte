@@ -7,7 +7,11 @@
 		src?: string;
 		label?: string;
 	};
-	let { poster = site.videoPoster, src = site.videoEmbed, label = 'Watch the film' }: Props = $props();
+	let {
+		poster = site.videoPoster,
+		src = site.videoEmbed,
+		label = 'Watch the film'
+	}: Props = $props();
 
 	let playing = $state(false);
 	const iframeSrc = $derived(src + (src.includes('?') ? '&' : '?') + 'autoplay=1');
@@ -18,7 +22,7 @@
 		{#if playing}
 			<iframe
 				src={iframeSrc}
-				title="Trick Trades — {label}"
+				title="Trick Trades: {label}"
 				allow="autoplay; fullscreen; picture-in-picture"
 				allowfullscreen
 				loading="eager"
@@ -42,7 +46,7 @@
 						<img
 							class="vsl__poster"
 							src="/pat-barn-1200.jpg"
-							alt="Pat “Trick” Mitchell — Trick Trades"
+							alt="Pat “Trick” Mitchell of Trick Trades"
 							width="1200"
 							height="800"
 							loading="eager"
@@ -53,7 +57,7 @@
 					<img
 						class="vsl__poster"
 						src={poster}
-						alt="Pat “Trick” Mitchell — Trick Trades"
+						alt="Pat “Trick” Mitchell of Trick Trades"
 						width="1200"
 						height="800"
 						loading="eager"
@@ -189,7 +193,7 @@
 			opacity: 0.25;
 		}
 	}
-	/* Corner registration marks — subtle editorial detail */
+	/* Corner registration marks, a subtle editorial detail */
 	.vsl__corner {
 		position: absolute;
 		width: 22px;

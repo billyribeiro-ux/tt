@@ -47,8 +47,8 @@
 				About <span class="text-red">45 minutes</span> a day, beyond your normal trading
 			</h2>
 			<p class="pa-day__intro prose">
-				Consistency is the whole point, so the routine is fixed. It wraps around a trading day you’re
-				already having — bookending the open and the close with training and data capture.
+				Consistency is the whole point, so the routine is fixed. It wraps around a trading day
+				you’re already having — bookending the open and the close with training and data capture.
 			</p>
 		</div>
 

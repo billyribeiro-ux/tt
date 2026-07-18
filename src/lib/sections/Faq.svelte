@@ -105,7 +105,9 @@
 		color: var(--tt-fog);
 		border-bottom: 1px solid var(--tt-line-strong);
 		padding-bottom: 1px;
-		transition: color 0.25s ease, border-color 0.25s ease;
+		transition:
+			color 0.25s ease,
+			border-color 0.25s ease;
 	}
 	.faq__nudge-link:hover {
 		color: var(--tt-red-bright);
@@ -173,7 +175,9 @@
 		justify-content: center;
 		align-self: center;
 		color: var(--tt-mute);
-		transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
+		transition:
+			transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+			color 0.25s ease;
 	}
 	.faq__trigger[aria-expanded='true'] .faq__caret {
 		transform: rotate(180deg);

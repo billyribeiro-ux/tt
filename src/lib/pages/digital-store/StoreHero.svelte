@@ -20,7 +20,12 @@
 				<span class="store-hero__dot" aria-hidden="true"></span>Instant Downloads
 			</p>
 
-			<h1 id="ds-title" class="store-hero__title" data-split {@attach splitReveal({ stagger: 0.028 })}>
+			<h1
+				id="ds-title"
+				class="store-hero__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.028 })}
+			>
 				Own the education. <span class="text-red">Forever.</span>
 			</h1>
 
@@ -144,7 +149,8 @@
 		padding: clamp(1.4rem, 3vw, 2rem);
 		border: 1px solid var(--tt-line);
 		border-radius: var(--tt-radius-lg);
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 60%), var(--tt-ink-2);
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 60%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 	}
 	.catalog__head {

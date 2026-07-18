@@ -42,7 +42,8 @@ export const tiers: Tier[] = [
 		Icon: RocketLaunchIcon,
 		forWho: 'For traders carrying debt',
 		focus: 'Immediate budget management',
-		blurb: 'Stop the overleveraging now. We stabilise your cash flow and build a structured path out of the hole.',
+		blurb:
+			'Stop the overleveraging now. We stabilise your cash flow and build a structured path out of the hole.',
 		points: [
 			'Built for traders struggling with debt',
 			'Cap trading risk to what you can afford',
@@ -56,7 +57,8 @@ export const tiers: Tier[] = [
 		Icon: AirplaneTiltIcon,
 		forWho: 'For traders with little to no debt',
 		focus: 'Long-term budget management',
-		blurb: 'Compound your gains with discipline — and build guardrails so you never repeat the same mistakes.',
+		blurb:
+			'Compound your gains with discipline — and build guardrails so you never repeat the same mistakes.',
 		points: [
 			'Built for minimal or no-debt traders',
 			'Allocate profits with intention, not impulse',
@@ -92,12 +94,36 @@ export const steps: Step[] = [
 export type Inclusion = { Icon: Icon; t: string; d: string };
 
 export const includes: Inclusion[] = [
-	{ Icon: ChatsCircleIcon, t: '1:1 consultation', d: 'Direct, personal coaching — not a course you watch alone.' },
-	{ Icon: ChartBarIcon, t: 'Budget breakdown', d: 'A clear map of what comes in, what goes out, and what to change.' },
-	{ Icon: TargetIcon, t: 'Realistic goal-setting', d: 'Targets built on your numbers, not someone else’s highlight reel.' },
-	{ Icon: ScalesIcon, t: 'Risk-tolerance assessment', d: 'How much you can actually afford to put at risk — and no more.' },
-	{ Icon: PiggyBankIcon, t: 'Money-saving strategies', d: 'Practical ways to keep more of what you make.' },
-	{ Icon: CompassIcon, t: 'Path to financial independence', d: 'A long-term direction, not just a short-term patch.' }
+	{
+		Icon: ChatsCircleIcon,
+		t: '1:1 consultation',
+		d: 'Direct, personal coaching — not a course you watch alone.'
+	},
+	{
+		Icon: ChartBarIcon,
+		t: 'Budget breakdown',
+		d: 'A clear map of what comes in, what goes out, and what to change.'
+	},
+	{
+		Icon: TargetIcon,
+		t: 'Realistic goal-setting',
+		d: 'Targets built on your numbers, not someone else’s highlight reel.'
+	},
+	{
+		Icon: ScalesIcon,
+		t: 'Risk-tolerance assessment',
+		d: 'How much you can actually afford to put at risk — and no more.'
+	},
+	{
+		Icon: PiggyBankIcon,
+		t: 'Money-saving strategies',
+		d: 'Practical ways to keep more of what you make.'
+	},
+	{
+		Icon: CompassIcon,
+		t: 'Path to financial independence',
+		d: 'A long-term direction, not just a short-term patch.'
+	}
 ];
 
 export type SpecRow = { k: string; v: string };

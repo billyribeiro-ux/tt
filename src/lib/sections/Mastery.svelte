@@ -23,7 +23,12 @@
 			<p class="mastery__kicker label" data-anim {@attach reveal({ y: 16, duration: 0.65 })}>
 				<span class="mastery__tick" aria-hidden="true"></span>Top performers share a trait
 			</p>
-			<h2 id="mastery-title" class="mastery__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+			<h2
+				id="mastery-title"
+				class="mastery__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.03 })}
+			>
 				Mastery of skill.<br />Mastery of emotion.
 			</h2>
 		</header>
@@ -37,8 +42,14 @@
 						class="op op--plus"
 						aria-hidden="true"
 						data-anim
-						{@attach reveal({ y: 0, scale: 0.55, duration: 0.7, delay: 0.16, ease: 'back.out(1.7)' })}
-					>+</span>
+						{@attach reveal({
+							y: 0,
+							scale: 0.55,
+							duration: 0.7,
+							delay: 0.16,
+							ease: 'back.out(1.7)'
+						})}>+</span
+					>
 				{/if}
 				{#if i === 2}
 					<span
@@ -46,7 +57,8 @@
 						aria-hidden="true"
 						data-anim
 						{@attach reveal({ y: 0, scale: 0.5, duration: 0.85, delay: 0.56, ease: 'back.out(2)' })}
-					>=</span>
+						>=</span
+					>
 				{/if}
 				<div
 					class="term"
@@ -67,10 +79,11 @@
 		<div class="payoff" data-anim {@attach reveal({ y: 30, duration: 1 })}>
 			<span class="payoff__mark" aria-hidden="true">=</span>
 			<p class="payoff__text">
-				Master the skill to do the job <span class="op-inline" aria-hidden="true">+</span> master your
-				focus through pressure <span class="op-inline op-inline--eq" aria-hidden="true">=</span>
-				<strong>Mastery of Self.</strong> All top performers share this trait — and so do professional
-				traders who pull <span class="text-red">seven figures</span>.
+				Master the skill to do the job <span class="op-inline" aria-hidden="true">+</span> master
+				your focus through pressure
+				<span class="op-inline op-inline--eq" aria-hidden="true">=</span>
+				<strong>Mastery of Self.</strong> All top performers share this trait — and so do
+				professional traders who pull <span class="text-red">seven figures</span>.
 			</p>
 		</div>
 	</div>

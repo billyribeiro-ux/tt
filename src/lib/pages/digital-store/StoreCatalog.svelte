@@ -60,7 +60,9 @@
 					<article class="card" {@attach tilt(4)}>
 						<div class="card__top">
 							<span class="card__idx num">0{i + 1}</span>
-							<span class="card__fmt"><DownloadSimpleIcon size={14} weight="bold" /> {p.format}</span>
+							<span class="card__fmt"
+								><DownloadSimpleIcon size={14} weight="bold" /> {p.format}</span
+							>
 						</div>
 						<h3 class="card__name">{p.name}</h3>
 						<div class="card__foot">
@@ -74,7 +76,9 @@
 			<article class="pack" data-anim {@attach reveal({ y: 40, duration: 1.05 })} {@attach tilt(3)}>
 				<span class="pack__glow" aria-hidden="true"></span>
 				<div class="pack__intro">
-					<span class="pack__tag label"><StackIcon size={14} weight="bold" /> Bundle · all three systems</span>
+					<span class="pack__tag label"
+						><StackIcon size={14} weight="bold" /> Bundle · all three systems</span
+					>
 					<h3 class="pack__name">{bossPack.name}</h3>
 					<p class="pack__note">
 						Carbon, SPY Sniper and Swing in a single download —
@@ -107,12 +111,8 @@
 									<span class="row__fmt"><FilmSlateIcon size={14} /> {p.format}</span>
 									<span class="row__price">{@render price(p.price)}</span>
 									<div class="row__cta">
-										<Button
-											href={STORE_URL}
-											variant="ghost"
-											size="md"
-											arrow={false}
-											magnet={false}>Get it</Button
+										<Button href={STORE_URL} variant="ghost" size="md" arrow={false} magnet={false}
+											>Get it</Button
 										>
 									</div>
 								</li>
@@ -133,7 +133,9 @@
 					{@const save = singles - p.price}
 					<article class="box" {@attach tilt(3)}>
 						<span class="box__glow" aria-hidden="true"></span>
-						<span class="box__tag label"><MonitorPlayIcon size={14} weight="bold" /> Stream · box set</span>
+						<span class="box__tag label"
+							><MonitorPlayIcon size={14} weight="bold" /> Stream · box set</span
+						>
 						<h3 class="box__name">{p.name}</h3>
 						<p class="box__note">
 							All four volumes of the series — streamed, not shipped. Lifetime access.
@@ -252,7 +254,8 @@
 		padding: clamp(1.4rem, 3vw, 1.9rem);
 		border: 1px solid var(--tt-line);
 		border-radius: var(--tt-radius-lg);
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 55%), var(--tt-ink-2);
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 55%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 		will-change: transform;
 		transition: border-color 0.4s ease;
@@ -307,11 +310,8 @@
 		border: 1px solid rgb(var(--tt-red-rgb) / 0.5);
 		border-radius: var(--tt-radius-lg);
 		background:
-			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.12), transparent 45%),
-			var(--tt-ink-2);
-		box-shadow:
-			var(--tt-glow-red),
-			var(--tt-shadow-lg);
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.12), transparent 45%), var(--tt-ink-2);
+		box-shadow: var(--tt-glow-red), var(--tt-shadow-lg);
 		overflow: clip;
 		will-change: transform;
 	}
@@ -451,9 +451,7 @@
 		padding: clamp(1.6rem, 3.2vw, 2.4rem);
 		border: 1px solid var(--tt-line-strong);
 		border-radius: var(--tt-radius-lg);
-		background:
-			linear-gradient(180deg, rgba(245, 196, 81, 0.07), transparent 42%),
-			var(--tt-ink-2);
+		background: linear-gradient(180deg, rgba(245, 196, 81, 0.07), transparent 42%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 		overflow: clip;
 		will-change: transform;

@@ -72,7 +72,7 @@
 		isolation: isolate;
 		text-transform: uppercase;
 		font-size: 0.82rem;
-		/* No `transform` here — the magnetic() attachment drives transform per-frame
+		/* No `transform` here. The magnetic() attachment drives transform per-frame
 		   via GSAP; a CSS transition on the same property would fight every write. */
 		transition:
 			box-shadow 0.3s ease,
@@ -110,7 +110,7 @@
 		border-radius: inherit;
 	}
 
-	/* Primary — brand red with a molten sheen */
+	/* Primary: brand red with a molten sheen */
 	.btn--primary {
 		color: #fff;
 		background: linear-gradient(180deg, var(--tt-red-hot), var(--tt-red) 55%, var(--tt-red-600));
@@ -132,7 +132,7 @@
 		opacity: 1;
 	}
 
-	/* Ghost — outline on dark */
+	/* Ghost: outline on dark */
 	.btn--ghost {
 		color: var(--tt-white);
 		background: rgba(255, 255, 255, 0.03);
@@ -143,7 +143,7 @@
 		box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) inset;
 	}
 
-	/* Light — for bright sections */
+	/* Light: for bright sections */
 	.btn--light {
 		color: var(--tt-paper-ink);
 		background: #fff;

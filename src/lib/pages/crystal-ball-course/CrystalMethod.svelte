@@ -35,7 +35,12 @@
 	<div class="tt-container cb-method__inner">
 		<div class="cb-method__aside">
 			<p class="label cb-method__kicker">The method</p>
-			<h2 id="cb-method-title" class="cb-method__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+			<h2
+				id="cb-method-title"
+				class="cb-method__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.03 })}
+			>
 				Four ideas, taught until they’re <span class="text-red">instinct.</span>
 			</h2>
 			<p class="cb-method__intro prose">

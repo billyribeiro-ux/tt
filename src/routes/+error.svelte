@@ -15,7 +15,7 @@
 		</h1>
 		<p class="err__body">
 			{page.status === 404
-				? 'The page you’re after doesn’t exist — it may have moved, or the link was mistyped.'
+				? 'The page you’re after doesn’t exist. It may have moved, or the link was mistyped.'
 				: (page.error?.message ?? 'An unexpected error occurred.')}
 		</p>
 		<div class="err__cta">

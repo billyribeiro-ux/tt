@@ -18,7 +18,12 @@
 				<span class="label">Pricing</span>
 			</div>
 			<div class="cprice__headrow">
-				<h2 id="cprice-title" class="cprice__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+				<h2
+					id="cprice-title"
+					class="cprice__title"
+					data-split
+					{@attach splitReveal({ stagger: 0.03 })}
+				>
 					Start with one. Or rewire the whole thing.
 				</h2>
 				<span class="cprice__badge">
@@ -71,8 +76,8 @@
 		<p class="cprice__guide">
 			<BookOpenIcon class="cprice__guide-ico" weight="fill" size={18} />
 			<span>
-				Every package includes a <strong>meditation guide</strong> — setup, a breakdown of each
-				session, what to expect, and how to use it.
+				Every package includes a <strong>meditation guide</strong> — setup, a breakdown of each session,
+				what to expect, and how to use it.
 			</span>
 		</p>
 
@@ -165,11 +170,8 @@
 		z-index: 2;
 		border-color: rgb(var(--tt-red-rgb) / 0.55);
 		background:
-			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 40%),
-			var(--tt-ink-2);
-		box-shadow:
-			var(--tt-glow-red),
-			var(--tt-shadow-lg);
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 40%), var(--tt-ink-2);
+		box-shadow: var(--tt-glow-red), var(--tt-shadow-lg);
 		padding-top: clamp(2.3rem, 4vw, 3rem);
 	}
 	.pak__ribbon {

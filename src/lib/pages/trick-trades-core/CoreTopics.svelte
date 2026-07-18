@@ -12,12 +12,17 @@
 			<p class="label topics__kicker">
 				<BrainIcon size={16} weight="fill" aria-hidden="true" />The five patterns
 			</p>
-			<h2 id="topics-title" class="topics__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+			<h2
+				id="topics-title"
+				class="topics__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.03 })}
+			>
 				Every meditation targets one behaviour you keep repeating.
 			</h2>
 			<p class="topics__note prose">
-				Each topic is its own meditation — buy the one that’s bleeding your account, or take all five
-				in Volume One.
+				Each topic is its own meditation — buy the one that’s bleeding your account, or take all
+				five in Volume One.
 			</p>
 		</header>
 

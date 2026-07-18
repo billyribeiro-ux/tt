@@ -317,6 +317,46 @@ export function marquee(speed = 32): Attachment {
 }
 
 /**
+ * Draw an SVG path like a price line printing across a chart, scrubbed to scroll.
+ * Attach to an <svg> element; every <path> inside is drawn via dash-offset.
+ * `scrub: false` plays it once on entry instead (for hero moments).
+ */
+export function drawLine(opts: { scrub?: boolean; duration?: number; start?: string } = {}): Attachment {
+	return (node) => {
+		registerGsap();
+		const svg = node as unknown as SVGSVGElement;
+		if (prefersReducedMotion()) return;
+		const paths = Array.from(svg.querySelectorAll('path'));
+		if (!paths.length) return;
+		const tweens = paths.map((p) => {
+			const len = p.getTotalLength();
+			gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
+			return gsap.to(p, {
+				strokeDashoffset: 0,
+				ease: opts.scrub === false ? 'power2.inOut' : 'none',
+				duration: opts.duration ?? 1.6,
+				scrollTrigger:
+					opts.scrub === false
+						? { trigger: svg, start: opts.start ?? 'top 84%', once: true }
+						: {
+								trigger: svg,
+								start: opts.start ?? 'top 88%',
+								end: 'bottom 45%',
+								scrub: 0.6
+							}
+			});
+		});
+		return () => {
+			for (const t of tweens) {
+				t.scrollTrigger?.kill();
+				t.kill();
+			}
+			gsap.set(paths, { clearProps: 'strokeDasharray,strokeDashoffset' });
+		};
+	};
+}
+
+/**
  * Smooth-scroll to an in-page target using native scroll (respects the fixed header),
  * then move focus to the target so keyboard/screen-reader users actually land there.
  */

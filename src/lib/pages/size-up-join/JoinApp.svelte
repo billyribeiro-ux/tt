@@ -81,9 +81,18 @@
 					</ul>
 					<hr class="app-win__rule" />
 					<dl class="app-win__status">
-						<div class="app-win__row"><dt>Nightly watch list</dt><dd class="num">Ready</dd></div>
-						<div class="app-win__row"><dt>Pre-Market Plan</dt><dd class="num">9:00 AM EST</dd></div>
-						<div class="app-win__row"><dt>Community chat</dt><dd class="num">24 / 7</dd></div>
+						<div class="app-win__row">
+							<dt>Nightly watch list</dt>
+							<dd class="num">Ready</dd>
+						</div>
+						<div class="app-win__row">
+							<dt>Pre-Market Plan</dt>
+							<dd class="num">9:00 AM EST</dd>
+						</div>
+						<div class="app-win__row">
+							<dt>Community chat</dt>
+							<dd class="num">24 / 7</dd>
+						</div>
 					</dl>
 				</div>
 			</div>
@@ -137,7 +146,8 @@
 		max-width: 460px;
 		border: 1px solid var(--tt-line-strong);
 		border-radius: var(--tt-radius);
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%), var(--tt-ink-2);
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 		overflow: hidden;
 	}

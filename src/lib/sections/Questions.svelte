@@ -12,7 +12,11 @@
 			<h2 class="questions__title" data-split {@attach splitReveal({ stagger: 0.045 })}>
 				You’re asking the <span class="questions__accent">wrong</span> question.
 			</h2>
-			<p class="questions__closing" data-anim {@attach reveal({ y: 20, duration: 0.8, delay: 0.1 })}>
+			<p
+				class="questions__closing"
+				data-anim
+				{@attach reveal({ y: 20, duration: 0.8, delay: 0.1 })}
+			>
 				Money isn’t a strong enough motivator to get you through what’s holding you back. Any job
 				earns money — <strong>not the freedom to be the author of your life.</strong>
 			</p>
@@ -20,8 +24,13 @@
 
 		<ol class="questions__list">
 			{#each questions as item, i (item.q)}
-				<li class="questions__item" data-anim {@attach reveal({ y: 34, x: 22, duration: 0.85 + i * 0.06 })}>
-					<span class="questions__idx num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+				<li
+					class="questions__item"
+					data-anim
+					{@attach reveal({ y: 34, x: 22, duration: 0.85 + i * 0.06 })}
+				>
+					<span class="questions__idx num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span
+					>
 					<h3 class="questions__q">{item.q}</h3>
 					<p class="questions__body">{item.body}</p>
 				</li>
@@ -77,8 +86,7 @@
 	}
 	.questions__item {
 		position: relative;
-		padding: clamp(1.6rem, 3vw, 2.25rem) 0 clamp(1.6rem, 3vw, 2.25rem)
-			clamp(1.4rem, 3vw, 2.25rem);
+		padding: clamp(1.6rem, 3vw, 2.25rem) 0 clamp(1.6rem, 3vw, 2.25rem) clamp(1.4rem, 3vw, 2.25rem);
 		border-left: 2px solid var(--tt-line-strong);
 		transition: border-color 0.4s ease;
 	}

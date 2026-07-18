@@ -49,7 +49,7 @@
 				'@type': 'Product',
 				name: 'Trick Trades Size UP! Membership',
 				description:
-					'Day-trading education & daily live mentorship — video lessons, the Size UP app, live premarket plan, and 24/7 community.',
+					'Day-trading education & daily live mentorship: video lessons, the Size UP app, live premarket plan, and 24/7 community.',
 				brand: { '@id': site.domain + '/#organization' },
 				offers: plans.map((p) => ({
 					'@type': 'Offer',
@@ -66,7 +66,7 @@
 </script>
 
 <Seo
-	title="Trick Trades — Day Trading Education & Mentorship by Pat “Trick” Mitchell"
+	title="Trick Trades | Day Trading Education & Mentorship by Pat “Trick” Mitchell"
 	path="/"
 	{jsonLd}
 />

@@ -24,7 +24,12 @@
 			<LightningIcon size={16} weight="fill" aria-hidden="true" />Flagship coaching
 		</p>
 
-		<h1 id="mo-hero-title" class="mo-hero__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+		<h1
+			id="mo-hero-title"
+			class="mo-hero__title"
+			data-split
+			{@attach splitReveal({ stagger: 0.03 })}
+		>
 			<span class="mo-hero__word">Momentum.</span>
 		</h1>
 

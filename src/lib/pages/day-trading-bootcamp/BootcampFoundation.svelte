@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Button from '$lib/components/Button.svelte';
 	import { reveal, splitReveal } from '$lib/motion';
 	import ArrowUpRightIcon from 'phosphor-svelte/lib/ArrowUpRightIcon';
 
@@ -35,7 +34,12 @@
 		</div>
 
 		<div class="bc-found__head">
-			<h2 id="bc-found-title" class="bc-found__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+			<h2
+				id="bc-found-title"
+				class="bc-found__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.03 })}
+			>
 				Every detail required to <span class="text-red">become a trader.</span>
 			</h2>
 			<p class="bc-found__intro prose">

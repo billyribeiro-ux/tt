@@ -47,7 +47,12 @@
 		</div>
 
 		<div class="cb-vol__head">
-			<h2 id="cb-vol-title" class="cb-vol__title" data-split {@attach splitReveal({ stagger: 0.03 })}>
+			<h2
+				id="cb-vol-title"
+				class="cb-vol__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.03 })}
+			>
 				Two volumes. One <span class="text-red">bundle.</span>
 			</h2>
 			<p class="cb-vol__intro prose">
@@ -152,8 +157,7 @@
 	.cb-vol__row--featured {
 		border-color: rgb(var(--tt-red-rgb) / 0.42);
 		background:
-			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 44%),
-			var(--tt-ink-2);
+			linear-gradient(180deg, rgb(var(--tt-red-rgb) / 0.1), transparent 44%), var(--tt-ink-2);
 		box-shadow: var(--tt-shadow-card);
 	}
 	.cb-vol__row-n {

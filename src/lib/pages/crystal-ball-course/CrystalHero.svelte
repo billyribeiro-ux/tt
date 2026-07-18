@@ -17,7 +17,12 @@
 				<EyeIcon size={16} weight="fill" aria-hidden="true" />The Price-Action Series
 			</p>
 
-			<h1 id="cb-hero-title" class="cb-hero__title" data-split {@attach splitReveal({ stagger: 0.026 })}>
+			<h1
+				id="cb-hero-title"
+				class="cb-hero__title"
+				data-split
+				{@attach splitReveal({ stagger: 0.026 })}
+			>
 				See the move <span class="text-red">before</span> it happens.
 			</h1>
 
@@ -39,7 +44,9 @@
 
 		<div class="cb-hero__orb-wrap" {@attach parallax(-40)}>
 			<div class="cb-hero__orb" data-anim {@attach reveal({ scale: 0.9, y: 30, duration: 1.2 })}>
-				<span class="cb-hero__orb-glyph"><EyeIcon size={64} weight="thin" aria-hidden="true" /></span>
+				<span class="cb-hero__orb-glyph"
+					><EyeIcon size={64} weight="thin" aria-hidden="true" /></span
+				>
 				<span class="cb-hero__orb-ring cb-hero__orb-ring--a" aria-hidden="true"></span>
 				<span class="cb-hero__orb-ring cb-hero__orb-ring--b" aria-hidden="true"></span>
 			</div>
