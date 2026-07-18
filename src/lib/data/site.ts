@@ -24,6 +24,23 @@ export const site = {
 
 export type NavItem = { label: string; href: string; children?: NavItem[] };
 
+/**
+ * Pages that only exist on the live WordPress site (checkout, auth, blog, legal).
+ * They are linked as absolute external URLs so the prerenderer never treats them
+ * as internal routes (a relative href to a non-existent route fails the build).
+ */
+export const external = {
+	joinGuidance: 'https://tricktrades.com/product/size-up-guidance',
+	joinMentorship: 'https://tricktrades.com/product/size-up-mentorship',
+	login: 'https://tricktrades.com/login',
+	tradeRecaps: 'https://tricktrades.com/category/daily-trade-recaps',
+	situationRoom: 'https://tricktrades.com/the-situation-room',
+	privacyPolicy: 'https://tricktrades.com/privacy-policy',
+	terms: 'https://tricktrades.com/terms-and-conditions',
+	disclaimer: 'https://tricktrades.com/disclaimer',
+	cancellationPolicy: 'https://tricktrades.com/cancellation-policy'
+} as const;
+
 export const nav: NavItem[] = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Join', href: '/size-up-join' },
@@ -53,12 +70,12 @@ export const nav: NavItem[] = [
 		href: '/contact-us',
 		children: [
 			{ label: 'Contact Us', href: '/contact-us' },
-			{ label: 'Newsletter', href: '/the-situation-room' },
+			{ label: 'Newsletter', href: external.situationRoom },
 			{ label: 'Testimonials', href: '/testimonials' },
-			{ label: 'Cancellation Policy', href: '/cancellation-policy' }
+			{ label: 'Cancellation Policy', href: external.cancellationPolicy }
 		]
 	},
-	{ label: 'Trade Recaps', href: '/category/daily-trade-recaps' }
+	{ label: 'Trade Recaps', href: external.tradeRecaps }
 ];
 
 export const painPoints = [
@@ -245,7 +262,7 @@ export const plans: Plan[] = [
 		cadence: '/month',
 		blurb: 'Introduction to Pat’s proven day-trading strategy, video lessons and daily guidance for each trading day.',
 		cta: 'Join Size UP Guidance',
-		href: '/product/size-up-guidance',
+		href: external.joinGuidance,
 		features: [
 			'The Size UP! App (iOS, Android, Desktop)',
 			'Boot Camp: 50+ game-changing lessons on skills & emotions',
@@ -268,7 +285,7 @@ export const plans: Plan[] = [
 		cadence: '/month',
 		blurb: 'Weekly mentoring that builds on the week’s lessons plus forward-thinking conversation on self-improvement and market analysis.',
 		cta: 'Join Size UP Mentorship',
-		href: '/product/size-up-mentorship',
+		href: external.joinMentorship,
 		featured: true,
 		inheritLabel: 'All of Size UP Guidance, plus:',
 		features: [

@@ -2,8 +2,9 @@
 	import ListIcon from 'phosphor-svelte/lib/ListIcon';
 	import XIcon from 'phosphor-svelte/lib/XIcon';
 	import LightningIcon from 'phosphor-svelte/lib/LightningIcon';
+	import type { Attachment } from 'svelte/attachments';
 	import { scrollToTarget } from '$lib/motion';
-	import { site } from '$lib/data/site';
+	import { site, external } from '$lib/data/site';
 	import Button from './Button.svelte';
 
 	const links = [
@@ -23,14 +24,16 @@
 	const scrolled = $derived(scrollY > 20);
 	const progress = $derived(Math.min(1, scrollY / Math.max(1, scrollHeight - innerHeight)));
 
-	// Track total scroll height (re-measured on resize + after fonts/images settle).
+	// Track total scroll height — re-measured on resize and whenever the document
+	// itself grows/shrinks (FAQ accordions etc.), so the progress bar never lies.
 	$effect(() => {
 		const measure = () => (scrollHeight = document.documentElement.scrollHeight);
 		measure();
-		const t = setTimeout(measure, 800);
+		const ro = new ResizeObserver(measure);
+		ro.observe(document.documentElement);
 		window.addEventListener('resize', measure);
 		return () => {
-			clearTimeout(t);
+			ro.disconnect();
 			window.removeEventListener('resize', measure);
 		};
 	});
@@ -50,6 +53,68 @@
 			document.body.style.overflow = '';
 		};
 	});
+
+	/**
+	 * The full modal contract for the mobile menu: move focus in, trap Tab,
+	 * close on Escape, make the page behind inert, restore focus on close.
+	 */
+	const modalMenu: Attachment = (node) => {
+		const menu = node as HTMLElement;
+		const previouslyFocused = document.activeElement as HTMLElement | null;
+		const focusables = () =>
+			Array.from(
+				menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+			);
+		// Everything except the menu (and the fixed header holding the close burger)
+		// becomes inert while the dialog is open.
+		const inerted: Element[] = [];
+		for (const child of Array.from(document.body.children)) {
+			if (child.contains(menu) || child.tagName === 'SCRIPT') continue;
+			if (!(child as HTMLElement).inert) {
+				(child as HTMLElement).inert = true;
+				inerted.push(child);
+			}
+		}
+		const app = document.querySelector<HTMLElement>('.app');
+		const header = app?.querySelector<HTMLElement>('header');
+		const appInerted: HTMLElement[] = [];
+		if (app && app.contains(menu)) {
+			for (const child of Array.from(app.children) as HTMLElement[]) {
+				if (child === header || child.contains(menu)) continue;
+				if (!child.inert) {
+					child.inert = true;
+					appInerted.push(child);
+				}
+			}
+		}
+		focusables()[0]?.focus();
+		const onKeydown = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				e.preventDefault();
+				open = false;
+				return;
+			}
+			if (e.key !== 'Tab') return;
+			const items = focusables();
+			// Include the burger (inside the non-inert header) in the cycle.
+			const burger = header?.querySelector<HTMLElement>('.hdr__burger');
+			const cycle = burger ? [burger, ...items] : items;
+			if (!cycle.length) return;
+			const idx = cycle.indexOf(document.activeElement as HTMLElement);
+			const next = e.shiftKey
+				? cycle[(idx - 1 + cycle.length) % cycle.length]
+				: cycle[(idx + 1) % cycle.length];
+			e.preventDefault();
+			next.focus();
+		};
+		document.addEventListener('keydown', onKeydown, true);
+		return () => {
+			document.removeEventListener('keydown', onKeydown, true);
+			for (const el of inerted) (el as HTMLElement).inert = false;
+			for (const el of appInerted) el.inert = false;
+			previouslyFocused?.focus();
+		};
+	};
 </script>
 
 <svelte:window bind:scrollY bind:innerHeight />
@@ -58,7 +123,7 @@
 	<div class="hdr__progress" style:transform="scaleX({progress})" aria-hidden="true"></div>
 	<div class="tt-container hdr__bar">
 		<a href="/" class="brand" aria-label="Trick Trades home">
-			<span class="brand__mark"><LightningIcon weight="fill" size={20} /></span>
+			<span class="brand__mark" aria-hidden="true"><LightningIcon weight="fill" size={20} /></span>
 			<span class="brand__name">TRICK<span>TRADES</span></span>
 		</a>
 
@@ -69,7 +134,7 @@
 		</nav>
 
 		<div class="hdr__actions">
-			<a class="hdr__login" href={site.domain + '/login'}>Login</a>
+			<a class="hdr__login" href={external.login}>Login</a>
 			<Button href="#pricing" size="md" arrow={false} onclick={(e) => go(e, '#pricing')}>
 				Join Now
 			</Button>
@@ -79,30 +144,31 @@
 			class="hdr__burger"
 			aria-label={open ? 'Close menu' : 'Open menu'}
 			aria-expanded={open}
+			aria-controls="mobile-menu"
 			onclick={() => (open = !open)}
 		>
-			{#if open}<XIcon size={26} weight="bold" />{:else}<ListIcon size={26} weight="bold" />{/if}
+			{#if open}<XIcon size={26} weight="bold" aria-hidden="true" />{:else}<ListIcon
+					size={26}
+					weight="bold"
+					aria-hidden="true"
+				/>{/if}
 		</button>
 	</div>
 </header>
 
 {#if open}
-	<div class="menu" role="dialog" aria-modal="true" aria-label="Menu">
-		<nav class="menu__nav">
+	<div class="menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" {@attach modalMenu}>
+		<nav class="menu__nav" aria-label="Menu">
 			{#each links as link, i (link.href)}
-				<a
-					href={link.href}
-					style:--i={i}
-					onclick={(e) => go(e, link.href)}
-				>
-					<span class="menu__idx">0{i + 1}</span>
+				<a href={link.href} style:--i={i} onclick={(e) => go(e, link.href)}>
+					<span class="menu__idx" aria-hidden="true">0{i + 1}</span>
 					{link.label}
 				</a>
 			{/each}
 		</nav>
 		<div class="menu__cta">
 			<Button href="#pricing" block onclick={(e) => go(e, '#pricing')}>Join Now</Button>
-			<a class="menu__login" href={site.domain + '/login'}>Member Login</a>
+			<a class="menu__login" href={external.login}>Member Login</a>
 		</div>
 	</div>
 {/if}
@@ -157,13 +223,13 @@
 		border-radius: 9px;
 		color: #fff;
 		background: linear-gradient(150deg, var(--tt-red-bright), var(--tt-red-600));
-		box-shadow: 0 6px 18px -6px rgba(255, 51, 51, 0.7);
+		box-shadow: 0 6px 18px -6px rgb(var(--tt-red-bright-rgb) / 0.7);
 	}
 	.brand__name {
 		font-family: var(--tt-font-display);
 		font-size: 1.15rem;
 		letter-spacing: 0.14em;
-		color: #fff;
+		color: var(--tt-white);
 	}
 	.brand__name span {
 		color: var(--tt-red-bright);
@@ -195,7 +261,7 @@
 		transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.hdr__nav a:hover {
-		color: #fff;
+		color: var(--tt-white);
 	}
 	.hdr__nav a:hover::after {
 		transform: scaleX(1);
@@ -213,7 +279,7 @@
 		transition: color 0.25s ease;
 	}
 	.hdr__login:hover {
-		color: #fff;
+		color: var(--tt-white);
 	}
 
 	.hdr__burger {
@@ -221,7 +287,7 @@
 		place-items: center;
 		width: 44px;
 		height: 44px;
-		color: #fff;
+		color: var(--tt-white);
 	}
 
 	/* Mobile menu overlay */
@@ -235,7 +301,7 @@
 		gap: 2rem;
 		padding: 6rem 2rem 3rem;
 		background:
-			radial-gradient(120% 80% at 80% 0%, rgba(178, 39, 37, 0.25), transparent 60%),
+			radial-gradient(120% 80% at 80% 0%, rgb(var(--tt-red-rgb) / 0.25), transparent 60%),
 			rgba(8, 8, 9, 0.98);
 		backdrop-filter: blur(6px);
 		animation: menuIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -262,7 +328,7 @@
 		font-family: var(--tt-font-display);
 		font-size: clamp(1.8rem, 11vw, 3rem);
 		letter-spacing: 0.02em;
-		color: #fff;
+		color: var(--tt-white);
 		border-bottom: 1px solid var(--tt-line);
 		animation: linkIn 0.5s both cubic-bezier(0.22, 1, 0.36, 1);
 		animation-delay: calc(var(--i) * 0.06s + 0.1s);

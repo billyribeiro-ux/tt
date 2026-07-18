@@ -2,8 +2,10 @@
 	import LightningIcon from 'phosphor-svelte/lib/LightningIcon';
 	import EnvelopeSimpleIcon from 'phosphor-svelte/lib/EnvelopeSimpleIcon';
 	import FacebookLogoIcon from 'phosphor-svelte/lib/FacebookLogoIcon';
-	import { site } from '$lib/data/site';
+	import { site, external } from '$lib/data/site';
 
+	// Internal routes are relative (prerendered here); WP-only pages (blog,
+	// newsletter, legal) are absolute URLs to the live site.
 	const columns = [
 		{
 			title: 'Academy',
@@ -28,23 +30,24 @@
 			title: 'Resources',
 			links: [
 				{ label: 'Contact Us', href: '/contact-us' },
-				{ label: 'Newsletter', href: '/the-situation-room' },
+				{ label: 'Newsletter', href: external.situationRoom },
 				{ label: 'Testimonials', href: '/testimonials' },
-				{ label: 'Trade Recaps', href: '/category/daily-trade-recaps' },
-				{ label: 'Cancellation Policy', href: '/cancellation-policy' }
+				{ label: 'Trade Recaps', href: external.tradeRecaps },
+				{ label: 'Cancellation Policy', href: external.cancellationPolicy }
 			]
 		},
 		{
 			title: 'Legal',
 			links: [
-				{ label: 'Privacy Policy', href: '/privacy-policy' },
-				{ label: 'Disclaimer', href: '/disclaimer' },
-				{ label: 'Terms & Conditions', href: '/terms-and-conditions' }
+				{ label: 'Privacy Policy', href: external.privacyPolicy },
+				{ label: 'Disclaimer', href: external.disclaimer },
+				{ label: 'Terms & Conditions', href: external.terms }
 			]
 		}
 	];
 
-	const year = 2026;
+	// Stamped at prerender time — a static rebuild is when "now" is decided.
+	const year = new Date().getFullYear();
 </script>
 
 <footer class="ft">
@@ -84,7 +87,7 @@
 					<h3 class="ft__col-title label">{col.title}</h3>
 					<ul>
 						{#each col.links as link (link.label)}
-							<li><a href={site.domain + link.href}>{link.label}</a></li>
+							<li><a href={link.href}>{link.label}</a></li>
 						{/each}
 					</ul>
 				</div>
@@ -108,7 +111,7 @@
 	}
 	.ft__risk {
 		border-bottom: 1px solid var(--tt-line);
-		background: rgba(178, 39, 37, 0.05);
+		background: rgb(var(--tt-red-rgb) / 0.05);
 	}
 	.ft__risk-inner {
 		display: grid;
@@ -181,7 +184,7 @@
 	.ft__soc:hover {
 		color: #fff;
 		border-color: var(--tt-red);
-		background: rgba(178, 39, 37, 0.14);
+		background: rgb(var(--tt-red-rgb) / 0.14);
 	}
 
 	.ft__cols {

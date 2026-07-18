@@ -50,8 +50,7 @@
 
 				<dl class="hero__stats">
 					{#each stats as s, i (s.label)}
-						{#if i > 0}<span class="hero__sep" aria-hidden="true"></span>{/if}
-						<div class="hero__stat">
+						<div class="hero__stat" class:hero__stat--ruled={i > 0}>
 							<dt class="num">
 								<span {@attach counter(s.value, (v) => Math.round(v).toLocaleString('en-US'))}
 									>{s.value.toLocaleString('en-US')}</span
@@ -64,22 +63,28 @@
 			</div>
 		</div>
 
-		<div class="hero__media" {@attach parallax(-46)} data-anim {@attach reveal({ y: 60, scale: 0.97, duration: 1.2 })}>
-			<Vsl label="Watch: Why 90% fail" />
-			<p class="hero__caption label">The 6-minute film that started 30,000 journeys</p>
+		<!-- parallax and reveal both tween GSAP `y`, so they live on separate nodes:
+		     the outer wrapper drifts, the inner element plays the entrance. -->
+		<div class="hero__media" {@attach parallax(-46)}>
+			<div data-anim {@attach reveal({ y: 60, scale: 0.97, duration: 1.2 })}>
+				<Vsl label="Watch: Why 90% fail" />
+				<p class="hero__caption label">The 6-minute film that started 30,000 journeys</p>
+			</div>
 		</div>
 	</div>
 
-	<div class="hero__ribbon" aria-label="As featured on">
+	<div class="hero__ribbon">
 		<span class="hero__ribbon-tag label">As featured on</span>
-		<div class="hero__ribbon-mask">
+		<div class="hero__ribbon-mask" aria-hidden="true">
 			<div class="hero__ribbon-track" {@attach marquee(28)}>
 				{#each [...featuredOn, ...featuredOn] as name, i (name + i)}
 					<span class="hero__ribbon-item">{name}</span>
-					<span class="hero__ribbon-dot" aria-hidden="true">✦</span>
+					<span class="hero__ribbon-dot">✦</span>
 				{/each}
 			</div>
 		</div>
+		<!-- Static, accessible equivalent of the moving ribbon -->
+		<p class="sr-only">As featured on {featuredOn.join(', ')}.</p>
 	</div>
 </section>
 
@@ -108,7 +113,7 @@
 		height: 70vw;
 		max-width: 900px;
 		max-height: 900px;
-		background: radial-gradient(circle, rgba(178, 39, 37, 0.42), transparent 62%);
+		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.42), transparent 62%);
 		filter: blur(20px);
 	}
 
@@ -176,10 +181,9 @@
 		padding-top: 1.8rem;
 		border-top: 1px solid var(--tt-line);
 	}
-	.hero__sep {
-		width: 1px;
-		height: 34px;
-		background: var(--tt-line-strong);
+	.hero__stat--ruled {
+		padding-left: 1.4rem;
+		border-left: 1px solid var(--tt-line-strong);
 	}
 	.hero__stat dt {
 		font-size: clamp(1.5rem, 1rem + 2vw, 2.1rem);

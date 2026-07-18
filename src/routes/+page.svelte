@@ -56,7 +56,8 @@
 					name: p.name,
 					price: p.price,
 					priceCurrency: 'USD',
-					url: site.domain + p.href,
+					// plan hrefs are absolute checkout URLs on the live store
+					url: p.href,
 					availability: 'https://schema.org/InStock'
 				}))
 			}

@@ -30,7 +30,7 @@
 	<span class="btn__glow" aria-hidden="true"></span>
 	<span class="btn__label">{@render children()}</span>
 	{#if arrow}
-		<ArrowRightIcon class="btn__arrow" weight="bold" size={18} />
+		<ArrowRightIcon class="btn__arrow" weight="bold" size={18} aria-hidden="true" />
 	{/if}
 {/snippet}
 
@@ -72,8 +72,9 @@
 		isolation: isolate;
 		text-transform: uppercase;
 		font-size: 0.82rem;
+		/* No `transform` here — the magnetic() attachment drives transform per-frame
+		   via GSAP; a CSS transition on the same property would fight every write. */
 		transition:
-			transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
 			box-shadow 0.3s ease,
 			color 0.3s ease;
 	}
@@ -112,10 +113,10 @@
 	/* Primary — brand red with a molten sheen */
 	.btn--primary {
 		color: #fff;
-		background: linear-gradient(180deg, #d1332f, var(--tt-red) 55%, var(--tt-red-600));
+		background: linear-gradient(180deg, var(--tt-red-hot), var(--tt-red) 55%, var(--tt-red-600));
 		box-shadow:
 			0 1px 0 rgba(255, 255, 255, 0.25) inset,
-			0 14px 34px -12px rgba(178, 39, 37, 0.85);
+			0 14px 34px -12px rgb(var(--tt-red-rgb) / 0.85);
 	}
 	.btn--primary .btn__glow {
 		background: radial-gradient(120% 140% at 50% -20%, rgba(255, 255, 255, 0.55), transparent 55%);
@@ -125,7 +126,7 @@
 	.btn--primary:hover {
 		box-shadow:
 			0 1px 0 rgba(255, 255, 255, 0.3) inset,
-			0 20px 46px -12px rgba(255, 51, 51, 0.9);
+			0 20px 46px -12px rgb(var(--tt-red-bright-rgb) / 0.9);
 	}
 	.btn--primary:hover .btn__glow {
 		opacity: 1;
