@@ -86,6 +86,6 @@
 		text-transform: none;
 		letter-spacing: 0.01em;
 		line-height: 1.6;
-		color: var(--tt-mute-2);
+		color: var(--tt-mute);
 	}
 </style>

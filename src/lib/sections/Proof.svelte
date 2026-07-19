@@ -325,14 +325,29 @@
 		.proof__cell--featured {
 			grid-row: 1 / span 2;
 		}
+		/* The featured card is twice as tall as the two beside it, so its quote is set
+		   as a proper pull-quote: large enough to read as the standout voice and to fill
+		   the taller card instead of leaving a slab of dead space above the attribution. */
+		.proof__cell--featured .proof__card {
+			padding: clamp(2.2rem, 3.2vw, 3.2rem);
+			/* Centre the spotlight quote in the double-height card so leftover space breathes
+			   evenly above and below it, rather than pooling into one slab over the name. */
+			justify-content: center;
+		}
+		.proof__cell--featured .proof__spacer {
+			flex: 0 0 clamp(1.8rem, 3.5vw, 2.8rem);
+			min-height: 0;
+		}
 		.proof__cell--featured .proof__quote {
-			font-size: var(--fs-h4);
-			line-height: 1.4;
+			font-size: var(--fs-h3);
+			line-height: 1.36;
+			letter-spacing: -0.01em;
 			color: var(--tt-white);
 		}
 		.proof__cell--featured .proof__mark {
+			font-size: clamp(6rem, 4rem + 4.5vw, 8.5rem);
 			color: var(--tt-red-bright);
-			opacity: 0.32;
+			opacity: 0.3;
 		}
 	}
 </style>

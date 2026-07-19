@@ -150,11 +150,16 @@
 			display: flex;
 			flex-direction: column;
 		}
-		.pa-pil__cadence {
-			margin-left: 0;
-		}
 		.pa-pil__top {
 			flex-wrap: wrap;
+		}
+		/* Drop the cadence onto its own line in every card so a longer label
+		   (like "15-30 min · pre-open") can't wrap and shove that card's title
+		   down out of line with its neighbours. */
+		.pa-pil__cadence {
+			flex-basis: 100%;
+			margin-left: 0;
+			margin-top: 0.85rem;
 		}
 	}
 </style>

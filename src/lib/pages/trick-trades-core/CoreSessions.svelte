@@ -252,4 +252,15 @@
 			display: grid;
 		}
 	}
+	@media (min-width: 768px) {
+		/* Ledger rhythm: title on the left, duration pinned to the right edge of the
+		   row so the sessions read like a run sheet instead of clustering left. */
+		.sess__row {
+			justify-content: space-between;
+		}
+		.sess__len {
+			font-size: 0.9rem;
+			color: var(--tt-fog);
+		}
+	}
 </style>

@@ -158,7 +158,7 @@
 		background: var(--tt-line-strong);
 	}
 	.c-hero__meta-item dt {
-		color: var(--tt-mute-2);
+		color: var(--tt-mute);
 	}
 	.c-hero__meta-item dd {
 		margin: 0.5rem 0 0;

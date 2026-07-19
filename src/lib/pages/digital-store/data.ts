@@ -1,4 +1,8 @@
 // Every buy button routes to the real store checkout.
+import CubeIcon from 'phosphor-svelte/lib/CubeIcon';
+import CrosshairIcon from 'phosphor-svelte/lib/CrosshairIcon';
+import TrendUpIcon from 'phosphor-svelte/lib/TrendUpIcon';
+
 export const STORE_URL = 'https://tricktrades.com/digital-store';
 
 export type Format = 'Download' | 'Stream';
@@ -9,14 +13,15 @@ export type Product = {
 	group?: string; // sub-grouping for the DVD catalog
 	series?: string; // links a box set to its single-volume series
 	premium?: boolean;
+	Icon?: typeof CubeIcon; // decorative medallion for the flagship single cards
 };
 export type Category = { id: string; idx: string; label: string; products: Product[] };
 
 // --- B.O.S.S. Series: three flagship systems + the bundle ---
 export const bossSingles: Product[] = [
-	{ name: 'B.O.S.S. Carbon', price: 597, format: 'Download' },
-	{ name: 'B.O.S.S. SPY Sniper', price: 597, format: 'Download' },
-	{ name: 'B.O.S.S. Swing', price: 597, format: 'Download' }
+	{ name: 'B.O.S.S. Carbon', price: 597, format: 'Download', Icon: CubeIcon },
+	{ name: 'B.O.S.S. SPY Sniper', price: 597, format: 'Download', Icon: CrosshairIcon },
+	{ name: 'B.O.S.S. Swing', price: 597, format: 'Download', Icon: TrendUpIcon }
 ];
 export const bossPack: Product = {
 	name: 'BossPack',

@@ -10,12 +10,25 @@
 	import '@fontsource/allerta-stencil/latin-400.css';
 	import '@fontsource/reenie-beanie/latin-400.css';
 
+	import { onNavigate } from '$app/navigation';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import FbGroup from '$lib/sections/FbGroup.svelte';
-	import { enableMotionClass, refreshTriggers } from '$lib/motion';
+	import { enableMotionClass, prefersReducedMotion, refreshTriggers } from '$lib/motion';
 
 	let { children } = $props();
+
+	// Cinematic cross-route transitions via the View Transitions API.
+	// Skipped for reduced-motion users and browsers without support.
+	onNavigate((navigation) => {
+		if (!document.startViewTransition || prefersReducedMotion()) return;
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
 
 	$effect(() => {
 		enableMotionClass();

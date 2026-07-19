@@ -98,7 +98,7 @@ export function reveal(opts: RevealOpts = {}): Attachment {
  * so masks match real line breaks after rotation.
  */
 export function splitReveal(
-	opts: { start?: string; stagger?: number; duration?: number } = {}
+	opts: { start?: string; stagger?: number; duration?: number; delay?: number } = {}
 ): Attachment {
 	return (node) => {
 		registerGsap();
@@ -124,6 +124,7 @@ export function splitReveal(
 				yPercent: 118,
 				opacity: 0,
 				duration: opts.duration ?? 0.9,
+				delay: opts.delay ?? 0,
 				ease: 'power4.out',
 				stagger: opts.stagger ?? 0.03,
 				scrollTrigger: { trigger: el, start: opts.start ?? 'top 88%', once: true },

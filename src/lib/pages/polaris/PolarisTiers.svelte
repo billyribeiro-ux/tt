@@ -44,13 +44,14 @@
 						<span class="tier__for-dot" aria-hidden="true"></span>{t.forWho}
 					</p>
 
-					<p class="tier__price">
-						<span class="tier__cur">$</span><span class="num tier__amt">{POLARIS_PRICE}</span><span
-							class="tier__cad">/ month</span
-						>
-					</p>
-
-					<span class="tier__focus">{t.focus}</span>
+					<div class="tier__pricelock">
+						<p class="tier__price">
+							<span class="tier__cur">$</span><span class="num tier__amt">{POLARIS_PRICE}</span
+							><span class="tier__cad">/ month</span>
+						</p>
+						<span class="tier__priceline" aria-hidden="true"></span>
+						<span class="tier__focus label">{t.focus}</span>
+					</div>
 
 					<p class="tier__blurb">{t.blurb}</p>
 
@@ -203,45 +204,49 @@
 		box-shadow: 0 0 10px var(--accent);
 	}
 
+	/* Price lockup: the number is the moment. A short accent rule anchors it and
+	   the focus line reads as the plan's descriptor, not a competing pill. */
+	.tier__pricelock {
+		margin-top: 1.5rem;
+	}
 	.tier__price {
 		display: flex;
 		align-items: baseline;
 		gap: 0.12rem;
-		margin-top: 1.4rem;
 		color: var(--tt-white);
 	}
 	.tier__cur {
 		align-self: flex-start;
-		margin-top: 0.4rem;
-		font-size: 1.4rem;
+		margin-top: 0.42rem;
+		font-size: 1.5rem;
 		font-weight: 700;
-		color: var(--tt-fog);
+		color: var(--accent);
 	}
 	.tier__amt {
-		font-size: clamp(2.8rem, 1.8rem + 3vw, 3.8rem);
+		font-size: clamp(3rem, 1.9rem + 3.4vw, 4.2rem);
 		font-weight: 800;
 		line-height: 1;
-		letter-spacing: -0.03em;
+		letter-spacing: -0.035em;
 	}
 	.tier__cad {
-		margin-left: 0.3rem;
+		margin-left: 0.35rem;
 		font-family: var(--tt-font-mono);
 		font-size: 0.85rem;
 		color: var(--tt-mute);
 	}
-
-	.tier__focus {
-		align-self: flex-start;
-		margin-top: 1rem;
-		padding: 0.4rem 0.85rem;
-		font-family: var(--tt-font-mono);
-		font-size: 0.68rem;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: var(--tt-fog);
-		border: 1px solid var(--accent-soft);
+	.tier__priceline {
+		display: block;
+		width: 52px;
+		height: 3px;
+		margin: 0.9rem 0 0.75rem;
 		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.02);
+		background: var(--accent);
+		box-shadow: 0 0 14px var(--accent-soft);
+	}
+	.tier__focus {
+		display: block;
+		letter-spacing: 0.14em;
+		color: var(--accent);
 	}
 
 	.tier__blurb {

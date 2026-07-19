@@ -57,6 +57,7 @@
 
 			<div class="boss-grid" data-anim-stagger {@attach reveal({ stagger: 0.1, y: 36 })}>
 				{#each bossSingles as p, i (p.name)}
+					{@const Icon = p.Icon}
 					<article class="card" {@attach tilt(4)}>
 						<div class="card__top">
 							<span class="card__idx num">0{i + 1}</span>
@@ -64,6 +65,9 @@
 								><DownloadSimpleIcon size={14} weight="bold" /> {p.format}</span
 							>
 						</div>
+						{#if Icon}
+							<span class="card__icon" aria-hidden="true"><Icon size={22} weight="regular" /></span>
+						{/if}
 						<h3 class="card__name">{p.name}</h3>
 						<div class="card__foot">
 							{@render price(p.price)}
@@ -283,8 +287,19 @@
 		text-transform: uppercase;
 		color: var(--tt-fog);
 	}
+	.card__icon {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		margin-top: 1.5rem;
+		border-radius: 11px;
+		color: var(--tt-fog);
+		border: 1px solid var(--tt-line);
+		background: rgba(255, 255, 255, 0.02);
+	}
 	.card__name {
-		margin-top: 1.4rem;
+		margin-top: 1.2rem;
 		font-size: var(--fs-h4);
 		font-weight: 700;
 		letter-spacing: -0.01em;

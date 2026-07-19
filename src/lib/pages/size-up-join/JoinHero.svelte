@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import { reveal, splitReveal, parallax, counter, jumpTo } from '$lib/motion';
+	import { reveal, splitReveal, parallax, counter, jumpTo, drawLine } from '$lib/motion';
 	import { site } from '$lib/data/site';
 
 	const webinarHref = 'https://tricktrades.com/size-up-webinar';
@@ -10,6 +10,23 @@
 	<div class="join-hero__bg" aria-hidden="true">
 		<div class="join-hero__grid grid-bg"></div>
 		<div class="join-hero__glow" {@attach parallax(110)}></div>
+		<!-- A price line printing upward across the empty right field: the chart
+		     literally sizing up. Decorative, drawn once on entry. -->
+		<svg
+			class="join-hero__chart"
+			viewBox="0 0 560 300"
+			fill="none"
+			preserveAspectRatio="xMidYMid meet"
+			{@attach drawLine({ scrub: false })}
+		>
+			<path
+				d="M4 250 L74 232 L128 258 L196 186 L252 210 L322 148 L388 172 L452 92 L512 118 L556 34"
+				stroke="var(--tt-red-bright)"
+				stroke-width="2.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+		</svg>
 	</div>
 
 	<div class="tt-container join-hero__inner">
@@ -88,6 +105,9 @@
 		max-height: 920px;
 		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.4), transparent 62%);
 		filter: blur(22px);
+	}
+	.join-hero__chart {
+		display: none;
 	}
 
 	.join-hero__inner {
@@ -180,6 +200,21 @@
 	@media (min-width: 768px) {
 		.join-hero__title {
 			margin-top: 1.8rem;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		/* Only surface the chart where the right column is genuinely empty; below
+		   this it would crowd the single-column stack. */
+		.join-hero__chart {
+			display: block;
+			position: absolute;
+			top: 19%;
+			right: 1%;
+			width: min(44vw, 600px);
+			height: auto;
+			opacity: 0.55;
+			filter: drop-shadow(0 0 16px rgb(var(--tt-red-rgb) / 0.4));
 		}
 	}
 </style>

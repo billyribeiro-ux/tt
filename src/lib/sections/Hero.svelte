@@ -16,6 +16,17 @@
 	}
 </script>
 
+<svelte:head>
+	<!-- The film poster is the LCP element; start fetching it before the parser reaches it -->
+	<link
+		rel="preload"
+		as="image"
+		imagesrcset="/pat-barn-640.avif 640w, /pat-barn-1200.avif 1200w"
+		imagesizes="(min-width: 900px) 46vw, 92vw"
+		type="image/avif"
+	/>
+</svelte:head>
+
 <section class="hero" aria-label="Trick Trades">
 	<div class="hero__bg" aria-hidden="true">
 		<div class="hero__grid grid-bg"></div>
@@ -24,16 +35,21 @@
 
 	<div class="tt-container tt-container--wide hero__inner">
 		<div class="hero__copy">
-			<p class="hero__kicker label">
+			<!-- Opening-title choreography: kicker, then headline, then film, then the stack -->
+			<p class="hero__kicker label" data-anim {@attach reveal({ y: 12, duration: 0.6 })}>
 				<span class="hero__live"></span>Want to make money trading?
 			</p>
 
-			<h1 class="hero__title" data-split {@attach splitReveal({ stagger: 0.028 })}>
+			<h1 class="hero__title" data-split {@attach splitReveal({ stagger: 0.028, delay: 0.15 })}>
 				Master the skill.<br />Master the emotion.
 				<span class="script hero__script">get your freedom.</span>
 			</h1>
 
-			<div class="hero__stack" data-anim-stagger {@attach reveal({ stagger: 0.12, y: 26 })}>
+			<div
+				class="hero__stack"
+				data-anim-stagger
+				{@attach reveal({ stagger: 0.12, y: 26, delay: 0.6 })}
+			>
 				<p class="hero__lede">
 					If you’re losing money trading, watch this before you do anything else today. Trick Trades
 					is a <strong>100% educational</strong> day-trading mentorship led by Pat “Trick” Mitchell. No
@@ -66,7 +82,7 @@
 		<!-- parallax and reveal both tween GSAP `y`, so they live on separate nodes:
 		     the outer wrapper drifts, the inner element plays the entrance. -->
 		<div class="hero__media" {@attach parallax(-46)}>
-			<div data-anim {@attach reveal({ y: 60, scale: 0.97, duration: 1.2 })}>
+			<div data-anim {@attach reveal({ y: 60, scale: 0.97, duration: 1.2, delay: 0.4 })}>
 				<Vsl label="Watch: Why 90% fail" />
 				<p class="hero__caption label">The 6-minute film that started 30,000 journeys</p>
 			</div>
