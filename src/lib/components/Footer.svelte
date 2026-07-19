@@ -97,12 +97,6 @@
 
 	<div class="tt-container ft__bottom">
 		<p class="num">© {year} {site.legalEntity}. All rights reserved.</p>
-		<p class="ft__credit">
-			Ambient chart rendered with
-			<a href="https://www.tradingview.com/lightweight-charts/" rel="noopener">
-				TradingView Lightweight Charts&trade;
-			</a>
-		</p>
 		<p>
 			Support: <a href="mailto:{site.support}">{site.support}</a>
 		</p>

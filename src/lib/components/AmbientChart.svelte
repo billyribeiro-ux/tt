@@ -107,7 +107,10 @@
 					textColor: 'rgb(139 141 152 / 0.9)',
 					fontFamily: "ui-monospace, 'SFMono-Regular', 'JetBrains Mono', 'Menlo', monospace",
 					fontSize: 11,
-					attributionLogo: false // credited in the site footer instead
+					// TradingView's license asks for attribution; with the footer credit
+					// removed, the library's own tiny corner logo is the compliant path.
+					// At ambient opacity it is barely perceptible.
+					attributionLogo: true
 				},
 				grid: { vertLines: { visible: false }, horzLines: { visible: false } },
 				rightPriceScale: { visible: true, borderVisible: false },
