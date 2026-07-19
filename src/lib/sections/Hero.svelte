@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AmbientChart from '$lib/components/AmbientChart.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Vsl from '$lib/components/Vsl.svelte';
 	import { reveal, splitReveal, parallax, counter, marquee, scrollToTarget } from '$lib/motion';
@@ -31,6 +32,10 @@
 	<div class="hero__bg" aria-hidden="true">
 		<div class="hero__grid grid-bg"></div>
 		<div class="hero__glow" {@attach parallax(120)}></div>
+		<!-- Ambient market pulse: a real AAPL session replaying, barely there -->
+		<div class="hero__pulse">
+			<AmbientChart />
+		</div>
 	</div>
 
 	<div class="tt-container tt-container--wide hero__inner">
@@ -131,6 +136,25 @@
 		max-height: 900px;
 		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.42), transparent 62%);
 		filter: blur(20px);
+	}
+	/* The pulse lives in the hero's lower band and dissolves toward the copy:
+	   strongest at the bottom edge, gone before it can touch the headline. */
+	/* Pinned to the lower band of the FIRST VIEWPORT (the hero itself is taller
+	   than a screen), dissolving upward before it can touch the headline. */
+	.hero__pulse {
+		position: absolute;
+		top: calc(100vh - clamp(300px, 52vh, 500px));
+		right: 0;
+		left: 0;
+		height: clamp(300px, 52vh, 500px);
+		opacity: 0.2;
+		-webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 92%, transparent 100%);
+		mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 92%, transparent 100%);
+	}
+	@media (min-width: 1024px) {
+		.hero__pulse {
+			opacity: 0.24;
+		}
 	}
 
 	.hero__inner {

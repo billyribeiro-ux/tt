@@ -49,6 +49,7 @@
 		"@fontsource/poppins": "^5.2.7",
 		"@fontsource/reenie-beanie": "^5.2.8",
 		"gsap": "^3.15.0",
+		"lightweight-charts": "5.2.0",
 		"phosphor-svelte": "^3.1.0"
 	}
 }
