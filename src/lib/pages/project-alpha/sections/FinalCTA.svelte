@@ -82,6 +82,17 @@
 		margin: 0 auto 1.25rem;
 		mix-blend-mode: screen;
 		filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.45));
+		/* The PNG carries a baked #111 plate that screen-blending lightens into
+		   a hard-edged box; its lettering sits within 6% side / 17% vertical
+		   margins, so feathering the edges hides the plate without touching ink. */
+		-webkit-mask-image:
+			linear-gradient(90deg, transparent, #000 5.5%, #000 94.5%, transparent),
+			linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+		-webkit-mask-composite: source-in;
+		mask-image:
+			linear-gradient(90deg, transparent, #000 5.5%, #000 94.5%, transparent),
+			linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+		mask-composite: intersect;
 	}
 
 	.glow {

@@ -223,7 +223,7 @@
 			class="hdr__burger"
 			aria-label={open ? 'Close menu' : 'Open menu'}
 			aria-expanded={open}
-			aria-controls="mobile-menu"
+			aria-controls={open ? 'mobile-menu' : undefined}
 			onclick={() => (open = !open)}
 		>
 			{#if open}<XIcon size={26} weight="bold" aria-hidden="true" />{:else}<ListIcon

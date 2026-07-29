@@ -46,13 +46,18 @@
 			ScrollTrigger.refresh();
 		};
 
-		if (reduceMotion) {
+		// The calibration film is a first-impression beat, not a toll booth:
+		// it plays once per browser session and repeat visits go straight in.
+		const introSeen = sessionStorage.getItem('alpha-intro-seen') === '1';
+
+		if (reduceMotion || introSeen) {
 			completeIntro();
 			document.querySelectorAll<HTMLElement>('.reveal').forEach((el) => {
 				el.style.opacity = '1';
 				el.style.transform = 'none';
 			});
 		} else {
+			sessionStorage.setItem('alpha-intro-seen', '1');
 			if (introRoot) {
 				const intro = gsap.timeline({
 					defaults: { ease: 'power3.out' },
@@ -176,33 +181,145 @@
 						);
 					});
 
-				const cardGroups = [
-					'#equipment .equip-card',
-					'#pillars .pillar',
-					'#schedule .block',
-					'#assessments .card',
-					'#notes .note'
-				];
+				/* ============================================================
+				   Chapter signatures. Every section moves like a different
+				   neural phenomenon; nothing repeats.
+				   ============================================================ */
 
-				cardGroups.forEach((selector) => {
-					const cards = gsap.utils.toArray<HTMLElement>(selector);
-					if (!cards.length) return;
-					gsap.from(cards, {
-						y: 70,
-						rotateX: 9,
-						scale: 0.96,
-						opacity: 0,
-						stagger: 0.11,
-						duration: 1,
-						ease: 'expo.out',
-						immediateRender: false,
-						scrollTrigger: {
-							trigger: cards[0].parentElement,
-							start: 'top 80%',
-							toggleActions: 'play none none none',
-							once: true
-						}
+				/* 02 Instrument: SIGNAL ACQUISITION. Each device card locks on
+				   like an electrode finding contact: a damped horizontal
+				   oscillation that settles to zero while focus sharpens. */
+				{
+					const cards = gsap.utils.toArray<HTMLElement>('#equipment .equip-card');
+					cards.forEach((card, i) => {
+						const tl = gsap.timeline({
+							scrollTrigger: {
+								trigger: card.parentElement,
+								start: 'top 80%',
+								toggleActions: 'play none none none',
+								once: true
+							},
+							delay: i * 0.09
+						});
+						tl.from(card, {
+							opacity: 0,
+							y: 38,
+							filter: 'blur(7px)',
+							duration: 0.55,
+							ease: 'power2.out',
+							immediateRender: false
+						}).to(
+							card,
+							{
+								keyframes: [
+									{ x: 13, duration: 0.09 },
+									{ x: -9, duration: 0.09 },
+									{ x: 5, duration: 0.1 },
+									{ x: -2, duration: 0.11 },
+									{ x: 0, duration: 0.13 }
+								],
+								ease: 'none'
+							},
+							0.18
+						);
 					});
+				}
+
+				/* 03 Train: THREE FREQUENCY BANDS. Each pillar settles on its
+				   own damped waveform; period tightens and amplitude drops
+				   from band to band, so no two pillars move alike. */
+				{
+					const pillars = gsap.utils.toArray<HTMLElement>('#pillars .pillar');
+					pillars.forEach((pillar, i) => {
+						const amp = 20 - i * 5;
+						const period = 0.34 - i * 0.08;
+						const tl = gsap.timeline({
+							scrollTrigger: {
+								trigger: pillar.parentElement,
+								start: 'top 78%',
+								toggleActions: 'play none none none',
+								once: true
+							},
+							delay: i * 0.14
+						});
+						tl.from(pillar, {
+							opacity: 0,
+							y: 84,
+							duration: 0.7,
+							ease: 'sine.out',
+							immediateRender: false
+						}).to(pillar, {
+							keyframes: [
+								{ y: -amp, duration: period },
+								{ y: amp * 0.45, duration: period },
+								{ y: -amp * 0.2, duration: period },
+								{ y: 0, duration: period * 1.2 }
+							],
+							ease: 'sine.inOut'
+						});
+					});
+				}
+
+				/* 05 Repeat: SPIKE TRAIN. The protocol is rhythm, so the day
+				   blocks fire on a strict metronome (constant interval, sharp
+				   onset) and each block's time chips tick in like a clock. */
+				{
+					const dayline = document.querySelector('#schedule .dayline');
+					if (dayline) {
+						gsap.from(dayline, {
+							scaleX: 0,
+							transformOrigin: 'left center',
+							duration: 1.15,
+							ease: 'expo.inOut',
+							immediateRender: false,
+							scrollTrigger: { trigger: '#schedule', start: 'top 74%', once: true }
+						});
+					}
+					const blocks = gsap.utils.toArray<HTMLElement>('#schedule .block');
+					blocks.forEach((block, i) => {
+						const tl = gsap.timeline({
+							scrollTrigger: {
+								trigger: block.parentElement,
+								start: 'top 80%',
+								toggleActions: 'play none none none',
+								once: true
+							},
+							delay: i * 0.2
+						});
+						tl.from(block, {
+							opacity: 0,
+							scale: 0.92,
+							y: 24,
+							duration: 0.5,
+							ease: 'back.out(2.4)',
+							immediateRender: false
+						}).from(
+							block.querySelectorAll('.time'),
+							{
+								opacity: 0,
+								x: -8,
+								stagger: 0.07,
+								duration: 0.22,
+								ease: 'power1.out',
+								immediateRender: false
+							},
+							0.22
+						);
+					});
+				}
+
+				/* 07 Protect: RETURN TO BASELINE. The calm chapter: notes
+				   surface slowly from out-of-focus to rest, no overshoot,
+				   the longest and gentlest movement on the page. */
+				gsap.from('#notes .note', {
+					opacity: 0,
+					y: 30,
+					filter: 'blur(10px)',
+					stagger: 0.16,
+					duration: 1.5,
+					ease: 'sine.out',
+					immediateRender: false,
+					scrollTrigger: { trigger: '#notes .grid', start: 'top 80%', once: true }
 				});
 
 				gsap.from('#hypothesis .pill:first-child', {
@@ -263,15 +380,44 @@
 					scrollTrigger: { trigger: '#pillars .grid', start: 'top 77%' }
 				});
 
-				gsap.from('#assessments .card', {
-					clipPath: 'inset(0 0 100% 0 round 18px)',
-					stagger: 0.14,
-					duration: 1.15,
-					ease: 'expo.inOut',
-					immediateRender: false,
-					scrollTrigger: { trigger: '#assessments .grid', start: 'top 80%' }
-				});
+				/* 06 Measure: SNAPSHOT. Each assessment card is captured, not
+				   revealed: an oscilloscope-shutter wipe followed by a brief
+				   exposure flash, like the brain snapshot it describes. */
+				{
+					const cards = gsap.utils.toArray<HTMLElement>('#assessments .card');
+					cards.forEach((card, i) => {
+						const tl = gsap.timeline({
+							scrollTrigger: {
+								trigger: card.parentElement,
+								start: 'top 80%',
+								toggleActions: 'play none none none',
+								once: true
+							},
+							delay: i * 0.16
+						});
+						tl.from(card, {
+							clipPath: 'inset(0 0 100% 0 round 18px)',
+							duration: 0.95,
+							ease: 'expo.inOut',
+							immediateRender: false
+						}).to(
+							card,
+							{
+								keyframes: [
+									{ filter: 'brightness(1.32) saturate(1.1)', duration: 0.09 },
+									{ filter: 'brightness(1) saturate(1)', duration: 0.42 }
+								],
+								ease: 'power1.out'
+							},
+							0.78
+						);
+					});
+				}
 
+				/* 08 Enter: PHASE-LOCK. The finale animates alpha coherence
+				   itself: the three perk badges arrive desynchronized
+				   (scattered offsets, opposing rotations) and lock into
+				   alignment as the aperture opens. */
 				gsap.from('#apply .cta', {
 					clipPath: 'inset(12% 12% 12% 12% round 80px)',
 					scale: 0.94,
@@ -281,6 +427,25 @@
 					immediateRender: false,
 					scrollTrigger: { trigger: '#apply', start: 'top 76%' }
 				});
+				{
+					const perks = gsap.utils.toArray<HTMLElement>('#apply .perks li');
+					const scatterX = [-72, 58, -44];
+					const scatterY = [26, -20, 32];
+					const scatterR = [-6, 5, -4];
+					perks.forEach((perk, i) => {
+						gsap.from(perk, {
+							x: scatterX[i % 3],
+							y: scatterY[i % 3],
+							rotate: scatterR[i % 3],
+							opacity: 0,
+							duration: 1.05,
+							delay: 0.5 + i * 0.1,
+							ease: 'expo.inOut',
+							immediateRender: false,
+							scrollTrigger: { trigger: '#apply', start: 'top 76%', once: true }
+						});
+					});
+				}
 				gsap.to('#apply .glow', {
 					rotate: 18,
 					scale: 1.35,
@@ -511,7 +676,7 @@
 		position: fixed;
 		z-index: 40;
 		top: 50%;
-		right: 1.35rem;
+		right: 1.75rem;
 		transform: translateY(-50%);
 		display: none;
 		width: 105px;

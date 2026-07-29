@@ -101,7 +101,7 @@
 		font-weight: 600;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
-		color: var(--alpha-faint);
+		color: var(--alpha-muted);
 	}
 
 	h3 {

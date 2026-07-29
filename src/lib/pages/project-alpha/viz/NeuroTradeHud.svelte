@@ -16,14 +16,29 @@
 	let band = $state(`${ALPHA_HZ.min}–${ALPHA_HZ.max} Hz`);
 
 	onMount(() => {
-		if (!browser || ui.reducedMotion) return;
+		// Check the media query directly: this component can mount before the
+		// page-level effect syncs ui.reducedMotion, which previously let the
+		// loop start (and run forever) for reduced-motion visitors.
+		if (
+			!browser ||
+			ui.reducedMotion ||
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		)
+			return;
 		let raf = 0;
+		let lastWrite = -Infinity;
 		const t0 = performance.now();
 		const loop = (now: number) => {
+			if (ui.reducedMotion) return;
 			const t = (now - t0) / 1000;
-			alphaPct = Math.round(alphaPower(t) * 100);
-			stressPct = Math.round(stressIndex(t) * 100);
-			band = `${(ALPHA_HZ.min + alphaPower(t) * 2).toFixed(1)} Hz`;
+			// The chips are human-readable instruments: refresh them at 8 Hz
+			// instead of every frame. The rounded values change identically.
+			if (t - lastWrite >= 0.125) {
+				lastWrite = t;
+				alphaPct = Math.round(alphaPower(t) * 100);
+				stressPct = Math.round(stressIndex(t) * 100);
+				band = `${(ALPHA_HZ.min + alphaPower(t) * 2).toFixed(1)} Hz`;
+			}
 			raf = requestAnimationFrame(loop);
 		};
 		raf = requestAnimationFrame(loop);

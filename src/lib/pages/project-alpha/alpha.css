@@ -74,6 +74,16 @@
 	perspective: 1200px;
 }
 
+/* The chapter rail (CinematicDirector) is fixed at right: 1.35rem, 105px wide,
+   and only shown at >= 1320px. Cap the shell so its right edge always clears
+   the rail's dot column (rail left edge = 100vw - 132px, minus glow cushion);
+   otherwise ticker rows like "observe · regulate · execute" run under the dots. */
+@media (min-width: 1320px) {
+	.alpha-scope .section-shell {
+		width: min(1180px, calc(100vw - 288px));
+	}
+}
+
 .alpha-scope .section-shell::before {
 	content: attr(data-chapter);
 	position: absolute;

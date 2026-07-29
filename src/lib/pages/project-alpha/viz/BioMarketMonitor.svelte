@@ -278,18 +278,37 @@
 					return from + (to - from) * blend;
 				}
 
+				// Every visit is a different session: a random seed folds into
+				// every noise stream, so no two page loads replay the same feed.
+				const sessionSeed = Math.floor(Math.random() * 100000) / 100;
+				const S = (k: number) => k + sessionSeed;
+
+				// Each 10 s epoch develops its own character (burst density,
+				// volatility, reactivity), crossfaded so lanes stay continuous.
+				const epochChar = (t: number, k: number) => {
+					const position = t / windowSeconds;
+					const index = Math.floor(position);
+					const blend = smoothstep(position - index);
+					return hashNoise(index, S(k)) * (1 - blend) + hashNoise(index + 1, S(k)) * blend;
+				};
+
 				function protocolState(t: number) {
-					// A slow 96-second, one-way observation. The small variations
-					// are aperiodic deterministic drift, not a short sine loop.
-					const progress = smoothstep(t / 96);
-					const slowDrift = valueNoise(t, 0.018, 11);
-					const autonomicDrift = valueNoise(t, 0.055, 23);
-					const alphaHz = 9.2 + progress * 1.25 + slowDrift * 0.1 + autonomicDrift * 0.035;
-					const alpha = clamp01(0.43 + progress * 0.32 + slowDrift * 0.026);
-					const stress = clamp01(0.61 - progress * 0.34 + autonomicDrift * 0.025);
-					const bpm = 77 - progress * 9 + autonomicDrift * 0.9 + slowDrift * 0.35;
-					const stage = progress < 0.3 ? 0 : progress < 0.72 ? 1 : 2;
-					return { progress, alphaHz, alpha, stress, bpm, stage };
+					// An endless training session, not a one-way arc: focus wanders
+					// through reactive, training, and disciplined states in slow
+					// irregular cycles. It can relapse; it never freezes.
+					const wander =
+						valueNoise(t, 1 / 74, S(11)) * 0.55 +
+						valueNoise(t, 1 / 31, S(13)) * 0.3 +
+						valueNoise(t, 1 / 12, S(17)) * 0.15;
+					const focus = clamp01(0.52 + wander * 0.66);
+					const slowDrift = valueNoise(t, 0.018, S(19));
+					const autonomicDrift = valueNoise(t, 0.055, S(23));
+					const alphaHz = 9.1 + focus * 1.6 + slowDrift * 0.12 + autonomicDrift * 0.04;
+					const alpha = clamp01(0.34 + focus * 0.48 + slowDrift * 0.03);
+					const stress = clamp01(0.72 - focus * 0.52 + autonomicDrift * 0.04);
+					const bpm = 82 - focus * 14 + autonomicDrift * 1.1 + slowDrift * 0.4;
+					const stage = focus < 0.42 ? 0 : focus < 0.7 ? 1 : 2;
+					return { progress: focus, alphaHz, alpha, stress, bpm, stage };
 				}
 
 				function eegTrace(
@@ -329,15 +348,21 @@
 					const ecgMid = margin.top + innerH * 0.78;
 					const amp = innerH * 0.09 * reduced;
 
-					// Market structure evolves as a slow, irregular path rather
-					// than repeating the short-period source waveform.
+					// Market structure evolves as a slow, irregular path whose
+					// volatility regime shifts epoch to epoch.
+					const vol = 1 + epochChar(sampleTime, 139) * 0.38;
 					const marketDrift =
-						valueNoise(sampleTime, 0.085, 41) * 0.48 +
-						valueNoise(sampleTime, 0.026, 47) * 0.34 +
-						priceSample(sampleTime * 0.08, 0) * 0.18;
+						(valueNoise(sampleTime, 0.085, S(41)) * 0.48 +
+							valueNoise(sampleTime, 0.026, S(47)) * 0.34 +
+							priceSample(sampleTime * 0.08, sessionSeed) * 0.18) *
+						vol;
 					const px = marketDrift * amp * 1.1 + priceMid;
-					const alphaBurst = 0.82 + valueNoise(sampleTime, 0.095, 53) * 0.16;
-					const betaBurst = 0.72 + Math.max(0, valueNoise(sampleTime, 0.13, 67)) * 0.32;
+					const alphaBurst =
+						0.82 + epochChar(sampleTime, 131) * 0.13 + valueNoise(sampleTime, 0.095, S(53)) * 0.16;
+					const betaBurst =
+						0.72 +
+						Math.max(0, epochChar(sampleTime, 137)) * 0.24 +
+						Math.max(0, valueNoise(sampleTime, 0.13, S(67))) * 0.32;
 					const al =
 						eegTrace(
 							sampleTime,
@@ -345,18 +370,18 @@
 							(0.78 * state.alpha + 0.16) * alphaBurst,
 							0.2,
 							0.055,
-							71
+							S(71)
 						) *
 							amp +
 						eegMid;
 					const be =
 						eegTrace(
 							sampleTime,
-							21.5 + valueNoise(sampleTime, 0.04, 73) * 0.65,
+							21.5 + valueNoise(sampleTime, 0.04, S(73)) * 0.65,
 							(0.44 * state.stress + 0.1) * betaBurst,
 							1.1,
 							0.07,
-							83
+							S(83)
 						) *
 							amp *
 							0.82 +
@@ -365,11 +390,12 @@
 					// ecgSample's native cadence is 69 BPM; rescale time so the
 					// rendered QRS cadence agrees with the displayed heart rate,
 					// then add subtle respiratory wander and acquisition noise.
-					const ecgTime = sampleTime * (state.bpm / 69) + valueNoise(sampleTime, 0.07, 91) * 0.006;
+					const ecgTime =
+						sampleTime * (state.bpm / 69) + valueNoise(sampleTime, 0.07, S(91)) * 0.006;
 					const ec =
-						(ecgSample(ecgTime, 0) * 1.12 +
-							valueNoise(sampleTime, 0.24, 97) * 0.035 +
-							valueNoise(sampleTime, 38, 101) * 0.012) *
+						(ecgSample(ecgTime, sessionSeed * 0.01) * 1.12 +
+							valueNoise(sampleTime, 0.24, S(97)) * 0.035 +
+							valueNoise(sampleTime, 38, S(101)) * 0.012) *
 							amp +
 						ecgMid;
 
@@ -423,8 +449,12 @@
 					if (t - lastReadoutAt >= 0.5 || !Number.isFinite(lastReadoutAt)) {
 						lastReadoutAt = t;
 						const state = protocolState(t);
+						// The session path wanders both ways; discipline tilts it
+						// positive but never pins it.
 						const rMult =
-							(valueNoise(t, 0.035, 109) * 0.12 + state.progress * 0.24 - state.stress * 0.11) *
+							(valueNoise(t, 0.021, S(109)) * 0.55 +
+								(state.progress - 0.5) * 0.5 -
+								(state.stress - 0.4) * 0.2) *
 							1.4;
 						const sign = rMult >= 0 ? '+' : '';
 						activeStage = state.stage;

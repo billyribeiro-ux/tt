@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { schedule, study } from '$lib/pages/project-alpha/data/content';
 	import ClockIcon from 'phosphor-svelte/lib/ClockIcon';
+
+	// study.dailyCommitment is '~45 minutes beyond trading'; the sentence below
+	// supplies its own "beyond the trading" clause, so strip both markers here.
+	const commitment = study.dailyCommitment.replace('~', '').replace(' beyond trading', '');
 </script>
 
 <section id="schedule" class="section-shell" data-chapter="05" aria-labelledby="schedule-title">
@@ -8,10 +12,8 @@
 		<p class="section-label">Your day</p>
 		<h2 id="schedule-title" class="section-title">The daily program</h2>
 		<p class="section-desc">
-			A typical study day. Total added commitment is approximately {study.dailyCommitment.replace(
-				'~',
-				''
-			)} beyond the trading you’d already be doing.
+			A typical study day. Total added commitment is approximately {commitment} beyond the trading you’d
+			already be doing.
 		</p>
 	</div>
 
@@ -169,7 +171,7 @@
 	.time {
 		font-size: 0.76rem;
 		font-weight: 500;
-		color: var(--alpha-faint);
+		color: var(--alpha-muted);
 		padding-top: 0.1rem;
 	}
 

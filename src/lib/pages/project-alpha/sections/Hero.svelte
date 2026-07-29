@@ -7,8 +7,22 @@
 	import { ensureGsap } from '$lib/pages/project-alpha/motion/gsap-setup';
 	import { magnetic } from '$lib/pages/project-alpha/actions/magnetic';
 	import { scrollToId } from '$lib/pages/project-alpha/motion/smooth-scroll';
-	import NeuralScene from '../viz/NeuralScene.svelte';
+	import type { Component } from 'svelte';
 	import NeuroTradeHud from '../viz/NeuroTradeHud.svelte';
+
+	// The neural scene carries three.js (~700 KB raw); load it off the critical
+	// path so the hero's copy and HUD paint instantly. The brain fades in when
+	// the module lands, which reads as a deliberate warm-up rather than a wait.
+	let NeuralScene = $state<Component | null>(null);
+	onMount(() => {
+		let cancelled = false;
+		import('../viz/NeuralScene.svelte').then((m) => {
+			if (!cancelled) NeuralScene = m.default;
+		});
+		return () => {
+			cancelled = true;
+		};
+	});
 	import ArrowDownIcon from 'phosphor-svelte/lib/ArrowDownIcon';
 	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
 
@@ -105,7 +119,9 @@
 	<div class="hero-bloom bloom-blue" aria-hidden="true"></div>
 
 	<div class="hero-stage">
-		<NeuralScene />
+		{#if NeuralScene}
+			<NeuralScene />
+		{/if}
 		<div class="stage-callouts" aria-hidden="true">
 			<div class="stage-callout callout-a">
 				<span class="callout-line"></span>
@@ -157,7 +173,12 @@
 			</p>
 
 			<div class="hero-actions">
-				<button type="button" class="btn-primary" use:magnetic={0.18} onclick={() => ui.openApply()}>
+				<button
+					type="button"
+					class="btn-primary"
+					use:magnetic={0.18}
+					onclick={() => ui.openApply()}
+				>
 					Apply for the study
 					<ArrowRightIcon size={17} weight="bold" />
 				</button>
@@ -166,7 +187,7 @@
 				>
 			</div>
 
-			<div class="hero-stats" aria-label="Study overview">
+			<div class="hero-stats" role="group" aria-label="Study overview">
 				<div class="hero-stat">
 					<span class="stat-value">{study.days}</span>
 					<span class="stat-label">Days of protocol</span>
@@ -548,6 +569,22 @@
 		right: 7%;
 	}
 
+	/* Once the protocol rail appears (>=1320px) the callouts yield its lane,
+	   mirroring the shell's reserved rail gutter in alpha.css. */
+	@media (min-width: 1320px) {
+		.callout-a {
+			right: calc(5% + 118px);
+		}
+
+		.callout-b {
+			right: calc(2% + 118px);
+		}
+
+		.callout-c {
+			right: calc(7% + 118px);
+		}
+	}
+
 	.hero-corner {
 		position: absolute;
 		z-index: 5;
@@ -573,6 +610,18 @@
 		object-fit: contain;
 		opacity: 0.22;
 		mix-blend-mode: screen;
+		/* The PNG carries a baked #111 plate that screen-blending lightens into
+		   a hard-edged box over the starfield / brain; its lettering sits within
+		   6% side / 17% vertical margins, so feathering the edges hides the
+		   plate without touching ink. */
+		-webkit-mask-image:
+			linear-gradient(90deg, transparent, #000 5.5%, #000 94.5%, transparent),
+			linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+		-webkit-mask-composite: source-in;
+		mask-image:
+			linear-gradient(90deg, transparent, #000 5.5%, #000 94.5%, transparent),
+			linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+		mask-composite: intersect;
 	}
 
 	.scroll-cue {

@@ -192,7 +192,7 @@ export const schedule: ScheduleBlock[] = [
 		title: 'Debrief & Data',
 		accent: '#2bbfa0',
 		items: [
-			{ time: '·', text: 'Stop Mind Monitor recording, export session data' },
+			{ time: '–', text: 'Stop Mind Monitor recording, export session data' },
 			{ time: '5–10m', text: 'Post-market debrief meditation' },
 			{ time: '5–10m', text: 'Complete trade journal in Size UP' }
 		]

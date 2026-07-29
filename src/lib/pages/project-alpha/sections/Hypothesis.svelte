@@ -12,7 +12,11 @@
 		<p class="section-desc">{study.problem}</p>
 	</div>
 
-	<div class="problem-signal reveal" aria-label="The behavioral gap this study investigates">
+	<div
+		class="problem-signal reveal"
+		role="group"
+		aria-label="The behavioral gap this study investigates"
+	>
 		<div class="failure-stat">
 			<strong>90<span>%</span></strong>
 			<p>
@@ -49,7 +53,8 @@
 				Day traders who learn to achieve and maintain an
 				<strong>alpha brainwave state ({study.alphaBand.minHz}–{study.alphaBand.maxHz} Hz)</strong>
 				will demonstrate reduced emotional reactivity, improved technical execution, shorter learning
-				curves, and greater consistency, compared to their own pre-study baseline.
+				curves, and greater consistency, compared to their own
+				<span class="no-break">pre-study</span> baseline.
 			</p>
 			<ul class="hyp-metrics">
 				<li>Lower emotional reactivity at the moment of entry / exit</li>
@@ -253,6 +258,11 @@
 		color: var(--alpha-red-bright);
 		font-style: normal;
 		font-weight: 600;
+	}
+
+	/* Keep the compound from breaking at its hyphen ("pre-" / "study"). */
+	.no-break {
+		white-space: nowrap;
 	}
 
 	.hyp-metrics {

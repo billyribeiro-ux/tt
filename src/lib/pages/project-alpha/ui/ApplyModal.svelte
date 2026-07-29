@@ -444,4 +444,12 @@
 			grid-template-columns: 1fr;
 		}
 	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.backdrop,
+		.modal,
+		:global(.spin) {
+			animation: none;
+		}
+	}
 </style>
