@@ -573,15 +573,15 @@
 	   mirroring the shell's reserved rail gutter in alpha.css. */
 	@media (min-width: 1320px) {
 		.callout-a {
-			right: calc(5% + 118px);
+			right: calc(5% + 132px);
 		}
 
 		.callout-b {
-			right: calc(2% + 118px);
+			right: calc(2% + 132px);
 		}
 
 		.callout-c {
-			right: calc(7% + 118px);
+			right: calc(7% + 132px);
 		}
 	}
 
