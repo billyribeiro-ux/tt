@@ -148,7 +148,13 @@
 		left: 0;
 		height: clamp(300px, 52vh, 500px);
 		opacity: 0.2;
-		-webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 92%, transparent 100%);
+		-webkit-mask-image: linear-gradient(
+			180deg,
+			transparent 0%,
+			#000 38%,
+			#000 92%,
+			transparent 100%
+		);
 		mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 92%, transparent 100%);
 	}
 	@media (min-width: 1024px) {

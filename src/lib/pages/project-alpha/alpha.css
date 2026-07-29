@@ -1,0 +1,332 @@
+/* ==========================================================================
+   Project ALPHA page scope. Ported from the standalone project-alpha-sol
+   build; Tailwind removed, everything vanilla and namespaced under
+   .alpha-scope so this page's art direction (DM Sans / Playfair, blue-teal
+   research accents) never leaks into the rest of the site.
+   ========================================================================== */
+
+.alpha-scope {
+	/* Palette */
+	--alpha-bg: #070709;
+	--alpha-surface: #101116;
+	--alpha-border: #242429;
+	--alpha-border-hover: #2e2e35;
+	--alpha-text: #efefed;
+	--alpha-muted: #9a9590;
+	--alpha-faint: #6b6560;
+	--alpha-red: #980000;
+	--alpha-red-bright: #b82020;
+	--alpha-blue: #3b8beb;
+	--alpha-teal: #2bbfa0;
+	--alpha-gold: #d4a853;
+	/* The sol page's nav height equals the repo header height (4.75rem = 76px) */
+	--nav-h: 4.75rem;
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+	--pointer-x: 50vw;
+	--pointer-y: 50vh;
+	--font-sans: 'DM Sans', Inter, 'SF Pro Display', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Playfair Display', 'Iowan Old Style', Baskerville, ui-serif, Georgia, serif;
+
+	color-scheme: dark;
+	position: relative;
+	z-index: 1;
+	isolation: isolate;
+	font-family: var(--font-sans);
+	background:
+		radial-gradient(circle at 12% 8%, rgba(152, 0, 0, 0.08), transparent 25rem),
+		radial-gradient(circle at 88% 28%, rgba(59, 139, 235, 0.055), transparent 28rem),
+		var(--alpha-bg);
+	color: var(--alpha-text);
+	line-height: 1.7;
+	overflow-x: clip;
+}
+
+/* Faint vertical editorial rails (was main::before in the standalone build) */
+.alpha-scope::before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	inset: 0;
+	pointer-events: none;
+	background:
+		linear-gradient(90deg, transparent 0 7.9%, rgba(255, 255, 255, 0.018) 8%, transparent 8.1%),
+		linear-gradient(90deg, transparent 0 91.9%, rgba(255, 255, 255, 0.018) 92%, transparent 92.1%);
+}
+
+.alpha-scope ::selection {
+	background: color-mix(in srgb, var(--alpha-red) 45%, transparent);
+	color: #fff;
+}
+
+.alpha-scope :focus-visible {
+	outline: 2px solid var(--alpha-blue);
+	outline-offset: 3px;
+}
+
+/* ---- Shared section vocabulary ---- */
+
+.alpha-scope .section-shell {
+	position: relative;
+	width: min(1180px, calc(100% - 2.5rem));
+	margin-inline: auto;
+	padding-block: clamp(6.5rem, 11vw, 10rem);
+	perspective: 1200px;
+}
+
+.alpha-scope .section-shell::before {
+	content: attr(data-chapter);
+	position: absolute;
+	z-index: -1;
+	top: clamp(3.2rem, 7vw, 6rem);
+	right: clamp(-0.2rem, 2vw, 2rem);
+	font-family: var(--font-display);
+	font-size: clamp(7rem, 16vw, 13rem);
+	font-weight: 700;
+	font-variant-numeric: lining-nums;
+	line-height: 0.8;
+	letter-spacing: -0.08em;
+	color: rgba(255, 255, 255, 0.018);
+	pointer-events: none;
+}
+
+.alpha-scope .section-shell::after {
+	content: '';
+	position: absolute;
+	z-index: -2;
+	top: 15%;
+	right: -15%;
+	width: 38rem;
+	height: 38rem;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(59, 139, 235, 0.035), transparent 67%);
+	pointer-events: none;
+}
+
+.alpha-scope #hypothesis::after {
+	background: radial-gradient(circle, rgba(184, 32, 32, 0.05), transparent 67%);
+}
+
+.alpha-scope #equipment::after,
+.alpha-scope #pillars::after {
+	background: radial-gradient(circle, rgba(59, 139, 235, 0.05), transparent 67%);
+}
+
+.alpha-scope #journey::after,
+.alpha-scope #schedule::after {
+	background: radial-gradient(circle, rgba(43, 191, 160, 0.04), transparent 67%);
+}
+
+.alpha-scope #assessments::after,
+.alpha-scope #apply::after {
+	background: radial-gradient(circle, rgba(212, 168, 83, 0.045), transparent 67%);
+}
+
+.alpha-scope .section-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.8rem;
+	font-size: 0.66rem;
+	font-weight: 700;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	color: var(--alpha-red-bright);
+	margin: 0 0 1.1rem;
+}
+
+.alpha-scope .section-label::before {
+	content: '';
+	width: 2.5rem;
+	height: 1px;
+	background: currentColor;
+	box-shadow: 0 0 9px currentColor;
+}
+
+.alpha-scope .section-title {
+	font-family: var(--font-display);
+	font-size: clamp(2.7rem, 6vw, 5rem);
+	font-weight: 650;
+	line-height: 0.98;
+	margin: 0 0 1.35rem;
+	letter-spacing: -0.055em;
+	text-wrap: balance;
+	color: var(--alpha-text);
+}
+
+.alpha-scope .section-desc {
+	font-size: clamp(1rem, 1.5vw, 1.16rem);
+	color: var(--alpha-muted);
+	max-width: 690px;
+	margin: 0 0 clamp(3rem, 6vw, 4.75rem);
+	line-height: 1.8;
+	text-wrap: pretty;
+}
+
+.alpha-scope .divider-line {
+	height: 1px;
+	width: min(1100px, calc(100% - 2rem));
+	margin: 0 auto;
+	background: linear-gradient(90deg, transparent, var(--alpha-border-hover), transparent);
+}
+
+.alpha-scope .card-surface {
+	background:
+		radial-gradient(
+			420px circle at var(--card-x, 50%) var(--card-y, 50%),
+			rgba(255, 255, 255, 0.055),
+			transparent 48%
+		),
+		linear-gradient(145deg, rgba(19, 20, 26, 0.94), rgba(11, 11, 14, 0.96));
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	border-radius: 18px;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.035),
+		0 28px 80px -50px rgba(0, 0, 0, 0.85);
+	transform-style: preserve-3d;
+	transition:
+		border-color 0.35s var(--ease-out-quart),
+		box-shadow 0.45s var(--ease-out-expo);
+}
+
+.alpha-scope .card-surface:hover {
+	border-color: rgba(255, 255, 255, 0.16);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.06),
+		0 36px 90px -45px rgba(0, 0, 0, 0.95);
+}
+
+.alpha-scope .btn-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.55rem;
+	padding: 0.95rem 1.65rem;
+	border-radius: 999px;
+	font-size: 0.92rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: #fff;
+	background: linear-gradient(135deg, #820000 0%, #b82020 54%, #d43a3a 100%);
+	box-shadow:
+		0 0 0 1px rgba(184, 32, 32, 0.35),
+		0 10px 40px -12px rgba(152, 0, 0, 0.65),
+		inset 0 1px 0 rgba(255, 255, 255, 0.15);
+	transition:
+		transform 0.35s var(--ease-out-expo),
+		box-shadow 0.35s var(--ease-out-expo),
+		filter 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.alpha-scope .btn-primary::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		120deg,
+		transparent 30%,
+		rgba(255, 255, 255, 0.18) 50%,
+		transparent 70%
+	);
+	transform: translateX(-120%);
+	transition: transform 0.7s var(--ease-out-expo);
+}
+
+.alpha-scope .btn-primary:hover {
+	transform: translateY(-2px) scale(1.01);
+	filter: brightness(1.06);
+	box-shadow:
+		0 0 0 1px rgba(184, 32, 32, 0.5),
+		0 16px 48px -10px rgba(152, 0, 0, 0.75),
+		inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.alpha-scope .btn-primary:hover::after {
+	transform: translateX(120%);
+}
+
+.alpha-scope .btn-primary:active {
+	transform: translateY(0) scale(0.99);
+}
+
+.alpha-scope .btn-ghost {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.85rem 1.35rem;
+	border-radius: 999px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--alpha-text);
+	border: 1px solid var(--alpha-border);
+	background: rgba(17, 17, 20, 0.5);
+	backdrop-filter: blur(12px);
+	transition:
+		border-color 0.3s ease,
+		background 0.3s ease,
+		transform 0.35s var(--ease-out-expo);
+}
+
+.alpha-scope .btn-ghost:hover {
+	border-color: color-mix(in srgb, var(--alpha-blue) 45%, var(--alpha-border));
+	background: rgba(59, 139, 235, 0.08);
+	transform: translateY(-1px);
+}
+
+/* JS applies bespoke chapter choreography. Content remains visible without JS. */
+.alpha-scope .reveal {
+	opacity: 1;
+	transform: none;
+}
+
+.alpha-scope .reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+/* Headings inside the scope use the page's own type system, not the site's */
+.alpha-scope h1,
+.alpha-scope h2,
+.alpha-scope h3,
+.alpha-scope h4 {
+	letter-spacing: normal;
+	line-height: 1.2;
+	text-wrap: balance;
+}
+
+/* Lenis root flags (page-scoped smooth scroll) */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+@media (max-width: 767px) {
+	.alpha-scope {
+		--nav-h: 4.25rem;
+	}
+
+	.alpha-scope .section-shell {
+		width: min(100% - 1.5rem, 1180px);
+		padding-block: clamp(5rem, 18vw, 7.5rem);
+	}
+
+	.alpha-scope .section-shell::before {
+		top: 3.5rem;
+		right: 0.2rem;
+		font-size: clamp(6rem, 32vw, 9rem);
+	}
+
+	.alpha-scope .section-title {
+		font-size: clamp(2.55rem, 13vw, 4rem);
+	}
+
+	.alpha-scope .section-label::before {
+		width: 1.7rem;
+	}
+}
