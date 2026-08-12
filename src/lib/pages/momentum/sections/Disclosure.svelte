@@ -174,6 +174,17 @@ supported the hairline is simply a full-width rule from first paint.
 		text-underline-offset: 0.22em;
 		text-decoration-thickness: 1px;
 		transition: color 0.25s ease;
+
+		/* TARGET SIZE, WCAG 2.2 SC 2.5.8 (AA). Measured on the rendered page these
+		   two links were 95x20 and 136x20 — under the 24x24 minimum. They arguably
+		   qualify for the "inline" exception, but that exception is written for a
+		   link inside a sentence, and this is a line consisting only of links, so
+		   the exception is doing more work than it should. Cheaper to just pass.
+
+		   inline-block + padding-block takes them to 24px without moving anything:
+		   the parent line-height already reserves the space, so no text reflows. */
+		display: inline-block;
+		padding-block: 2px;
 	}
 
 	.mo-disclosure__links a:hover {

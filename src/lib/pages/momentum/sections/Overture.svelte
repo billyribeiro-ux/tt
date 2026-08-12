@@ -566,14 +566,22 @@
 	}
 	/* Mono micro-label, matching the pattern Close.svelte already uses above its
 	   own pair of buttons. It carries the captured `shortLabel`, which is what
-	   distinguishes two links that both read "LEARN MORE". */
+	   distinguishes two links that both read "LEARN MORE".
+
+	   COLOUR RAISED after measuring, not after assuming. This started as
+	   --mo-chrome-mid #919395 with a comment claiming "~5.75:1 over the scrimmed
+	   plate". That number was sampled somewhere the label does not sit. Sampling
+	   every pixel actually behind its box on the rendered page — text hidden,
+	   screenshot decoded in-canvas — the worst backdrop under this label is
+	   rgb(16,61,63), a bright teal ridge of the bg4 chart, giving only 3.87:1.
+	   At 0.68rem it is normal-size text, so AA demands 4.5:1 and it FAILED.
+	   --tt-fog #c9cbd3 measures 7.23:1 against that same worst pixel. */
 	.mo-overture__door-label {
 		font-family: var(--tt-font-mono);
 		font-size: 0.68rem;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
-		/* 6.42:1 on --tt-black, ~5.75:1 over the scrimmed plate — AA either way. */
-		color: var(--mo-chrome-mid);
+		color: var(--tt-fog);
 	}
 	/* The ghost alternative. Underline offset keeps the rule clear of the
 	   descenders in "Trading"; the icon marks it as leaving the page. */
