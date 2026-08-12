@@ -1,0 +1,770 @@
+/* ==========================================================================
+   /momentum — page scope, captured palette, and the LIGHT / DARK BAND system.
+
+   SCOPING MECHANISM — the repo's existing one, copied from
+   src/lib/pages/project-alpha/alpha.css. This is a plain .css file, so Svelte's
+   per-component scoping does NOT apply to it: it is imported as the first line
+   of the route module, every rule is manually prefixed with `.mo-scope`, and
+   every custom property is declared ON `.mo-scope` (never on :root) so it
+   cascades into this page's subtree only. The route wraps the page in
+   <div class="mo-scope">.
+   (`@scope` was considered and REJECTED per the 2026 baseline audit: an
+   unsupported at-rule is dropped together with every declaration inside it, so
+   the whole page would lose its styling on Firefox ESR 140 rather than degrade.
+   The manual prefix has no such failure mode.)
+
+   ---------------------------------------------------------------------------
+   EVIDENCE DISCIPLINE — CORRECTED 2026-08-12.
+
+   THE PREVIOUS VERSION OF THIS HEADER WAS WRONG. It stated that the reference
+   capture "contains NO Elementor CSS bytes" and that the section backgrounds,
+   button colours, image-box typography and container width were therefore not
+   captured. The capture's own <link> tags named those stylesheets and they have
+   since been fetched. They are on disk and every value marked CAPTURED below
+   cites one of them by file and line:
+
+     /tmp/momentum-slices/post-73938.pretty.css   the page's own Elementor rules
+     /tmp/momentum-slices/post-47277.css          the Elementor kit / palette
+     /tmp/momentum-slices/astra-inline.pretty.css the theme's inline CSS
+     /tmp/momentum-slices/head-tail-styles.txt    the wp-custom-css block
+     /tmp/momentum-slices/pretty.html             the capture (body 7280-7660)
+
+   CAPTURED  = read out of one of those files, cited inline.
+   INHERITED = this repo's own design token (src/app.css), because the reference
+               evidences nothing for that role.
+   DERIVED   = computed from a captured value by a stated rule. Never guessed.
+
+   ---------------------------------------------------------------------------
+   PUBLIC API — WHAT EVERY OTHER FILE ON THIS PAGE CONSUMES.
+
+   1. BANDS. Put `mo-band--dark` or `mo-band--light` on a <section>. The band
+      sets its own surface and re-points EIGHT semantic tokens. Section styles
+      must colour themselves from those tokens and never from a hard-coded
+      --tt-white / --tt-fog / --tt-line, or they will not invert:
+
+        --mo-surface       the band's own background
+        --mo-ink           headings and the strongest text
+        --mo-body          body copy
+        --mo-mute          recessive small text (legal, labels, indices)
+        --mo-line          hairline / card edge
+        --mo-line-strong   emphasised hairline
+        --mo-accent        icon + index accent, AA-safe as text on this band
+        --mo-focus         focus-ring colour for this band
+
+      momentum.css cannot reach into a component's scoped <style> block (Svelte
+      raises those selectors' specificity and injects them after this file), so
+      inversion is token-driven by contract, not by override.
+
+      OPEN CONTRACT, stated plainly rather than left to be discovered: as of this
+      commit no .svelte file reads a band token yet, and two of them have no
+      reader anywhere — `--mo-line` and `--mo-fs-quote`. They are declared
+      because the sections that need them are being rewritten in parallel:
+      `--mo-line` replaces the hard-coded `var(--tt-line)` on Paths' card
+      border-block, Ledger's lane border-top and Disclosure's border-top, and
+      `--mo-fs-quote` replaces `var(--fs-h3)` on Voice's pull quote. If either
+      is still unread at final review, that section did not get converted —
+      chase the section, do not delete the token.
+
+   2. TYPE. --mo-fs-quote and --mo-fs-desc carry the reference's measured sizes.
+   3. LAYOUT. `.mo-section`, `.mo-section--tight`, `.mo-wrap` (also the named
+      container `mo-wrap`, so sections can size against their own width).
+   4. CTA. `.mo-cta` — one class, one colour, both destinations.
+   ========================================================================== */
+
+/* ---- Registered custom properties -----------------------------------------
+   BASELINE: @property is Baseline NEWLY AVAILABLE (Chrome 85 / Firefox 128 /
+   Safari 16.4) — verdict ADOPT, supported by every browser in the last-2
+   matrix. Registering --mo-cta-sheen as a <percentage> is what makes the CTA's
+   gradient colour stop INTERPOLATE instead of snapping.
+   FALLBACK: benign by construction. Without @property the custom property is an
+   untyped token, so the stop jumps straight to its end position — the resting
+   appearance is identical, only the sweep is lost. No layout or colour risk. */
+@property --mo-cta-sheen {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: -25%;
+}
+
+.mo-scope {
+	/* ==== CAPTURED: the reference's palette ================================
+	   The first four come from post-47277.css:1, the `.elementor-kit-47277`
+	   block, and are the kit's four NAMED roles. (That block declares twelve
+	   further swatches under hashed names — #6EC1E4, #54595F, #61CE70 and so on
+	   — which are Elementor's stock defaults; nothing on this page references
+	   any of them, so none is carried over.) The fifth, --mo-kit-black, is not a
+	   kit colour at all: it is the literal the page paints its cards band with,
+	   and it is cited to its own line below. */
+
+	/* --e-global-color-accent. THE page accent: post-73938.pretty.css:151-153
+	   sets `.elementor-widget-button .elementor-button { background-color:
+	   var(--e-global-color-accent) }`, which is BOTH LEARN MORE buttons.
+	   RECONCILIATION with the repo's own red: src/app.css:10 declares
+	   `--tt-red: #b22725`. The two are the SAME COLOUR — identical bytes, the
+	   only difference is hex letter case. There is no conflict to resolve. The
+	   captured spelling is used here so this page's CTA cites its evidence
+	   directly rather than depending on a site token that could later drift. */
+	--mo-kit-accent: #b22725;
+	/* Raw channels of the line above, for rgb(... / alpha) composition. Same
+	   space-separated convention as app.css:14-20. */
+	--mo-kit-accent-rgb: 178 39 37;
+	/* --e-global-color-primary: the kit's near-black. Used as the ink colour on
+	   the light band, which is the role Elementor gives it at
+	   post-73938.pretty.css:109-111 (`.elementor-image-box-title`). */
+	--mo-kit-primary: #191a19;
+	/* --e-global-color-secondary: the white the reference paints its light
+	   sections with. post-73938.pretty.css:48 (the Pat + quote band) and :194
+	   both resolve to this exact value. */
+	--mo-kit-secondary: #ffffff;
+	/* --e-global-color-text: the reference's body grey. It reaches the pull
+	   quote through post-73938.pretty.css:66-68
+	   (`.elementor-widget-text-editor { color: var(--e-global-color-text) }`),
+	   which is the widget the quote's <em> sits in (pretty.html:7435-7446).
+	   4.95:1 on --mo-kit-secondary — passes WCAG AA for normal text. */
+	--mo-kit-text: #707070;
+	/* CAPTURED, post-73938.pretty.css:83-91: the offer-cards band is #000000,
+	   not the kit primary. This is the page's dark ground. */
+	--mo-kit-black: #000000;
+
+	/* CAPTURED from the reference's wp-custom-css block,
+	   head-tail-styles.txt:216-220: `.entry-content p { color: #e3e3e3 }`.
+	   That selector governs every paragraph in the content area, including both
+	   image-box descriptions, and it out-ranks the kit's #707070 on the dark
+	   band by source order. So the reference genuinely runs two body greys — one
+	   per band — which is exactly what the band system encodes below.
+	   Kept under its original name because viz/MomentumTape.svelte:429 already
+	   consumes `var(--mo-desc)`. */
+	--mo-desc: #e3e3e3;
+
+	/* ==== The Momentum sub-brand: chrome + cyan ============================
+	   Sampled off the page's own art (see each note). These are band-independent
+	   material colours; they are NOT part of the band token set. */
+
+	/* CAPTURED: sampled from momentum-course-1920.png — the card's sub-line
+	   cyan, the single most dominant non-black colour in the image (22,796 px).
+	   12.42:1 on --mo-kit-black. */
+	--mo-cyan: #05dafa;
+	/* CAPTURED: sampled from momentum-welcome-1605.png (the og:image) — the
+	   brighter glowing cap colour, used only for glow/edge highlights. */
+	--mo-cyan-glow: #52f0ff;
+	/* Raw channels for rgb(... / alpha) composition. INHERITED convention from
+	   app.css:14-20 (--tt-*-rgb are space-separated, never comma-separated). */
+	--mo-cyan-rgb: 5 218 250;
+
+	/* CAPTURED: two of the three tones of one specular scanline across the chrome
+	   wordmark in momentum-wordmark-1454.png — the mid tone and the dominant
+	   shadow tone. --mo-chrome-mid is 6.81:1 on --mo-kit-black; --mo-chrome-lo is
+	   2.71:1, so it is material and strokes only, never text.
+	   The third measured tone, the specular HIGHLIGHT, is #ffffff. It is recorded
+	   here in prose rather than declared as a token: no CSS rule on this page
+	   consumes it (ChromeStage needs it as the three.js int 0xffffff, which it
+	   declares locally), and an unconsumed custom property is dead scaffolding. */
+	--mo-chrome-mid: #919395;
+	--mo-chrome-lo: #505356;
+
+	/* CAPTURED: the background field of both card images measures #010101-#060606.
+	   Because the art is this dark at its edges it bleeds into the dark band with
+	   no visible seam — which is why cards on this page are frameless plates
+	   rather than boxes. */
+	--mo-carbon: #010101;
+
+	/* CAPTURED, recorded in prose rather than declared: the ON AIR badge in
+	   momentum-live-1280.png measures #ab0405. Nothing consumes it — 2.75:1 on the
+	   dark band makes it unusable as a hairline or as text. The measurement is
+	   kept so the evidence survives; do not declare it as a token again unless a
+	   rule actually uses it. */
+
+	/* ==== BAND DEFAULT: DARK ==============================================
+	   The scope opens on the dark band, so a section that declares no band class
+	   still renders correctly. `.mo-band--dark` below re-states these so a dark
+	   section nested inside a light one is also correct. */
+	--mo-surface: var(--mo-kit-black);
+	/* CAPTURED: astra-inline.pretty.css:213-223 sets h1-h6 to #ffffff. 21.00:1 */
+	--mo-ink: var(--tt-white);
+	/* CAPTURED: the wp-custom-css `.entry-content p` grey, above. 16.36:1 */
+	--mo-body: var(--mo-desc);
+	/* INHERITED app.css:35, #80828e. 5.50:1 on #000 — AA for small text. */
+	--mo-mute: var(--tt-mute-2);
+	/* INHERITED app.css:27-28 — white at 9% and at 16%. */
+	--mo-line: var(--tt-line);
+	--mo-line-strong: var(--tt-line-strong);
+	/* INHERITED app.css:12, #ff3333. 5.77:1 on #000.
+	   NOT the kit accent here: #b22725 is 3.21:1 on #000, which clears the 3:1
+	   bar for a non-text edge but FAILS AA as text, and this token colours text
+	   (the section index). The light band, where #b22725 reaches 6.54:1, uses it. */
+	--mo-accent: var(--tt-red-bright);
+	/* 12.42:1 on #000 — far past the 3:1 focus-indicator bar. */
+	--mo-focus: var(--mo-cyan);
+
+	/* ==== Type scale, from the reference's measured sizes ==================
+	   Both are expressed in `cqi` against the named container `mo-wrap` below,
+	   so a section sizes against ITS OWN width rather than the viewport.
+	   BASELINE: container size queries and their `cq*` length units are Baseline
+	   WIDELY AVAILABLE (Chrome 105 / Firefox 110 / Safari 16) — verdict ADOPT,
+	   no fallback required. `.mo-wrap` is an ancestor of every consumer.
+
+	   The reference steps discontinuously at its 1024px breakpoint. The clamp
+	   below reproduces the captured pixel size EXACTLY at both ends of that step
+	   and interpolates across it instead of jumping. The ramp between them is
+	   the only invented part and it is monotonic.
+
+	   1cqi IS 1% OF THE CONTAINER'S *CONTENT* BOX, NOT ITS BORDER BOX. This was
+	   got wrong once and caught by measuring the rendered page rather than by
+	   reasoning about it; the coefficients below are derived from the content
+	   box and re-verified in a real browser at 390 / 1024 / 1440.
+	     `.mo-wrap` padding-inline is clamp(1.1rem, 5vw, 2.5rem), which saturates
+	     at its 40px maximum for any viewport at or above 800px. So:
+	       viewport 1024  -> wrap 1024px wide -> content box  944px
+	       viewport >=1140 -> wrap 1140px cap  -> content box 1060px
+	   Those two widths, 944 and 1060, are the endpoints every slope uses. */
+
+	/* CAPTURED: 29px (post-73938.pretty.css:80-82) / 19px at <=1024
+	   (post-73938.pretty.css:215-218). 19px = 1.1875rem, 29px = 1.8125rem.
+	   slope (29-19)/(1060-944) = 8.6207cqi; intercept 19 - 8.6207%*944 = -62.38px
+	   = -3.899rem. Verified: 19.00px at viewport 1024, 29.00px at 1440. */
+	--mo-fs-quote: clamp(1.1875rem, -3.899rem + 8.6207cqi, 1.8125rem);
+	/* CAPTURED: 23px (post-73938.pretty.css:146-150 and :181-185) / 18px at
+	   <=1024 (post-73938.pretty.css:219-228). 18px = 1.125rem, 23px = 1.4375rem.
+	   slope (23-18)/(1060-944) = 4.3103cqi; intercept 18 - 4.3103%*944 = -22.69px
+	   = -1.418rem. Verified: 18.00px at viewport 1024, 23.00px at 1440. */
+	--mo-fs-desc: clamp(1.125rem, -1.418rem + 4.3103cqi, 1.4375rem);
+
+	/* ==== Layout ==========================================================
+	   CAPTURED: post-47277.css:1 boxes every Elementor container at 1140px, and
+	   its two media blocks step it to 1024px at <=1024 and 767px at <=767 — i.e.
+	   below 1140 the container is simply the viewport, which is what `width:100%`
+	   already does. RECONCILIATION: the repo's own --tt-container is 1200px
+	   (app.css:56), 60px wider. The captured 1140px wins on THIS page — the two
+	   offer plates are the page's only wide element and their measured
+	   composition is the reason the reference chose it. Other routes are
+	   untouched: this token is page-scoped. */
+	--mo-container: 1140px;
+
+	/* INHERITED from alpha.css:24 (--ease-out-expo). Not captured; the reference
+	   ships no motion at all. */
+	--mo-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+	/* INHERITED pattern from alpha.css:26-27. Written per-frame by the Director's
+	   pointer-aura loop; these are the pre-pointer defaults. */
+	--mo-pointer-x: 50vw;
+	--mo-pointer-y: 50vh;
+
+	/* ---- Scope root ------------------------------------------------------ */
+
+	color-scheme: dark;
+	position: relative;
+	z-index: 1;
+	/* Own stacking context, so the aura's z-index:-1 layer cannot punch through
+	   the site background. Same reason as alpha.css:34. */
+	isolation: isolate;
+	background: var(--mo-surface);
+	color: var(--mo-body);
+	font-family: var(--tt-font-body);
+	overflow-x: clip;
+}
+
+/* ==========================================================================
+   THE BANDS.
+
+   OWNER DECISION D1: the reference's light/dark score is the page's structure,
+   not a detail. Reading the capture top to bottom: a dark hero over the bg4
+   market-data field, then a genuine WHITE band (post-73938.pretty.css:40-49,
+   #ffffff), then a BLACK band for the two offer cards
+   (post-73938.pretty.css:83-92, #000000). The white-to-black cut is a hard
+   edge in the reference and stays a hard edge here — no seam, no gradient, no
+   smoothing. It is the page's one cinematic cut.
+
+   This page's DOM order inverts the reference's (routes/momentum/+page.svelte
+   :165-176 states why: the CTAs must arrive before the pull quote on a phone),
+   so the score maps as:
+     overture   dark   (the hero art carries it)
+     paths      dark   the offer cards - the reference's #000000 band
+     voice      LIGHT  Pat + the pull quote - the reference's #ffffff band  [V2]
+     ledger     dark
+     close      dark
+     disclosure dark
+   ========================================================================== */
+
+.mo-scope .mo-band--dark {
+	color-scheme: dark;
+	--mo-surface: var(--mo-kit-black);
+	--mo-ink: var(--tt-white);
+	--mo-body: var(--mo-desc);
+	--mo-mute: var(--tt-mute-2);
+	--mo-line: var(--tt-line);
+	--mo-line-strong: var(--tt-line-strong);
+	--mo-accent: var(--tt-red-bright);
+	--mo-focus: var(--mo-cyan);
+
+	background: var(--mo-surface);
+	color: var(--mo-body);
+}
+
+/* EVERY value below is either captured or derived from a captured one by a
+   stated rule, and every text pairing is stated with its computed contrast
+   ratio against the band's own surface at the sizes this page actually renders.
+
+     ink    #191a19 on #ffffff = 17.45:1
+     body   #707070 on #ffffff =  4.95:1  (AA normal text, >= 4.5:1)
+     mute   #707070 on #ffffff =  4.95:1  - see the note on the token
+     accent #b22725 on #ffffff =  6.54:1  (AA normal text)
+     focus  #b22725 on #ffffff =  6.54:1  (far past the 3:1 non-text bar)
+
+   The dark band's cyan focus ring is 1.69:1 on white and is FORBIDDEN here;
+   swapping the ring to the kit accent is the whole reason --mo-focus exists. */
+.mo-scope .mo-band--light {
+	color-scheme: light;
+	--mo-surface: var(--mo-kit-secondary);
+	--mo-ink: var(--mo-kit-primary);
+	--mo-body: var(--mo-kit-text);
+	/* DELIBERATELY EQUAL TO --mo-body, and this is not an oversight. A recessive
+	   grey has to be LIGHTER than the body grey on a white surface, and #707070
+	   is already at 4.95:1 — anything lighter drops under AA. On the light band
+	   recession is carried by size and weight, not by a paler ink. */
+	--mo-mute: var(--mo-kit-text);
+	/* DERIVED, not captured: the reference paints no hairline on its white band.
+	   These mirror the dark band's own alphas (white at 9% / 16%, app.css:27-28)
+	   with the captured kit primary as the ink, so both bands draw an edge of the
+	   same optical weight. */
+	--mo-line: rgb(25 26 25 / 0.12);
+	--mo-line-strong: rgb(25 26 25 / 0.2);
+	--mo-accent: var(--mo-kit-accent);
+	--mo-focus: var(--mo-kit-accent);
+
+	background: var(--mo-surface);
+	color: var(--mo-body);
+}
+
+/* ==========================================================================
+   Shared typography and chrome, band-aware.
+   ========================================================================== */
+
+/* CAPTURED FAMILY, CAPTURED WEIGHT. astra-inline.pretty.css:168-190 sets
+   `font-family: "Allerta Stencil", sans-serif` on h1, h2 and h3 — and NOT on
+   h4/h5/h6, which inherit the body face. (A previous comment in this file
+   claimed h1-h6; that was wrong and is corrected here.)
+
+   THE WEIGHT QUESTION IS SETTLED BY THE SAME FILE. The kit declares
+   --e-global-typography-primary-font-weight: 600 (post-47277.css:1), but the
+   theme rule that actually paints the reference's headings declares
+   `font-weight: 400` (astra-inline.pretty.css:172). 400 is also the only weight
+   @fontsource/allerta-stencil ships (it contains latin-400.css and nothing
+   else; the route layout imports exactly that at +layout.svelte:10), so 600
+   could only ever be a synthetic fake bold. 400 is therefore both the faithful
+   choice and the only honest one.
+
+   The selector list matches app.css:136-146 (h1-h5) on purpose: this is an
+   override of that rule, and an override that covers fewer elements than the
+   rule it replaces would leave an h5 stranded on `font-weight: 800`, i.e. a
+   synthetic bold of a single-weight face. h4/h5 keep the body face, as the
+   reference's own theme does; only the weight, tracking and leading are reset. */
+.mo-scope :is(h1, h2, h3, h4, h5) {
+	font-weight: 400;
+	/* Positive tracking: the chrome wordmark is wide-set and stencil caps need
+	   air. app.css:143 sets -0.02em, which closes them up. */
+	letter-spacing: 0.02em;
+	line-height: 1.1;
+	color: var(--mo-ink);
+	/* BASELINE: text-wrap: balance is Baseline NEWLY AVAILABLE (Chrome 114 /
+	   Firefox 121 / Safari 17.5) — ADOPT. It self-limits to short blocks, so it
+	   is inert on anything but a headline. */
+	text-wrap: balance;
+}
+
+/* Only h1-h3 take the display face, matching astra-inline.pretty.css:168-190. */
+.mo-scope :is(h1, h2, h3) {
+	font-family: var(--tt-font-display);
+}
+
+/* The site's global focus ring is gold (app.css:151), which is off this page's
+   palette — and a single fixed ring colour cannot serve both bands. */
+.mo-scope :focus-visible {
+	outline: 2px solid var(--mo-focus);
+	outline-offset: 3px;
+}
+
+/* NOTE: ::selection is deliberately NOT overridden. app.css:155-158 already sets
+   it to var(--tt-red) === #b22725 on #ffffff, byte-identical to the reference's
+   own captured `::selection { background-color: #b22725; color: #ffffff }`
+   (astra-inline.pretty.css:209-212). It is correct on both bands. */
+
+/* The shared editorial utilities from app.css hard-code dark-band colours, so
+   they are re-pointed at the band tokens here. Live consumers: `.section-head`
+   with `.idx` + `.rule` in Paths.svelte:153-156 and Ledger.svelte:123-126, and
+   `.label` on Ledger.svelte:152. (`.eyebrow` is NOT re-pointed: its only use,
+   Overture.svelte:278-280, already sets its own colour, and adding an
+   equal-specificity rule here would make the winner depend on stylesheet
+   injection order.) */
+.mo-scope .section-head .idx {
+	color: var(--mo-accent);
+}
+
+.mo-scope .section-head .rule {
+	background: linear-gradient(90deg, var(--mo-line-strong), transparent);
+}
+
+.mo-scope .label {
+	color: var(--mo-mute);
+}
+
+/* V6 — DEAD VERTICAL SPACE. app.css:241 sets this to clamp(2rem, 4vw, 3.5rem),
+   which spends 32px above the first offer card on a 390px phone. The reference
+   is far tighter than that: its cards band opens with `padding: 0px 0px 20px`
+   (post-73938.pretty.css:93-100), i.e. no leading space at all. This keeps a
+   head gap but cuts it by roughly a third. */
+.mo-scope .section-head {
+	margin-bottom: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+/* ==========================================================================
+   Section vocabulary.
+   ========================================================================== */
+
+/* V6 — TIGHTENED. Was clamp(4.5rem, 3rem + 8vw, 9rem), inherited verbatim from
+   app.css:170-173, which is the site's rhythm for pages carrying much more copy
+   than this one. The reference's own section padding is now CAPTURED and it is
+   small: 30px top/bottom on the hero band (post-73938.pretty.css:22-31),
+   40px/25px on the white band (:50-57), 0/20px on the cards band (:93-100).
+   Those exact numbers cannot be adopted wholesale — this build's six sections do
+   not map one-to-one onto the reference's four — but they establish the
+   reference's intent as compact, and the previous value read as unfinished.
+   79.2px -> 55.4px at 390px wide, 144px -> 104px on desktop. */
+.mo-scope .mo-section {
+	position: relative;
+	padding-block: clamp(3.25rem, 2rem + 6vw, 6.5rem);
+}
+
+/* Legal type is structurally recessive: less air than a content section. */
+.mo-scope .mo-section--tight {
+	padding-block: clamp(2rem, 3.5vw, 3.25rem);
+}
+
+.mo-scope .mo-wrap {
+	/* The page's containment root for container queries. Sections size against
+	   THEIR OWN inline width through `@container mo-wrap (...)` and the `cqi`
+	   unit, not against the viewport.
+	   SAFETY NOTE: `container-type: inline-size` also applies layout containment,
+	   which makes the element a containing block for fixed-position descendants.
+	   That is safe here and was checked: the page's only fixed layers are
+	   `.mo-aura` and the chapter rail, both rendered by Director.svelte as direct
+	   children of `.mo-scope`, outside every `.mo-wrap`. Do NOT move a fixed
+	   element inside one. */
+	container: mo-wrap / inline-size;
+
+	width: 100%;
+	max-width: var(--mo-container);
+	margin-inline: auto;
+	/* INHERITED from app.css:161-166. The reference's gutter is not captured —
+	   below 1140px its container simply becomes the viewport width. */
+	padding-inline: clamp(1.1rem, 5vw, 2.5rem);
+}
+
+/* The two offer descriptions. Size and colour are both CAPTURED — see
+   --mo-fs-desc, and --mo-body which resolves to the reference's own
+   `.entry-content p` grey on the dark band and to the kit text grey on the
+   light one. */
+.mo-scope .mo-offer-desc {
+	font-size: var(--mo-fs-desc);
+	/* NOT CAPTURED — a page decision, stated so nobody reads it as evidence. The
+	   global 1.65 (app.css:110) is tuned for 16px body copy and reads loose at
+	   23px over a 46ch measure. */
+	line-height: 1.5;
+	color: var(--mo-body);
+	/* BASELINE: text-wrap: pretty is Baseline LIMITED (no Firefox), verdict
+	   ADOPT — an unsupported value is invalid and the element falls back to
+	   normal wrapping. A free enhancement with no failure mode. */
+	text-wrap: pretty;
+}
+
+/* ==========================================================================
+   THE LEARN MORE ANCHOR.
+
+   Page-scoped rather than Button.svelte, for a stated reason: both visible
+   labels are the identical string "LEARN MORE" (pretty.html:7539 and :7613), so
+   each anchor needs its own aria-label, and Button.svelte's props accept no
+   aria-label and spread no rest props. project-alpha sets the precedent by
+   authoring .btn-primary/.btn-ghost in alpha.css.
+
+   V1 — ONE COLOUR, BOTH DOORS. The previous version of this file gave the
+   course CTA a cyan fill and the live CTA a red gradient, on the argument that
+   each card's ARTWORK accents that way. The recovered CSS overrules it:
+   post-73938.pretty.css:151-153 styles `.elementor-widget-button
+   .elementor-button` — every button on the page, both of these — with
+   `background-color: var(--e-global-color-accent)`, and post-47277.css:1 sets
+   that to #B22725. There is exactly one button colour in the reference.
+   The per-offer modifier rules (.mo-cta--course / .mo-cta--live) are therefore
+   DELETED rather than duplicated: two identical rules under two names is dead
+   scaffolding. The modifier classes may stay in the markup as identifiers for
+   Director and for tests, but they carry no colour and no other declaration.
+
+   Metrics are INHERITED from Button.svelte's --lg variant (pill 999px,
+   uppercase, weight 700, padding 1.15rem 2.2rem, font-size 0.9rem). The
+   reference's `elementor-size-xl` metrics live in a stylesheet that is not among
+   the recovered files.
+
+   BAND-INDEPENDENT ON PURPOSE. The label is the captured kit secondary rather
+   than a band token: white on #b22725 is 6.54:1, and the fill is 6.54:1 against
+   the light band's surface and 3.21:1 against the dark band's, so one treatment
+   is correct on both. Colouring the label from --mo-ink would flip it to
+   #191a19 on the light band, which is 2.67:1 on the red fill and fails. */
+.mo-scope .mo-cta {
+	position: relative;
+	/* Own blend group, so the sheen's z-index:-1 stays inside the button. */
+	isolation: isolate;
+	overflow: hidden;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.6rem;
+	padding: 1.15rem 2.2rem;
+	border-radius: 999px;
+	font-family: var(--tt-font-body);
+	font-size: 0.9rem;
+	font-weight: 700;
+	/* Page-scope decision, not a captured value: a touch of tracking so the
+	   all-caps label does not read as a solid block. */
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--mo-kit-secondary);
+	background: var(--mo-kit-accent);
+	box-shadow:
+		0 1px 0 rgb(255 255 255 / 0.22) inset,
+		0 14px 34px -12px rgb(var(--mo-kit-accent-rgb) / 0.85);
+	/* No `transform` and no transform transition here: magnetic() from
+	   $lib/motion drives transform per-frame via GSAP, and a CSS transition on
+	   the same property would fight every write (Button.svelte:75-79 documents
+	   the identical trap). */
+	transition:
+		box-shadow 0.35s var(--mo-ease-expo),
+		filter 0.3s ease;
+}
+
+/* The sheen: a single white colour stop swept across the fill. Its POSITION is
+   the registered --mo-cta-sheen, which is what makes it interpolate rather than
+   jump (see the @property block at the top of this file). At both -25% and 125%
+   the whole 32%-wide stop band sits outside the 0-100% box, so the resting state
+   and the finished state are both invisible: the sweep passes through and is
+   gone. Under prefers-reduced-motion app.css:99-105 collapses every transition
+   on the page to 0.01ms, so the stop simply arrives — no sweep, no flash. */
+.mo-scope .mo-cta::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image: linear-gradient(
+		100deg,
+		transparent calc(var(--mo-cta-sheen) - 16%),
+		rgb(255 255 255 / 0.22) var(--mo-cta-sheen),
+		transparent calc(var(--mo-cta-sheen) + 16%)
+	);
+	/* NO transition in the resting rule, on purpose. The transition is declared
+	   on the hover/focus rule only, so leaving the button snaps the stop back to
+	   -25% instead of sweeping it backwards across the fill — a reverse sweep
+	   reads as a glitch, not as a return. */
+	transition: none;
+}
+
+.mo-scope .mo-cta:hover::after,
+.mo-scope .mo-cta:focus-visible::after {
+	--mo-cta-sheen: 125%;
+	transition: --mo-cta-sheen 0.65s var(--mo-ease-expo);
+}
+
+.mo-scope .mo-cta:hover,
+.mo-scope .mo-cta:focus-visible {
+	filter: brightness(1.08);
+	box-shadow:
+		0 1px 0 rgb(255 255 255 / 0.22) inset,
+		0 18px 44px -10px rgb(var(--mo-kit-accent-rgb) / 1);
+}
+
+/* THE GLOW IS BAND-DEPENDENT; the fill is not. A 34px red glow at 0.85 alpha is
+   light bleeding off a lit object into a black room, which is what it looks like
+   on the dark band. Rendered on white at the same values it is not light at all,
+   it is a pink smudge under the pill — verified by screenshotting both bands
+   side by side. The light band therefore takes a shorter, weaker, more neutral
+   drop shadow. Fill, label and focus ring are untouched: those are captured. */
+.mo-scope .mo-band--light .mo-cta {
+	box-shadow:
+		0 1px 0 rgb(255 255 255 / 0.22) inset,
+		0 8px 20px -12px rgb(var(--mo-kit-accent-rgb) / 0.5);
+}
+
+.mo-scope .mo-band--light .mo-cta:hover,
+.mo-scope .mo-band--light .mo-cta:focus-visible {
+	box-shadow:
+		0 1px 0 rgb(255 255 255 / 0.22) inset,
+		0 12px 26px -12px rgb(var(--mo-kit-accent-rgb) / 0.7);
+}
+
+/* CONTAINER QUERY, not a media query: when the wrap this CTA sits in is narrow
+   — a phone, or a future narrow column — the pill tightens so two of them can
+   sit side by side without wrapping. The viewport is irrelevant to that; the
+   available inline size is the whole question. Live consumer: Close.svelte
+   renders both CTAs in one row. */
+@container mo-wrap (max-width: 30rem) {
+	.mo-scope .mo-cta {
+		padding: 1rem 1.65rem;
+	}
+}
+
+/* ==========================================================================
+   Pointer aura.
+   Rendered once by Director.svelte as <div class="mo-aura" aria-hidden="true">.
+   It is the sole consumer of --mo-pointer-x / --mo-pointer-y. z-index:-1 keeps
+   it above the scope's own background and below all content, and the scope's
+   `isolation: isolate` stops it escaping behind the site background. The page's
+   fixed layers must stay under the site header (z-index 100) and the mobile
+   menu (99); this one is inside the scope's stacking context entirely.
+   ========================================================================== */
+.mo-scope .mo-aura {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background: radial-gradient(
+		34rem circle at var(--mo-pointer-x) var(--mo-pointer-y),
+		rgb(var(--mo-cyan-rgb) / 0.05),
+		transparent 68%
+	);
+}
+
+/* ==========================================================================
+   CSS SCROLL-DRIVEN ANIMATION.
+
+   BASELINE: Baseline LIMITED. Chrome 115 and Safari 26 ship it; Firefox does
+   NOT (BCD records animation-timeline as `preview`, i.e. Nightly-only behind
+   layout.css.scroll-driven-animations.enabled, in 152/153). Verdict:
+   ADOPT-WITH-FALLBACK.
+
+   THE FALLBACK IS THE STRUCTURE OF THIS BLOCK, and it is not optional. Firefox
+   drops the `animation-timeline` declaration but KEEPS the `animation`
+   shorthand, so an unguarded scroll animation runs once on load as an ordinary
+   time-based animation — the opposite of degrading. Everything therefore lives
+   INSIDE `@supports (animation-timeline: view())`, keyframes included, and
+   `animation-timeline` is declared AFTER the shorthand it would otherwise be
+   overridden by. Browsers without support see the resting state, which is the
+   correct finished state in both cases below.
+
+   These effects are decoration only. No content, no CTA and no measurement
+   depends on them, and none of them touches a property GSAP is driving.
+   ========================================================================== */
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		/* LIVE USE: the hairline in the shared section head draws itself in as the
+		   head crosses into view. Verified free of conflicts — Paths' timeline
+		   animates `.mo-paths__card` and `.mo-paths__img`, Ledger's scrub drives a
+		   proxy object, and nothing in the page touches `.rule`. Resting state is
+		   a full-width rule, which is what a browser without support renders.
+
+		   THE RANGE ENDS IN `cover`, NOT `entry`, AND THAT IS LOAD-BEARING. The
+		   `entry` range's length is the SUBJECT's own size, and this subject is a
+		   1px-tall hairline — an `entry 0% entry 100%` range would be one pixel of
+		   scroll long and the draw would snap. `cover`'s length is the scrollport
+		   plus the subject, so `cover 22%` is roughly 200px of scroll on a 900px
+		   viewport. `entry 0%` and `cover 0%` are the same instant, so the start
+		   edge is still "the moment the rule reaches the bottom of the screen". */
+		.mo-scope .section-head .rule {
+			transform-origin: left center;
+			animation: mo-rule-draw linear both;
+			animation-timeline: view(block);
+			animation-range: entry 0% cover 22%;
+		}
+
+		/* OPT-IN, published for the section components: add `mo-scroll-rise` to any
+		   element that has no GSAP reveal of its own and it will lift into place
+		   against its own view timeline, off the main thread. It must NOT be put on
+		   an element GSAP already tweens — the two would fight over `transform`.
+		   `entry` is correct HERE (unlike the hairline above) because the range's
+		   length is the subject's own height, and every intended subject is a real
+		   block. Do not put this on a hairline or on a zero-height box.
+		   AS OF THIS COMMIT NOTHING CONSUMES IT. It is published because the band
+		   rework is being done by several agents in parallel; if no section has
+		   wired it by final review, delete this rule and its keyframes. */
+		.mo-scope .mo-scroll-rise {
+			animation: mo-scroll-rise linear both;
+			animation-timeline: view(block);
+			animation-range: entry 5% entry 85%;
+		}
+
+		@keyframes mo-rule-draw {
+			from {
+				opacity: 0;
+				transform: scaleX(0);
+			}
+			to {
+				opacity: 1;
+				transform: scaleX(1);
+			}
+		}
+
+		@keyframes mo-scroll-rise {
+			from {
+				opacity: 0;
+				transform: translateY(1.75rem);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   BELOW-FOLD RENDERING BUDGET.
+
+   BASELINE: content-visibility is Baseline NEWLY AVAILABLE, but the `auto`
+   value specifically is Chrome 85 / Firefox 125 / Safari 26 — verdict
+   ADOPT-WITH-FALLBACK. An unknown property is ignored, so the fallback is
+   simply "render normally". contain-intrinsic-size is mandatory alongside it,
+   not optional: without a reserved size the element collapses to zero height
+   and manufactures CLS. The `auto` keyword makes the browser remember the real
+   size after the first render.
+
+   SCOPE IS DELIBERATELY NARROW, AND HERE IS WHY IT IS NOT ON THE OTHER FIVE
+   SECTIONS. Every scroll effect on this page is a GSAP ScrollTrigger, and
+   ScrollTrigger computes its start/end from getBoundingClientRect at refresh
+   time. A skipped subtree reports its contain-intrinsic-size instead of its
+   real height, so putting this on a section that owns a scrub (Ledger) or a
+   pinned document position would hand ScrollTrigger a wrong measurement and
+   desynchronise it from Lenis. Disclosure is the last section, it is below the
+   fold at every viewport, and its only motion is a one-shot reveal that fires
+   when it is already at the viewport edge — by which point it has rendered.
+
+   THE RESERVED SIZE IS DERIVED, NOT GUESSED. Disclosure measured 446px on a
+   1440x900 desktop (the orchestrator's screenshot geometry, r3-desktop-geo.json:
+   `close 3219 h 677; disclosure 3896 h 446`). That measurement predates this
+   commit, which cuts `.mo-section--tight` from clamp(2.5rem, 4vw, 4rem) to
+   clamp(2rem, 3.5vw, 3.25rem) — 57.6px to 50.4px per side at 1440, i.e. 14.4px
+   less box. 446 - 14.4 = 431.6px, and 27rem is 432px.
+
+   THE >=1024px GUARD IS THE SAME ARGUMENT RUN BACKWARDS. Below 1024 the same
+   disclaimer reflows to a much taller block — I have NOT measured it, and an
+   unmeasured reserve that is too small understates the document height until
+   the section first renders, which Lenis and the scroll-progress readout would
+   both feel. So the narrow viewport, where I have no number, simply does not
+   opt in. Nothing is lost: a phone's Disclosure is one paragraph of text.
+   ========================================================================== */
+@media (min-width: 1024px) {
+	@supports (content-visibility: auto) {
+		.mo-scope #disclosure {
+			content-visibility: auto;
+			contain-intrinsic-size: auto 27rem;
+		}
+	}
+}
+
+/* Lenis root flags. These are intentionally NOT prefixed with .mo-scope — they
+   target <html>, which is outside the scope, so they cannot be. Identical to
+   alpha.css:309-317; this file only loads on /momentum, so the reach is limited
+   to this route. */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
