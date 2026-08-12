@@ -1,0 +1,121 @@
+/* ==========================================================================
+   /momentum-course — page stylesheet.
+
+   HOW IT LOADS. `motion/CourseDirector.svelte` imports this file, so it is on
+   the page exactly when the director is, and on no other route from a cold
+   load. Sections MAY import it too (`import '$lib/pages/momentum-course/course.css'`)
+   — Vite dedupes, and doing so makes a section's dependency on `.mc-section`
+   explicit rather than implicit.
+
+   ⛔ NO `--mo-*` PROPERTY APPEARS IN THIS FILE, and none may be added.
+   Those tokens are declared on `.mo-scope` in
+   src/lib/pages/momentum/momentum.css:88 — the /momentum page's wrapper, which
+   does not exist on this route. Referencing one here yields an invalid value
+   that resolves to nothing: a colour silently goes transparent and a length
+   silently goes to its initial value, with no console warning. Everything below
+   is built on the SITE tokens in src/app.css.
+
+   WHERE THE TOKENS ARE DECLARED, and why it is `:root`. This file owns no
+   wrapper element — the route's markup belongs to the route, and the director
+   renders only fixed-position chrome — so there is no page wrapper to hang the
+   custom properties on. They are declared on `:root` instead and every name is
+   `--mc-` prefixed, which is unused anywhere else in the repo (`--mo-` is
+   /momentum's, `--alpha-` is /project-alpha's, `--tt-` is the site's).
+
+   EVERY VALUE IS MARKED. CAPTURED = read out of a file in this repo, cited by
+   line. INHERITED = taken from a sibling page's own token because this page has
+   no capture of its own, and said so rather than invented.
+   ========================================================================== */
+
+:root {
+	/* ---- Z-INDEX BUDGET -------------------------------------------------
+	   CAPTURED ceiling: the site header is z-index 100 (Header.svelte:295) and
+	   the open mobile menu is 99 (Header.svelte:475). Nothing this page creates
+	   may cover either, so the film sits below both. */
+
+	/* The intro film. Fixed, full-bleed, below the header by design: the header
+	   staying visible over the film is the reason 90 and not 101. */
+	--mc-z-intro: 90;
+
+	/* The chapter rail. INHERITED from /momentum's own rail
+	   (momentum/motion/Director.svelte:319) and project-alpha's
+	   (CinematicDirector.svelte:677), both of which use 40. */
+	--mc-z-rail: 40;
+
+	/* The pointer aura.
+	   The direction brief specified 0. It cannot be 0: every section on this
+	   page paints an OPAQUE background (--tt-ink on Scope and Curriculum,
+	   --tt-black on the body and on Enroll), and sections are positioned
+	   elements later in the document, so a fixed layer at z-index 0 would be
+	   painted over completely and never be seen. It goes ABOVE content instead,
+	   exactly as project-alpha's does (CinematicDirector.svelte:662), and is
+	   safe there because `mix-blend-mode: screen` can only lighten: white text
+	   screened with any colour stays white. */
+	--mc-z-aura: 2;
+
+	/* ---- MOTION ---------------------------------------------------------- */
+
+	/* INHERITED from project-alpha's --ease-out-expo (alpha.css:24); /momentum
+	   inherited the same value into --mo-ease-expo (momentum.css:265). Not
+	   captured from any reference — this page has no motion capture at all. */
+	--mc-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+	/* Pre-pointer defaults for the aura. INHERITED pattern from
+	   momentum.css:266-269. The director's rAF loop overwrites both on the aura
+	   element itself, so these are only ever the first frame's values. */
+	--mc-pointer-x: 50vw;
+	--mc-pointer-y: 50vh;
+
+	/* 0..1 document scroll progress, written inline on the rail by the director
+	   from `ui.scrollProgress`. Declared here so the fill has a resting value on
+	   the server-rendered first paint. */
+	--mc-rail-progress: 0;
+
+	/* ---- LAYOUT ---------------------------------------------------------- */
+
+	/* CAPTURED: the section rhythm this page already uses. The identical
+	   `padding-block: clamp(4.5rem, 3rem + 8vw, 9rem)` appears in
+	   MomentumScope.svelte:79 and MomentumCurriculum.svelte:68, and is the same
+	   value as the site's own `.tt-section` (app.css:172). */
+	--mc-section-pad: clamp(4.5rem, 3rem + 8vw, 9rem);
+
+	/* The inter-section divider's height. Not captured — chosen so the divider
+	   reads as a beat between sections rather than as a section of its own; it
+	   is a fifth to a tenth of --mc-section-pad at every viewport. */
+	--mc-divider-h: clamp(56px, 7vw, 96px);
+}
+
+/* ==========================================================================
+   SHARED SECTION PRIMITIVES.
+
+   `.mc-section` and `.mc-section--ink` exist because the two rules they replace
+   are today duplicated CHARACTER FOR CHARACTER in two files —
+   MomentumScope.svelte:77-84 and MomentumCurriculum.svelte:66-73 — which is how
+   the two grey sections drifted into reading as one uninterrupted slab. One
+   declaration, two consumers.
+
+   A section using these still owns its own `<style>` for everything else; these
+   two classes carry the band only.
+   ========================================================================== */
+
+.mc-section {
+	position: relative;
+	padding-block: var(--mc-section-pad);
+}
+
+/* The raised grey band. `box-shadow: inset` rather than `border` so the
+   hairlines do not add to the section's height and cannot open a seam between
+   two adjacent bands. CAPTURED: --tt-ink (app.css:25) and --tt-line
+   (app.css:27), used exactly as the two sections already use them. */
+.mc-section--ink {
+	background: var(--tt-ink);
+	box-shadow:
+		inset 0 1px 0 var(--tt-line),
+		inset 0 -1px 0 var(--tt-line);
+}
+
+/* No reduced-motion block is needed in this file: it declares no transition and
+   no animation. app.css:93-106 already neutralises every CSS transition and
+   animation on the site for `prefers-reduced-motion: reduce`, and the two
+   components that do animate carry their own reduced-motion handling in
+   JavaScript, where it can stop work rather than merely shorten it. */
