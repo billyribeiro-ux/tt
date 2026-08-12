@@ -32,6 +32,8 @@
 	import Paths from '$lib/pages/momentum/sections/Paths.svelte';
 	import Voice from '$lib/pages/momentum/sections/Voice.svelte';
 	import Ledger from '$lib/pages/momentum/sections/Ledger.svelte';
+	import Curriculum from '$lib/pages/momentum/sections/Curriculum.svelte';
+	import Voices from '$lib/pages/momentum/sections/Voices.svelte';
 	import Close from '$lib/pages/momentum/sections/Close.svelte';
 	import Disclosure from '$lib/pages/momentum/sections/Disclosure.svelte';
 
@@ -180,6 +182,8 @@
 	<Paths />
 	<Voice />
 	<Ledger />
+	<Curriculum />
+	<Voices />
 	<Close />
 	<Disclosure />
 </div>

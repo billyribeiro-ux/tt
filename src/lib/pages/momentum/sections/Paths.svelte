@@ -225,7 +225,7 @@
 		     Both are aria-hidden, so this is a visual coherence question for the
 		     rail's owner, not an accessibility one. -->
 		<div class="section-head" aria-hidden="true">
-			<span class="idx">01 / 02</span>
+			<span class="idx">01 / 04</span>
 			<span class="rule"></span>
 		</div>
 
