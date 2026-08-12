@@ -291,7 +291,7 @@
 						>
 							{offer.ctaLabel}
 							<span class="mo-paths__cta-icon" aria-hidden="true">
-								<ArrowRightIcon size={18} weight="bold" />
+								<ArrowRightIcon size={18} weight="bold" aria-hidden="true" />
 							</span>
 						</a>
 					</div>

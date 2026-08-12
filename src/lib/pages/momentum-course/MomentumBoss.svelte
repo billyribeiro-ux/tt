@@ -19,7 +19,8 @@
 			<span class="mo-boss__reg mo-boss__reg--br" aria-hidden="true"></span>
 
 			<div class="mo-boss__main">
-				<span class="mo-boss__icon"><CubeIcon size={26} weight="regular" /></span>
+				<span class="mo-boss__icon"><CubeIcon size={26} weight="regular" aria-hidden="true" /></span
+				>
 				<h2
 					id="mo-boss-title"
 					class="mo-boss__title"

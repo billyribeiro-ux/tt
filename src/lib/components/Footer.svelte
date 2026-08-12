@@ -67,16 +67,16 @@
 	<div class="tt-container ft__main">
 		<div class="ft__brand">
 			<a href="/" class="ft__logo" aria-label="Trick Trades home">
-				<span class="ft__mark"><LightningIcon weight="fill" size={20} /></span>
+				<span class="ft__mark"><LightningIcon weight="fill" size={20} aria-hidden="true" /></span>
 				<span class="ft__word">TRICK<span>TRADES</span></span>
 			</a>
 			<p class="ft__tag">{site.tagline}</p>
 			<div class="ft__social">
 				<a href={site.social.facebookGroup} class="ft__soc" aria-label="Private Facebook group">
-					<FacebookLogoIcon weight="fill" size={18} />
+					<FacebookLogoIcon weight="fill" size={18} aria-hidden="true" />
 				</a>
 				<a href="mailto:{site.support}" class="ft__soc" aria-label="Email support">
-					<EnvelopeSimpleIcon weight="fill" size={18} />
+					<EnvelopeSimpleIcon weight="fill" size={18} aria-hidden="true" />
 				</a>
 			</div>
 		</div>
