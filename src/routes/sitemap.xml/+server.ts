@@ -13,6 +13,7 @@ const routes = [
 	{ path: '/crystal-ball-course', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/crystal-ball-gold-edition-course', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/momentum-course', priority: '0.7', changefreq: 'monthly' },
+	{ path: '/momentum', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/digital-store', priority: '0.8', changefreq: 'monthly' },
 	{ path: '/trick-trades-core', priority: '0.7', changefreq: 'monthly' },
 	{ path: '/polaris', priority: '0.7', changefreq: 'monthly' },
