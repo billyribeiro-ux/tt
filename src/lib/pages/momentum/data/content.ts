@@ -348,12 +348,13 @@ export const ledger = {
 /* -------------------------------------------------------------------------- */
 
 export const overture = {
-	/**
-	 * The eyebrow. The single word "Momentum", which is both the og:image:alt
-	 * (meta.txt:17) and the subject of the <title> (meta.txt:1). No adjectives:
-	 * the reference states none and none may be written.
+	/*
+	 * `eyebrow: 'Momentum'` was removed 2026-08-12. It rendered the single word
+	 * "Momentum" directly above the chrome wordmark, which reads MOMENTUM — pure
+	 * duplication, and it pushed the hero's first actionable element further down.
+	 * The hero now carries the two offers instead. The string itself is still
+	 * available as the captured og:image:alt (meta.txt:17) if it is ever wanted.
 	 */
-	eyebrow: 'Momentum',
 	/**
 	 * Scroll cue. It is an icon-only anchor, so it carries a functional label
 	 * only — never the string "LEARN MORE", which belongs to the two offers.

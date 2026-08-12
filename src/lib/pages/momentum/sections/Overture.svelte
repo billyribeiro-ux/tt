@@ -28,7 +28,9 @@
 	 */
 	import { onMount, tick, type Component } from 'svelte';
 	import CaretDownIcon from 'phosphor-svelte/lib/CaretDownIcon';
-	import { images, overture } from '$lib/pages/momentum/data/content';
+	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
+	import ArrowUpRightIcon from 'phosphor-svelte/lib/ArrowUpRightIcon';
+	import { images, offers, overture } from '$lib/pages/momentum/data/content';
 	import { ui } from '$lib/pages/momentum/state/ui.svelte';
 	import { ensureGsap } from '$lib/pages/momentum/motion/gsap-setup';
 	import { jumpToId } from '$lib/pages/momentum/motion/smooth-scroll';
@@ -109,7 +111,7 @@
 
 	let markEl = $state<HTMLImageElement | undefined>(undefined);
 	let sheenEl = $state<HTMLElement | undefined>(undefined);
-	let eyebrowEl = $state<HTMLElement | undefined>(undefined);
+	let actionsEl = $state<HTMLElement | undefined>(undefined);
 	let cueEl = $state<HTMLElement | undefined>(undefined);
 
 	onMount(() => {
@@ -154,7 +156,7 @@
 			 * explicitly.
 			 */
 			if (markEl) gsap.set(markEl, { clipPath: 'none' });
-			const gated = [eyebrowEl, cueEl].filter((el): el is HTMLElement => Boolean(el));
+			const gated = [actionsEl, cueEl].filter((el): el is HTMLElement => Boolean(el));
 			if (gated.length) gsap.set(gated, { opacity: 1, y: 0 });
 			return;
 		}
@@ -170,9 +172,9 @@
 			if (cancelled) return;
 			const mark = markEl;
 			const sheen = sheenEl;
-			const eyebrow = eyebrowEl;
+			const actions = actionsEl;
 			const cue = cueEl;
-			if (!mark || !sheen || !eyebrow || !cue) return;
+			if (!mark || !sheen || !actions || !cue) return;
 
 			context = gsap.context(() => {
 				gsap
@@ -207,9 +209,9 @@
 						},
 						1.05
 					)
-					// t=1.30 — eyebrow and scroll cue.
+					// t=1.30 — the two doors, then the scroll cue.
 					.fromTo(
-						[eyebrow, cue],
+						[actions, cue],
 						{ y: 14, opacity: 0 },
 						{ y: 0, opacity: 1, duration: 0.5, stagger: 0.06, clearProps: 'transform' },
 						1.3
@@ -267,10 +269,6 @@
 	<div class="mo-overture__scrim" aria-hidden="true"></div>
 
 	<div class="mo-wrap mo-overture__inner">
-		<p class="eyebrow mo-overture__eyebrow" data-anim bind:this={eyebrowEl}>
-			{overture.eyebrow}
-		</p>
-
 		<h1 id="mo-overture-title" class="mo-overture__title">
 			<span class="mo-overture__mark">
 				<!-- AVIF -> WebP -> the original PNG. All three carry the same alpha, so
@@ -302,6 +300,37 @@
 				{/if}
 			</span>
 		</h1>
+
+		<!-- THE CHOICE, IN THE FIRST VIEWPORT.
+		     This page exists to make one decision, and the title card alone gave a
+		     visitor nothing to act on: before this, the only interactive element in
+		     the hero was the scroll cue. The hierarchy is deliberate and matches the
+		     business one — the complete course is the flagship, so it takes the solid
+		     pill; the live round is the alternative, so it takes a quiet ghost link.
+		     Two heavy red pills here would compete with the chrome mark and cheapen
+		     the title card.
+
+		     Every string is captured: `ctaLabel` and `ctaAriaLabel` are verbatim, and
+		     `shortLabel` is the first sentence of the captured description. No new
+		     marketing copy is written here. -->
+		<div class="mo-overture__actions" data-anim bind:this={actionsEl}>
+			<span class="mo-overture__door">
+				<span class="mo-overture__door-label">{offers.course.shortLabel}</span>
+				<a
+					class="mo-cta mo-overture__cta"
+					href={offers.course.href}
+					aria-label={offers.course.ctaAriaLabel}
+				>
+					{offers.course.ctaLabel}
+					<ArrowRightIcon size={16} weight="bold" aria-hidden="true" />
+				</a>
+			</span>
+
+			<a class="mo-overture__alt" href={offers.live.href} aria-label={offers.live.ctaAriaLabel}>
+				{offers.live.shortLabel}
+				<ArrowUpRightIcon size={14} weight="bold" aria-hidden="true" />
+			</a>
+		</div>
 
 		<a
 			class="mo-overture__cue"
@@ -506,21 +535,70 @@
 		text-align: center;
 	}
 
-	/* The global `.eyebrow` utility (app.css:174-183) carries the display face,
-	   size and 0.34em tracking; only the colour is overridden. On this page red is
-	   reserved for the two LEARN MORE buttons, where the kit's own accent
-	   #B22725 puts it, so the eyebrow takes the shared chrome material instead.
-	   --mo-chrome-mid #919395 is 6.42:1 on --tt-black and ~5.75:1 over the
-	   scrimmed plate (see the ::after note above), so it clears AA either way. */
-	.mo-overture__eyebrow {
-		color: var(--mo-chrome-mid);
-	}
-
 	/* The page's only level-one heading. Its visual content is the wordmark image,
 	   whose alt transcribes the two lines baked into the PNG, so the document gets
-	   a real heading without a second competing title being invented. */
+	   a real heading without a second competing title being invented.
+
+	   TOP MARGIN REMOVED: it used to clear the eyebrow, and the eyebrow is gone —
+	   it rendered the word "Momentum" directly above a wordmark that reads
+	   MOMENTUM, which was pure duplication. */
 	.mo-overture__title {
-		margin: clamp(1.25rem, 3vw, 2rem) 0 0;
+		margin: 0;
+	}
+
+	/* THE HERO'S CONVERSION PATH.
+	   Asymmetric on purpose: a solid pill for the flagship course and a ghost link
+	   for the live round. Colour does the ranking, so the two are still one visual
+	   group rather than two competing buttons under the chrome mark. */
+	.mo-overture__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: clamp(1rem, 3vw, 2rem);
+		margin-top: clamp(1.75rem, 4vw, 2.75rem);
+	}
+	.mo-overture__door {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.6rem;
+	}
+	/* Mono micro-label, matching the pattern Close.svelte already uses above its
+	   own pair of buttons. It carries the captured `shortLabel`, which is what
+	   distinguishes two links that both read "LEARN MORE". */
+	.mo-overture__door-label {
+		font-family: var(--tt-font-mono);
+		font-size: 0.68rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		/* 6.42:1 on --tt-black, ~5.75:1 over the scrimmed plate — AA either way. */
+		color: var(--mo-chrome-mid);
+	}
+	/* The ghost alternative. Underline offset keeps the rule clear of the
+	   descenders in "Trading"; the icon marks it as leaving the page. */
+	.mo-overture__alt {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		font-size: 0.95rem;
+		color: var(--tt-white);
+		text-decoration: underline;
+		text-decoration-color: rgb(255 255 255 / 0.35);
+		text-underline-offset: 0.3em;
+		transition:
+			color 0.25s ease,
+			text-decoration-color 0.25s ease;
+	}
+	.mo-overture__alt:hover,
+	.mo-overture__alt:focus-visible {
+		color: #fff;
+		text-decoration-color: currentColor;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.mo-overture__alt {
+			transition: none;
+		}
 	}
 
 	.mo-overture__mark {
