@@ -145,7 +145,7 @@
 		     THE DENOMINATOR IS 02: this page renders exactly two indexed section
 		     heads, Paths' and this one. See the note at Paths.svelte's head. -->
 		<div class="section-head" aria-hidden="true">
-			<span class="idx">02 / 02</span>
+			<span class="idx">02 / 04</span>
 			<span class="rule"></span>
 		</div>
 

@@ -26,7 +26,8 @@
 	 * phone, and the scroll cue is a real `#paths` anchor that works before any
 	 * JavaScript has run.
 	 */
-	import { onMount, tick, type Component } from 'svelte';
+	import { onMount, tick } from 'svelte';
+	import BreakoutStage from '$lib/pages/momentum/viz/BreakoutStage.svelte';
 	import CaretDownIcon from 'phosphor-svelte/lib/CaretDownIcon';
 	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
 	import ArrowUpRightIcon from 'phosphor-svelte/lib/ArrowUpRightIcon';
@@ -93,14 +94,27 @@
 	const CHROME_SEAM = '46.85%';
 
 	/**
-	 * three.js is ~700 KB raw. ChromeStage is pulled off the critical path so the
-	 * wordmark and the scroll cue paint first — the same pattern as
-	 * project-alpha/sections/Hero.svelte:13-25. Nothing on this page waits for it:
-	 * if the import never resolves, the stage layer simply stays empty and the
-	 * captured bg4.jpg plate below it carries the whole frame on its own.
+	 * The scene layer is always lit now. It used to gate on a dynamic import of
+	 * ChromeStage — a Threlte/three.js field that cost ~700 KB raw and, measured
+	 * behind the scrim, was barely visible. BreakoutStage replaces it: canvas 2D,
+	 * a fraction of the weight, and it carries the whole hero. three.js is no
+	 * longer on this route at all.
 	 */
-	let ChromeStage = $state<Component | null>(null);
-	let stageLit = $state(false);
+	let stageLit = $state(true);
+
+	/**
+	 * The hero is ONE cut, not two animations that happen to overlap. The scene
+	 * drives: it draws a price line sideways, coils it, then rips it off frame —
+	 * and calls `releaseMark` at the instant the breakout starts. The wordmark
+	 * timeline is built PAUSED and released by that call, so the chrome always
+	 * lands on the break no matter how long the first frame took to schedule.
+	 */
+	let intro: ReturnType<typeof import('gsap').gsap.timeline> | undefined;
+	let breakoutSeen = $state(false);
+	function releaseMark() {
+		breakoutSeen = true;
+		intro?.play();
+	}
 
 	/**
 	 * The specular sheen is rendered ONLY when motion is allowed, so a
@@ -113,25 +127,6 @@
 	let sheenEl = $state<HTMLElement | undefined>(undefined);
 	let actionsEl = $state<HTMLElement | undefined>(undefined);
 	let cueEl = $state<HTMLElement | undefined>(undefined);
-
-	onMount(() => {
-		let cancelled = false;
-		import('$lib/pages/momentum/viz/ChromeStage.svelte')
-			.then((m) => {
-				if (cancelled) return;
-				ChromeStage = m.default;
-				// Adding the class after the element already has a computed
-				// opacity of 0 is what makes the CSS fade actually transition.
-				stageLit = true;
-			})
-			.catch((err) => {
-				// Loud, not swallowed: the page is still complete without the stage.
-				console.error('[Momentum] ChromeStage failed to load', err);
-			});
-		return () => {
-			cancelled = true;
-		};
-	});
 
 	onMount(() => {
 		/**
@@ -177,24 +172,26 @@
 			if (!mark || !sheen || !actions || !cue) return;
 
 			context = gsap.context(() => {
-				gsap
-					.timeline({ defaults: { ease: 'expo.out' } })
-					// t=0.10 — THE CHROME WIPE. Left-to-right, with the sub-lockup
-					// still held back behind the measured 46.85% bottom inset.
+				intro = gsap
+					// PAUSED on purpose — `releaseMark` starts it when the scene breaks out.
+					.timeline({ defaults: { ease: 'expo.out' }, paused: true })
+					// t=0.00 — THE CHROME WIPE, on the break. Left-to-right, with the
+					// sub-lockup still held behind the measured 46.85% bottom inset.
 					.fromTo(
 						mark,
 						{ clipPath: `inset(0% 100% ${CHROME_SEAM} 0%)` },
-						{ clipPath: `inset(0% 0% ${CHROME_SEAM} 0%)`, duration: 0.9, ease: 'expo.inOut' },
-						0.1
+						{ clipPath: `inset(0% 0% ${CHROME_SEAM} 0%)`, duration: 0.72, ease: 'expo.inOut' },
+						0
 					)
-					// t=0.75 — THE SPECULAR SWEEP. Chrome catches the light.
+					// t=0.45 — THE SPECULAR SWEEP. Chrome catches the light thrown by
+					// the break itself, so the rake reads as caused by the move.
 					.fromTo(
 						sheen,
 						{ xPercent: -140 },
-						{ xPercent: 140, duration: 1.1, ease: 'power2.inOut' },
-						0.75
+						{ xPercent: 140, duration: 1.0, ease: 'power2.inOut' },
+						0.45
 					)
-					// t=1.05 — SUB-LOCKUP REVEAL. The two lines baked into the PNG
+					// t=0.72 — SUB-LOCKUP REVEAL. The two lines baked into the PNG
 					// arrive as a second beat. All four inset values stay in the same
 					// unit so GSAP interpolates the string cleanly.
 					.to(
@@ -207,15 +204,22 @@
 							// compositing layer, and the CSS pre-wipe gate is overridden.
 							onComplete: () => gsap.set(mark, { clipPath: 'none' })
 						},
-						1.05
+						0.72
 					)
-					// t=1.30 — the two doors, then the scroll cue.
+					// t=0.95 — the two doors, then the scroll cue.
 					.fromTo(
 						[actions, cue],
 						{ y: 14, opacity: 0 },
 						{ y: 0, opacity: 1, duration: 0.5, stagger: 0.06, clearProps: 'transform' },
-						1.3
+						0.95
 					);
+
+				/* FAILSAFE. If the scene never reports a breakout — canvas blocked, a
+				   dropped rAF, anything — the mark must not sit hidden forever. Two
+				   seconds is comfortably past the scored break at 1.7s. */
+				gsap.delayedCall(1.6, () => {
+					if (!breakoutSeen) intro?.play();
+				});
 			});
 		});
 
@@ -259,9 +263,7 @@
 	</picture>
 
 	<div class="mo-overture__stage" class:mo-overture__stage--lit={stageLit} aria-hidden="true">
-		{#if ChromeStage}
-			<ChromeStage />
-		{/if}
+		<BreakoutStage onBreakout={releaseMark} />
 	</div>
 
 	<!-- THE OVERLAY, and it is ABOVE the 3D stage on purpose — see the style block.
@@ -402,6 +404,16 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: center center;
+
+		/* PUSHED BACK TO TEXTURE, deliberately. bg4.jpg is itself a photograph OF a
+		   chart, and BreakoutStage now draws a live one over it — at full strength
+		   the two charts competed and the frame read as noise. Held at 0.42 with a
+		   slight blur it becomes depth and grain behind the drawn line, so the
+		   captured art still carries the scene without fighting the motion for it.
+		   The reference's own #0a0a0a 50% overlay still sits above this in .scrim. */
+		opacity: 0.42;
+		filter: blur(1.5px) saturate(0.9);
+		transform: scale(1.04);
 	}
 
 	/* CINEMATIC DRIFT, and it is decoration only — the hero reads correctly with

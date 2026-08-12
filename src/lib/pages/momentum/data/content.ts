@@ -72,7 +72,16 @@ export const meta = {
  * destinations must be reachable within the first viewport-and-a-bit on mobile.
  * Documented as a knowing deviation; do not "correct" it back.
  */
-export const SECTION_IDS = ['overture', 'paths', 'voice', 'ledger', 'close', 'disclosure'] as const;
+export const SECTION_IDS = [
+	'overture',
+	'paths',
+	'voice',
+	'ledger',
+	'curriculum',
+	'voices',
+	'close',
+	'disclosure'
+] as const;
 
 export type SectionId = (typeof SECTION_IDS)[number];
 
@@ -405,3 +414,146 @@ export const disclaimer =
  * prose so the evidence survives; add it back as an export only if the owner
  * asks for it.
  */
+
+/* -------------------------------------------------------------------------- */
+/* The curriculum                                                             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THE 15 MODULES, VERBATIM.
+ *
+ * Source: docs/momentum-reference/live-momentum-course.txt, a capture of the live
+ * https://tricktrades.com/momentum-course taken with a real browser on 2026-08-12
+ * (curl gets a 403 from that host). Every title below is quoted exactly as that
+ * page prints it, including its capitalisation, its punctuation and the missing
+ * space in "Module15". Line numbers are given per entry.
+ *
+ * This is the strongest honest material the product has: it is specific, it is
+ * the actual syllabus, and it does the persuading without a single invented
+ * claim. Nothing here is paraphrased or "tightened" — a real curriculum reads as
+ * real precisely because it is uneven.
+ */
+export const curriculum = {
+	/** Verbatim, live-momentum-course.txt:49. */
+	heading: "WHAT'S INSIDE THE COURSE:",
+	modules: [
+		/** :117 */ {
+			n: '01',
+			title: 'Charting Software & How To Professionally Set Up Your Charts For Maximum Potential'
+		},
+		/** :153 */ {
+			n: '02',
+			title: 'Learn These Candlestick Basics So You Can Read Charts Like A Pro'
+		},
+		/** :167 */ {
+			n: '03',
+			title: 'The Basic Strategy We Use To Make Maximum Profits In The Shortest Amount Of Time'
+		},
+		/** :245 */ {
+			n: '04',
+			title: 'Learn Trend Formation To Be Incredibly Confident And Consistent On Pulling Profits'
+		},
+		/** :273 */ {
+			n: '05',
+			title: 'How To Read The Markets To Avoid Getting Crushed - Awareness Of SPY & QQQ'
+		},
+		/** :279 */ {
+			n: '06',
+			title:
+				'Learn How To Use End Of Day VWAP To Take Advantage Of Possible Bounce Zones For Big Profits'
+		},
+		/** :287 */ {
+			n: '07',
+			title: 'Scalping Basics You Want To Know To Lock In Quick Profits And Pad Your Account'
+		},
+		/** :297 */ {
+			n: '08',
+			title:
+				"Reset Trades - How You Can Always Get Back Green By Taking Another Solid Trade Plan If The First One Doesn't Work Out."
+		},
+		/** :309 */ {
+			n: '09',
+			title: 'All you need to know about HEDGING So You Can Take Advantage Of An Indecisive Market'
+		},
+		/** :331 */ {
+			n: '10',
+			title:
+				"Learn How To Trade On Days When The Fed Speaks So You Don't Get Burned Like An Amateur"
+		},
+		/** :339 */ {
+			n: '11',
+			title:
+				'Using Patience In The Trade And How To "Play" With The Chart For Multiple Quick Winners'
+		},
+		/** :349 */ { n: '12', title: 'High Flyers - When To Trade Them And When NOT To' },
+		/** :359 */ { n: '13', title: 'ADVANCED TACTICS - Pro Level Strategies' },
+		/** :367 */ { n: '14', title: 'Bonus Lessons' },
+		/** :399 — the live page prints "Module15" with no space. Kept as captured. */
+		{ n: '15', title: 'Q & A' }
+	],
+	/**
+	 * From the same page's Course Introduction list, :75-87. These are lesson
+	 * titles, quoted verbatim — not claims written for this page.
+	 */
+	introTopics: [
+		/** :81 */ "The Biggest Issues Day Traders Face And How We'll Correct Them Together",
+		/** :83 */ 'You Have To Be Comfortable Being Uncomfortable To Make Money Day Trading',
+		/** :85 */ "It's a race to consistency NOT MONEY",
+		/** :87 */ "Let's do the math on why $50/day is a beautiful thing and how it can only get better"
+	],
+	/** Functional label for the link out. */
+	ctaLabel: 'See the full curriculum'
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/* Testimonials                                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THREE REAL, NAMED TESTIMONIALS, VERBATIM.
+ *
+ * Source: docs/momentum-reference/live-momentum-course.txt:417-433, under that
+ * page's own heading "What people are saying about the Pat Mitchell". Names,
+ * headlines and body text are quoted exactly.
+ *
+ * NOT SANITISED. Rick Guilette's quote contains "until you fkn make it". It is
+ * reproduced as written: it is his words, it is on the live site, and softening a
+ * testimonial is editing someone else's account of their own experience. If the
+ * owner wants it cut, cut the whole testimonial rather than rewrite the man.
+ */
+export const voices = [
+	{
+		/** :417-421 */
+		name: 'Larry Craighead',
+		headline: '"Learn to Fish"',
+		quote:
+			'Trick Trades is simply the best place to "Learn to Fish" rather than be given a few fish. Yes, you must put in the study time with a large library of Videos, post trade analysis, and LIVE Trading sessions with the best every morning with individuals who love to teach, trade, and assist.'
+	},
+	{
+		/** :423-427 */
+		name: 'Rick Guilette',
+		headline: 'Pat IS the real deal.',
+		quote:
+			"In a world of snakes, Pat IS the real deal. You'll be hand held through all the rough spots, and there will be rough spots, until you fkn make it. But to make it you have to make a commitment not only to TrickTrades education and guidance but also yourself."
+	},
+	{
+		/** :429-433 */
+		name: 'Taylor Haliburton',
+		headline: 'Pat is an amazing teacher that really cares...',
+		quote:
+			"Pat and all the admin preach discipline is the number one key to freedom, and it is so true. Once I started implementing a more disciplined daily routine my trading started to improve and so did my over all mentality. Pat is an amazing teacher that really cares about the well being of his students, genuinely wants them to succeed and isn't afraid to set you straight when you need it."
+	}
+] as const;
+
+/**
+ * The live course page prints this heading as "What people are saying about the
+ * Pat Mitchell" (:415). The stray "the" is a typo on their site.
+ *
+ * DELIBERATE DEVIATION, and the only place on this page where captured text is
+ * not reproduced character for character. The rule against rewriting copy exists
+ * to stop claims being invented; it is not a reason to reprint a grammatical
+ * error at 2.7rem on a premium page. Nothing about the meaning changes. Every
+ * other string here — names, headlines, quotes — remains exactly as captured,
+ * including "fkn" in Rick Guilette's.
+ */
+export const voicesHeading = 'What people are saying about Pat Mitchell';
