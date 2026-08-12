@@ -2,6 +2,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import { reveal, splitReveal, parallax, counter, jumpTo } from '$lib/motion';
 	import LightningIcon from 'phosphor-svelte/lib/LightningIcon';
+	import CorridorScene from '$lib/pages/momentum/viz/CorridorScene.svelte';
 
 	const courseUrl = 'https://tricktrades.com/momentum-course';
 
@@ -16,7 +17,10 @@
 	<div class="mo-hero__bg" aria-hidden="true">
 		<div class="mo-hero__grid grid-bg"></div>
 		<div class="mo-hero__glow" {@attach parallax(120)}></div>
-		<span class="mo-hero__bolt"><LightningIcon size={340} weight="fill" aria-hidden="true" /></span>
+		<!-- The 340px lightning glyph that used to sit here is gone. At 6% opacity it
+		     read as a smudge, not an ornament, and it was the single least professional
+		     thing on the page. The corridor carries this layer now. -->
+		<CorridorScene tint="red" />
 	</div>
 
 	<div class="tt-container mo-hero__inner">
@@ -91,15 +95,6 @@
 		background: radial-gradient(circle, rgb(var(--tt-red-rgb) / 0.42), transparent 62%);
 		filter: blur(24px);
 	}
-	.mo-hero__bolt {
-		position: absolute;
-		top: 50%;
-		right: -3%;
-		transform: translateY(-50%);
-		color: rgb(var(--tt-red-bright-rgb) / 0.06);
-		line-height: 0;
-	}
-
 	.mo-hero__inner {
 		position: relative;
 		z-index: 1;

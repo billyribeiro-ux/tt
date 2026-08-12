@@ -369,16 +369,10 @@ export const overture = {
 	 * only — never the string "LEARN MORE", which belongs to the two offers.
 	 */
 	/*
-	 * RELABELLED 2026-08-12 after a keyboard-order audit. It used to read "Skip to
-	 * the two Momentum options", which became false the moment the hero itself
-	 * started carrying both offers: in tab order the cue now comes AFTER them
-	 * (positions 24, 25, then 26), so a keyboard user was offered a skip link to
-	 * something they had already passed. It now describes what it actually does —
-	 * jump to the section that compares the two side by side. Functional UI
-	 * labelling, not marketing copy.
+	 * The scroll cue was removed on 2026-08-12 along with its chevron: the hero
+	 * now carries both offers, so a control pointing at a repeat of them was a tab
+	 * stop that said nothing. `scrollCueLabel` and `scrollCueHref` went with it.
 	 */
-	scrollCueLabel: 'Skip to the offer comparison',
-	scrollCueHref: '#paths'
 } as const;
 
 /* -------------------------------------------------------------------------- */

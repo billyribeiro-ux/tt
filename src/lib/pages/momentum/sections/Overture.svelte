@@ -27,14 +27,12 @@
 	 * JavaScript has run.
 	 */
 	import { onMount, tick } from 'svelte';
-	import BreakoutStage from '$lib/pages/momentum/viz/BreakoutStage.svelte';
-	import CaretDownIcon from 'phosphor-svelte/lib/CaretDownIcon';
+	import CorridorScene from '$lib/pages/momentum/viz/CorridorScene.svelte';
 	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
 	import ArrowUpRightIcon from 'phosphor-svelte/lib/ArrowUpRightIcon';
-	import { images, offers, overture } from '$lib/pages/momentum/data/content';
+	import { images, offers } from '$lib/pages/momentum/data/content';
 	import { ui } from '$lib/pages/momentum/state/ui.svelte';
 	import { ensureGsap } from '$lib/pages/momentum/motion/gsap-setup';
-	import { jumpToId } from '$lib/pages/momentum/motion/smooth-scroll';
 
 	/**
 	 * THE CAPTURED HERO ART, and its already-encoded derivatives.
@@ -126,7 +124,6 @@
 	let markEl = $state<HTMLImageElement | undefined>(undefined);
 	let sheenEl = $state<HTMLElement | undefined>(undefined);
 	let actionsEl = $state<HTMLElement | undefined>(undefined);
-	let cueEl = $state<HTMLElement | undefined>(undefined);
 
 	onMount(() => {
 		/**
@@ -151,7 +148,7 @@
 			 * explicitly.
 			 */
 			if (markEl) gsap.set(markEl, { clipPath: 'none' });
-			const gated = [actionsEl, cueEl].filter((el): el is HTMLElement => Boolean(el));
+			const gated = [actionsEl].filter((el): el is HTMLElement => Boolean(el));
 			if (gated.length) gsap.set(gated, { opacity: 1, y: 0 });
 			return;
 		}
@@ -168,8 +165,7 @@
 			const mark = markEl;
 			const sheen = sheenEl;
 			const actions = actionsEl;
-			const cue = cueEl;
-			if (!mark || !sheen || !actions || !cue) return;
+			if (!mark || !sheen || !actions) return;
 
 			context = gsap.context(() => {
 				intro = gsap
@@ -206,9 +202,11 @@
 						},
 						0.72
 					)
-					// t=0.95 — the two doors, then the scroll cue.
+					// t=0.95 — the two doors. The scroll cue that used to ride along here was
+					// removed: the hero already carries both offers, so a chevron pointing at a
+					// repeat of them was decoration that added a tab stop and said nothing.
 					.fromTo(
-						[actions, cue],
+						actions,
 						{ y: 14, opacity: 0 },
 						{ y: 0, opacity: 1, duration: 0.5, stagger: 0.06, clearProps: 'transform' },
 						0.95
@@ -263,7 +261,7 @@
 	</picture>
 
 	<div class="mo-overture__stage" class:mo-overture__stage--lit={stageLit} aria-hidden="true">
-		<BreakoutStage onBreakout={releaseMark} />
+		<CorridorScene onSurge={releaseMark} />
 	</div>
 
 	<!-- THE OVERLAY, and it is ABOVE the 3D stage on purpose — see the style block.
@@ -333,18 +331,6 @@
 				<ArrowUpRightIcon size={14} weight="bold" aria-hidden="true" />
 			</a>
 		</div>
-
-		<a
-			class="mo-overture__cue"
-			href={overture.scrollCueHref}
-			aria-label={overture.scrollCueLabel}
-			data-anim
-			bind:this={cueEl}
-			onclick={(e) => jumpToId(e, overture.scrollCueHref)}
-		>
-			<span class="mo-overture__cue-rule" aria-hidden="true"></span>
-			<CaretDownIcon size={20} weight="bold" aria-hidden="true" />
-		</a>
 	</div>
 </section>
 
@@ -685,48 +671,5 @@
 			rgb(255 255 255 / 0.85) 50%,
 			transparent 61%
 		);
-	}
-
-	/* Icon-only, so it carries a functional aria-label and no marketing copy.
-	   `href` is the real in-page anchor: it works with no JavaScript at all, and
-	   jumpToId() only upgrades it to a Lenis-aware scroll when JS is present. */
-	.mo-overture__cue {
-		display: inline-flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.55rem;
-		margin-top: clamp(1.75rem, 5vw, 3rem);
-		/* Comfortable target on touch without giving the icon a visible box. */
-		padding: 0.5rem 1.25rem;
-		color: var(--mo-chrome-mid);
-		transition: color 0.3s ease;
-	}
-
-	.mo-overture__cue:hover {
-		/* Cyan is this page's interaction colour — momentum.css already uses it for
-		   :focus-visible inside `.mo-scope`, and bg4.jpg is where the cyan came
-		   from in the first place. */
-		color: var(--mo-cyan);
-	}
-
-	/* The cue is gated by `.js [data-anim] { opacity: 0 }` until t=1.30. An
-	   invisible focusable link is an accessibility defect, so keyboard focus
-	   reveals it immediately; `!important` is required because an author
-	   !important declaration is the only thing that outranks the inline opacity
-	   GSAP writes while the tween is running. */
-	.mo-overture__cue:focus-visible {
-		opacity: 1 !important;
-	}
-
-	.mo-overture__cue-rule {
-		width: 1px;
-		height: clamp(1.5rem, 4vw, 2.75rem);
-		background: linear-gradient(180deg, transparent, var(--mo-chrome-lo));
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.mo-overture__cue {
-			transition: none;
-		}
 	}
 </style>
