@@ -1,5 +1,4 @@
 <script lang="ts">
-	import LightningIcon from 'phosphor-svelte/lib/LightningIcon';
 	import EnvelopeSimpleIcon from 'phosphor-svelte/lib/EnvelopeSimpleIcon';
 	import FacebookLogoIcon from 'phosphor-svelte/lib/FacebookLogoIcon';
 	import { site, external } from '$lib/data/site';
@@ -67,7 +66,13 @@
 	<div class="tt-container ft__main">
 		<div class="ft__brand">
 			<a href="/" class="ft__logo" aria-label="Trick Trades home">
-				<span class="ft__mark"><LightningIcon weight="fill" size={20} aria-hidden="true" /></span>
+				<!-- THE REAL MARK. This was a LightningIcon in a red gradient box — an
+				     invented logo that appears nowhere else in the brand. The header has
+				     always rendered the actual logo at this exact size (Header.svelte:165),
+				     so the footer now matches it rather than inventing a second identity.
+				     alt="" because the wordmark beside it already names the link, and the
+				     anchor carries aria-label="Trick Trades home". -->
+				<img class="ft__mark" src="/logo-300.png" alt="" width="34" height="34" />
 				<span class="ft__word">TRICK<span>TRADES</span></span>
 			</a>
 			<p class="ft__tag">{site.tagline}</p>
@@ -139,14 +144,16 @@
 		align-items: center;
 		gap: 0.6rem;
 	}
+	/* Matched to the header's own logo rule (Header.svelte:334-340) so the same mark
+	   renders identically top and bottom: same 34px box, same 8px radius, same
+	   object-fit, same red glow. No gradient badge behind it — the logo IS the mark
+	   and does not need a manufactured plate to sit on. */
 	.ft__mark {
-		display: grid;
-		place-items: center;
 		width: 34px;
 		height: 34px;
-		border-radius: 9px;
-		color: #fff;
-		background: linear-gradient(150deg, var(--tt-red-bright), var(--tt-red-600));
+		border-radius: 8px;
+		object-fit: cover;
+		box-shadow: 0 6px 18px -6px rgb(var(--tt-red-bright-rgb) / 0.5);
 	}
 	.ft__word {
 		font-family: var(--tt-font-display);
