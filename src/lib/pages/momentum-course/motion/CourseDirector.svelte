@@ -248,8 +248,38 @@
 		const root = introRoot;
 		let skip = () => {};
 
+		/**
+		 * LAG SMOOTHING, RESTORED FOR THE DURATION OF THE FILM — and this is a real
+		 * defect fix, verified on a production build, not a precaution.
+		 *
+		 * smooth-scroll.ts:45 sets `gsap.ticker.lagSmoothing(0)` globally so Lenis
+		 * gets true deltas. The consequence for a timeline that starts while the
+		 * route's own chunks are still evaluating is that the first long frame is
+		 * handed to the tween as ONE delta, and a 2.67s film is advanced to its end
+		 * in a single tick.
+		 *
+		 * MEASURED on `vite preview`, polling for `.mc-intro` presence every 50ms:
+		 * the element appeared at 2226ms and was already gone by the next sample —
+		 * on screen for under 100ms against a designed 2.67s. It was not playing,
+		 * it was flashing, which is worse than not having a film at all.
+		 *
+		 * `lagSmoothing(500, 33)` is GSAP's own default: any frame longer than 500ms
+		 * is treated as 33ms, so a load stall can no longer consume the timeline.
+		 * It is restored to 0 the moment the film is done — in `onComplete`, in the
+		 * skip path and in the teardown — because Lenis needs the raw delta for the
+		 * rest of the page's life.
+		 */
+		const restoreLag = () => gsap.ticker.lagSmoothing(0);
+		gsap.ticker.lagSmoothing(500, 33);
+
 		const ctx = gsap.context(() => {
-			const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, onComplete: finishIntro });
+			const tl = gsap.timeline({
+				defaults: { ease: 'power3.out' },
+				onComplete: () => {
+					restoreLag();
+					finishIntro();
+				}
+			});
 
 			tl.fromTo(
 				root.querySelector('.mci-scan'),
@@ -270,6 +300,9 @@
 
 			skip = () => {
 				tl.kill();
+				// Restore before finishing: a visitor who skips must not leave Lenis
+				// running on smoothed deltas for the rest of the session.
+				restoreLag();
 				finishIntro();
 			};
 		}, root);
