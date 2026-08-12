@@ -551,3 +551,37 @@ export const voices = [
  * including "fkn" in Rick Guilette's.
  */
 export const voicesHeading = 'What people are saying about Pat Mitchell';
+
+/* -------------------------------------------------------------------------- */
+/* B.O.S.S. Carbon — the bundled bonus course                                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The twelve B.O.S.S. Carbon lessons, VERBATIM.
+ *
+ * Source: docs/momentum-reference/live-momentum-course.txt:89-115, under that
+ * page's own heading "FREE B.O.S.S. CARBON". Quoted exactly, including the
+ * shorthand "$$" and the bare broker name "DAS".
+ *
+ * This module is imported by BOTH Momentum routes. It lives here because this is
+ * the file that already carries the captured course facts and their locators;
+ * /momentum-course consumes the data only, never this page's CSS scope.
+ */
+export const bossCarbon = {
+	/** Verbatim, :89. The live page really does print it in caps with the periods. */
+	heading: 'FREE B.O.S.S. CARBON',
+	lessons: [
+		/** :93  */ 'Introduction',
+		/** :95  */ 'The basics of options',
+		/** :97  */ 'Important things to avoid when trading options',
+		/** :99  */ 'Recommended brokers',
+		/** :101 */ 'DAS',
+		/** :103 */ 'Brokers to avoid',
+		/** :105 */ 'The stocks we trade options on',
+		/** :107 */ 'Complete chart setup for options trading',
+		/** :109 */ 'What type of an account to use & how much $$ do you need to trade options',
+		/** :111 */ 'The proper psychology you need to trade options',
+		/** :113 */ 'The complete options strategy explained in great detail',
+		/** :115 */ 'Live trades'
+	]
+} as const;
