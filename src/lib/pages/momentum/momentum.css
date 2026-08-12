@@ -125,12 +125,18 @@
 	   not the kit primary. This is the page's dark ground. */
 	--mo-kit-black: #000000;
 
-	/* CAPTURED from the reference's wp-custom-css block,
-	   head-tail-styles.txt:216-220: `.entry-content p { color: #e3e3e3 }`.
-	   That selector governs every paragraph in the content area, including both
-	   image-box descriptions, and it out-ranks the kit's #707070 on the dark
-	   band by source order. So the reference genuinely runs two body greys — one
-	   per band — which is exactly what the band system encodes below.
+	/* DELIBERATE DIVERGENCE, and the note that used to sit here was WRONG.
+	   The reference's wp-custom-css does declare `.entry-content p { color:
+	   #e3e3e3 }` (docs/momentum-reference/ wp-custom block, read in full), but
+	   that rule does NOT govern the two offer descriptions. Elementor's
+	   `.elementor-widget-image-box .elementor-image-box-description { color:
+	   var(--e-global-color-text) }` is the more specific selector and wins.
+	   MEASURED on the live page with getComputedStyle on 2026-08-12: both
+	   descriptions render rgb(112,112,112) = the kit's #707070, on the #000000
+	   band. That is 3.09:1 — below WCAG AA for body text at any size.
+	   We therefore keep #e3e3e3 (16.36:1 on the dark ground) as an accessibility
+	   fix, not as a reproduction. The captured value is recorded here so the
+	   divergence is visible rather than accidental.
 	   Kept under its original name because viz/MomentumTape.svelte:429 already
 	   consumes `var(--mo-desc)`. */
 	--mo-desc: #e3e3e3;
@@ -232,11 +238,26 @@
 	   CAPTURED: post-47277.css:1 boxes every Elementor container at 1140px, and
 	   its two media blocks step it to 1024px at <=1024 and 767px at <=767 — i.e.
 	   below 1140 the container is simply the viewport, which is what `width:100%`
-	   already does. RECONCILIATION: the repo's own --tt-container is 1200px
-	   (app.css:56), 60px wider. The captured 1140px wins on THIS page — the two
-	   offer plates are the page's only wide element and their measured
-	   composition is the reason the reference chose it. Other routes are
-	   untouched: this token is page-scoped. */
+	   already does.
+
+	   PRECISION CORRECTION (2026-08-12, after reading the capture's section
+	   classes and both Astra inline blocks in full): that 1140px rule is scoped
+	   to `.elementor-section-boxed > .elementor-container`, and the reference's
+	   THREE top-level sections are `elementor-section-full_width
+	   elementor-section-stretched` — so 1140px does NOT constrain them. Only the
+	   inner section holding Pat's avatar and the quote (66a7d77) is boxed.
+	   The card section instead runs four col-25 columns edge to edge, two of them
+	   empty, so its content occupies the middle ~50% of the viewport: measured
+	   live at 1440px, each offer description is 340px wide.
+	   Astra's own site container is --ast-normal-container-width: 1200px with
+	   `.ast-container { max-width: 1240px }` at >=769px (astra inline block),
+	   which is where the repo's --tt-container: 1200px (app.css:56) comes from.
+
+	   DECISION: keep 1140px here. It is the reference's own boxed width, it sits
+	   between Astra's 1200 and the card section's effective ~720px of content,
+	   and it lets the two offer plates render far larger than the reference's
+	   340px — which is a deliberate legibility gain, not a reproduction. Other
+	   routes are untouched: this token is page-scoped. */
 	--mo-container: 1140px;
 
 	/* INHERITED from alpha.css:24 (--ease-out-expo). Not captured; the reference
@@ -496,10 +517,25 @@
    scaffolding. The modifier classes may stay in the markup as identifiers for
    Director and for tests, but they carry no colour and no other declaration.
 
-   Metrics are INHERITED from Button.svelte's --lg variant (pill 999px,
-   uppercase, weight 700, padding 1.15rem 2.2rem, font-size 0.9rem). The
-   reference's `elementor-size-xl` metrics live in a stylesheet that is not among
-   the recovered files.
+   THE REFERENCE'S BUTTON METRICS ARE NOW CAPTURED (2026-08-12). They were
+   previously recorded as unavailable; that is no longer true. Elementor never
+   enqueues a `widget-button` stylesheet on this page — the capture's 50 <link>
+   tags include widget-image and widget-image-box but no button widget CSS — so
+   the metrics were read off the live page with getComputedStyle instead:
+
+       background  rgb(178, 39, 37)   = #B22725   (matches --mo-kit-accent)
+       color       rgb(255, 255, 255)
+       font-size   20px      font-weight 400
+       padding     25px 50px
+       border-radius 6px
+       rendered    221 x 70 px
+
+   DELIBERATE DIVERGENCE: we keep Button.svelte's --lg metrics (pill 999px,
+   uppercase, weight 700, padding 1.15rem 2.2rem, font-size 0.9rem) rather than
+   adopting the captured rectangle. The fill colour — the one thing that carries
+   brand meaning and that the reference states deliberately — is matched exactly.
+   The shape is the repo's, because a 6px-radius rectangle would be the only
+   non-pill button on the site and this page is an elevation, not a facsimile.
 
    BAND-INDEPENDENT ON PURPOSE. The label is the captured kit secondary rather
    than a band token: white on #b22725 is 6.54:1, and the fill is 6.54:1 against

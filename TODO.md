@@ -14,19 +14,45 @@ The entries below were open questions when first written. Each was closed by fet
 rather than by deciding. `curl` gets a 403 from tricktrades.com (bot challenge); a real Chromium via
 Playwright gets 200, which is how the live pages were captured.
 
-| Was open | Closed by | Verdict |
-| --- | --- | --- |
-| **`bg4.jpg` identity unverified** — the hero art was matched by filename and timestamp, never by bytes | Fetched the googleapis URL named at `post-73938.pretty.css:9` and diffed | **Byte-identical.** `shasum -a 256` = `96a26146…2bb7` for both the live `bg4.jpg` and `static/momentum-hero-bg-1920.jpg`. It *is* the reference's hero background. |
-| **`129` vs `15/115/14/$597` conflict** — thought to be two irreconcilable claims, the latter unsourced and banned | Captured the live `/momentum-course` (200, 684,678 bytes) → `docs/momentum-reference/live-momentum-course.{html,txt}` | **No conflict ever existed.** That page states the breakdown verbatim under "WHAT'S INSIDE THE COURSE:" (`:49-65`), corroborated by its own module list `MODULE 1`–`13`, `Module 14: Bonus Lessons`, `Module15: Q & A` (`:117-399`) = 15 modules. 115 + 14 = 129. The figures are **certified** and now render in the Ledger. The shipped `/momentum-course` page was right all along. |
-| **`/product/momentum-live-round-18` assumed going stale** | Captured the live product page (200) → `docs/momentum-reference/live-product-round-18.txt` | **Currently valid.** Title "Momentum Live Trading: Round 18", `Sale! $1,997.00 → $1,497.00`, `Add to cart` (`:94-100`). The rollover risk remains real but is not a present defect. |
-| **Should `/momentum` be added to the nav?** | Read the live site's own nav, captured on two separate pages | **No.** The live nav lists only "Momentum Course" → `/momentum-course` under Academy. Adding `/momentum` would diverge from the live site. Sitemap entry stays; nav is deliberately unchanged. |
-| **Should a price appear on `/momentum`?** | Same product-page capture | **No.** The reference `/momentum` shows no price, and mirroring a promotional price into a static page creates a claim that goes stale silently. The product page owns pricing. Recorded in `content.ts`. |
-| **Firefox never run** — the `@supports` scroll-driven-animation fallback was unproven on the one engine that needs it | Ran the page in real Firefox 153.0 via Playwright | **Fallback holds.** `CSS.supports('animation-timeline','view()')` is `false` in Firefox 153, and the page still renders correctly — white band `rgb(255,255,255)`, black band `rgb(0,0,0)`, all CTAs `rgb(178,39,37)`, plate loads `momentum-welcome-1605.avif` — with **zero console errors**. |
-| **`momentum-page` untracked, gitignore?** | Checked repo convention: `git ls-files page-source.txt` | **Commit it.** The repo already tracks its raw captures. No `.gitignore` change. |
+| Was open                                                                                                              | Closed by                                                                                                             | Verdict                                                                                                                                                                                                                                                                                                                                                                                |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`bg4.jpg` identity unverified** — the hero art was matched by filename and timestamp, never by bytes                | Fetched the googleapis URL named at `post-73938.pretty.css:9` and diffed                                              | **Byte-identical.** `shasum -a 256` = `96a26146…2bb7` for both the live `bg4.jpg` and `static/momentum-hero-bg-1920.jpg`. It _is_ the reference's hero background.                                                                                                                                                                                                                     |
+| **`129` vs `15/115/14/$597` conflict** — thought to be two irreconcilable claims, the latter unsourced and banned     | Captured the live `/momentum-course` (200, 684,678 bytes) → `docs/momentum-reference/live-momentum-course.{html,txt}` | **No conflict ever existed.** That page states the breakdown verbatim under "WHAT'S INSIDE THE COURSE:" (`:49-65`), corroborated by its own module list `MODULE 1`–`13`, `Module 14: Bonus Lessons`, `Module15: Q & A` (`:117-399`) = 15 modules. 115 + 14 = 129. The figures are **certified** and now render in the Ledger. The shipped `/momentum-course` page was right all along. |
+| **`/product/momentum-live-round-18` assumed going stale**                                                             | Captured the live product page (200) → `docs/momentum-reference/live-product-round-18.txt`                            | **Currently valid.** Title "Momentum Live Trading: Round 18", `Sale! $1,997.00 → $1,497.00`, `Add to cart` (`:94-100`). The rollover risk remains real but is not a present defect.                                                                                                                                                                                                    |
+| **Should `/momentum` be added to the nav?**                                                                           | Read the live site's own nav, captured on two separate pages                                                          | **No.** The live nav lists only "Momentum Course" → `/momentum-course` under Academy. Adding `/momentum` would diverge from the live site. Sitemap entry stays; nav is deliberately unchanged.                                                                                                                                                                                         |
+| **Should a price appear on `/momentum`?**                                                                             | Same product-page capture                                                                                             | **No.** The reference `/momentum` shows no price, and mirroring a promotional price into a static page creates a claim that goes stale silently. The product page owns pricing. Recorded in `content.ts`.                                                                                                                                                                              |
+| **Firefox never run** — the `@supports` scroll-driven-animation fallback was unproven on the one engine that needs it | Ran the page in real Firefox 153.0 via Playwright                                                                     | **Fallback holds.** `CSS.supports('animation-timeline','view()')` is `false` in Firefox 153, and the page still renders correctly — white band `rgb(255,255,255)`, black band `rgb(0,0,0)`, all CTAs `rgb(178,39,37)`, plate loads `momentum-welcome-1605.avif` — with **zero console errors**.                                                                                        |
+| **`momentum-page` untracked, gitignore?**                                                                             | Checked repo convention: `git ls-files page-source.txt`                                                               | **Commit it.** The repo already tracks its raw captures. No `.gitignore` change.                                                                                                                                                                                                                                                                                                       |
 
 Gap 11 (the gsap iCloud eviction) is also closed — see its own entry below.
 
-**Still genuinely open:** the reference's `elementor-size-xl` button metrics are uncaptured (CTA padding/radius inherited from `Button.svelte`); the kit specifies Roboto/Roboto Slab for body text while the page renders Poppins, a knowing design-system inheritance; and `astra-addon-inline.pretty.css` (2,652 lines) remains unread.
+### Second evidence pass — the last three gaps, closed
+
+All remaining evidence has now been **read end to end**, not searched: `wp-custom` (248 lines),
+`astra-inline.pretty.css` (2,315), `astra-addon-inline.pretty.css` (2,652), all three Elementor
+sheets, the capture body and head, plus live `getComputedStyle` measurements from three pages.
+
+| Was open                                          | Closed by                                                       | Verdict                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`elementor-size-xl` button metrics uncaptured** | Reading all 50 `<link>` tags, then measuring the live page      | Elementor **never enqueues a `widget-button` stylesheet** here (widget-image and widget-image-box are loaded; the button widget is not), so the metrics exist only at runtime. Measured live: `background rgb(178,39,37)`, `color #fff`, `font-size 20px`, `weight 400`, `padding 25px 50px`, `radius 6px`, rendered **221×70**. Recorded in `momentum.css`. We match the **fill** exactly and keep the repo's pill shape — a 6px rectangle would be the site's only non-pill button. |
+| **"Kit specifies Roboto, page renders Poppins"**  | Reading `astra-inline.pretty.css:117-137` + live computed style | **Not a real conflict.** Astra sets a _system stack_ (`-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, …`) for `body/button/input`; "Roboto" is only a fallback _name_ inside it. The live page computes to **`system-ui`** — no Roboto webfont governs body text anywhere. Poppins is a deliberate upgrade over an unstyled system default.                                                                                                                                     |
+| **`astra-addon-inline.pretty.css` unread**        | Read in full, 2,652 lines                                       | Entirely header/menu/blog/archive/author/woocommerce/megamenu chrome. **Nothing in it governs `/momentum`'s sections** — none of those elements exist on this page. Its only bearing: `.main-header-bar { background-color: #000000 }` (`:701`).                                                                                                                                                                                                                                      |
+
+**Two errors in our own comments were found and corrected this pass:**
+
+1. `--mo-desc` claimed `.entry-content p { #e3e3e3 }` governs the offer descriptions and out-ranks
+   the kit grey. It does not — `.elementor-widget-image-box .elementor-image-box-description` is more
+   specific and wins. Measured live, both descriptions render `rgb(112,112,112)` on `#000000` =
+   **3.09:1, below WCAG AA**. We keep `#e3e3e3` (16.36:1) as an explicit accessibility fix, now
+   labelled as a divergence rather than a reproduction.
+2. The container note claimed the captured 1140px "wins on this page". That rule is scoped to
+   `.elementor-section-boxed`, and all three top-level sections are `full_width stretched` — only the
+   inner quote section is boxed. The card section runs four `col-25` columns edge to edge with two
+   empty, so its content is the middle ~50% of the viewport (**340px per description at 1440px**,
+   measured). We keep 1140px as a deliberate legibility gain, now correctly justified.
+
+**Nothing evidential remains open.** What remains is design judgement, recorded above: pill vs
+rectangle CTAs, Poppins vs system stack, and a wider card container than the reference's 340px.
 
 ---
 
@@ -359,7 +385,7 @@ that bumps this constant.
 From the 12 Aug 2026 platform-baseline verification (raw MDN BCD + `api.webstatus.dev`, not Baseline
 badges). Recorded so nobody "modernises" these in later:
 
-- **`@scope`** — AVOIDED. An unsupported at-rule is dropped *with everything inside it*, so styles
+- **`@scope`** — AVOIDED. An unsupported at-rule is dropped _with everything inside it_, so styles
   vanish rather than degrade, and Firefox only shipped it in 146 (absent from ESR 140). Svelte already
   scopes component styles; the page keeps its manual `.mo-scope` prefix instead.
 - **Cross-document view transitions (`@view-transition`)** — AVOIDED, `firefox: false` in BCD. Not
@@ -372,7 +398,7 @@ badges). Recorded so nobody "modernises" these in later:
   animating to a keyword size.
 - **WebGPU** — not used, per decision D3.
 - **Scroll-driven animations** — USED, but every rule is inside `@supports (animation-timeline: view())`
-  with `animation-timeline` declared *after* the `animation` shorthand. This is not optional: Firefox
+  with `animation-timeline` declared _after_ the `animation` shorthand. This is not optional: Firefox
   drops the timeline and keeps the shorthand, so an unguarded rule plays once on load and parks the
   element at its end state. Firefox itself was never run this pass (see G).
 
@@ -406,7 +432,7 @@ badges). Recorded so nobody "modernises" these in later:
    citation in the momentum source is inherited from `data/content.ts`'s transcription. The
    `post-73938.pretty.css` / `post-47277.css` citations ARE first-hand.
 4. **LCP/CLS were measured against the dev server on localhost**, so the LCP figures (44-56ms) are not
-   a field-realistic number — they prove the LCP *element* is the hero plate and that nothing blocks
+   a field-realistic number — they prove the LCP _element_ is the hero plate and that nothing blocks
    it, nothing more. CLS is the meaningful figure here: 0.0004 desktop / 0.0002 phone / 0.0131 tablet.
 5. **`content-visibility: auto` on `#disclosure` makes full-page screenshots lie.** Chromium's
    capture-beyond-viewport does not render the skipped subtree, so `#disclosure` photographs as an
