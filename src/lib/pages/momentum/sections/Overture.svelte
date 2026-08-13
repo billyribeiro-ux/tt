@@ -337,7 +337,7 @@
 <style>
 	/* Full-bleed. This section deliberately does NOT use `.mo-section`: it has to
 	   pay its own fixed-header clearance on the top edge, exactly as
-	   momentum-course/MomentumHero.svelte:70 does, and inheriting a symmetric
+	   momentum-course/MomentumHero.svelte:379 does, and inheriting a symmetric
 	   padding-block would then have to be undone. INHERITED from the repo's
 	   spacing scale; the reference's own S1 padding (30px 0) belongs to a band
 	   ~390px tall built around a 210px logo, which is not this page's hero. */

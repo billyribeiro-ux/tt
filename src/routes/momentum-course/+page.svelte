@@ -101,8 +101,11 @@
 	CourseDirector is rendered FIRST and exactly once. It takes no props: it reads
 	`ui.reducedMotion` / `ui.scrollProgress` from the store the effect above writes,
 	and owns the intro film, the pointer aura, the chapter rail and the section spy.
-	Rendering it above the sections is what guarantees its `onMount` — and therefore
-	the `mc-intro-done` handshake — runs before MomentumHero's does.
+	Rendering it above the sections gives it the first `onMount`, which is what lets
+	it set the global timeScale and mount the film overlay before anything under it
+	animates. It is NOT a handshake and MomentumHero does not wait on it — the hero
+	composes on mount and the film plays over an already-composed frame; see
+	MomentumHero.svelte:87-101 for what the wait cost when it existed.
 
 	CourseDivider's `stage` is its DOM position in the run of five, 0..4. That value
 	drives rung density, spine alpha, jitter and the grey-to-red ramp, so the ladder
