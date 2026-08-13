@@ -136,7 +136,7 @@
 		color: #fff;
 	}
 	.bc-enroll__cur {
-		font-size: 1.4rem;
+		font-size: var(--fs-h4);
 		font-weight: 700;
 		color: var(--tt-fog);
 	}
@@ -147,7 +147,7 @@
 		letter-spacing: -0.03em;
 	}
 	.bc-enroll__was {
-		font-size: 1.1rem;
+		font-size: var(--fs-body);
 		color: var(--tt-mute-2);
 		text-decoration-line: line-through;
 	}
@@ -163,7 +163,7 @@
 	}
 	.bc-enroll__spec dd {
 		margin: 0.5rem 0 0;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		color: var(--tt-fog);
 	}
 	.bc-enroll__member {
@@ -173,7 +173,7 @@
 		justify-content: center;
 		gap: 0.6rem;
 		margin-top: 1.8rem;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 	.bc-enroll__member-link {
@@ -181,7 +181,7 @@
 		align-items: center;
 		gap: 0.35rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.7rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-fog);

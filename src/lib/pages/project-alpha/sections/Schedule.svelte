@@ -59,7 +59,7 @@
 		align-items: center;
 		gap: 0.7rem;
 		margin: -1.5rem 0 1.15rem;
-		font-size: 0.51rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
@@ -108,9 +108,8 @@
 		align-items: center;
 		gap: 0.7rem;
 		margin-bottom: 2.1rem;
-		font-family: var(--font-display);
-		font-size: 2.8rem;
-		font-weight: 650;
+		font-size: var(--fs-h2);
+		font-weight: 700;
 		line-height: 1;
 		color: color-mix(in srgb, var(--accent) 28%, transparent);
 	}
@@ -130,7 +129,7 @@
 		align-items: center;
 		gap: 0.4rem;
 		margin: 0 0 0.55rem;
-		font-size: 0.65rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
@@ -139,9 +138,8 @@
 
 	h3 {
 		margin: 0 0 1rem;
-		font-family: var(--font-display);
-		font-size: 1.6rem;
-		font-weight: 650;
+		font-size: var(--fs-h3);
+		font-weight: 700;
 		letter-spacing: -0.025em;
 	}
 
@@ -157,7 +155,7 @@
 		display: grid;
 		grid-template-columns: 58px 1fr;
 		gap: 0.65rem;
-		font-size: 0.88rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		line-height: 1.5;
 		padding: 0.35rem 0;
@@ -169,7 +167,7 @@
 	}
 
 	.time {
-		font-size: 0.76rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 500;
 		color: var(--alpha-muted);
 		padding-top: 0.1rem;

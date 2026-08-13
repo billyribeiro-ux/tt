@@ -475,7 +475,7 @@
 		   is restated rather than composed because the film animates it from
 		   0.5em and the tween needs an explicit resting value to land on. */
 		font-family: var(--tt-font-mono);
-		font-size: 0.7rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.28em;
 		text-transform: uppercase;
 		color: var(--tt-mute);
@@ -619,7 +619,7 @@
 		right: calc(100% + 0.55rem);
 		top: 50%;
 		font-family: var(--tt-font-mono);
-		font-size: 0.58rem;
+		font-size: var(--fs-nano);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		white-space: nowrap;
@@ -640,7 +640,7 @@
 
 	.mc-rail__n {
 		font-family: var(--tt-font-mono);
-		font-size: 0.58rem;
+		font-size: var(--fs-nano);
 		font-variant-numeric: tabular-nums;
 		text-align: right;
 	}

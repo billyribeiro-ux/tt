@@ -239,7 +239,7 @@
 	}
 	.hero__stat dd {
 		margin: 0.3rem 0 0;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.02em;
 		color: var(--tt-mute);
 	}
@@ -283,14 +283,14 @@
 	}
 	.hero__ribbon-item {
 		font-family: var(--tt-font-display);
-		font-size: 1.35rem;
+		font-size: var(--fs-h4);
 		letter-spacing: 0.1em;
 		color: var(--tt-fog);
 		white-space: nowrap;
 	}
 	.hero__ribbon-dot {
 		color: var(--tt-red);
-		font-size: 0.7rem;
+		font-size: var(--fs-eyebrow);
 	}
 
 	@media (min-width: 1024px) {

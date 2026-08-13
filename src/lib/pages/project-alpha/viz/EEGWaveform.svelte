@@ -119,8 +119,10 @@
 					.attr('x', 22)
 					.attr('y', 11)
 					.attr('fill', '#9a9590')
-					.attr('font-size', 11)
-					.attr('font-family', 'DM Sans, sans-serif')
+					// See BioMarketMonitor.svelte for why this is `.style()` and not
+					// `.attr()`: a presentation attribute cannot resolve `var()`.
+					.style('font-family', 'var(--tt-font-body)')
+					.style('font-size', 'var(--fs-nano)')
 					.text(b.label);
 			});
 
@@ -226,7 +228,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
@@ -243,7 +245,7 @@
 	}
 
 	.eeg-note {
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--alpha-faint);
 	}
 

@@ -146,7 +146,7 @@
 		gap: 0.55rem;
 		padding: 0.5rem 0.9rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -196,7 +196,7 @@
 		align-items: center;
 		padding: 0.45rem 1rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.66rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 700;
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
@@ -215,7 +215,7 @@
 		gap: 0.5rem;
 	}
 	.plan__idx {
-		font-size: 0.7rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.18em;
 		color: var(--tt-mute);
 	}
@@ -234,7 +234,7 @@
 	.plan__cur {
 		align-self: flex-start;
 		margin-top: 0.4rem;
-		font-size: 1.4rem;
+		font-size: var(--fs-h4);
 		font-weight: 700;
 		color: var(--tt-fog);
 	}
@@ -247,7 +247,7 @@
 	.plan__cad {
 		margin-left: 0.25rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 	.plan--featured .plan__amt {
@@ -258,7 +258,7 @@
 		margin-top: 1rem;
 		max-width: 40ch;
 		color: var(--tt-fog);
-		font-size: 0.98rem;
+		font-size: var(--fs-small);
 	}
 
 	.plan__cta {
@@ -275,7 +275,7 @@
 	.plan__inherit {
 		margin-bottom: 1rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: var(--tt-red-bright);
@@ -304,7 +304,7 @@
 		color: var(--tt-red-bright);
 	}
 	.plan__ftxt {
-		font-size: 0.92rem;
+		font-size: var(--fs-small);
 		line-height: 1.5;
 		color: var(--tt-fog);
 	}
@@ -316,7 +316,7 @@
 		gap: 0.6rem;
 		margin-top: clamp(2rem, 4vw, 3rem);
 		text-align: center;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 	:global(.price__assure-ico) {

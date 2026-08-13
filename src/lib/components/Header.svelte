@@ -340,7 +340,7 @@
 	}
 	.brand__name {
 		font-family: var(--tt-font-display);
-		font-size: 1.1rem;
+		font-size: var(--fs-body);
 		letter-spacing: 0.13em;
 		color: var(--tt-white);
 		white-space: nowrap;
@@ -369,7 +369,7 @@
 		align-items: center;
 		gap: 0.35rem;
 		padding: 0.55rem 0.65rem;
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 500;
 		letter-spacing: 0.02em;
 		color: var(--tt-fog);
@@ -428,7 +428,7 @@
 	.hdr__dd-link {
 		display: block;
 		padding: 0.6rem 0.8rem;
-		font-size: 0.84rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 500;
 		color: var(--tt-fog);
 		border-radius: 8px;
@@ -451,7 +451,7 @@
 		flex: none;
 	}
 	.hdr__login {
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		color: var(--tt-fog);
 		transition: color 0.25s ease;
@@ -520,7 +520,7 @@
 	}
 	.menu__idx {
 		font-family: var(--tt-font-mono);
-		font-size: 0.75rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-red-bright);
 	}
 	.menu__caret {
@@ -543,7 +543,7 @@
 	.menu__sub-link {
 		display: block;
 		padding: 0.45rem 0;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		font-weight: 500;
 		color: var(--tt-fog);
 	}
@@ -569,7 +569,7 @@
 		margin-top: auto;
 	}
 	.menu__login {
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--tt-fog);
 	}
 

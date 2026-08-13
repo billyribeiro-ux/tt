@@ -154,7 +154,6 @@
 		display: grid;
 		place-items: center;
 		border-radius: 50%;
-		font-family: var(--font-display);
 		font-size: clamp(3rem, 7vw, 6rem);
 		font-style: italic;
 		color: rgba(59, 139, 235, 0.13);
@@ -163,8 +162,7 @@
 	.resolution {
 		position: relative;
 		margin: 0 0 0.7rem;
-		font-family: var(--font-display);
-		font-size: clamp(1rem, 2vw, 1.35rem);
+		font-size: var(--fs-h5);
 		font-style: italic;
 		color: var(--alpha-muted);
 	}
@@ -175,7 +173,7 @@
 	}
 
 	.cta :global(.section-title em) {
-		font-weight: 450;
+		font-weight: 500;
 		color: #b9ccea;
 	}
 
@@ -198,7 +196,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		font-size: 0.88rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		padding: 0.45rem 0.85rem;
 		border-radius: 999px;
@@ -214,7 +212,7 @@
 
 	.fine {
 		margin: 0;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--alpha-faint);
 		max-width: 480px;
 		margin-inline: auto;

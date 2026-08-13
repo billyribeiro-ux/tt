@@ -182,7 +182,7 @@
 	.proof__stat dd {
 		margin-top: 0.4rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-mute);
@@ -214,7 +214,7 @@
 	.proof__logo {
 		position: relative;
 		font-family: var(--tt-font-display);
-		font-size: clamp(1rem, 0.9rem + 0.6vw, 1.35rem);
+		font-size: var(--fs-h5);
 		letter-spacing: 0.08em;
 		color: var(--tt-fog);
 		white-space: nowrap;
@@ -305,7 +305,7 @@
 	}
 	.proof__role {
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-red-bright);

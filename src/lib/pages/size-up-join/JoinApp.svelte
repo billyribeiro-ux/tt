@@ -200,7 +200,7 @@
 		gap: 0.45rem;
 		padding: 0.4rem 0.75rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.06em;
 		color: var(--tt-fog);
 		border: 1px solid var(--tt-line);
@@ -230,12 +230,12 @@
 		gap: 1rem;
 	}
 	.app-win__row dt {
-		font-size: 0.86rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 	.app-win__row dd {
 		margin: 0;
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.04em;
 		color: var(--tt-gold);
 	}
@@ -256,7 +256,7 @@
 		border-bottom: 1px solid var(--tt-line);
 	}
 	.feat__idx {
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		color: var(--tt-red-bright);
 		padding-top: 0.35rem;
@@ -275,7 +275,7 @@
 	.feat__body {
 		margin-top: 0.4rem;
 		max-width: 44ch;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 

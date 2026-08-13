@@ -162,7 +162,7 @@
 	}
 	.c-hero__meta-item dd {
 		margin: 0.5rem 0 0;
-		font-size: clamp(1rem, 0.9rem + 0.5vw, 1.2rem);
+		font-size: var(--fs-body);
 		font-weight: 600;
 		color: #fff;
 		line-height: 1.15;
@@ -225,7 +225,7 @@
 		color: var(--tt-red-bright);
 	}
 	.c-panel__addr {
-		font-size: 0.92rem;
+		font-size: var(--fs-small);
 		color: #fff;
 	}
 	.c-panel__lines {
@@ -256,13 +256,13 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-mute);
 	}
 	.c-panel__send {
 		padding: 0.5rem 1.1rem;
 		border-radius: 999px;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.04em;

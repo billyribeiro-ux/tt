@@ -91,12 +91,12 @@
 		transform: translateY(-2px);
 	}
 	.topics__tag-idx {
-		font-size: 0.7rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-red-bright);
 	}
 	.topics__tag-label {
 		font-family: var(--tt-font-display);
-		font-size: 1.05rem;
+		font-size: var(--fs-body);
 		letter-spacing: 0.05em;
 		color: var(--tt-white);
 	}

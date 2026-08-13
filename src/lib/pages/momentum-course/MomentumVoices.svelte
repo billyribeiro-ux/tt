@@ -231,7 +231,7 @@
 	}
 	.mv__headline {
 		margin: 0 0 0.8rem;
-		font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+		font-size: var(--fs-h5);
 		font-weight: 700;
 		line-height: 1.25;
 		color: #fff;
@@ -240,7 +240,7 @@
 	.mv__quote {
 		margin: 0;
 		flex: 1;
-		font-size: 0.97rem;
+		font-size: var(--fs-small);
 		line-height: 1.65;
 		color: var(--tt-fog);
 	}

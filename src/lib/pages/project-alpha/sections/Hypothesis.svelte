@@ -89,9 +89,8 @@
 	}
 
 	.failure-stat strong {
-		font-family: var(--font-display);
 		font-size: clamp(5rem, 10vw, 8.5rem);
-		font-weight: 650;
+		font-weight: 700;
 		line-height: 0.72;
 		letter-spacing: -0.075em;
 		color: var(--alpha-text);
@@ -105,8 +104,8 @@
 	.failure-stat p {
 		margin: 0;
 		padding-bottom: 0.15rem;
-		font-size: 0.72rem;
-		font-weight: 650;
+		font-size: var(--fs-eyebrow);
+		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		line-height: 1.7;
@@ -123,7 +122,7 @@
 		align-items: center;
 		gap: 1rem;
 		padding-bottom: 0.2rem;
-		font-size: 0.6rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
@@ -184,7 +183,7 @@
 		border: 1px solid color-mix(in srgb, var(--alpha-blue) 30%, var(--alpha-border));
 		background: rgba(59, 139, 235, 0.08);
 		color: var(--alpha-blue);
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 	}
 
@@ -237,7 +236,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		font-size: 0.65rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
@@ -247,8 +246,7 @@
 
 	.hyp-body {
 		margin: 0 0 1.25rem;
-		font-family: var(--font-display);
-		font-size: clamp(1.1rem, 2.2vw, 1.28rem);
+		font-size: var(--fs-h5);
 		line-height: 1.75;
 		font-style: italic;
 		color: var(--alpha-text);
@@ -276,7 +274,7 @@
 	.hyp-metrics li {
 		position: relative;
 		padding-left: 1.1rem;
-		font-size: 0.88rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		line-height: 1.5;
 	}
@@ -313,6 +311,12 @@
 			align-items: center;
 		}
 
+		/* The one fixed rem left on the site, and it is deliberate. The base is
+		   `clamp(5rem, 10vw, 8.5rem)`; at the widths this query matches, 10vw is
+		   below the floor, so the clamp returns 5rem and this bumps the numeral
+		   back up ~10%. It is a decorative display figure, not a type rung, and
+		   nothing in the evidence says the bump is wrong — so it stays as it is
+		   rather than being flattened to make a tidy audit. */
 		.failure-stat strong {
 			font-size: 5.5rem;
 		}

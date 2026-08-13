@@ -474,7 +474,7 @@
 		max-width: 22em;
 		margin-top: 0.9rem;
 		font-family: var(--tt-font-display);
-		font-size: clamp(0.86rem, 0.78rem + 0.42vw, 1.12rem);
+		font-size: var(--fs-body);
 		line-height: 1.4;
 		min-height: 2.8em;
 		letter-spacing: 0.12em;
@@ -502,7 +502,7 @@
 		display: inline-flex;
 		align-items: center;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -535,7 +535,7 @@
 		align-items: center;
 		gap: 0.4rem 0.7rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		line-height: 1.5;
 		letter-spacing: 0.1em;
 		color: var(--tt-mute);
@@ -579,7 +579,7 @@
 	}
 	.mo-hero__stat-l {
 		margin-top: 0.3rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.02em;
 		color: var(--tt-mute);
 	}

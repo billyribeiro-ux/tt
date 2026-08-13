@@ -95,7 +95,7 @@
 	}
 	.outro__meta-item dd {
 		margin: 0;
-		font-size: 1.05rem;
+		font-size: var(--fs-body);
 		font-weight: 700;
 		color: #fff;
 	}

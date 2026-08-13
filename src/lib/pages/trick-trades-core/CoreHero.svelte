@@ -183,7 +183,7 @@
 	.chero__spec-v {
 		font-family: var(--tt-font-body);
 		font-weight: 600;
-		font-size: 0.98rem;
+		font-size: var(--fs-small);
 		color: var(--tt-white);
 		text-align: right;
 	}
@@ -191,7 +191,7 @@
 		margin-top: 1.4rem;
 		padding-top: 1.1rem;
 		border-top: 1px solid var(--tt-line);
-		font-size: 0.68rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.24em;
 		color: var(--tt-red-bright);
 	}

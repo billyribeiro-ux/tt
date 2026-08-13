@@ -1,8 +1,27 @@
 /* ==========================================================================
    Project ALPHA page scope. Ported from the standalone project-alpha-sol
    build; Tailwind removed, everything vanilla and namespaced under
-   .alpha-scope so this page's art direction (DM Sans / Playfair, blue-teal
-   research accents) never leaks into the rest of the site.
+   .alpha-scope so this page's art direction (blue-teal research accents)
+   never leaks into the rest of the site.
+
+   TYPE IS NOT SCOPED, AND THAT IS THE POINT. The port arrived with its own
+   two faces — `--font-sans: DM Sans` and `--font-display: Playfair Display` —
+   which made this the only route on the site not set in the brand faces.
+   Neither appears anywhere in the captured evidence under
+   docs/momentum-reference/; `Allerta Stencil` does. So both private tokens are
+   gone and this page now inherits Poppins from `body` (app.css:107-108) like
+   every other page, takes `--tt-font-display` (Allerta Stencil) on its
+   section labels exactly as the sitewide `.eyebrow` does (app.css:174-183),
+   and draws its sizes from the shared `--fs-*` scale.
+
+   The colour art direction — blue/teal/gold research accents — is untouched.
+   That is what makes this page feel like a lab report; the typeface never was.
+
+   WEIGHTS ARE STATIC HERE. Playfair was loaded as a variable font, so the
+   port used 450/650/750. Poppins is loaded as discrete faces (400/500/600/
+   700/800 in +layout.svelte), and asking for 650 gets a browser-synthesised
+   approximation, not a real cut. Those three values are normalised to the
+   nearest loaded weight rather than left to be faked.
    ========================================================================== */
 
 .alpha-scope {
@@ -25,14 +44,11 @@
 	--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 	--pointer-x: 50vw;
 	--pointer-y: 50vh;
-	--font-sans: 'DM Sans', Inter, 'SF Pro Display', ui-sans-serif, system-ui, sans-serif;
-	--font-display: 'Playfair Display', 'Iowan Old Style', Baskerville, ui-serif, Georgia, serif;
 
 	color-scheme: dark;
 	position: relative;
 	z-index: 1;
 	isolation: isolate;
-	font-family: var(--font-sans);
 	background:
 		radial-gradient(circle at 12% 8%, rgba(152, 0, 0, 0.08), transparent 25rem),
 		radial-gradient(circle at 88% 28%, rgba(59, 139, 235, 0.055), transparent 28rem),
@@ -90,7 +106,10 @@
 	z-index: -1;
 	top: clamp(3.2rem, 7vw, 6rem);
 	right: clamp(-0.2rem, 2vw, 2rem);
-	font-family: var(--font-display);
+	/* Inherits Poppins. The clamp stays: this is the ghosted chapter numeral
+	   watermarked behind the section at 1.8% white with `z-index: -1`, so its
+	   size is a decorative dimension like the `top`/`right` above it, not a
+	   rung anyone reads text at. */
 	font-size: clamp(7rem, 16vw, 13rem);
 	font-weight: 700;
 	font-variant-numeric: lining-nums;
@@ -132,12 +151,24 @@
 	background: radial-gradient(circle, rgba(212, 168, 83, 0.045), transparent 67%);
 }
 
+/* The page's own eyebrow. Family and size now match the sitewide `.eyebrow`
+   (app.css:174-183) — Allerta Stencil at `--fs-eyebrow` — which is what makes
+   this page read as the same brand as the rest of the site.
+
+   NO `font-weight` HERE, AND THAT IS DELIBERATE. Only `latin-400` of Allerta
+   Stencil is loaded (+layout.svelte), so the 700 this used to carry could only
+   ever have been a browser-synthesised fake bold. `.eyebrow` sets no weight
+   either, for the same reason.
+
+   The 0.28em tracking and the ::before rule below are kept: this page's label
+   sits inline with a glowing 2.5rem rule and is set tighter than the sitewide
+   eyebrow's 0.34em on purpose. Tracking is art direction, not type identity. */
 .alpha-scope .section-label {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.8rem;
-	font-size: 0.66rem;
-	font-weight: 700;
+	font-family: var(--tt-font-display);
+	font-size: var(--fs-eyebrow);
 	letter-spacing: 0.28em;
 	text-transform: uppercase;
 	color: var(--alpha-red-bright);
@@ -152,10 +183,18 @@
 	box-shadow: 0 0 9px currentColor;
 }
 
+/* Inherits Poppins from `body`, like every other heading on the site — the home
+   hero's own `.hero__title` declares no family either (sections/Hero.svelte:188).
+
+   `--fs-h2` rather than the port's `clamp(2.7rem, 6vw, 5rem)`: a section title
+   is one rung, and on every other page that rung is `--fs-h2` (e.g.
+   momentum-course/MomentumVoices.svelte:184). This is the single largest
+   size change in the unification — it brings the ceiling from 5rem to 3.75rem.
+   The -0.055em tracking and 0.98 line-height are kept, so it still sets tight
+   and heavy; it is no longer a third of a rung larger than everywhere else. */
 .alpha-scope .section-title {
-	font-family: var(--font-display);
-	font-size: clamp(2.7rem, 6vw, 5rem);
-	font-weight: 650;
+	font-size: var(--fs-h2);
+	font-weight: 700;
 	line-height: 0.98;
 	margin: 0 0 1.35rem;
 	letter-spacing: -0.055em;
@@ -164,7 +203,7 @@
 }
 
 .alpha-scope .section-desc {
-	font-size: clamp(1rem, 1.5vw, 1.16rem);
+	font-size: var(--fs-body);
 	color: var(--alpha-muted);
 	max-width: 690px;
 	margin: 0 0 clamp(3rem, 6vw, 4.75rem);
@@ -212,7 +251,7 @@
 	gap: 0.55rem;
 	padding: 0.95rem 1.65rem;
 	border-radius: 999px;
-	font-size: 0.92rem;
+	font-size: var(--fs-small);
 	font-weight: 600;
 	letter-spacing: 0.02em;
 	color: #fff;
@@ -267,7 +306,7 @@
 	gap: 0.5rem;
 	padding: 0.85rem 1.35rem;
 	border-radius: 999px;
-	font-size: 0.9rem;
+	font-size: var(--fs-small);
 	font-weight: 500;
 	color: var(--alpha-text);
 	border: 1px solid var(--alpha-border);

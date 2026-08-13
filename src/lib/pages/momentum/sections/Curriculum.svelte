@@ -100,7 +100,7 @@
 	.mo-curriculum__lede li {
 		position: relative;
 		padding-left: 1.5rem;
-		font-size: clamp(0.98rem, 0.9rem + 0.3vw, 1.12rem);
+		font-size: var(--fs-body);
 		line-height: 1.5;
 		color: var(--tt-fog);
 	}
@@ -139,12 +139,12 @@
 	}
 	.mo-curriculum__n {
 		font-family: var(--tt-font-mono);
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		color: var(--mo-cyan);
 	}
 	.mo-curriculum__t {
-		font-size: clamp(1rem, 0.92rem + 0.4vw, 1.22rem);
+		font-size: var(--fs-h5);
 		line-height: 1.35;
 		color: var(--tt-white);
 		text-wrap: pretty;
@@ -155,7 +155,7 @@
 		align-items: center;
 		gap: 0.45rem;
 		margin-block-start: clamp(1.75rem, 4vw, 2.5rem);
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		color: var(--tt-white);
 		text-decoration: underline;
 		text-decoration-color: rgb(255 255 255 / 0.35);

@@ -185,7 +185,7 @@
 	}
 	.cb-vol__row-meta {
 		margin-top: 0.9rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.03em;
 		color: var(--tt-mute);
 	}
@@ -204,7 +204,7 @@
 		color: #fff;
 	}
 	.cb-vol__cur {
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		font-weight: 700;
 		color: var(--tt-fog);
 	}

@@ -95,7 +95,7 @@
 		gap: 0.55rem;
 		margin-top: 2rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.02em;
 		color: var(--tt-mute);
 	}
@@ -154,7 +154,7 @@
 	}
 
 	.faq__idx {
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.06em;
 		color: var(--tt-mute-2);
 		transition: color 0.25s ease;

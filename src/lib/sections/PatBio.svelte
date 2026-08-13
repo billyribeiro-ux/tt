@@ -193,7 +193,7 @@
 		bottom: 1.1rem;
 		z-index: 2;
 		padding: 0.35rem 0.6rem;
-		font-size: 0.66rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		color: var(--tt-fog);
 		background: rgba(10, 10, 11, 0.72);
@@ -307,7 +307,7 @@
 	}
 	.bio__stat dd {
 		margin: 0.45rem 0 0;
-		font-size: 0.76rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
 		color: var(--tt-mute);

@@ -71,7 +71,7 @@
 		overflow: hidden;
 		isolation: isolate;
 		text-transform: uppercase;
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		/* No `transform` here. The magnetic() attachment drives transform per-frame
 		   via GSAP; a CSS transition on the same property would fight every write. */
 		transition:
@@ -83,7 +83,7 @@
 	}
 	.btn--lg {
 		padding: 1.15rem 2.2rem;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 	}
 	.btn--block {
 		display: flex;

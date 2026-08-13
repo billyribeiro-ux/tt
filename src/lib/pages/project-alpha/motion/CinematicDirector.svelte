@@ -602,7 +602,7 @@
 	.intro-meta,
 	.intro-foot {
 		margin: 0;
-		font-size: 0.66rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 700;
 		letter-spacing: 0.28em;
 		text-transform: uppercase;
@@ -615,9 +615,8 @@
 		align-items: baseline;
 		gap: clamp(0.6rem, 3vw, 2rem);
 		margin: 1.1rem 0 0.95rem;
-		font-family: var(--font-display);
 		font-size: clamp(2rem, 10vw, 8.5rem);
-		font-weight: 650;
+		font-weight: 700;
 		line-height: 1;
 		letter-spacing: -0.065em;
 	}
@@ -640,7 +639,6 @@
 	}
 
 	.intro-word.arrow {
-		font-family: var(--font-sans);
 		font-size: 0.34em;
 		color: var(--alpha-red-bright);
 	}
@@ -684,7 +682,7 @@
 
 	.rail-label {
 		margin: 0 0 0.75rem 17px;
-		font-size: 0.52rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.17em;
 		text-transform: uppercase;
@@ -746,13 +744,13 @@
 	}
 
 	.rail-number {
-		font-size: 0.52rem;
+		font-size: var(--fs-nano);
 		font-variant-numeric: tabular-nums;
 	}
 
 	.rail-name {
-		font-size: 0.57rem;
-		font-weight: 650;
+		font-size: var(--fs-nano);
+		font-weight: 700;
 		letter-spacing: 0.11em;
 		text-transform: uppercase;
 		white-space: nowrap;

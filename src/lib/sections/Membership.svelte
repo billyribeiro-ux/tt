@@ -161,7 +161,7 @@
 		gap: 1rem;
 	}
 	.mem__idx {
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.08em;
 		color: var(--tt-red-bright);
 	}
@@ -177,7 +177,7 @@
 	}
 	.mem__body {
 		max-width: 46ch;
-		font-size: 0.96rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 
@@ -258,7 +258,7 @@
 			gap: 1.4rem;
 		}
 		.mem__item--feat .mem__idx {
-			font-size: 0.9rem;
+			font-size: var(--fs-small);
 		}
 		.mem__item--feat .mem__itemtitle {
 			grid-column: 2;

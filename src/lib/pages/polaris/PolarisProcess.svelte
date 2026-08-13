@@ -151,7 +151,7 @@
 		margin-top: 0.8rem;
 		max-width: 46ch;
 		color: var(--tt-fog);
-		font-size: 0.96rem;
+		font-size: var(--fs-small);
 	}
 
 	@media (min-width: 768px) {

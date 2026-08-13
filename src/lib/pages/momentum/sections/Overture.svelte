@@ -576,7 +576,7 @@
 	   --tt-fog #c9cbd3 measures 7.23:1 against that same worst pixel. */
 	.mo-overture__door-label {
 		font-family: var(--tt-font-mono);
-		font-size: 0.68rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -587,7 +587,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		color: var(--tt-white);
 		text-decoration: underline;
 		text-decoration-color: rgb(255 255 255 / 0.35);

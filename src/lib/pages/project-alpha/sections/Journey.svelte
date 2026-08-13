@@ -173,7 +173,7 @@
 
 	.tag {
 		margin: 0 0 0.35rem;
-		font-size: 0.65rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
@@ -182,14 +182,13 @@
 
 	h3 {
 		margin: 0 0 0.7rem;
-		font-family: var(--font-display);
-		font-size: 1.35rem;
+		font-size: var(--fs-h4);
 		font-weight: 600;
 	}
 
 	.body {
 		margin: 0 0 1rem;
-		font-size: 0.92rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		line-height: 1.7;
 	}
@@ -206,7 +205,7 @@
 		display: flex;
 		gap: 0.55rem;
 		align-items: flex-start;
-		font-size: 0.88rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		line-height: 1.55;
 	}

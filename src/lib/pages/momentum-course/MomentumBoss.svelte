@@ -383,7 +383,7 @@
 		gap: 0.4rem;
 		margin-top: 1.4rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -412,7 +412,7 @@
 		color: #fff;
 	}
 	.mo-boss__cur {
-		font-size: 1.4rem;
+		font-size: var(--fs-h4);
 		font-weight: 700;
 		color: var(--tt-fog);
 	}
@@ -423,7 +423,7 @@
 		letter-spacing: -0.03em;
 	}
 	.mo-boss__value-note {
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.02em;
 		color: var(--tt-red-bright);
 	}
@@ -452,7 +452,7 @@
 	.mo-boss__lesson {
 		position: relative;
 		padding-left: 1.3rem;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		line-height: 1.45;
 		color: var(--tt-fog);
 	}

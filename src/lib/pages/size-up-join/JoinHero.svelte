@@ -192,7 +192,7 @@
 	}
 	.join-hero__trust-item dd {
 		margin: 0.34rem 0 0;
-		font-size: 0.76rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.02em;
 		color: var(--tt-mute);
 	}

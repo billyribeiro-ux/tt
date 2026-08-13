@@ -104,7 +104,7 @@
 		user-select: none;
 	}
 	.t-wall__idx {
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.06em;
 		color: var(--tt-red-bright);
 	}
@@ -122,7 +122,7 @@
 	}
 	.t-wall__role {
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-mute);

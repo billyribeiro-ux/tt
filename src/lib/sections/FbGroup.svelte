@@ -122,7 +122,7 @@
 		gap: 0.4rem;
 		margin: 0;
 		font-family: var(--tt-font-mono);
-		font-size: 0.74rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.06em;
 		color: var(--tt-mute);
 	}

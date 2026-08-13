@@ -190,7 +190,7 @@
 		color: var(--tt-red-bright);
 	}
 	.term__idx {
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		color: var(--tt-mute-2);
 	}
