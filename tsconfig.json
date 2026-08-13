@@ -1,5 +1,9 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
+	// next.12 moved the generated config from .svelte-kit/tsconfig.json to
+	// node_modules/$app/tsconfig. Extending the old path built locally ONLY because a
+	// stale .svelte-kit/tsconfig.json from next.10 was still on disk; on a clean
+	// checkout (Vercel) the build died with "Tsconfig not found".
+	"extends": "$app/tsconfig",
 	"compilerOptions": {
 		"rewriteRelativeImportExtensions": true,
 		"allowJs": true,
