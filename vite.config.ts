@@ -27,10 +27,11 @@ export default defineConfig({
 			 * still render the previous build's components indefinitely — the server is
 			 * never asked for the new HTML. It looks exactly like "nothing changed".
 			 *
-			 * 60s is a marketing site's trade-off: one tiny request a minute per open tab
-			 * against a visitor sitting on a stale build. SvelteKit 3.0.0-next.12 adds
-			 * automatic deployment detection (tab focus, visibility, data responses); we
-			 * are on next.10, so this is the explicit equivalent.
+			 * As of the next.14 upgrade Kit DOES detect new deployments automatically
+			 * (tab focus, visibility, data/remote/form responses — added in next.12) and
+			 * defaults `pollInterval` to one hour. This 60s override is kept deliberately:
+			 * an hour is far too long for a marketing site that is being iterated on, and
+			 * the cost is one small request a minute per open tab.
 			 * `+layout.svelte` consumes the resulting `updated` signal.
 			 */
 			version: {
