@@ -10,13 +10,32 @@
 	import '@fontsource/allerta-stencil/latin-400.css';
 	import '@fontsource/reenie-beanie/latin-400.css';
 
-	import { onNavigate } from '$app/navigation';
+	import { onNavigate, beforeNavigate } from '$app/navigation';
+	import { updated } from '$app/state';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import FbGroup from '$lib/sections/FbGroup.svelte';
 	import { enableMotionClass, prefersReducedMotion, refreshTriggers } from '$lib/motion';
 
 	let { children } = $props();
+
+	/**
+	 * FORCE A REAL PAGE LOAD ONCE A NEW BUILD IS LIVE.
+	 *
+	 * `version.pollInterval` (vite.config.ts) makes `updated.current` flip to true when
+	 * the server reports a newer build. Without this hook that signal is inert: the
+	 * visitor keeps client-side navigating on the old bundle and never sees the new
+	 * site. Setting `location.href` turns the next navigation into a full document
+	 * request, which fetches the new HTML and the new chunks.
+	 *
+	 * `willUnload` is checked because the browser is already leaving the app in that
+	 * case, and reassigning location would fight it.
+	 */
+	beforeNavigate((navigation) => {
+		if (updated.current && !navigation.willUnload && navigation.to?.url) {
+			location.href = navigation.to.url.href;
+		}
+	});
 
 	// Cinematic cross-route transitions via the View Transitions API.
 	// Skipped for reduced-motion users and browsers without support.

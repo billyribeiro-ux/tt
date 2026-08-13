@@ -16,6 +16,26 @@ export default defineConfig({
 				experimental: { async: true }
 			},
 			adapter: adapter(),
+			/**
+			 * VERSION POLLING. Without this, `pollInterval` defaults to 0 and the client
+			 * NEVER checks whether a newer build has shipped.
+			 *
+			 * That is not cosmetic on this site. `app.html` sets
+			 * `data-sveltekit-preload-data="hover"`, so navigation between routes is
+			 * client-side: an open tab keeps rendering the JS chunks it downloaded on
+			 * first visit. A new deployment can be live and correct, and that tab will
+			 * still render the previous build's components indefinitely — the server is
+			 * never asked for the new HTML. It looks exactly like "nothing changed".
+			 *
+			 * 60s is a marketing site's trade-off: one tiny request a minute per open tab
+			 * against a visitor sitting on a stale build. SvelteKit 3.0.0-next.12 adds
+			 * automatic deployment detection (tab focus, visibility, data responses); we
+			 * are on next.10, so this is the explicit equivalent.
+			 * `+layout.svelte` consumes the resulting `updated` signal.
+			 */
+			version: {
+				pollInterval: 60_000
+			},
 			experimental: {
 				remoteFunctions: true,
 				forkPreloads: true
