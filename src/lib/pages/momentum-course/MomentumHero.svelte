@@ -50,10 +50,6 @@
 	import { ui } from '$lib/pages/momentum/state/ui.svelte';
 	import { ensureGsap } from '$lib/pages/momentum/motion/gsap-setup';
 	import { jumpToId } from '$lib/pages/momentum/motion/smooth-scroll';
-	import {
-		COURSE_INTRO_CLASS,
-		COURSE_INTRO_EVENT
-	} from '$lib/pages/momentum-course/motion/course-signals';
 
 	/**
 	 * Read at INIT and OR-ed with the store, never trusting the store alone: the
@@ -67,7 +63,6 @@
 	const reduced = $derived(systemReduced || ui.reducedMotion);
 
 	/** Flipped once the intro film has finished, been skipped, or never existed. */
-	let heroReady = $state(false);
 
 	let root = $state<HTMLElement | undefined>(undefined);
 	const captureRoot: Attachment<HTMLElement> = (node) => {
@@ -83,59 +78,21 @@
 		const onMotion = () => (systemReduced = mq.matches);
 		mq.addEventListener('change', onMotion);
 
-		const start = () => (heroReady = true);
-
 		/*
-		 * With motion off there is no film to wait for and no `.js` gate hiding
-		 * anything, so the handshake is skipped entirely rather than being made a
-		 * precondition of a hero that is already at rest.
-		 */
-		if (mq.matches) {
-			start();
-			return () => mq.removeEventListener('change', onMotion);
-		}
-
-		window.addEventListener(COURSE_INTRO_EVENT, start, { once: true });
-
-		let failsafe = 0;
-
-		/*
-		 * ONE FRAME LATER, EVERY CASE IS DECIDABLE. Both onMounts on the page have
-		 * run and Svelte has flushed their state, so by now:
+		 * THE FILM HANDSHAKE WAS REMOVED HERE.
 		 *
-		 *   - the class is on <html>  -> the handshake already went past (repeat
-		 *     visit, or reduced motion): catch up and start now;
-		 *   - `.mc-intro` is rendered -> the film IS playing: wait for the event,
-		 *     with a backstop past its worst case (2.3s of timeline at the
-		 *     director's 0.86 global timeScale = 2.67s, plus a frame);
-		 *   - neither                 -> there is no director on this route, so
-		 *     nothing will ever dispatch. With `.js` on <html> every [data-anim]
-		 *     element here is opacity:0 until the timeline runs, so waiting would
-		 *     mean a blank hero. Start immediately instead.
+		 * This block listened for `mc:intro-complete`, watched for `.mc-intro` in the
+		 * DOM, and carried a 3.4s failsafe — all so the hero's entrance could wait for
+		 * the director's intro film. Measured, that wait left the kicker, the lede, the
+		 * enrol button and the three figures at opacity 0 for up to nine seconds.
 		 *
-		 * The listener is still live in the middle case AND in the last one, so a
-		 * director that turns up late is still honoured — the timeline is built
-		 * once, by whichever path gets there first.
+		 * Nothing needs to wait. The hero's entrance runs on mount and the film, when
+		 * it plays, is a `pointer-events: none` overlay above an already-composed
+		 * frame. Removing the wait also removed the failsafe, the rAF probe, the event
+		 * listener and the `heroReady` flag, none of which have anything left to do.
 		 */
-		const frame = requestAnimationFrame(() => {
-			if (document.documentElement.classList.contains(COURSE_INTRO_CLASS)) {
-				window.removeEventListener(COURSE_INTRO_EVENT, start);
-				start();
-				return;
-			}
-			if (document.querySelector('.mc-intro')) {
-				failsafe = window.setTimeout(start, 3400);
-				return;
-			}
-			start();
-		});
 
-		return () => {
-			mq.removeEventListener('change', onMotion);
-			window.removeEventListener(COURSE_INTRO_EVENT, start);
-			cancelAnimationFrame(frame);
-			if (failsafe) clearTimeout(failsafe);
-		};
+		return () => mq.removeEventListener('change', onMotion);
 	});
 
 	/**
@@ -146,14 +103,40 @@
 	 * element invisible until its own beat starts instead of GSAP flashing an end
 	 * state first.
 	 *
+	 * RE-TIMED A SECOND TIME, on measurement. Even with the film no longer gating
+	 * anything, the entrance itself put the enrol button past two seconds: the
+	 * background held a 2.0s tween and the CTA started at 1.32s. Polling computed
+	 * styles on the production build showed the CTA still invisible at 2500ms.
+	 * The shape and the order are unchanged — only the clock. The CTA now starts at
+	 * 0.62s and the figures at 0.80s, so the whole hero is composed inside ~1.2s.
+	 *
 	 * The positions are absolute seconds, re-timed from the direction brief's
 	 * relative offsets: read literally they resolved against the 2.0s background
 	 * tween and pushed the CTA to ~2.9s, which — stacked on top of the 2.7s film —
 	 * put the page's primary action nearly six seconds from load. The shape and the
 	 * order are the brief's; only the clock is tightened.
 	 */
+	/**
+	 * NOT GATED ON THE FILM. THIS IS THE SECOND HALF OF THE SAME FIX AS THE h1.
+	 *
+	 * This effect used to wait for `heroReady`, which flips on the intro film's
+	 * `mc:intro-complete` handshake. `.js [data-anim]` and `.js [data-anim-stagger]
+	 * > *` (app.css:210-215) hold those elements at opacity 0 until a timeline moves
+	 * them — so the kicker, the lede, the ENROL BUTTON and the three figures were all
+	 * invisible for the entire length of the film.
+	 *
+	 * MEASURED on the production build, polling computed styles: 9 hero elements
+	 * still hidden at t=2000ms, 8 at t=5000ms, and the reveal only fired at t=9000ms
+	 * when `mc-intro-done` finally landed on <html>. Nine seconds of an empty hero
+	 * with no call to action. The clamp added to fix the film's fast-forward is what
+	 * stretched it that far on a slow renderer — I fixed a flash and bought a
+	 * nine-second blank page, which is far worse.
+	 *
+	 * The rule is simply: DECORATION NEVER GATES CONTENT. The hero composes itself on
+	 * mount and the film, when it plays, plays over the top of a finished frame.
+	 */
 	$effect(() => {
-		if (reduced || !heroReady || !root) return;
+		if (reduced || !root) return;
 
 		const gsap = ensureGsap();
 		const el = root;
@@ -164,28 +147,28 @@
 			tl.fromTo(
 				'.mo-hero__bg',
 				{ opacity: 0, scale: 1.05 },
-				{ opacity: 1, scale: 1, duration: 2, immediateRender: false },
+				{ opacity: 1, scale: 1, duration: 1.1, immediateRender: false },
 				0
 			)
 				.fromTo(
 					'.mo-hero__kicker',
 					{ opacity: 0, y: 18 },
-					{ opacity: 1, y: 0, duration: 0.7, immediateRender: false },
-					0.15
+					{ opacity: 1, y: 0, duration: 0.5, immediateRender: false },
+					0.06
 				)
 				// 0.34 -> ~1.3s belongs to the h1: `splitReveal` owns it, attached
 				// below with the matching delay. One writer per element.
 				.fromTo(
 					'.mo-hero__lede',
 					{ opacity: 0, y: 26 },
-					{ opacity: 1, y: 0, duration: 0.9, immediateRender: false },
-					0.95
+					{ opacity: 1, y: 0, duration: 0.6, immediateRender: false },
+					0.42
 				)
 				.fromTo(
 					'.mo-hero__cta > *',
 					{ opacity: 0, y: 18 },
-					{ opacity: 1, y: 0, duration: 0.7, stagger: 0.1, immediateRender: false },
-					1.32
+					{ opacity: 1, y: 0, duration: 0.5, stagger: 0.07, immediateRender: false },
+					0.62
 				)
 				.fromTo(
 					'.mo-hero__stat',
@@ -197,7 +180,7 @@
 						stagger: 0.08,
 						immediateRender: false
 					},
-					1.62
+					0.8
 				);
 
 			/* The two scrubbed exits. Created disabled so they cannot claim

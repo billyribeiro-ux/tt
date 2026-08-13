@@ -249,63 +249,72 @@
 		let skip = () => {};
 
 		/**
-		 * LAG SMOOTHING, RESTORED FOR THE DURATION OF THE FILM — and this is a real
-		 * defect fix, verified on a production build, not a precaution.
+		 * WAIT FOR THE PAGE TO SETTLE BEFORE STARTING, rather than clamping the ticker.
 		 *
-		 * smooth-scroll.ts:45 sets `gsap.ticker.lagSmoothing(0)` globally so Lenis
-		 * gets true deltas. The consequence for a timeline that starts while the
-		 * route's own chunks are still evaluating is that the first long frame is
-		 * handed to the tween as ONE delta, and a 2.67s film is advanced to its end
-		 * in a single tick.
+		 * The film was fast-forwarding: smooth-scroll.ts:45 sets
+		 * `gsap.ticker.lagSmoothing(0)` so Lenis gets true deltas, and a timeline that
+		 * starts while the route's chunks are still evaluating gets that entire stall
+		 * handed to it as one delta. Measured, the film was on screen under 100ms
+		 * against a designed 2.67s.
 		 *
-		 * MEASURED on `vite preview`, polling for `.mc-intro` presence every 50ms:
-		 * the element appeared at 2226ms and was already gone by the next sample —
-		 * on screen for under 100ms against a designed 2.67s. It was not playing,
-		 * it was flashing, which is worse than not having a film at all.
+		 * My first fix was `lagSmoothing(500, 33)` for the film's duration. That was
+		 * the wrong lever: gsap.ticker is GLOBAL, so clamping it also stretched the
+		 * hero's own entrance — on a slow renderer the enrol button was still fading
+		 * in at 2.5s. Fixing one timeline by slowing every timeline is not a fix.
 		 *
-		 * `lagSmoothing(500, 33)` is GSAP's own default: any frame longer than 500ms
-		 * is treated as 33ms, so a load stall can no longer consume the timeline.
-		 * It is restored to 0 the moment the film is done — in `onComplete`, in the
-		 * skip path and in the teardown — because Lenis needs the raw delta for the
-		 * rest of the page's life.
+		 * The actual cause is the stall, not the ticker. Starting on the frame after
+		 * `load` means module evaluation is already done, so there is no large delta
+		 * left to consume — and Lenis keeps its true deltas for the whole session.
 		 */
-		const restoreLag = () => gsap.ticker.lagSmoothing(0);
-		gsap.ticker.lagSmoothing(500, 33);
-
-		const ctx = gsap.context(() => {
-			const tl = gsap.timeline({
-				defaults: { ease: 'power3.out' },
-				onComplete: () => {
-					restoreLag();
-					finishIntro();
-				}
+		let startFrame = 0;
+		const begin = () => {
+			startFrame = requestAnimationFrame(() => {
+				startFrame = 0;
+				build();
 			});
+		};
 
-			tl.fromTo(
-				root.querySelector('.mci-scan'),
-				{ scaleX: 0, transformOrigin: 'left center' },
-				{ scaleX: 1, duration: 0.66, ease: 'expo.inOut' }
-			)
-				.from(
-					root.querySelectorAll('.mci-word'),
-					{ yPercent: 106, opacity: 0, duration: 0.8, stagger: 0.1, immediateRender: false },
-					0.15
-				)
-				.from(
-					root.querySelector('.mci-meta'),
-					{ opacity: 0, letterSpacing: '0.5em', duration: 0.55, immediateRender: false },
-					0.42
-				)
-				.to(root, { clipPath: 'inset(0 0 100% 0)', duration: 0.85, ease: 'expo.inOut' }, '+=0.30');
+		let ctx: ReturnType<typeof gsap.context> | undefined;
+		const build = () => {
+			ctx = gsap.context(() => {
+				const tl = gsap.timeline({
+					defaults: { ease: 'power3.out' },
+					onComplete: finishIntro
+				});
 
-			skip = () => {
-				tl.kill();
-				// Restore before finishing: a visitor who skips must not leave Lenis
-				// running on smoothed deltas for the rest of the session.
-				restoreLag();
-				finishIntro();
-			};
-		}, root);
+				tl.fromTo(
+					root.querySelector('.mci-scan'),
+					{ scaleX: 0, transformOrigin: 'left center' },
+					{ scaleX: 1, duration: 0.66, ease: 'expo.inOut' }
+				)
+					.from(
+						root.querySelectorAll('.mci-word'),
+						{ yPercent: 106, opacity: 0, duration: 0.8, stagger: 0.1, immediateRender: false },
+						0.15
+					)
+					.from(
+						root.querySelector('.mci-meta'),
+						{ opacity: 0, letterSpacing: '0.5em', duration: 0.55, immediateRender: false },
+						0.42
+					)
+					.to(
+						root,
+						{ clipPath: 'inset(0 0 100% 0)', duration: 0.85, ease: 'expo.inOut' },
+						'+=0.30'
+					);
+
+				skip = () => {
+					tl.kill();
+					finishIntro();
+				};
+			}, root);
+		};
+
+		/* Already loaded (the common case for a client-side navigation): start on the
+		   next frame. Otherwise wait for `load`, which is the point past which no
+		   large evaluation stall remains to be handed to the timeline. */
+		if (document.readyState === 'complete') begin();
+		else window.addEventListener('load', begin, { once: true });
 
 		const onSkip = () => skip();
 		window.addEventListener('wheel', onSkip, { passive: true, once: true });
@@ -314,11 +323,13 @@
 		window.addEventListener('keydown', onSkip, { once: true });
 
 		return () => {
+			window.removeEventListener('load', begin);
 			window.removeEventListener('wheel', onSkip);
 			window.removeEventListener('touchstart', onSkip);
 			window.removeEventListener('pointerdown', onSkip);
 			window.removeEventListener('keydown', onSkip);
-			ctx.revert();
+			if (startFrame) cancelAnimationFrame(startFrame);
+			ctx?.revert();
 		};
 	});
 
