@@ -30,8 +30,12 @@
 	 *
 	 * WHY CANVAS 2D AND NOT A SECOND THRELTE SCENE. The direction brief's cleanup
 	 * contract is explicit — "No new three.js scene is added, so no second WebGL
-	 * context: CorridorScene remains the only one." CorridorScene already holds
-	 * this page's one WebGL context up in the hero. The depth here is honest
+	 * context." This route has exactly ONE, up in the hero, and this file adds
+	 * none. That hero scene is no longer CorridorScene: it was REPLACED on this
+	 * route by momentum-course/viz/MomentumMarket.svelte, a candle tape built out
+	 * of the course's own vocabulary. The count is unchanged — one context, in the
+	 * hero — only the identity of the component holding it. CorridorScene is still
+	 * mounted on /momentum. The depth here is honest
 	 * perspective maths (a focal length and a 1/z divide), the bloom is stacked
 	 * additive passes with `globalCompositeOperation = 'lighter'` — the same fake
 	 * bloom CorridorScene uses for the same reason (no `postprocessing` package is

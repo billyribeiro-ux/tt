@@ -35,7 +35,8 @@
 	 * exist — no pin, no scrub, no batch. `.js` is never on <html> (app.html:16-22),
 	 * so every row is at its resting opacity, all fifteen titles are visible at once,
 	 * the aside sits at module 01 and CurriculumScene paints one settled frame
-	 * (CurriculumScene.svelte:439-452). Everything readable, nothing moving.
+	 * (CurriculumScene.svelte:502-515, its `if (reduced)` still path). Everything
+	 * readable, nothing moving.
 	 */
 	import { onDestroy, onMount, untrack } from 'svelte';
 	import type { Attachment } from 'svelte/attachments';
@@ -416,7 +417,8 @@
 	.mc__aside {
 		display: grid;
 		gap: 1.1rem;
-		/* Consumed by CurriculumScene (CurriculumScene.svelte:527-529). Measured
+		/* Consumed by CurriculumScene through `--mc-scene-h`, whose fallback names
+		   this aside (CurriculumScene.svelte:590-592). Measured
 		   against the pin, not guessed: the aside is pinned 18% down the viewport,
 		   so scene + readout has to clear 82vh. At 30vh the pair comes to roughly
 		   0.30vh + 170px, which fits from a 640px-tall window upwards. */

@@ -383,9 +383,10 @@
 	full-bleed overlay in the document at all. It is `pointer-events: none`, so
 	even mid-play the page underneath stays operable.
 
-	The only words on it are "Momentum." (the hero's own h1, MomentumHero.svelte:37)
-	and "Flagship coaching" (the hero's own kicker, MomentumHero.svelte:28). No new
-	copy, no figure, no claim.
+	The only words on it are "Momentum." (the hero's own h1, MomentumHero.svelte:298)
+	and "Flagship coaching" (the hero's own kicker, MomentumHero.svelte:277, which
+	now reads it from `courseHero.kicker` rather than typing it). No new copy, no
+	figure, no claim.
 -->
 {#if introPhase === 'play'}
 	<div class="mc-intro" {@attach captureIntro} aria-hidden="true">
@@ -482,8 +483,9 @@
 
 	.mc-intro__statement {
 		margin: 0;
-		/* CAPTURED from the hero's own title rule (MomentumHero.svelte:105-112),
-		   so the film's word and the h1 it hands over to are the same lockup. */
+		/* CAPTURED from the hero's own title rule (MomentumHero.svelte:452-459, the
+		   `.mo-hero__title` block, which carries the matching marker), so the film's
+		   word and the h1 it hands over to are the same lockup. */
 		font-size: var(--fs-mega);
 		font-weight: 800;
 		line-height: 0.86;

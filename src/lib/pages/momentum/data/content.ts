@@ -585,3 +585,89 @@ export const bossCarbon = {
 		/** :115 */ 'Live trades'
 	]
 } as const;
+
+/* -------------------------------------------------------------------------- */
+/* /momentum-course — the hero's copy                                         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Every string the /momentum-course hero prints, so that page's hero has ONE
+ * copy source instead of four inline literals (they were previously typed
+ * directly into MomentumHero.svelte).
+ *
+ * PROVENANCE IS MIXED HERE, AND EACH ENTRY SAYS WHICH IT IS. Two of these are
+ * VERBATIM captures out of docs/momentum-reference/live-momentum-course.txt,
+ * cited by line. The other two are this page's own connective copy — they are
+ * NOT captured, they are marked as such, and they assert no figure, no price,
+ * no date and no result. Nothing here may be "tightened" into a claim.
+ *
+ * Lives in this file, like `bossCarbon` above, because this is the file that
+ * already carries the captured course facts and their locators; /momentum-course
+ * consumes the data only, never /momentum's CSS scope.
+ */
+export const courseHero = {
+	/**
+	 * NOT CAPTURED — this page's own kicker. It has been rendered on the course
+	 * hero since the page was built and is echoed verbatim by the intro film's
+	 * `.mci-meta` (momentum-course/motion/CourseDirector.svelte:393), so moving it
+	 * here removes a string that was typed in two places. A label, not a claim.
+	 */
+	kicker: 'Flagship coaching',
+
+	/**
+	 * VERBATIM — live-momentum-course.txt:47, the live course page's own lockup,
+	 * printed directly under its "MOMENTUM" heading (:45).
+	 *
+	 * ⛔ DO NOT "CORRECT" THIS AGAINST `images.wordmark.alt` (:114-119 above).
+	 * That string reads "High-Level Day Trading Coaching w/ Pat Mitchell" —
+	 * hyphenated, abbreviated "w/" — because it transcribes the letters baked
+	 * into static/momentum-wordmark-1454.png. This one has no hyphen and spells
+	 * "With" out, because that is how the HTML lockup is typeset. Two captures of
+	 * two different artefacts. NEITHER IS A TYPO; both stay exactly as captured.
+	 */
+	subhead: 'High Level Day Trading Coaching With Pat Mitchell',
+
+	/**
+	 * NOT CAPTURED as a sentence — connective copy, assembled only out of facts
+	 * that are captured elsewhere in this file, and holding no figure the
+	 * evidence does not carry:
+	 *   "The complete Momentum course"      <- offers.course.description, which
+	 *                                          opens "The Complete Momentum
+	 *                                          course." (pretty.html:7517)
+	 *   "fifteen modules"                   <- ledger.breakdown.items[0],
+	 *                                          live-momentum-course.txt:53
+	 *   "setting your charts up correctly"  <- MODULE 1, :117 ("...How To
+	 *                                          Professionally Set Up Your Charts")
+	 *   "pro-level advanced tactics"        <- MODULE 13, :359 ("ADVANCED TACTICS
+	 *                                          - Pro Level Strategies")
+	 *   "B.O.S.S. Carbon included"          <- ledger.breakdown.included, :65
+	 *
+	 * The $597 in that last capture is deliberately NOT restated here: a lede is
+	 * not the place for a value claim, and MomentumBoss already prints the
+	 * captured string in full.
+	 *
+	 * IT DELIBERATELY DOES NOT REPEAT `subhead`. The lede this replaced opened
+	 * "high-level day-trading coaching with Pat “Trick” Mitchell", which is the
+	 * same sentence the captured lockup above now prints one line higher up the
+	 * hero. Two near-identical lines stacked is a defect, so the lede gives up
+	 * that clause to the capture that owns it.
+	 */
+	lede: 'The complete Momentum course: fifteen modules that run from setting your charts up correctly to pro-level advanced tactics, with B.O.S.S. Carbon included.',
+
+	/**
+	 * The three sub-lesson headings the hero's scene is built out of, VERBATIM
+	 * and in the order the scene draws them. The hero prints them as a caption so
+	 * the ornament is NAMED rather than left as abstract decoration — the same
+	 * discipline as LessonMass's figcaption (LessonMass.svelte:397-404).
+	 *
+	 * These live under MODULE 3 (:167) in the capture, which is why their line
+	 * numbers run backwards relative to the array: the scene shows a trend, then
+	 * the channel that contains it, then the risk box under the break, and the
+	 * caption follows the picture rather than the source document.
+	 */
+	sceneTopics: [
+		/** live-momentum-course.txt:221 */ 'Trend Lines',
+		/** live-momentum-course.txt:213 */ 'The Trading Channel',
+		/** live-momentum-course.txt:195 */ 'Standard Risk'
+	]
+} as const;

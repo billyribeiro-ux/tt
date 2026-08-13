@@ -55,8 +55,8 @@ export interface CourseSection {
 export const COURSE_SECTIONS: readonly CourseSection[] = [
 	{
 		id: 'mo-hero',
-		// The h1 reads "Momentum." (MomentumHero.svelte:37). The rail drops the
-		// sentence period; the word itself is unchanged.
+		// The h1 reads "Momentum." (MomentumHero.svelte:298-305). The rail drops
+		// the sentence period; the word itself is unchanged.
 		label: 'Momentum',
 		n: '01',
 		head: null
@@ -85,10 +85,17 @@ export function courseSectionHead(id: CourseSectionId): string | null {
 /* ==========================================================================
    THE INTRO-FILM CONTRACT.
 
-   Three strings, exported so that no component has to retype them. The hero's
-   entrance is gated on this handshake, and a typo in a string literal would
-   fail silently — the hero would simply wait forever for an event that never
-   arrives, which is exactly the kind of defect that ships.
+   Three strings, exported so that no component has to retype them, and a typo
+   in a string literal would fail silently.
+
+   ⛔ NOTHING IS GATED ON THIS HANDSHAKE ANY MORE, AND NOTHING MAY BE. The hero's
+   entrance used to wait for it, and measured, that left the kicker, the lede,
+   the enrol button and the three figures at opacity 0 for up to nine seconds
+   when the event was late. The wait is gone (MomentumHero.svelte:87-101) and the
+   hero now composes on mount, underneath the film. These strings are the film's
+   own bookkeeping — the sessionStorage key it remembers itself by, the class it
+   marks the document with and the event it announces itself finished with — and
+   they exist so the film can clean up after itself, not so anything can wait.
    ========================================================================== */
 
 /** sessionStorage key. The film plays once per browser session, never twice. */
