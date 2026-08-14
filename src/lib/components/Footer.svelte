@@ -128,7 +128,7 @@
 	}
 	.ft__risk p {
 		max-width: 90ch;
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		line-height: 1.6;
 		color: var(--tt-mute);
 	}
@@ -157,7 +157,7 @@
 	}
 	.ft__word {
 		font-family: var(--tt-font-display);
-		font-size: 1.15rem;
+		font-size: var(--fs-h4);
 		letter-spacing: 0.14em;
 		color: #fff;
 	}
@@ -168,7 +168,7 @@
 		margin-top: 1.1rem;
 		max-width: 34ch;
 		color: var(--tt-mute);
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 	}
 	.ft__social {
 		display: flex;
@@ -209,7 +209,7 @@
 		gap: 0.6rem;
 	}
 	.ft__col a {
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--tt-fog);
 		transition: color 0.2s ease;
 	}
@@ -225,7 +225,7 @@
 		align-items: center;
 		padding-block: 1.5rem;
 		border-top: 1px solid var(--tt-line);
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-mute-2);
 	}
 	.ft__bottom a {

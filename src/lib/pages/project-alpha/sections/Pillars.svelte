@@ -48,8 +48,8 @@
 		align-items: center;
 		gap: 1rem;
 		margin: -1.5rem 0 1rem;
-		font-size: 0.56rem;
-		font-weight: 750;
+		font-size: var(--fs-nano);
+		font-weight: 800;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--alpha-faint);
@@ -100,8 +100,7 @@
 
 	.num {
 		display: block;
-		font-family: var(--font-display);
-		font-size: 4.6rem;
+		font-size: var(--fs-h1);
 		font-weight: 700;
 		line-height: 0.75;
 		letter-spacing: -0.06em;
@@ -112,7 +111,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-		font-size: 0.5rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -129,7 +128,7 @@
 
 	.sub {
 		margin: 0 0 0.55rem;
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
@@ -138,16 +137,15 @@
 
 	h3 {
 		margin: 0 0 0.9rem;
-		font-family: var(--font-display);
 		font-size: clamp(1.45rem, 2.2vw, 1.9rem);
-		font-weight: 650;
+		font-weight: 700;
 		letter-spacing: -0.025em;
 		line-height: 1.05;
 	}
 
 	.body {
 		margin: 0;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		line-height: 1.7;
 	}
@@ -160,7 +158,7 @@
 		margin-top: auto;
 		padding-top: 1.2rem;
 		border-top: 1px solid rgba(255, 255, 255, 0.07);
-		font-size: 0.5rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;

@@ -326,8 +326,8 @@
 		align-items: center;
 		gap: 0.75rem;
 		margin-bottom: 1.2rem;
-		font-size: 0.65rem;
-		font-weight: 750;
+		font-size: var(--fs-eyebrow);
+		font-weight: 800;
 		letter-spacing: 0.19em;
 		text-transform: uppercase;
 		color: var(--alpha-text);
@@ -341,7 +341,7 @@
 
 	.eyebrow-muted {
 		color: var(--alpha-faint);
-		font-size: 0.56rem;
+		font-size: var(--fs-nano);
 	}
 
 	.tt-badge {
@@ -357,8 +357,7 @@
 
 	.hero-title {
 		margin: 0 0 1.25rem;
-		font-family: var(--font-display);
-		font-weight: 650;
+		font-weight: 700;
 		font-size: clamp(4.75rem, 8.4vw, 8.25rem);
 		line-height: 1;
 		letter-spacing: -0.078em;
@@ -400,7 +399,6 @@
 	.hero-manifesto {
 		max-width: 610px;
 		margin: 0 0 1rem;
-		font-family: var(--font-display);
 		font-size: clamp(1.35rem, 2.25vw, 2rem);
 		line-height: 1.2;
 		letter-spacing: -0.025em;
@@ -416,14 +414,14 @@
 	.hero-bridge {
 		max-width: 560px;
 		margin: 0 0 1.75rem;
-		font-size: clamp(0.92rem, 1.2vw, 1.04rem);
+		font-size: var(--fs-body);
 		line-height: 1.75;
 		color: var(--alpha-muted);
 		text-wrap: pretty;
 	}
 
 	.hero-bridge strong {
-		font-weight: 650;
+		font-weight: 700;
 		color: #c3d8f7;
 	}
 
@@ -459,17 +457,16 @@
 	}
 
 	.stat-value {
-		font-family: var(--font-display);
-		font-size: 1.45rem;
-		font-weight: 650;
+		font-size: var(--fs-h4);
+		font-weight: 700;
 		font-variant-numeric: lining-nums;
 		line-height: 1.1;
 		color: var(--alpha-text);
 	}
 
 	.stat-label {
-		font-size: 0.57rem;
-		font-weight: 650;
+		font-size: var(--fs-nano);
+		font-weight: 700;
 		letter-spacing: 0.11em;
 		text-transform: uppercase;
 		color: var(--alpha-faint);
@@ -500,7 +497,7 @@
 		justify-content: center;
 		gap: 0.45rem;
 		margin-bottom: 0.55rem;
-		font-size: 0.56rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
@@ -519,8 +516,8 @@
 	.hero-hud > p {
 		margin: 0;
 		text-align: center;
-		font-size: 0.5rem;
-		font-weight: 650;
+		font-size: var(--fs-nano);
+		font-weight: 700;
 		letter-spacing: 0.12em;
 		color: #4b4b52;
 	}
@@ -535,8 +532,8 @@
 		display: flex;
 		align-items: center;
 		gap: 0.55rem;
-		font-size: 0.56rem;
-		font-weight: 650;
+		font-size: var(--fs-nano);
+		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: #737681;
@@ -544,7 +541,7 @@
 
 	.stage-callout b {
 		margin-right: 0.35rem;
-		font-size: 0.5rem;
+		font-size: var(--fs-nano);
 		color: var(--alpha-blue);
 	}
 
@@ -593,8 +590,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.2rem;
-		font-size: 0.48rem;
-		font-weight: 650;
+		font-size: var(--fs-nano);
+		font-weight: 700;
 		letter-spacing: 0.14em;
 		color: #45454c;
 	}
@@ -632,7 +629,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.55rem;
-		font-size: 0.52rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
@@ -730,9 +727,10 @@
 			margin-bottom: 1.35rem;
 		}
 
-		.hero-manifesto {
-			font-size: 1.35rem;
-		}
+		/* The font-size that was here set 1.35rem, which is exactly the floor of the
+		   base rule's own `clamp(1.35rem, 2.25vw, 2rem)` — at any width this media
+		   query matches, 2.25vw is already well under 1.35rem, so the clamp returns
+		   that floor with or without the override. It was a no-op. */
 
 		.hero-actions {
 			flex-direction: column;
@@ -751,12 +749,15 @@
 			padding-left: 0.5rem;
 		}
 
-		.stat-value {
-			font-size: 1.2rem;
-		}
+		/* No font-size override either: the base is now `--fs-h4`, whose clamp floor
+		   is 1.15rem, so this rule's old 1.2rem would have made the stat LARGER on
+		   the narrow viewports it targets than the fluid rung it was overriding. */
 
+		/* No font-size here any more. This used to step 0.58rem down to 0.5rem for
+		   narrow viewports; both now resolve to `--fs-nano`, whose clamp already
+		   does that step fluidly, so restating it would be a declaration that
+		   overrides itself with the same value. The tracking still tightens. */
 		.stat-label {
-			font-size: 0.48rem;
 			letter-spacing: 0.08em;
 		}
 

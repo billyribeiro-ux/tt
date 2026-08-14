@@ -444,7 +444,7 @@
 		color: var(--tt-red-bright);
 	}
 	.mc__readout-t {
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		line-height: 1.4;
 		color: var(--tt-fog);
 		text-wrap: pretty;
@@ -483,7 +483,7 @@
 		background-color: rgb(var(--tt-red-rgb) / 0.06);
 	}
 	.mc__n {
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		color: var(--tt-mute-2);
 		transition: color 0.35s ease;
@@ -492,7 +492,7 @@
 		color: var(--tt-red-bright);
 	}
 	.mc__t {
-		font-size: clamp(1rem, 0.92rem + 0.4vw, 1.2rem);
+		font-size: var(--fs-h5);
 		line-height: 1.35;
 		color: #fff;
 		text-wrap: pretty;
@@ -503,7 +503,7 @@
 	}
 	.mc__link {
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-fog);

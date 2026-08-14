@@ -172,7 +172,7 @@
 		gap: 0.7rem;
 	}
 	.sess__idx {
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		font-weight: 700;
 		color: var(--tt-red-bright);
 		line-height: 1;
@@ -213,7 +213,7 @@
 		color: var(--tt-white);
 	}
 	.sess__len {
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.04em;
 		color: var(--tt-mute);
 	}
@@ -225,7 +225,7 @@
 	}
 	.sess__tag {
 		font-family: var(--tt-font-mono);
-		font-size: 0.64rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-mute);
@@ -241,7 +241,7 @@
 		margin-top: 0.9rem;
 		max-width: 58ch;
 		color: var(--tt-fog);
-		font-size: 0.98rem;
+		font-size: var(--fs-small);
 	}
 
 	@media (min-width: 480px) {
@@ -259,7 +259,7 @@
 			justify-content: space-between;
 		}
 		.sess__len {
-			font-size: 0.9rem;
+			font-size: var(--fs-small);
 			color: var(--tt-fog);
 		}
 	}

@@ -193,7 +193,7 @@
 		margin-bottom: 1.1rem;
 	}
 	.fx__step-idx {
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		font-weight: 700;
 		color: var(--tt-red-bright);
 	}
@@ -277,7 +277,7 @@
 			transform: translateX(6px);
 		}
 		.fx__rail-idx {
-			font-size: 0.78rem;
+			font-size: var(--fs-eyebrow);
 			color: var(--tt-mute);
 		}
 		.fx__rail-item.is-active .fx__rail-idx {
@@ -285,7 +285,7 @@
 		}
 		.fx__rail-label {
 			font-family: var(--tt-font-display);
-			font-size: 1.25rem;
+			font-size: var(--fs-h4);
 			letter-spacing: 0.02em;
 			color: var(--tt-white);
 		}

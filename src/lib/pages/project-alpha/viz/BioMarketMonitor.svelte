@@ -179,8 +179,15 @@
 						.attr('x', 18)
 						.attr('y', 4)
 						.attr('fill', '#9a9590')
-						.attr('font-size', 10)
-						.attr('font-family', 'DM Sans, sans-serif')
+						// `.style()`, not `.attr()`: a presentation attribute cannot read a
+						// custom property, so `attr('font-family', 'var(--tt-font-body)')`
+						// would silently fall back to the UA serif. An inline style does
+						// resolve it, and custom properties inherit into the SVG subtree.
+						// These two labels were the last DM Sans on the site — set from
+						// JavaScript, so no CSS search could ever have found them; the
+						// computed-style pass over the built page did.
+						.style('font-family', 'var(--tt-font-body)')
+						.style('font-size', 'var(--fs-nano)')
 						.text(item.t);
 				});
 
@@ -569,7 +576,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-		font-size: 0.65rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 700;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
@@ -586,14 +593,14 @@
 	}
 
 	.title {
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		color: var(--alpha-text);
 	}
 
 	.sampling {
-		font-size: 0.52rem;
-		font-weight: 650;
+		font-size: var(--fs-nano);
+		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: #555862;
@@ -619,15 +626,14 @@
 	}
 
 	.chip .k {
-		font-size: 0.58rem;
+		font-size: var(--fs-nano);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--alpha-faint);
 	}
 
 	.chip .v {
-		font-family: var(--font-display);
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		font-weight: 600;
 		font-variant-numeric: tabular-nums;
 		color: var(--alpha-text);
@@ -652,7 +658,7 @@
 
 	.disclaimer {
 		margin: 0.35rem 0.5rem 0;
-		font-size: 0.68rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--alpha-faint);
 		line-height: 1.45;
 	}
@@ -666,7 +672,7 @@
 		padding: 0.65rem 0;
 		border-top: 1px solid rgba(255, 255, 255, 0.06);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-		font-size: 0.53rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;

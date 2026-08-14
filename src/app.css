@@ -65,9 +65,39 @@
 	   1280px = large desktop
 	   1536px = ultrawide */
 
-	/* Fluid type scale */
+	/* Fluid type scale.
+
+	   THE SCALE IS THE CONTRACT: a component picks a rung, it does not invent a
+	   number. The two smallest rungs were added after an audit found 350
+	   font-size declarations across the site of which 255 were hardcoded, and
+	   the hardcoded ones used TWENTY-TWO distinct values below 1rem to express
+	   about three actual sizes — 0.5/0.52/0.56/0.58 for one, then everything
+	   from 0.65 to 0.82 for another, then 0.85 through 0.98 for a third.
+
+	   `--fs-eyebrow` already covered the middle cluster. The other two had no
+	   rung at all, so every component approximated them, which is precisely how
+	   twenty-two values happen. Their ranges are taken from where the real
+	   declarations actually sat, not chosen for tidiness.
+
+	   THE ONE SANCTIONED EXCEPTION IS /momentum, AND IT MUST NOT BE "FIXED".
+	   That page is a reference-match rebuild, and `--mo-fs-quote` / `--mo-fs-desc`
+	   (momentum.css:227-235) carry sizes MEASURED off the captured live site,
+	   cited to post-73938.pretty.css:215-228 — 29px for the pull quote, 23px for
+	   the image-box description. Pulling those onto `--fs-h3` / `--fs-lead` would
+	   trade a verified match against real evidence for a tidier audit number.
+	   A rung is the default; a captured measurement outranks it. Anything else
+	   that leaves this scale needs a citation of that kind, not a preference. */
+	--fs-nano: clamp(0.56rem, 0.53rem + 0.14vw, 0.63rem);
 	--fs-eyebrow: clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
+	--fs-small: clamp(0.88rem, 0.85rem + 0.16vw, 0.96rem);
 	--fs-body: clamp(1rem, 0.96rem + 0.25vw, 1.12rem);
+	/* Card titles and pull-quote headlines. The jump from `--fs-body` (1.12rem)
+	   straight to `--fs-lead`/`--fs-h4` (1.5rem) is the widest hole in the scale,
+	   and seven declarations had already invented their way into it with maxes of
+	   1.2 / 1.22 / 1.25 / 1.28 / 1.35rem. Two of those were the SAME component on
+	   two pages disagreeing with itself — the curriculum module title is 1.22rem
+	   on /momentum and 1.2rem on /momentum-course. This rung is where they sat. */
+	--fs-h5: clamp(1.05rem, 0.98rem + 0.32vw, 1.28rem);
 	--fs-lead: clamp(1.12rem, 1rem + 0.7vw, 1.5rem);
 	--fs-h4: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
 	--fs-h3: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
@@ -227,7 +257,7 @@ p {
 /* Mono "terminal" label, used for kickers, tags, data readouts */
 .label {
 	font-family: var(--tt-font-mono);
-	font-size: 0.7rem;
+	font-size: var(--fs-eyebrow);
 	letter-spacing: 0.28em;
 	text-transform: uppercase;
 	color: var(--tt-mute);
@@ -242,7 +272,7 @@ p {
 }
 .section-head .idx {
 	font-family: var(--tt-font-mono);
-	font-size: 0.72rem;
+	font-size: var(--fs-eyebrow);
 	letter-spacing: 0.1em;
 	color: var(--tt-red-bright);
 }
@@ -345,7 +375,7 @@ p {
 	padding: 0.8rem 1.4rem;
 	border-radius: 999px;
 	font-weight: 700;
-	font-size: 0.85rem;
+	font-size: var(--fs-small);
 	color: #fff;
 	background: var(--tt-red);
 	box-shadow: var(--tt-shadow-card);

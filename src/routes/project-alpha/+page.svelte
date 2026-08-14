@@ -1,15 +1,12 @@
 <script lang="ts">
 	import '$lib/pages/project-alpha/alpha.css';
-	import '@fontsource/dm-sans/latin-400.css';
-	import '@fontsource/dm-sans/latin-400-italic.css';
-	import '@fontsource/dm-sans/latin-500.css';
-	import '@fontsource/dm-sans/latin-600.css';
-	import '@fontsource/dm-sans/latin-700.css';
-	import '@fontsource/playfair-display/latin-500.css';
-	import '@fontsource/playfair-display/latin-600.css';
-	import '@fontsource/playfair-display/latin-700.css';
-	import '@fontsource/playfair-display/latin-600-italic.css';
-	import '@fontsource/playfair-display/latin-700-italic.css';
+	/* NO @fontsource IMPORTS HERE. This route used to pull ten of them — five cuts
+	   of DM Sans and five of Playfair Display — which made it the only page on the
+	   site not set in the brand faces, and made those ten woff2s a cost no other
+	   route paid. Neither family appears anywhere in the captured evidence under
+	   docs/momentum-reference/. The page now uses the site's Poppins / Allerta
+	   Stencil, loaded once in +layout.svelte for every route. See the header of
+	   alpha.css for the full rationale. */
 
 	import Seo from '$lib/components/Seo.svelte';
 	import { site } from '$lib/data/site';

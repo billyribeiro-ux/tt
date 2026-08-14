@@ -135,7 +135,7 @@
 		gap: 0.55rem;
 		padding: 0.5rem 0.9rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -183,7 +183,7 @@
 		align-items: center;
 		padding: 0.45rem 1rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.66rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 700;
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
@@ -202,7 +202,7 @@
 		gap: 0.5rem;
 	}
 	.pak__idx {
-		font-size: 0.7rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.18em;
 		color: var(--tt-mute);
 	}
@@ -221,7 +221,7 @@
 	.pak__cur {
 		align-self: flex-start;
 		margin-top: 0.4rem;
-		font-size: 1.4rem;
+		font-size: var(--fs-h4);
 		font-weight: 700;
 		color: var(--tt-fog);
 	}
@@ -234,7 +234,7 @@
 	.pak__note {
 		margin-left: 0.5rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.02em;
 		color: var(--tt-mute);
 	}
@@ -246,7 +246,7 @@
 		margin-top: 1rem;
 		max-width: 42ch;
 		color: var(--tt-fog);
-		font-size: 0.98rem;
+		font-size: var(--fs-small);
 	}
 	.pak__cta {
 		margin-top: 1.6rem;
@@ -281,7 +281,7 @@
 		color: var(--tt-red-bright);
 	}
 	.pak__ftxt {
-		font-size: 0.92rem;
+		font-size: var(--fs-small);
 		line-height: 1.5;
 		color: var(--tt-fog);
 	}
@@ -295,7 +295,7 @@
 		border: 1px solid var(--tt-line);
 		border-radius: var(--tt-radius);
 		background: rgba(255, 255, 255, 0.02);
-		font-size: 0.94rem;
+		font-size: var(--fs-small);
 		color: var(--tt-fog);
 	}
 	.cprice__guide strong {
@@ -309,7 +309,7 @@
 	.cprice__fine {
 		margin-top: 1.4rem;
 		max-width: 70ch;
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-mute-2);
 	}
 

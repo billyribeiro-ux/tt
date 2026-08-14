@@ -309,7 +309,7 @@
 	.mo-ledger__note {
 		margin: 0.7rem 0 0;
 		font-family: var(--tt-font-mono);
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.08em;
 		line-height: 1.6;
 	}
@@ -364,13 +364,13 @@
 	}
 	.mo-ledger__breakdown-label {
 		margin: 0;
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		line-height: 1.4;
 		color: var(--tt-fog);
 	}
 	.mo-ledger__breakdown-included {
 		margin: clamp(1rem, 2.5vw, 1.4rem) 0 0;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--tt-fog);
 	}
 

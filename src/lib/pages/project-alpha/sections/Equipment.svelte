@@ -87,7 +87,7 @@
 		justify-content: space-between;
 		gap: 1rem;
 		margin-bottom: 3.25rem;
-		font-size: 0.52rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
@@ -124,13 +124,13 @@
 
 	h3 {
 		margin: 0 0 0.45rem;
-		font-size: 1.02rem;
+		font-size: var(--fs-body);
 		font-weight: 600;
 	}
 
 	p {
 		margin: 0;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		line-height: 1.65;
 	}

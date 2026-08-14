@@ -121,7 +121,7 @@
 		gap: 0.55rem;
 		padding: 0.5rem 0.9rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -177,7 +177,7 @@
 		background: rgba(255, 255, 255, 0.02);
 	}
 	.tier__idx {
-		font-size: 0.7rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.18em;
 		color: var(--tt-mute);
 	}
@@ -191,7 +191,7 @@
 		gap: 0.6rem;
 		margin-top: 0.7rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.74rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--accent);
@@ -218,7 +218,7 @@
 	.tier__cur {
 		align-self: flex-start;
 		margin-top: 0.42rem;
-		font-size: 1.5rem;
+		font-size: var(--fs-h4);
 		font-weight: 700;
 		color: var(--accent);
 	}
@@ -231,7 +231,7 @@
 	.tier__cad {
 		margin-left: 0.35rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 	.tier__priceline {
@@ -253,7 +253,7 @@
 		margin-top: 1.2rem;
 		max-width: 42ch;
 		color: var(--tt-fog);
-		font-size: 0.98rem;
+		font-size: var(--fs-small);
 	}
 	.tier__cta {
 		margin-top: 1.6rem;
@@ -284,7 +284,7 @@
 		color: var(--accent);
 	}
 	.tier__ptxt {
-		font-size: 0.92rem;
+		font-size: var(--fs-small);
 		line-height: 1.5;
 		color: var(--tt-fog);
 	}

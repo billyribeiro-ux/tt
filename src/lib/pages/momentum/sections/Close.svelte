@@ -208,7 +208,7 @@ section is fully visible on its own; Director's tweens are an enhancement on top
 	   AUTHORED values; nothing here is a captured metric. */
 	.mo-close__door-label {
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		line-height: 1.4;
 		color: var(--mo-mute);

@@ -156,7 +156,7 @@ supported the hairline is simply a full-width rule from first paint.
 	   these are therefore page-scope values, not captured ones. */
 	.mo-disclosure__links,
 	.mo-disclosure__text {
-		font-size: 0.875rem;
+		font-size: var(--fs-small);
 		line-height: 1.75;
 		color: var(--tt-mute-2);
 	}

@@ -7,6 +7,14 @@
 	import '@fontsource/poppins/latin-600.css';
 	import '@fontsource/poppins/latin-700.css';
 	import '@fontsource/poppins/latin-800.css';
+	// Italics are loaded here, not per-route. /momentum imported 400-italic on its
+	// own page and /project-alpha imported its italics from another family
+	// entirely; both meant an italic that rendered on one route and was
+	// synthesised on the next. 400 covers italic body copy, 700 the italic display
+	// lines in project-alpha's hero and FinalCTA — the only weights any italic
+	// rule on the site inherits.
+	import '@fontsource/poppins/latin-400-italic.css';
+	import '@fontsource/poppins/latin-700-italic.css';
 	import '@fontsource/allerta-stencil/latin-400.css';
 	import '@fontsource/reenie-beanie/latin-400.css';
 

@@ -155,7 +155,7 @@
 	.gd-concept__note-text {
 		max-width: 52ch;
 		color: var(--tt-mute);
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 	}
 
 	@media (min-width: 768px) {

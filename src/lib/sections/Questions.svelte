@@ -102,7 +102,7 @@
 	.questions__idx {
 		display: block;
 		margin-bottom: 0.8rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		color: var(--tt-red-bright);
 	}

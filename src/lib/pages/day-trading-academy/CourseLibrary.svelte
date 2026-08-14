@@ -249,7 +249,7 @@
 	}
 	.feat__lessons {
 		margin-top: 1.3rem;
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.04em;
 		color: var(--tt-mute);
 	}
@@ -265,7 +265,7 @@
 	.feat__note {
 		margin-top: -0.9rem;
 		max-width: 26ch;
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		color: var(--tt-fog);
 	}
 	.feat__cta {
@@ -323,7 +323,7 @@
 		gap: 1rem;
 	}
 	.course__idx {
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-weight: 700;
 		letter-spacing: 0.06em;
 		color: var(--tt-red-bright);
@@ -351,12 +351,12 @@
 	}
 	.course__tagline {
 		margin-top: 0.6rem;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		color: var(--tt-fog);
 	}
 	.course__lessons {
 		margin-top: 1rem;
-		font-size: 0.76rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.03em;
 		color: var(--tt-mute);
 	}
@@ -375,7 +375,7 @@
 		color: #fff;
 	}
 	.course__cur {
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		font-weight: 700;
 		color: var(--tt-fog);
 	}
@@ -386,7 +386,7 @@
 		letter-spacing: -0.02em;
 	}
 	.course__was {
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute-2);
 		text-decoration-line: line-through;
 	}

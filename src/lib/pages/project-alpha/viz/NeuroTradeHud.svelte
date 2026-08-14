@@ -121,7 +121,7 @@
 	}
 
 	.k {
-		font-size: 0.58rem;
+		font-size: var(--fs-nano);
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: var(--alpha-faint);
@@ -129,7 +129,7 @@
 	}
 
 	.v {
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		color: var(--alpha-text);
 		font-variant-numeric: tabular-nums;

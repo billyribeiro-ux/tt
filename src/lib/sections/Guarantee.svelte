@@ -268,7 +268,7 @@
 	}
 	.gua__core-label {
 		font-family: var(--tt-font-mono);
-		font-size: 0.62rem;
+		font-size: var(--fs-nano);
 		letter-spacing: 0.28em;
 		text-transform: uppercase;
 		color: var(--tt-gold);

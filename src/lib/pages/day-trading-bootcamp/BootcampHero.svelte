@@ -155,7 +155,7 @@
 		display: inline-flex;
 		align-items: center;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -184,7 +184,7 @@
 	}
 	.bc-hero__metric-l {
 		margin-top: 0.5rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.02em;
 		color: var(--tt-mute);
 	}

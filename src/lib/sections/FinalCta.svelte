@@ -190,7 +190,7 @@
 		min-width: 0;
 		padding: 0.35rem 0;
 		font: inherit;
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		color: var(--tt-white);
 		background: none;
 		border: none;
@@ -208,7 +208,7 @@
 		flex: none;
 		padding: 0.4rem 0.2rem 0.4rem 0.6rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 		color: var(--tt-red-bright);
@@ -223,7 +223,7 @@
 
 	.final__fine {
 		margin-top: 1.2rem;
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-mute-2);
 		line-height: 1.7;
 	}

@@ -79,9 +79,8 @@
 		width: 50px;
 		height: 50px;
 		border-radius: 50%;
-		font-family: var(--font-display);
-		font-size: 1.05rem;
-		font-weight: 650;
+		font-size: var(--fs-body);
+		font-weight: 700;
 		background: #0b0b0e;
 		border: 1px solid rgba(255, 255, 255, 0.12);
 		box-shadow:
@@ -97,7 +96,7 @@
 
 	.when {
 		margin: 0 0 0.45rem;
-		font-size: 0.65rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
@@ -106,8 +105,7 @@
 
 	h3 {
 		margin: 0 0 1rem;
-		font-family: var(--font-display);
-		font-size: 1.25rem;
+		font-size: var(--fs-h4);
 		font-weight: 600;
 	}
 
@@ -124,7 +122,7 @@
 		display: flex;
 		gap: 0.45rem;
 		align-items: flex-start;
-		font-size: 0.84rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--alpha-muted);
 		line-height: 1.5;
 	}

@@ -105,7 +105,7 @@
 	}
 	.mo-voices__headline {
 		margin: 0 0 0.75rem;
-		font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+		font-size: var(--fs-h5);
 		font-weight: 700;
 		line-height: 1.25;
 		color: var(--mo-kit-primary);
@@ -114,7 +114,7 @@
 	.mo-voices__quote {
 		margin: 0;
 		flex: 1;
-		font-size: 0.98rem;
+		font-size: var(--fs-small);
 		line-height: 1.6;
 		/* #4a4a4a on #ffffff is 8.6:1 — comfortably AA for body text, and softer
 		   than pure black so the headline above still leads. */
@@ -123,7 +123,7 @@
 	.mo-voices__name {
 		margin-block-start: 1.1rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 		/* #6b6b6b on #ffffff is 5.3:1 — AA at this size. */

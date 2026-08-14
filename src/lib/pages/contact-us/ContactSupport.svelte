@@ -117,7 +117,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35rem;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--tt-fog);
 		transition: color 0.25s ease;
@@ -145,7 +145,7 @@
 		border-bottom: 1px solid var(--tt-line);
 	}
 	.c-sup__num {
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-weight: 700;
 		color: var(--tt-red-bright);
 		padding-top: 0.15rem;
@@ -161,7 +161,7 @@
 		margin-top: 0.5rem;
 		max-width: 56ch;
 		color: var(--tt-mute);
-		font-size: 0.96rem;
+		font-size: var(--fs-small);
 	}
 
 	@media (min-width: 1024px) {

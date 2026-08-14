@@ -295,7 +295,7 @@
 
 	.head .kicker {
 		margin: 0 0 0.5rem;
-		font-size: 0.68rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.2em;
 		text-transform: uppercase;
 		color: var(--alpha-red-bright);
@@ -304,15 +304,14 @@
 
 	.head h2 {
 		margin: 0 0 0.6rem;
-		font-family: var(--font-display);
-		font-size: 1.65rem;
+		font-size: var(--fs-h3);
 		font-weight: 600;
 	}
 
 	.sub {
 		margin: 0 0 1.25rem;
 		color: var(--alpha-muted);
-		font-size: 0.92rem;
+		font-size: var(--fs-small);
 		line-height: 1.65;
 	}
 
@@ -326,7 +325,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.35rem;
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		font-weight: 500;
 		color: var(--alpha-muted);
 	}
@@ -361,7 +360,7 @@
 		flex-direction: row;
 		align-items: flex-start;
 		gap: 0.65rem;
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		line-height: 1.5;
 		color: var(--alpha-muted);
 	}
@@ -384,7 +383,7 @@
 	.error {
 		margin: 0;
 		color: #ff8a8a;
-		font-size: 0.85rem;
+		font-size: var(--fs-small);
 	}
 
 	.success {
@@ -398,15 +397,14 @@
 
 	.success h2 {
 		margin: 0;
-		font-family: var(--font-display);
-		font-size: 1.6rem;
+		font-size: var(--fs-h3);
 	}
 
 	.success p {
 		margin: 0 0 0.5rem;
 		color: var(--alpha-muted);
 		line-height: 1.7;
-		font-size: 0.95rem;
+		font-size: var(--fs-small);
 	}
 
 	:global(.spin) {

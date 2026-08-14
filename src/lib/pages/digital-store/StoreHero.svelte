@@ -177,23 +177,23 @@
 	.catalog__idx {
 		grid-row: span 2;
 		align-self: center;
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-red-bright);
 	}
 	.catalog__name {
 		font-family: var(--tt-font-display);
-		font-size: 1.15rem;
+		font-size: var(--fs-h4);
 		letter-spacing: 0.02em;
 		color: #fff;
 	}
 	.catalog__count {
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		text-align: right;
 		color: var(--tt-mute);
 	}
 	.catalog__from {
 		grid-column: 2 / 4;
-		font-size: 0.74rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.04em;
 		color: var(--tt-fog);
 	}
@@ -203,7 +203,7 @@
 		gap: 1rem;
 		margin-top: 1.2rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.68rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--tt-mute-2);

@@ -246,7 +246,7 @@
 	}
 	.rn__not-text {
 		font-family: var(--tt-font-mono);
-		font-size: 0.94rem;
+		font-size: var(--fs-small);
 		letter-spacing: 0.01em;
 		color: var(--tt-mute);
 		text-decoration: line-through;
@@ -279,7 +279,7 @@
 		margin-top: 1.4rem;
 		max-width: 56ch;
 		font-family: var(--tt-font-mono);
-		font-size: 0.82rem;
+		font-size: var(--fs-eyebrow);
 		line-height: 1.7;
 		letter-spacing: 0.02em;
 		color: var(--tt-mute-2);

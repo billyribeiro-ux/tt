@@ -90,7 +90,7 @@
 	}
 	.inc__itembody {
 		max-width: 40ch;
-		font-size: 0.94rem;
+		font-size: var(--fs-small);
 		color: var(--tt-mute);
 	}
 
@@ -110,7 +110,7 @@
 		color: var(--tt-gold);
 	}
 	.inc__disclaimer p {
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--tt-fog);
 		line-height: 1.6;
 	}

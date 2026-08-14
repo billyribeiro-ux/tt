@@ -69,7 +69,7 @@
 		justify-content: space-between;
 		gap: 1rem;
 		margin-bottom: 3.6rem;
-		font-size: 0.5rem;
+		font-size: var(--fs-nano);
 		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -78,9 +78,8 @@
 
 	h3 {
 		margin: 0 0 0.75rem;
-		font-family: var(--font-display);
-		font-size: 1.45rem;
-		font-weight: 650;
+		font-size: var(--fs-h4);
+		font-weight: 700;
 		letter-spacing: -0.02em;
 		display: flex;
 		align-items: center;
@@ -100,7 +99,7 @@
 
 	p {
 		margin: 0;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		color: var(--alpha-muted);
 		line-height: 1.7;
 	}

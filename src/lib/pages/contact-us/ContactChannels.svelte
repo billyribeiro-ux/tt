@@ -149,7 +149,7 @@
 	}
 	.c-ch__addr {
 		margin-top: 1.4rem;
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		color: #fff;
 		border-bottom: 1px solid var(--tt-line-strong);
 		transition: color 0.25s ease;

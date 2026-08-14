@@ -11,13 +11,13 @@
 	 * on `.mo-scope` and the shared `.mo-section` / `.mo-wrap` / `.mo-cta` vocabulary
 	 * the six sections build on.
 	 *
-	 * The Poppins italic face is imported here, route-locally, exactly as
-	 * project-alpha/+page.svelte:3-12 pulls DM Sans italic: the pull quote in Voice
-	 * is a real <em>, and without the italic file the browser would synthesise an
-	 * oblique from the upright at display size.
+	 * The Poppins italic face this page needs — the pull quote in Voice is a real
+	 * <em>, and without the italic file the browser synthesises an oblique from the
+	 * upright at display size — is no longer imported here. It moved to
+	 * +layout.svelte alongside the other faces, because a font loaded route-locally
+	 * is a font that renders on this page and is faked on the next one.
 	 */
 	import '$lib/pages/momentum/momentum.css';
-	import '@fontsource/poppins/latin-400-italic.css';
 
 	import Seo from '$lib/components/Seo.svelte';
 	import { site } from '$lib/data/site';

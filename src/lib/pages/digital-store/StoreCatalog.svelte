@@ -170,7 +170,7 @@
 	.price__cur {
 		align-self: flex-start;
 		margin-top: 0.15em;
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-weight: 700;
 		color: var(--tt-fog);
 	}
@@ -181,7 +181,7 @@
 		letter-spacing: -0.03em;
 	}
 	.price__dec {
-		font-size: 0.9rem;
+		font-size: var(--fs-small);
 		font-weight: 700;
 		color: var(--tt-mute);
 	}
@@ -237,7 +237,7 @@
 		color: #fff;
 	}
 	.cat__from {
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--tt-mute);
@@ -274,7 +274,7 @@
 		gap: 1rem;
 	}
 	.card__idx {
-		font-size: 0.78rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-mute-2);
 	}
 	.card__fmt {
@@ -282,7 +282,7 @@
 		align-items: center;
 		gap: 0.4rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.66rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: var(--tt-fog);
@@ -363,7 +363,7 @@
 		margin-top: 0.8rem;
 		max-width: 46ch;
 		color: var(--tt-fog);
-		font-size: 0.98rem;
+		font-size: var(--fs-small);
 	}
 	.pack__note strong {
 		color: #fff;
@@ -383,7 +383,7 @@
 		font-size: clamp(2.4rem, 1.6rem + 2.4vw, 3.4rem);
 	}
 	.pack__was {
-		font-size: 1rem;
+		font-size: var(--fs-body);
 		color: var(--tt-mute-2);
 		text-decoration: line-through;
 	}
@@ -421,12 +421,12 @@
 	}
 	.row__idx {
 		grid-area: idx;
-		font-size: 0.8rem;
+		font-size: var(--fs-eyebrow);
 		color: var(--tt-red-bright);
 	}
 	.row__name {
 		grid-area: name;
-		font-size: 1.05rem;
+		font-size: var(--fs-body);
 		font-weight: 600;
 		letter-spacing: -0.005em;
 		color: #fff;
@@ -437,7 +437,7 @@
 		align-items: center;
 		gap: 0.4rem;
 		font-family: var(--tt-font-mono);
-		font-size: 0.64rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: var(--tt-mute);
@@ -447,7 +447,7 @@
 		justify-self: end;
 	}
 	.row .price__int {
-		font-size: 1.4rem;
+		font-size: var(--fs-h4);
 	}
 	.row__cta {
 		grid-area: cta;
@@ -503,7 +503,7 @@
 		margin-top: 0.8rem;
 		max-width: 42ch;
 		color: var(--tt-fog);
-		font-size: 0.96rem;
+		font-size: var(--fs-small);
 	}
 	.box__foot {
 		display: flex;
@@ -523,7 +523,7 @@
 		font-size: clamp(2.2rem, 1.6rem + 2vw, 3rem);
 	}
 	.box__save {
-		font-size: 0.72rem;
+		font-size: var(--fs-eyebrow);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--tt-gold);
